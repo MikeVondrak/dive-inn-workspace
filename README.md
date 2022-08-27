@@ -1,27 +1,126 @@
-# DiveInnWorkspace
+# Dive Inn Denver<br>
+## Project Setup - Yarn, Lerna, Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+### Install yarn
+`npm i -g yarn`
+<br>
 
-## Development server
+### Update Global Installs
+Optional: clear global npm cache<br>
+`npm cache clean --force`<br>
+`npm cache verify`<br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Error: The term 'ng' is not recognized...
+* Reinstall Angular CLI globally<br>
+  `npm i -g @angular/cli@latest`
+#### Error: EMFILE: too many open files
+* Run `npm cache clean --force`
+* Look into graceful-fs (how to use it globally?)
+<br>
 
-## Code scaffolding
+### Update to latest Node
+`nvm install <version>`<br>
+`nvm use <version>`
+<br>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+### Multi-project workspace
+Create container workspace for all projects<br>
+`ng new <workspace-name> --create-application false --skip-install`<br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Create applications
+`cd <workspace-name>`<br>
+`ng generate application <app-name> --skip-install`
 
-## Running unit tests
+Create libraries
+`ng generate library <library-name> --skip-install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Change the package manager for the project to yarn
+`cd <project-name>`<br>
+`ng config cli.packageManager yarn`
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Connect to remote repository (set up on GitHub)
+`git remote add origin <url>`
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Initialize package.json
+`yarn init`
+
+Install packages
+`cd ../../`
+`yarn`
+---
+
+### Set up workspace root
+Create folder structure e.g:
+```
+root
+  assets
+  env
+  projects
+    shared
+```
+
+#### Create root package.json to enable Workspaces
+In package.json of root folder:
+```
+{
+  "private": true,
+  "workspaces": ["projects/*"]
+}
+```
+
+---
+
+### Initialize root for git repo
+`git init`
+
+#### Ignore node_modules
+`code .gitignore`
+```
+# Ignore Mac system files
+.DS_store
+
+# Ignore node_modules folder
+**/node_modules/*
+
+# Ignore files related to API keys
+**/env/*
+```
+
+---
+
+### Initialize Lerna
+`npx lerna init`
+
+---
+---
+
+## Updating the Projects
+
+### Update Angular CLI globally
+Administrator (Windows) or add `sudo`
+`npm uninstall -g angular-cli`
+`npm cache verify`
+`npm cache clean`
+`npm i -g @angular/cli@latest`
+
+### Update Angular CLI per project
+From each PROJECT root folder:
+`ng update @angular/cli @angular/core`
+
+---
+---
+
+## Reference
+
+https://angular.io/guide/file-structure#multiple-projects
+
+https://upmostly.com/angular/using-yarn-with-angular
+
+https://classic.yarnpkg.com/lang/en/docs/workspaces/
+
+https://levelup.gitconnected.com/angular-mono-repo-using-lerna-and-yarn-workspaces-for-reusability-5aafff9ab5f2
