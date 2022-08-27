@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
 import { routeAnimations } from './animations/route.animation';
-import { AnimateViewportOverlayService } from 'projects/dive-inn-lib/src/public-api';
+import { AnimateViewportOverlayService } from 'projects/dive-inn-lib/src/public-api'; // TODO: how to fancy name import this?
 
 
 @Component({

@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DirectivesModule } from 'projects/dive-inn-lib/src/public-api';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { DirectivesModule } from './directives/directives.module';
-//import { PagesModule } from './pages/pages.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    //PagesModule,
-    //DirectivesModule,
+    PagesModule,
+    DirectivesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
