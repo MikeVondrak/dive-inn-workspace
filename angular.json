@@ -3,5 +3,240 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "public-client": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/public-client",
+      "sourceRoot": "projects/public-client/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/public-client",
+            "index": "projects/public-client/src/index.html",
+            "main": "projects/public-client/src/main.ts",
+            "polyfills": "projects/public-client/src/polyfills.ts",
+            "tsConfig": "projects/public-client/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/public-client/src/favicon.ico",
+              "projects/public-client/src/assets"
+            ],
+            "styles": [
+              "projects/public-client/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/public-client/src/environments/environment.ts",
+                  "with": "projects/public-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "public-client:build:production"
+            },
+            "development": {
+              "browserTarget": "public-client:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "public-client:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/public-client/src/test.ts",
+            "polyfills": "projects/public-client/src/polyfills.ts",
+            "tsConfig": "projects/public-client/tsconfig.spec.json",
+            "karmaConfig": "projects/public-client/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/public-client/src/favicon.ico",
+              "projects/public-client/src/assets"
+            ],
+            "styles": [
+              "projects/public-client/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "admin-client": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/admin-client",
+      "sourceRoot": "projects/admin-client/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/admin-client",
+            "index": "projects/admin-client/src/index.html",
+            "main": "projects/admin-client/src/main.ts",
+            "polyfills": "projects/admin-client/src/polyfills.ts",
+            "tsConfig": "projects/admin-client/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/admin-client/src/favicon.ico",
+              "projects/admin-client/src/assets"
+            ],
+            "styles": [
+              "projects/admin-client/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin-client/src/environments/environment.ts",
+                  "with": "projects/admin-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "admin-client:build:production"
+            },
+            "development": {
+              "browserTarget": "admin-client:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin-client:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/admin-client/src/test.ts",
+            "polyfills": "projects/admin-client/src/polyfills.ts",
+            "tsConfig": "projects/admin-client/tsconfig.spec.json",
+            "karmaConfig": "projects/admin-client/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/admin-client/src/favicon.ico",
+              "projects/admin-client/src/assets"
+            ],
+            "styles": [
+              "projects/admin-client/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dive-inn-lib": {
+      "projectType": "library",
+      "root": "projects/dive-inn-lib",
+      "sourceRoot": "projects/dive-inn-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dive-inn-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dive-inn-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dive-inn-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dive-inn-lib/src/test.ts",
+            "tsConfig": "projects/dive-inn-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/dive-inn-lib/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "packageManager": "yarn"
   }
 }
