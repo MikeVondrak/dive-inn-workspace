@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
-import { DiveInnLibComponent } from './dive-inn-lib.component';
-
+import { DirectivesModule } from './directives/directives.module';
 
 
 @NgModule({
   declarations: [
-    DiveInnLibComponent
   ],
   imports: [
+    DirectivesModule
   ],
   exports: [
-    DiveInnLibComponent
   ]
 })
 export class DiveInnLibModule { }
