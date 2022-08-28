@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment files
+**/environments/
+
+# Generated files (e.g. GraphQL)
+generated/

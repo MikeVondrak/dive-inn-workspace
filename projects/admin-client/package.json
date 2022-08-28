@@ -1,0 +1,12 @@
+{
+  "name": "admin-client",
+  "version": "1.0.0",
+  "description": "Dive Inn admin website",
+  "main": "index.html",
+  "author": "Mike Vondrak and Rick Haag",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "graphql": "^16.6.0"
+  }
+}

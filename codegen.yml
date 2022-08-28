@@ -1,0 +1,15 @@
+overwrite: true
+schema: "https://concrete-hookworm-64.hasura.app/v1/graphql"
+documents: "projects/**/*.graphql"
+generates:
+  generated/graphql/:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-apollo-angular"
+      - "typescript-graphql-files-modules"
+      - "typescript-document-nodes"
+      - "fragment-matcher"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
