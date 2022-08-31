@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 319 292" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-miterlimit:1.5;">
+    <rect id="Artboard10" x="0" y="0" width="318.727" height="291.108" style="fill:none;"/>
+    <clipPath id="_clip1">
+        <rect x="0" y="0" width="318.727" height="291.108"/>
+    </clipPath>
+    <g clip-path="url(#_clip1)">
+        <g>
+            <path d="M159.71,46.163L240.978,154.763C185.888,201.502 131.694,202.308 78.442,154.763L159.71,46.163Z" style="fill:none;stroke:#000;stroke-width:16.67px;"/>
+            <circle cx="159.71" cy="27.288" r="18.875" style="fill:none;stroke:#000;stroke-width:16.67px;stroke-linecap:round;stroke-linejoin:round;"/>
+            <g>
+                <rect x="169.683" y="46.484" width="39.8" height="43.541"/>
+                <rect x="206.822" y="43.573" width="5.322" height="49.363"/>
+                <rect x="212.095" y="53.821" width="69.782" height="28.869"/>
+                <rect x="281.877" y="60.042" width="11.086" height="16.425"/>
+            </g>
+            <rect x="150.272" y="51.969" width="20.143" height="205.085"/>
+            <path d="M184.36,244.998C184.36,243.785 183.376,242.801 182.164,242.801L138.523,242.801C137.311,242.801 136.326,243.785 136.326,244.998L136.326,268.063C136.326,269.275 137.311,270.26 138.523,270.26L182.164,270.26C183.376,270.26 184.36,269.275 184.36,268.063L184.36,244.998Z"/>
+            <path d="M81.428,146.453L68.163,133.189L56.406,144.946L69.67,158.211L81.428,146.453Z"/>
+            <circle cx="58.888" cy="133.347" r="19.554"/>
+            <path d="M31.995,202.922L153.038,41.17L166.382,41.17L287.539,203.076L299.037,191.578L319.46,211.67L301.529,229.601L301.503,229.574L295.61,234.574C250.971,272.447 204.573,291.429 160.668,291.592C116.66,291.755 65.903,274.053 22.651,235.436L16.95,230.346L16.975,230.312L16.922,230.365L0.272,213.715L20.415,191.342L31.995,202.922ZM159.71,60.071L274.796,213.864C235.732,245.471 199.069,261.782 160.606,261.925C122.221,262.068 82.256,246.068 44.508,214.018L159.71,60.071Z"/>
+        </g>
+    </g>
+    <g id="g186">
+    </g>
+    <g id="g966">
+    </g>
+</svg>
