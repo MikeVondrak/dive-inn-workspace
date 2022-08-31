@@ -3,7 +3,7 @@ import { APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache, makeVar, ReactiveVar } from '@apollo/client/core';
 //import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-angular/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
 
 const uri = 'https://concrete-hookworm-64.hasura.app/v1/graphql'; // <-- add the URL of the GraphQL server here

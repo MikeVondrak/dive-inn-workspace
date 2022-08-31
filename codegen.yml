@@ -1,15 +1,26 @@
 overwrite: true
-schema: "https://concrete-hookworm-64.hasura.app/v1/graphql"
-documents: "projects/**/*.graphql"
+schema: 
+  - "https://concrete-hookworm-64.hasura.app/v1/graphql":
+      headers:
+        x-hasura-admin-secret: ${DIVE_INN_GQL_SECRET}
+documents: 
+  #- "projects/public-client/src/app/graphql/**/*.graphql"
+  #- "projects/admin-client/src/app/graphql/**/*.graphql"
+  #- "projects/dive-inn-lib/src/lib/graphql/**/*.graphql"
+  - "graphql/**/*.graphql"
 generates:
-  generated/graphql/:
+  ./generated/graphql/graphql.ts:
+    config:
+      #serviceProvidedInRoot: false
+      #serviceProvidedIn: ../generated.module#GeneratedModule
+      #serviceName: GeneratedModule
+    schema: ./graphql/schema/client-schema.graphql
     plugins:
       - "typescript"
       - "typescript-operations"
       - "typescript-apollo-angular"
-      - "typescript-graphql-files-modules"
-      - "typescript-document-nodes"
       - "fragment-matcher"
-  ./graphql.schema.json:
+  ./generated/graphql/schema.json:
+    schema: ./graphql/schema/client-schema.graphql
     plugins:
       - "introspection"

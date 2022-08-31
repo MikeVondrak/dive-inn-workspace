@@ -6,7 +6,6 @@
   "author": "Mike Vondrak and Rick Haag",
   "license": "MIT",
   "dependencies": {
-    "apollo": "^2.34.0",
     "graphql": "^16.6.0"
   }
 }

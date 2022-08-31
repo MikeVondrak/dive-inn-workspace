@@ -10,6 +10,7 @@
     "graphql": "^16.6.0",
     "tslib": "^2.3.0"
   },
-  "dependencies": {    
+  "dependencies": {
+    "apollo-angular": "^4.0.1"
   }
 }

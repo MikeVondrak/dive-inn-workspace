@@ -43,6 +43,7 @@ Thumbs.db
 
 # Environment files
 **/environments/
+.env
 
 # Generated files (e.g. GraphQL)
 generated/

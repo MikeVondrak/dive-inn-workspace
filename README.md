@@ -109,10 +109,13 @@ Initialize graphql-code-generator<br>
 
 Add GraphQL module to library<br>
 
+Install dotenv package
+
 
 Run GQL generator<br>
-* Need `x-hasura-admin-secret/x-hasura-access-key` for Hasura (from environments)
-  * How to share common environment settings? From lib?
+* Need `x-hasura-admin-secret/x-hasura-access-key` for Hasura
+  * Interpolate e.g. `${DIVE_INN_GQL_SECRET}`, .env file in root with `DIVE_INN_GQL_SECRET="..."`
+* How to share common environment settings? From lib?
 
 ---
 

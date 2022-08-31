@@ -3,6 +3,7 @@
  */
 
 export * from './lib/dive-inn-lib.module';
+export * from './lib/graphql/graphql.module';
 
 export * from './lib/directives/directives.module';
 export * from './lib/directives/animate-viewport-overlay/animate-viewport-overlay.directive';
