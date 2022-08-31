@@ -1,10 +1,19 @@
-<div id="Viewport-Overlay" [@viewportAnimation]="viewportOverlayAnimationState$ | async" (@viewportAnimation.done)="viewportOverlayAnimationDone($event)"></div>
+<!-- <div id="Viewport-Overlay" 
+  [@viewportAnimation]="viewportOverlayAnimationState$ | async" 
+  (@viewportAnimation.done)="viewportOverlayAnimationDone($event)">
+</div> -->
 <div id="Viewport-Content">
-  <header>Header</header>
+  
+  <app-site-header>Header</app-site-header>
 
   <main>
+    <div id="Viewport-Overlay" 
+      [@viewportAnimation]="viewportOverlayAnimationState$ | async" 
+      (@viewportAnimation.done)="viewportOverlayAnimationDone($event)">
+    </div>
     <router-outlet #routerOutlet="outlet"></router-outlet>
   </main>
 
-  <footer>Footer</footer>
+  <app-site-footer>Footer</app-site-footer>
+
 </div>

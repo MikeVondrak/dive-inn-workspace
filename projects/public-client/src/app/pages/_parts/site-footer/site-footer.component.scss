@@ -1,0 +1,123 @@
+@use 'sass:math';
+@use '../../../scss/utility';
+
+
+$waveSize: 2vw;
+
+.waves-separator {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  top: 2px;
+
+  &.footer {
+    height: $waveSize;
+    top: 1px;
+    background-image: url('/assets/images/wave-red.svg');
+  }
+}
+
+footer {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+  padding: 1.5vw 0 2vw;
+  background-color: utility.$dive-red;
+
+  color: utility.$dive-white;
+  text-shadow: 1px 1px 3px #000;
+
+  p {
+    padding: 0 0 0.5vw;
+    margin: 0;
+    font-size: 1.75vw;
+  }
+
+  ul.navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 2vw;
+
+    li {
+      margin: 0 0 1.5vw;
+      font-size: 1.25vw;
+
+      a {
+        color: utility.$dive-white;
+        &::after {
+          content: none;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .spacer {
+    padding: 0 0.5vw;
+    color: utility.$dive-black;
+  }
+
+  $iconSize: 32px;
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: utility.$dive-black;
+    border-radius: 2rem;
+
+    > a {
+      width: $iconSize;
+      height: $iconSize;
+      margin: 0 0.25rem;      
+      &::after {
+        content: none;
+      }
+    }
+
+    // don't name like ".facebook" as it can be filtered by ad blockers
+    .gurgleplus {}
+
+    .faceburk {
+      //background-position: -($iconSize * 1) 0;
+      background-image: url('/assets/images/social/fabook.svg');
+    }
+
+    .instakilo {
+      //background-position: -($iconSize * 6) 0;
+      background-image: url('/assets/images/social/igram.svg');
+    }
+
+    .twatter {
+      //background-position: -($iconSize * 4) 0;
+      background-image: url('/assets/images/social/twit.svg');
+    }
+
+    .needletrest {
+      //background-position: -($iconSize * 5) 0;
+      background-image: url('/assets/images/social/pinny.svg');
+    }
+
+    .tripsitter {
+      //background-position: -($iconSize * 7) 0;
+      background-image: url('/assets/images/social/tadviser.svg');
+    }
+
+    .yalp {
+      //background-position: -($iconSize * 2) 0;
+      background-image: url('/assets/images/social/yalp.svg');
+    }
+  }
+}
+
+// end footer

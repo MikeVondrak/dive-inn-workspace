@@ -1,6 +1,25 @@
+@use 'app/scss/utility';
+
+* {
+  box-sizing: border-box;
+}
 html, body {
-  height: 100%;
-  margin: 0;
   padding: 0;
-  background-color: #555;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: utility.$dive-black;
+  color: utility.$dive-white;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: utility.$dive-red;
+  color: utility.$dive-white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: bold;
 }

@@ -1,0 +1,111 @@
+@use 'sass:math';
+@use '../../../scss/utility';
+
+$headerColor: utility.$dive-gray-dk3;
+$verticalGap: 0.75rem;
+
+:host {
+  // width: 100%;
+  // margin-bottom: 5vw;
+  // padding: 0.7vw;
+  // @include utility.media-breakpoint-gte(sm) {
+  //   margin-bottom: 2vw;
+  // }
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  //padding: 0.5vw 0;
+  background-color: utility.$dive-gray-dk3;
+  
+  font-size: 4.5vw;
+  @include utility.media-breakpoint-gte(sm) {
+    font-size: 3vw;
+  }
+  @include utility.media-breakpoint-gte(md) {
+    font-size: 2vw;
+  }
+  @include utility.media-breakpoint-gte(lg) {
+    font-size: 1.75vw;
+  }
+  @include utility.media-breakpoint-gte(xl) {
+    font-size: 1.5vw;
+  }
+  @include utility.media-breakpoint-gte(ws) {
+    font-size: 1.25vw;
+  }
+  @include utility.media-breakpoint-gte(hd) {
+    font-size: 1vw;
+  }
+  background-color: $headerColor; //rgba(0,0,0,0.75);
+  color: utility.$dive-white;
+  font-family: 'Righteous', cursive;
+
+  ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    @include utility.media-breakpoint-gte(sm) {
+      justify-content: center;
+    }
+    gap: 0vw;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      position: relative;      
+      overflow: hidden;
+      transform: skewX(-22deg);
+      .selected-bg {
+        //transform: skewX(-22%);
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        background: utility.$dive-red;
+      }
+      a {
+        display: inline-block;
+        position: relative;
+        padding: 0.5vw 1vw;
+        transition: all 0.5s ease;
+        color: utility.$dive-yellow;
+        transform: skewX(22deg);
+        &::after {
+          content: none;
+        }
+        &.active {
+          color: utility.$dive-white;
+          text-shadow: 1px 1px 2px #000;
+        }
+      }
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 14vw;    
+  }
+  svg {    
+    position: absolute;
+    left: -6vw;
+    top: -6vw;
+    width: 15vw;
+    height: 15vw;
+    padding: 1vw;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    .outline {
+      path {
+        fill: transparent; //utility.$dive-black;
+        //stroke: utility.$dive-red;
+      }
+    }
+    .fill {
+      path {
+        fill: utility.$dive-red;
+        //stroke: utility.$dive-black;
+      }
+    }
+  }
+}

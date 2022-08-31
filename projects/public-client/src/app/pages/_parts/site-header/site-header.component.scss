@@ -1,0 +1,94 @@
+@use 'sass:math';
+@use '../../../scss/utility';
+
+$headerColor: utility.$dive-gray-dk3;
+$verticalGap: 0.75rem;
+
+:host {
+  z-index: 10;
+  position: relative;
+  top: 0;
+
+  @include utility.media-breakpoint-gte(sm) {
+    position: sticky;
+  }
+
+  header {
+    top: 0;
+    left: 0rem;
+    width: 100%;
+    box-shadow: 0px 2px 4px utility.$dive-black;
+
+    .logo-container {
+      position: absolute;
+
+      img {
+        z-index: 2;
+        width: 24vw;
+        position: relative;
+        top: -22vw;
+        left: 0rem;
+        padding: 1vw;
+        $t1: 20%;
+        $t2: 38%;
+        background-image: linear-gradient(163deg, utility.$dive-black 0%, utility.$dive-black $t1, $headerColor ($t1 + 0.5%), $headerColor $t2, transparent $t2 + 1.2%);
+        border-bottom-right-radius: 50%;
+
+        transition: all 0.65s ease;
+
+        @include utility.media-breakpoint-gte(sm) {
+          width: 22vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          width: 20vw;
+        }
+        @include utility.media-breakpoint-gte(ws) {
+          width: 18vw;
+        }
+
+        &.anniversary {
+          position: relative;
+          top: -18vw;
+          left: -16vw;
+          width: 8vw;
+          background: none;
+
+          &.showLogo {
+            // position: relative;
+            top: 0.25vw; //5.5vw;
+            // top: 20%;
+            left: -8.25vw; //7.75vw;
+          }
+        }
+
+        &.showLogo {
+          // position: relative;
+          top: 0rem;
+          //display: inline-flex;
+          // transform: display(inline-flex);
+          // transition: all 1s;
+        }
+      }
+  }
+
+    $boat-cam-size: 15vw;
+
+    .boat-cam {
+      z-index: 5;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 1vw;
+      top: 1vw;
+      background-color: utility.$dive-black;
+      color: utility.$dive-white;
+      width: $boat-cam-size;
+      height: $boat-cam-size;
+      border-radius: math.div($boat-cam-size, 2);
+      font-size: math.div($boat-cam-size, 4);
+      text-align: center;
+    }
+  }
+}
