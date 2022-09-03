@@ -21,6 +21,13 @@ $verticalGap: 0.75rem;
 
     .logo-container {
       position: absolute;
+      height: 0;
+
+      a {
+        &::after {
+          content: none;
+        }
+      }
 
       img {
         z-index: 2;

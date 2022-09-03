@@ -3,6 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { combineLatest, fromEvent, Subject } from 'rxjs';
 import { debounce, debounceTime, filter, map, startWith, takeUntil } from 'rxjs/operators';
+import { ChangeDetectorRef } from '@angular/core';
 
 export interface NavItem {
   url: string,
@@ -27,8 +28,9 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   
   constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router,
+  @Inject(DOCUMENT) private document: Document,
+  private router: Router,
+  private cdr: ChangeDetectorRef
   ) {
     this.window = this.document.defaultView;
   }
@@ -50,6 +52,8 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
         } else {
           this.showLogo = false;
         }
+        // TODO: this has to be fired manually for the logo animation to trigger because app component is set to OnPush?
+        this.cdr.detectChanges();
       }
     })
   }
