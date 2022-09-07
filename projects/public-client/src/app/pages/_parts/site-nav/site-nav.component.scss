@@ -38,9 +38,7 @@ $verticalGap: 0.75rem;
   @include utility.media-breakpoint-gte(hd) {
     font-size: 1vw;
   }
-  background-color: $headerColor; //rgba(0,0,0,0.75);
-  color: utility.$dive-white;
-  font-family: 'Righteous', cursive;
+  background-color: $headerColor; //rgba(0,0,0,0.75);  
 
   ul {
     display: flex;
@@ -71,13 +69,16 @@ $verticalGap: 0.75rem;
         transition: all 0.5s ease;
         color: utility.$dive-yellow;
         transform: skewX(22deg);
+        font-family: 'Righteous', cursive;
         &::after {
           content: none;
         }
         &.active {
           color: utility.$dive-white;
           text-shadow: 1px 1px 2px #000;
-        }
+          cursor: default;
+          pointer-events: none;
+        } 
       }
     }
   }

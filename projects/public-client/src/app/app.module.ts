@@ -6,6 +6,7 @@ import { DirectivesModule } from '@dive-inn-lib';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { PagesModule } from './pages/pages.module';
     AppRoutingModule,
     PagesModule,
     DirectivesModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,43 @@
+@use '../../scss/utility';
+
+@mixin coverAbsolute() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+$textMaxWidth: 30vw;
+
+:host {
+  display: block;
+
+  .mouse-tracker-container {
+    position: relative;
+    background: utility.$dive-black; //magenta;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    perspective: 2000px;    
+
+    min-height: 400px;
+
+    .mouse-tracker-content {
+
+      min-height: 400px;
+
+      height: 100%;
+      background-image: var(--imgSrc);
+      background-size: var(--bgSize);
+      background-position: var(--bgPosition);
+      transform: scale(1.15) translateZ(100px);
+      transition: transform 0.1s linear;
+    }
+    .mouse-tracker-shadow {
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+      box-shadow: 0px 0px 25px 15px #000 inset;
+    }
+  }
+}
