@@ -6,7 +6,7 @@ import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, min, shareReplay, startWith } from 'rxjs/operators';
 
-import { Breakpoints, Orientations, ViewportState } from '@dive-inn-lib';
+import { Breakpoints, Orientations, ViewportState } from '../../models/viewport.model';
 
 @Injectable({
   providedIn: 'root'

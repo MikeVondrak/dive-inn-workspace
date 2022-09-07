@@ -1,10 +1,15 @@
 
 <div class="main">
-  <app-mouse-tracker
+  <!-- <app-mouse-tracker
     bgPosition="50% 21.7%"
     bgSize="110%"
-    imgSrc="url(assets/images/home/dive-inn-exterior.jpg)"></app-mouse-tracker>
-  <h1>Home</h1>
+    imgSrc="url(assets/images/home/dive-inn-exterior.jpg)"></app-mouse-tracker> -->
+
+  <app-hero-banner
+    imgSrc="url(assets/images/home/dive-inn-exterior.jpg)"
+    [textLines]="['Test1', 'Test2']"
+  ></app-hero-banner>
+
   <button appAnimateViewportOverlay="/inside">Inside</button>
   <br>
   <br>

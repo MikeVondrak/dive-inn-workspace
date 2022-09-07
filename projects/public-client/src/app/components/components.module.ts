@@ -12,7 +12,8 @@ import { HeroBannerComponent } from './hero-banner/hero-banner.component';
     CommonModule
   ],
   exports: [
-    MouseTrackerComponent
+    MouseTrackerComponent,
+    HeroBannerComponent,
   ]
 })
 export class ComponentsModule { }

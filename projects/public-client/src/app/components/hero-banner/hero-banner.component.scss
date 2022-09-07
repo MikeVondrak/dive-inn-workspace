@@ -1,0 +1,52 @@
+@use '../../scss/utility';
+
+@mixin coverAbsolute() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+$textMaxWidth: 30vw;
+
+
+:host {
+  
+  app-mouse-facer {
+    height: var(--height);
+  }
+
+
+  .title-container {
+    position: absolute;
+    width: var(--textWidth);
+    top: var(--textTop);
+    left: var(--textLeft);
+    transform: var(--textContainerTransform);
+    text-align: var(--textAlign);
+  
+    h1.title {
+      z-index: 0;
+      position: relative;
+      // top: -7vw;
+      // left: -4vw;
+      transform: var(--textTransform);
+      //margin: 0;
+      //text-align: right;
+      
+      font-size: 6vw; // TODO - make a variable input
+      line-height: 1.4;
+      
+      color: utility.$dive-black;
+      -webkit-text-stroke: 0.05em utility.$dive-red;
+      
+      &::after {
+        content: attr(card-title);
+        z-index: -1;
+        @include coverAbsolute();
+        -webkit-text-stroke: 0.2em utility.$dive-white;
+      }
+    }
+  }
+}
