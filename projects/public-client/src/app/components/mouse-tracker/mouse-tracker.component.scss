@@ -21,12 +21,7 @@ $textMaxWidth: 30vw;
     overflow: hidden;
     perspective: 2000px;    
 
-    min-height: 400px;
-
     .mouse-tracker-content {
-
-      min-height: 400px;
-
       height: 100%;
       background-image: var(--imgSrc);
       background-size: var(--bgSize);

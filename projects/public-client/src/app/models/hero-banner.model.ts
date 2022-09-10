@@ -1,10 +1,10 @@
-import { Breakpoints, Orientations } from "@dive-inn-lib";
+import { BreakpointsEnum, Orientations } from "@dive-inn-lib";
 
 export type Coord = [x: string, y: string];
 
 export interface HeroBannerConfig {
-  width?: string,
-  height?: string,
+  width?: string, // TODO: may not need
+  height?: string, // TODO: may not need
   bgSize?: string,
   bgPosition?: string,
   textWidth?: string,
@@ -15,7 +15,7 @@ export interface HeroBannerConfig {
   textAlign?: string,
 }
 
-export type HeroBannerBreakpointConfigs = Map<Breakpoints, HeroBannerConfig>;
+export type HeroBannerBreakpointConfigs = Map<BreakpointsEnum, HeroBannerConfig>;
 
 export type HeroBannerOrientationConfigs = Map<Orientations, HeroBannerBreakpointConfigs>;
 
