@@ -26,6 +26,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   @HostBinding('style.--textContainerTransform') textContainerTransform: string = '';
   @HostBinding('style.--textTransform') textTransform: string = '';
   @HostBinding('style.--textAlign') textAlign: string = '';
+  @HostBinding('style.--textSize') textSize: string = '';
+  @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
+  @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
 
   public bgSize: string | undefined = '';
   public bgPosition: string | undefined = '';
@@ -68,10 +71,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   }
 
   private setPropsForBreakpoints(bpConfig: HeroBannerConfig | undefined) {
-    this.height = bpConfig?.height || '';
-    this.width = bpConfig?.width || '';
-
-    this.textWidth = bpConfig?.textWidth || '';
     this.textTop = bpConfig?.textTop || '';
     this.textLeft = bpConfig?.textLeft || '';
     this.textContainerTransform = bpConfig?.textContainerTransform || '';
@@ -80,6 +79,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.bgSize = bpConfig?.bgSize || '';
     this.bgPosition = bpConfig?.bgPosition || '';
     this.textWidth = bpConfig?.textWidth || '';
+    this.textSize = bpConfig?.textSize || '';
+    this.textPaddingTop = bpConfig?.textPaddingTop || '';
+    this.textPaddingBottom = bpConfig?.textPaddingBottom || '';
  
     console.log('+++++ SETTING!!', {bpConfig}, this.bgPosition);
     this.cdr.detectChanges();

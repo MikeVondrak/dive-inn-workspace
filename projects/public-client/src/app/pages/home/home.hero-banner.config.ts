@@ -2,21 +2,21 @@ import { BreakpointsEnum, Orientations } from "@dive-inn-lib";
 import { HeroBannerConfig } from "../../models/hero-banner.model";
 
 const heroBannerConfig_landscape_zero: HeroBannerConfig = {
-  //height: '',
-  //width: '',
-  bgPosition: '0%, 0%',
-  bgSize: 'cover',
-  //textTop: '',
+  bgPosition: '60% 25%',
+  bgSize: '150%',
   textLeft: '0rem',
-  textAlign: 'left',
+  textAlign: 'right',
   textContainerTransform: '',
-  textTransform: '',
-  textWidth: '',
+  textTransform: 'skew(350deg, 346deg) rotate(0)',
+  textWidth: '50vw',
+  textSize: '6vw',
+  textPaddingTop: '15vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '15vw',
 };
 const heroBannerConfig_landscape_md: HeroBannerConfig = {
   //height: '',
   //width: '',
-  bgPosition: '100%, 100%',
+  bgPosition: '100% 100%',
   bgSize: 'contain',
   //textTop: '',
   //textLeft: '2rem',

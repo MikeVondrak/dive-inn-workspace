@@ -1,14 +1,16 @@
 <div class="hero-banner-container">
-  {{ bgPosition }}
   <app-mouse-tracker
     [bgPosition]="bgPosition"
     [bgSize]="bgSize"
     [imgSrc]="imgSrc"
   ></app-mouse-tracker>
   <div class="title-container">
-    <h1 *ngFor="let line of textLines" 
-      [attr.card-title]="line"
-      class="title"
-    >{{ line }}</h1>
+    <h1 class="title">
+      <div *ngFor="let line of textLines"
+        [attr.card-title]="line"
+      >
+        {{ line }}
+      </div>
+    </h1>
   </div>
 </div>

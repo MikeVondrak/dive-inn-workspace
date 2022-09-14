@@ -12,6 +12,11 @@ import { homepageHeroBannerConfigs } from './home.hero-banner.config';
 })
 export class HomeComponent implements OnInit {
 
+  public heroBannerTitleLines: string[] = [
+    'Local Events',
+    'Live Sports',
+    '& Games',
+  ]
   public heroBannerConfigs: HeroBannerOrientationConfigs = homepageHeroBannerConfigs;
 
   constructor() { }
