@@ -1,0 +1,192 @@
+@use '../../scss/utility';
+
+:host {
+  .main {
+    // position: relative;
+
+    .taki-tacos {
+      position: relative;
+      margin-bottom: 3vw;
+
+      app-hero-banner {
+        // display: inline-block;
+        // height: 90vh;
+      }
+
+      .gradient-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(105deg, utility.$dive-black 0%, utility.$dive-black 10%, transparent 30%, transparent 70%, utility.$dive-black 95%, utility.$dive-black 100%);
+      }
+
+      img {
+        &.logo {
+          position: absolute;
+          top: 1vw;
+          left: 2vw;
+          width: 30vw;
+        }
+
+        &.specials {
+          position: relative;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 80vw;
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    img {
+      &.menu {
+        width: 90vw;
+        max-width: 800px;
+        margin-top: 6vw;
+      }
+
+      &.cluck {
+        max-width: 8vw;
+      }
+
+      @include utility.media-breakpoint-gte(md) {
+        &.specials {
+          width: 80vw;
+        }
+
+        &.menu {
+          width: 80vw;
+        }
+      }
+
+      @include utility.media-breakpoint-gte(lg) {
+        &.specials {
+          width: 70vw;
+          margin-top: 0;
+        }
+
+        &.menu {
+          width: 70vw;
+        }
+      }
+
+      @include utility.media-breakpoint-gte(xl) {
+        &.specials {
+          width: 44vw;
+        }
+
+        &.menu {
+          width: 44vw;
+          margin-top: 0vw;
+        }
+      }
+
+      @include utility.media-breakpoint-gte(ws) {
+        &.specials {
+          width: 37vw;
+        }
+
+        &.menu {
+          width: 37vw;
+          //margin-top: 9vw;
+        }
+      }
+
+      @include utility.media-breakpoint-gte(hd) {
+        &.specials {
+          width: 30vw;
+        }
+
+        &.menu {
+          width: 30vw;
+          //margin-top: 7.1vw;
+        }
+      }
+    }
+
+    .flyers {
+      bottom: -10vw;
+      top: 2vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 4vw;
+      // margin-bottom: 10vw;
+
+      @include utility.media-breakpoint-gte(xl) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 6vw;
+      }
+
+      img {
+        display: block;
+        border-radius: 1rem;
+      }
+    }
+
+
+    .cluck-container {
+      position: relative;
+      // width: 100%;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      margin-bottom: 6vw;
+
+      .cluck {
+        position: absolute;
+        top: 5vw;
+        max-width: 22vw;
+        left: 35vw;
+        text-align: center;
+        text-shadow: 2px 2px 2px #000;
+
+        &::after {
+          content: none;
+        }
+
+        >* {
+          width: 30vw;
+        }
+
+        img {
+          display: block;
+        }
+
+        a {
+          position: relative;
+
+          >div {
+            position: absolute;
+            top: 4vw;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+              margin: 0;
+              padding-bottom: 3vw;
+              font-size: 3.5vw;
+              font-family: 'Anton', sans-serif;
+            }
+          }
+        }
+
+        p {
+          width: 24vw;
+          margin: 0 auto;
+          font-size: 1.75vw;
+        }
+      }
+    }
+  }
+}

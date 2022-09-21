@@ -15,14 +15,16 @@
     z-index: 2;
   }
 
-  header {
+  app-site-header {
+    //position: absolute;
+    transform: translate(0%, 0%);
   }
 
   main {
     flex: 1;
   }
 
-  footer {
+  app-site-footer {
   }
   
 }

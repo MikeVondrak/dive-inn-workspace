@@ -39,11 +39,12 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const bpEnum: BreakpointsEnum = this.viewportService.getCurrentBreakpointEnum();
-
     this.getConfigForBreakpoint(bpEnum, this.viewportService.getOrientation());
 
-    this.viewportService.viewportState$.pipe(takeUntil(this.destroy$)).subscribe(state => {      
+    this.viewportService.viewportState$.pipe(takeUntil(this.destroy$)).subscribe(state => {
+      const bp: BreakpointsEnum = this.viewportService.getCurrentBreakpointEnum();            
       const cfg = this.getConfigForBreakpoint(state.currentBreakpoint, state.orientation);
+      console.log('---------', {cfg}, state.orientation, bp);
       if (cfg) {
         this.setPropsForBreakpoints(cfg);
       }
@@ -59,7 +60,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     
     while (!!config && checkBp !== bp && allBpChecked === false) {
       checkBp = this.viewportService.getBpEnumUp(checkBp);
-      const configForBp = this.orientationConfigs.get(or)?.get(checkBp);      
+      const configForBp = this.orientationConfigs.get(or)?.get(checkBp); 
       if (!!configForBp) {
         config = { ...config, ...configForBp };
       }      
@@ -83,9 +84,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.textPaddingTop = bpConfig?.textPaddingTop || '';
     this.textPaddingBottom = bpConfig?.textPaddingBottom || '';
  
-    console.log('+++++ SETTING!!', {bpConfig}, this.bgPosition);
-    this.cdr.detectChanges();
+    console.log('+++++ SETTING!!', {bpConfig}, this.textPaddingTop);
 
+    this.cdr.markForCheck();
   }
   
   ngOnDestroy(): void {

@@ -52,7 +52,7 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
         } else {
           this.showLogo = false;
         }
-        // TODO: this has to be fired manually for the logo animation to trigger because app component is set to OnPush?
+        // TODO: does this have to be fired manually for the logo animation to trigger because app component is set to OnPush?
         this.cdr.detectChanges();
       }
     })

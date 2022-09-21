@@ -16,8 +16,6 @@ export class AppComponent {
 
   public viewportOverlayAnimationState$ = this.viewportOverlay.viewportOverlayState$;
 
-  title = 'route-animation-test';
-
   constructor(private viewportOverlay: AnimateViewportOverlayService) {
   }
 
@@ -25,4 +23,6 @@ export class AppComponent {
     console.log('Animation Done', event.fromState, event.toState);
     this.viewportOverlay.changeRoute(event);
   }
+
+  
 }

@@ -1,9 +1,10 @@
-import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-mouse-tracker',
   templateUrl: './mouse-tracker.component.html',
-  styleUrls: ['./mouse-tracker.component.scss']
+  styleUrls: ['./mouse-tracker.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MouseTrackerComponent implements OnInit {
   @ViewChild('MouseTracker') mouseFacer?: ElementRef; // optional property to avoid having to initialize
