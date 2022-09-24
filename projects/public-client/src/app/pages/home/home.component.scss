@@ -1,3 +1,23 @@
+@use '../../scss/utility';
+
 .main {
   position: relative;
+
+  .hero-banner-content {
+    background-color: black; //utility.$dive-black;
+
+    position: absolute;
+    font-size: 0.72vw;
+    top: 36.25vw;
+    left: 62.5vw;
+    width: 9vw;
+    height: 4.8vw;
+    transform: skew(1deg, 24deg) perspective(10cm);
+
+    img {
+      width: 8.5vw;
+      height: 4.72vw;
+      //padding-top: 0.5vw;
+    }
+  }
 }

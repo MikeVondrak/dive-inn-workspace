@@ -3,7 +3,9 @@
     [bgPosition]="bgPosition"
     [bgSize]="bgSize"
     [imgSrc]="imgSrc"
-  ></app-mouse-tracker>
+  >
+    <ng-content></ng-content>
+  </app-mouse-tracker>
   <div class="title-container">
     <h1 class="title">
       <div *ngFor="let line of textLines"

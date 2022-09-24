@@ -4,7 +4,13 @@
     imgSrc="url(assets/images/home/dive-inn-exterior.jpg)"
     [textLines]="heroBannerTitleLines"
     [orientationConfigs]="heroBannerConfigs"
-  ></app-hero-banner>
+  >
+    <div class="hero-banner-content">
+      <a routerLink="/find-us">
+        <img src="assets/images/westword_best_dive_bar.png">
+      </a>
+    </div>
+  </app-hero-banner>
 
   <button appAnimateViewportOverlay="/inside">Inside</button>
   <br>
