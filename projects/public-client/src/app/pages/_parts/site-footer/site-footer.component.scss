@@ -1,8 +1,12 @@
 @use 'sass:math';
 @use '../../../scss/utility';
 
-
-$waveSize: 2vw;
+$waveSize: 8vw;
+$waveSizeMin: 5vw;
+$waveSizeSm: 4vw;
+$waveSizeLg: 3vw;
+$waveSizeXl: 2.5vw;
+$waveSizeWs: 2vw;
 
 .waves-separator {
   position: relative;
@@ -13,6 +17,11 @@ $waveSize: 2vw;
 
   &.footer {
     height: $waveSize;
+    @include utility.media-breakpoint-gte(min) { height: $waveSizeMin; }
+    @include utility.media-breakpoint-gte(sm) { height: $waveSizeSm; }
+    @include utility.media-breakpoint-gte(lg) { height: $waveSizeLg; }
+    @include utility.media-breakpoint-gte(xl) { height: $waveSizeXl; }
+    @include utility.media-breakpoint-gte(ws) { height: $waveSizeWs; }
     top: 1px;
     background-image: url('/assets/images/wave-red.svg');
   }
