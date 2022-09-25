@@ -1,12 +1,12 @@
 @use '../../scss/utility';
 
-$h_zero: 6.75vw;
+$h_zero: 3.25vw;
 $w_zero: 12.5vw;
-$h_md: 4.8vw;
+$h_md: 2.8vw;
 $w_md: 9vw;
 $h_p_zero: 9vw;
 $w_p_zero: 30vw;
-$h_p_md: 4.8vw;
+$h_p_md: 2.8vw;
 $w_p_md: 9vw;
 
 .main {
@@ -22,11 +22,11 @@ $w_p_md: 9vw;
       left: 68.2vw;
       width: $w_zero;
       height: $h_zero;
-      transform: skew(1deg, 24deg) perspective(10cm);
+      transform: skew(1deg, 24deg); // perspective(10cm);
       box-shadow: 0px 4px 4px 0px #000;
       @include utility.media-breakpoint-gte(md) {
         font-size: 0.72vw;
-        top: 36.25vw;
+        top: 36vw;
         left: 63vw;
         width: $w_md;
         height: $h_md;
@@ -37,12 +37,11 @@ $w_p_md: 9vw;
         left: 57.2vw;
         width: $w_p_zero;
         height: $h_p_zero;
-        padding-top: 0.2vw;
-        transform: skew(1deg, 24deg) perspective(10cm);
+        transform: skew(1deg, 24deg); //perspective(10cm);
         @include utility.media-breakpoint-gte(md) {
           font-size: 0.72vw;
           top: 36vw;
-          left: 63.25vw;
+          left: 63vw;
           width: $w_p_md;
           height: $h_p_md;
         }
@@ -55,7 +54,7 @@ $w_p_md: 9vw;
         //height: $h_zero - 0.5vw;
         @include utility.media-breakpoint-gte(md) {
           width: $w_md - 0.5vw;
-          height: $h_md - 0.5vw;
+          //height: $h_md - 0.5vw;
         }
   
         @media (orientation: portrait) {
@@ -77,9 +76,6 @@ $w_p_md: 9vw;
       position: absolute;
 
       @media (orientation: portrait) {
-        //left: 4vw;
-        bottom: 4vw;
-        //transform: translateX(0);
         @include utility.media-breakpoint-gte(md) {
           left: 50vw;
           transform: translateX(-50%);

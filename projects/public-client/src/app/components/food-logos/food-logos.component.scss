@@ -84,156 +84,171 @@ $takiLogoSizesPortrait: 33vw, 27vw, 15vw;
   }
 }
 
-.title-callout {
-  z-index: 4; // @TODO: why do we need 4 to be above slide-out logo?
-  position: relative;
+:host {
+  //background-color: rgba(0, 0, 0, 0.5);
+  //border-radius: 25%;
 
-  .title-callout-title {
-    display: none;
-    position: absolute;
-    top: 2vw;      
-    left: 60%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    transform: translateX(-50%) rotate(-25deg);
-    font-size: 2vw;
+  .title-callout {
+    z-index: 4; // @TODO: why do we need 4 to be above slide-out logo?
+    position: relative;
+    //margin: 2vw 2vw 0 2vw;
 
-    @include utility.media-breakpoint-gte(sm) {
-      display: block;
-      left: 55%;
+    .title-callout-title {
+      display: none;
+      position: absolute;
       top: 2vw;
-    }
-
-    @include utility.media-breakpoint-gte(md) {
-      //left: 55%;
-      font-size: 1.1vw;
-    }
-
-    div {
-      position: relative;
+      left: 60%;
       margin: 0;
       padding: 0;
-      line-height: 0.9;
-      transform: rotate(25deg);
-      color: utility.$dive-gray-dk2;
-      text-shadow: 2px 2px 2px #000;
-      opacity: 1; //0.5;
-      animation: attentionBlink $animationTime linear infinite;
-      animation-delay: calc(var(--animation-order) * 200ms);
-
-      &::before {
-        content: attr(data-content);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        color: utility.$dive-gray-dk2;
-        opacity: 0;
-        animation: attentionBlink2 $animationTime linear infinite;
-        animation-delay: 2.2s;
-      }
-    }
-  }
-
-  .title-callout-content {
-    display: flex;
-
-    a {
-      display: block;
-
-      &::after {
-        content: none;
-      }
-
-      opacity: 0.75;
-
-      @include utility.media-breakpoint-gte(md) {
-        opacity: 0.5;
-      }
-
-      transition: opacity 0.2s ease;
-
-      img {
-        width: 100%;
-      }
-    }
-
-
-    .takis {
-
-      &:hover,
-      &:active {
-        opacity: 1;
-      }
-
-      img {
-        max-width: nth($takiLogoSizesLandscape, 1);
-        max-height: nth($takiLogoSizesLandscape, 1);
-        @include utility.media-breakpoint-gte(sm) {
-          max-width: nth($takiLogoSizesLandscape, 2);
-          max-height: nth($takiLogoSizesLandscape, 2);
-        }
-        @include utility.media-breakpoint-gte(md) {
-          max-width: nth($takiLogoSizesLandscape, 3);
-          max-height: nth($takiLogoSizesLandscape, 3);
-        }
-
-        @media (orientation: portrait) {
-          max-width: nth($takiLogoSizesPortrait, 1);
-          max-height: nth($takiLogoSizesPortrait, 1);
-          @include utility.media-breakpoint-gte(sm) {
-            max-width: nth($takiLogoSizesPortrait, 2);
-            max-height: nth($takiLogoSizesPortrait, 2);
-          }
-          @include utility.media-breakpoint-gte(md) {
-            max-width: nth($takiLogoSizesPortrait, 3);
-            max-height: nth($takiLogoSizesPortrait, 3);
-          }
-        }
-      }
-    }
-
-    .cluck {
-      position: relative;
-      padding-left: 1vw;
+      text-align: center;
+      transform: translateX(-50%) rotate(-25deg);
+      font-size: 2vw;
 
       @include utility.media-breakpoint-gte(sm) {
-        //right: -2.5vw;
+        display: block;
+        left: 56%;
+        top: 2vw;
+        font-size: 1.6vw;
       }
 
       @include utility.media-breakpoint-gte(md) {
-        //right: -0.75vw;
+        left: 55%;
+        font-size: 1.1vw;
       }
 
-      &:hover,
-      &:active {
-        opacity: 1;
-      }
+      div {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        line-height: 0.9;
+        transform: rotate(25deg);
+        color: utility.$dive-gray-dk2;
+        text-shadow: 2px 2px 2px #000;
+        opacity: 1; //0.5;
+        animation: attentionBlink $animationTime linear infinite;
+        animation-delay: calc(var(--animation-order) * 200ms);
 
-      img {
-        max-width: nth($cluckLogoSizesLandscape, 1);
-        max-height: nth($cluckLogoSizesLandscape, 1);
-        @include utility.media-breakpoint-gte(sm) {
-          max-width: nth($cluckLogoSizesLandscape, 2);
-          max-height: nth($cluckLogoSizesLandscape, 2);
+        &::before {
+          content: attr(data-content);
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          color: utility.$dive-gray-dk2;
+          opacity: 0;
+          animation: attentionBlink2 $animationTime linear infinite;
+          animation-delay: 2.2s;
         }
+      }
+    }
+
+    .title-callout-content {
+      display: flex;
+
+      a {
+        display: block;
+
+        &::after {
+          content: none;
+        }
+
+        opacity: 0.75;
+
         @include utility.media-breakpoint-gte(md) {
-          max-width: nth($cluckLogoSizesLandscape, 3);
-          max-height: nth($cluckLogoSizesLandscape, 3);
+          opacity: 0.5;
         }
 
-        @media (orientation: portrait) {
-          max-width: nth($cluckLogoSizesPortrait, 1);
-          max-height: nth($cluckLogoSizesPortrait, 1);
+        transition: opacity 0.2s ease;
+
+        img {
+          width: 100%;
+        }
+      }
+
+
+      .takis {
+
+        &:hover,
+        &:active {
+          opacity: 1;
+        }
+
+        img {
+          max-width: nth($takiLogoSizesLandscape, 1);
+          max-height: nth($takiLogoSizesLandscape, 1);
+
           @include utility.media-breakpoint-gte(sm) {
-            max-width: nth($cluckLogoSizesPortrait, 2);
-            max-height: nth($cluckLogoSizesPortrait, 2);
+            max-width: nth($takiLogoSizesLandscape, 2);
+            max-height: nth($takiLogoSizesLandscape, 2);
           }
+
           @include utility.media-breakpoint-gte(md) {
-            max-width: nth($cluckLogoSizesPortrait, 3);
-            max-height: nth($cluckLogoSizesPortrait, 3);
+            max-width: nth($takiLogoSizesLandscape, 3);
+            max-height: nth($takiLogoSizesLandscape, 3);
+          }
+
+          @media (orientation: portrait) {
+            max-width: nth($takiLogoSizesPortrait, 1);
+            max-height: nth($takiLogoSizesPortrait, 1);
+
+            @include utility.media-breakpoint-gte(sm) {
+              max-width: nth($takiLogoSizesPortrait, 2);
+              max-height: nth($takiLogoSizesPortrait, 2);
+            }
+
+            @include utility.media-breakpoint-gte(md) {
+              max-width: nth($takiLogoSizesPortrait, 3);
+              max-height: nth($takiLogoSizesPortrait, 3);
+            }
+          }
+        }
+      }
+
+      .cluck {
+        position: relative;
+        padding-left: 1vw;
+
+        @include utility.media-breakpoint-gte(sm) {
+          //right: -2.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          //right: -0.75vw;
+        }
+
+        &:hover,
+        &:active {
+          opacity: 1;
+        }
+
+        img {
+          max-width: nth($cluckLogoSizesLandscape, 1);
+          max-height: nth($cluckLogoSizesLandscape, 1);
+
+          @include utility.media-breakpoint-gte(sm) {
+            max-width: nth($cluckLogoSizesLandscape, 2);
+            max-height: nth($cluckLogoSizesLandscape, 2);
+          }
+
+          @include utility.media-breakpoint-gte(md) {
+            max-width: nth($cluckLogoSizesLandscape, 3);
+            max-height: nth($cluckLogoSizesLandscape, 3);
+          }
+
+          @media (orientation: portrait) {
+            max-width: nth($cluckLogoSizesPortrait, 1);
+            max-height: nth($cluckLogoSizesPortrait, 1);
+
+            @include utility.media-breakpoint-gte(sm) {
+              max-width: nth($cluckLogoSizesPortrait, 2);
+              max-height: nth($cluckLogoSizesPortrait, 2);
+            }
+
+            @include utility.media-breakpoint-gte(md) {
+              max-width: nth($cluckLogoSizesPortrait, 3);
+              max-height: nth($cluckLogoSizesPortrait, 3);
+            }
           }
         }
       }
