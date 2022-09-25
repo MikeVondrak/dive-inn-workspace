@@ -1,23 +1,88 @@
 @use '../../scss/utility';
 
+$h_zero: 6.75vw;
+$w_zero: 12.5vw;
+$h_md: 4.8vw;
+$w_md: 9vw;
+$h_p_zero: 16vw;
+$w_p_zero: 28vw;
+$h_p_md: 4.8vw;
+$w_p_md: 9vw;
+
 .main {
   position: relative;
 
-  .hero-banner-content {
-    background-color: black; //utility.$dive-black;
+  .hero-banner-container {
+    position: relative;
 
-    position: absolute;
-    font-size: 0.72vw;
-    top: 36.25vw;
-    left: 62.5vw;
-    width: 9vw;
-    height: 4.8vw;
-    transform: skew(1deg, 24deg) perspective(10cm);
+    .hero-banner-content {
+      position: absolute;
+  
+      font-size: 1.2vw;
+      top: 42.1vw;
+      left: 68.2vw;
+      width: $w_zero;
+      height: $h_zero;
+      transform: skew(1deg, 24deg) perspective(10cm);
+      @include utility.media-breakpoint-gte(md) {
+        font-size: 0.72vw;
+        top: 36.25vw;
+        left: 63vw;
+        width: $w_md;
+        height: $h_md;
+      }
+      @media (orientation: portrait) {
+        font-size: 1.2vw;
+        top: 97vw;
+        left: 57.2vw;
+        width: $w_p_zero;
+        height: $h_p_zero;
+        transform: skew(1deg, 24deg) perspective(10cm);
+        @include utility.media-breakpoint-gte(md) {
+          font-size: 0.72vw;
+          top: 36vw;
+          left: 63.25vw;
+          width: $w_p_md;
+          height: $h_p_md;
+        }
+      }
+      background-color: black;
+  
+      img {
+        width: $w_zero - 0.5vw;
+        height: $h_zero - 0.5vw;
+        @include utility.media-breakpoint-gte(md) {
+          width: $w_md - 0.5vw;
+          height: $h_md - 0.5vw;
+        }
+  
+        @media (orientation: portrait) {
+          width: $w_p_zero - 0.5vw;
+          height: $h_p_zero - 0.5vw;
+  
+          @include utility.media-breakpoint-gte(md) {
+            width: $w_p_md - 0.5vw;
+            height: $h_p_md - 0.5vw;
+          }
+        }
+      }
+    }
+    app-food-logos {
+      position: absolute;
+      bottom: 1vw;
+      left: 50vw;
+      transform: translateX(-50%);
+      position: absolute;
 
-    img {
-      width: 8.5vw;
-      height: 4.72vw;
-      //padding-top: 0.5vw;
+      @media (orientation: portrait) {
+        left: 4vw;
+        bottom: 4vw;
+        transform: translateX(0);
+        @include utility.media-breakpoint-gte(md) {
+          left: 50vw;
+          transform: translateX(-50%);
+        }
+      }
     }
   }
 }

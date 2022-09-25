@@ -3,7 +3,7 @@ import { HeroBannerConfig } from "../../models/hero-banner.model";
 
 /************* LANDSCAPE **************/
 const heroBannerConfig_landscape_zero: HeroBannerConfig = {
-  bgPosition: '60% 25%',
+  bgPosition: '60% 45%',
   bgSize: '150%',
   textTop: '0',
   textLeft: '0',
@@ -12,8 +12,8 @@ const heroBannerConfig_landscape_zero: HeroBannerConfig = {
   textTransform: 'skew(350deg, 346deg) rotate(0)',
   textWidth: '50vw',
   textSize: '5vw',
-  textPaddingTop: '17vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '15vw',
+  textPaddingTop: '15vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '38vw',
 };
 const heroBannerConfig_landscape_md: HeroBannerConfig = {
   //height: '',
@@ -33,26 +33,28 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = {
 
 /************ PORTRAIT ***************/
 const heroBannerConfig_portrait_zero: HeroBannerConfig = {
-  bgPosition: '69% 27%',
+  bgPosition: '69% 32%',
   bgSize: '350%',
   textTop: '0',
-  textLeft: '0',
+  textLeft: '-4vw',
   textAlign: 'right',
-  textContainerTransform: '',
-  textTransform: 'skew(350deg, 346deg) rotate(0)',
+  textContainerTransform: '', 
+  textTransform: 'skew(-11deg, -10deg) rotate(0)',
   textWidth: '80vw',
-  textSize: '8vw',
+  textSize: '7vw',
   textPaddingTop: '69vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '15vw',
+  textPaddingBottom: '45vw',
 };
 const heroBannerConfig_portrait_md: HeroBannerConfig = {
   bgPosition: '90% 50%',
   bgSize: '110%',
-  textTop: '0.5vw',
+  textTop: '1vw',
+  textLeft: '0vw',
   textWidth: '50vw',
   textSize: '3.5vw',
-  textPaddingTop: '17vw',
+  textPaddingTop: '16vw',
   textPaddingBottom: '35vw',
+  textTransform: 'skew(350deg, 346deg) rotate(0)',
 };
 
 
