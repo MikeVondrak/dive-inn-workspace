@@ -6,12 +6,12 @@ $verticalGap: 0.75rem;
 
 :host {
   z-index: 10;
-  position: relative;
+  position: sticky;
   top: 0;
 
-  @include utility.media-breakpoint-gte(sm) {
-    position: sticky;
-  }
+  // @include utility.media-breakpoint-gte(sm) {
+  //   position: sticky;
+  // }
 
   header {
     top: 0;

@@ -14,6 +14,8 @@ export class SiteNavComponent implements OnInit {
 
   @Input() navItems: NavItem[] = [];
 
+  public navExpanded: boolean = true;
+
   constructor(    
     private router: Router,
     private renderer: Renderer2, 
@@ -46,5 +48,9 @@ export class SiteNavComponent implements OnInit {
     });
     navItem.filledState = true;    
     this.cdr.detectChanges();
+  }
+
+  public toggleNav() {
+    this.navExpanded = !this.navExpanded;
   }
 }

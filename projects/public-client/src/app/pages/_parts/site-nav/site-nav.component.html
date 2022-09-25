@@ -1,11 +1,11 @@
-<ul>
+<ul [class.nav-expanded]="navExpanded">
   <li *ngFor="let link of navItems; trackBy:navTrackBy">
     <div class="selected-bg" [@fillVerticalTransition]="link.filledState ? 'filled' : 'unfilled'"></div>
     <a [appAnimateViewportOverlay]="link.url" (click)="selectPage(link)" [class.active]="link.filledState">{{ link.title }}</a>
   </li>
 </ul>
 
-<div class="nav-toggle-button">
+<div role="button" class="nav-toggle-button" [class.nav-expanded]="navExpanded" (click)="toggleNav()">
   <ng-container *ngTemplateOutlet="ShipWheelSvg"></ng-container>
 </div>
 
