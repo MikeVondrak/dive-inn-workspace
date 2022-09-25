@@ -5,23 +5,19 @@ $headerColor: utility.$dive-gray-dk3;
 $verticalGap: 0.75rem;
 
 :host {
-  // width: 100%;
-  // margin-bottom: 5vw;
-  // padding: 0.7vw;
-  // @include utility.media-breakpoint-gte(sm) {
-  //   margin-bottom: 2vw;
-  // }
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  //padding: 0.5vw 0;
-  background-color: utility.$dive-gray-dk3;
-  
-  font-size: 4.5vw;
+  align-items: center;    
+  width: 100%;  
+
+  font-size: 3.5vw;
+  @include utility.media-breakpoint-gte(xs) {
+    font-size: 2.5vw;
+  }
   @include utility.media-breakpoint-gte(sm) {
-    font-size: 3vw;
+    font-size: 2.5vw;
   }
   @include utility.media-breakpoint-gte(md) {
     font-size: 2vw;
@@ -38,12 +34,11 @@ $verticalGap: 0.75rem;
   @include utility.media-breakpoint-gte(hd) {
     font-size: 1vw;
   }
-  background-color: $headerColor; //rgba(0,0,0,0.75);  
 
   ul {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
     @include utility.media-breakpoint-gte(sm) {
       justify-content: center;
     }
@@ -51,13 +46,24 @@ $verticalGap: 0.75rem;
     padding: 0;
     margin: 0;
     list-style-type: none;
+    z-index: 2;
 
     li {
       position: relative;      
       overflow: hidden;
       transform: skewX(-22deg);
+      background-color: $headerColor;
+      box-shadow: 0px 4px 4px 0px #000;
+      width: 23vw;
+      @include utility.media-breakpoint-gte(sm) {
+        width: 20vw;
+      }
+      @include utility.media-breakpoint-gte(md) {
+        width: 10vw;
+      }
+      white-space: nowrap;
+      text-align: center;
       .selected-bg {
-        //transform: skewX(-22%);
         position: absolute;
         top: 0; bottom: 0; left: 0; right: 0;
         background: utility.$dive-red;
@@ -79,33 +85,45 @@ $verticalGap: 0.75rem;
           cursor: default;
           pointer-events: none;
         } 
-      }
+      }      
     }
   }
 
-  img {
-    position: absolute;
-    width: 14vw;    
-  }
   svg {    
-    position: absolute;
-    left: -6vw;
-    top: -6vw;
-    width: 15vw;
-    height: 15vw;
-    padding: 1vw;
+    padding: 0.5vw;
     background-color: rgba(0,0,0,0.5);
     border-radius: 50%;
     .outline {
       path {
         fill: transparent; //utility.$dive-black;
-        //stroke: utility.$dive-red;
       }
     }
     .fill {
       path {
         fill: utility.$dive-red;
-        //stroke: utility.$dive-black;
+      }
+    }
+  }
+  .nav-toggle-button {
+    position: absolute;    
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    width: 8vw;
+    height: 8vw;
+    z-index: 10;
+    svg {
+      position: absolute;
+      max-width: 8vw;
+      right: -2.75vw;
+      top: -2.75vw;    
+    }
+    @include utility.media-breakpoint-gte(md) {
+      width: 6vw;
+      height: 6vw;
+      svg {        
+        top: -2vw;
+        right: -2vw;
       }
     }
   }

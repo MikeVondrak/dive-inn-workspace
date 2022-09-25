@@ -3,9 +3,9 @@ import { HeroBannerConfig } from "../../models/hero-banner.model";
 
 /************* LANDSCAPE **************/
 const heroBannerConfig_landscape_zero: HeroBannerConfig = {
-  bgPosition: '60% 45%',
+  bgPosition: '60% 30%',
   bgSize: '150%',
-  textTop: '0',
+  textTop: '4vw',
   textLeft: '0',
   textAlign: 'right',
   textContainerTransform: '',
@@ -35,7 +35,7 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = {
 const heroBannerConfig_portrait_zero: HeroBannerConfig = {
   bgPosition: '69% 32%',
   bgSize: '350%',
-  textTop: '0',
+  textTop: '1vw',
   textLeft: '-4vw',
   textAlign: 'right',
   textContainerTransform: '', 
@@ -43,7 +43,7 @@ const heroBannerConfig_portrait_zero: HeroBannerConfig = {
   textWidth: '80vw',
   textSize: '7vw',
   textPaddingTop: '69vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '45vw',
+  textPaddingBottom: '65vw',
 };
 const heroBannerConfig_portrait_md: HeroBannerConfig = {
   bgPosition: '90% 50%',
