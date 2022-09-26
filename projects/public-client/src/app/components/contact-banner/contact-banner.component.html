@@ -1,0 +1,64 @@
+<div class="contact-container">
+  <app-icon-card [config]="config[0]">
+    <!-- <google-map (click)="mapClick($event)" [width]="(cardDimensions$ | async)?.width || 0" [height]="(cardDimensions$ | async)?.height || 0" [zoom]="13" [center]="mapCenter" [options]="mapOptions">
+       <map-marker [position]="mapMarkerPosition" [title]="mapMarkerTitle" [options]="mapMarkerOptions"></map-marker>
+     </google-map> -->
+  </app-icon-card>
+  <app-icon-card [config]="config[1]">
+    <div class="open-hours-card">
+      <h3>Is it a day today?<br>Then we're open!</h3>
+    </div>
+  </app-icon-card>
+  <app-icon-card [config]="config[2]">
+    <div class="contact-methods-card">
+      <a class="email" href="mailto:contact@diveinndenver.com" target="_blank">
+        <div class="contact-title">
+          <!-- <span>contact@</span><span>diveinndenver.com</span> -->
+          <span>Email</span>
+          <!-- <span> Us</span> -->
+        </div>
+        <div class="contact-icon">
+          <ng-container *ngTemplateOutlet="MailSvg"></ng-container>
+        </div>
+      </a>
+      <a class="phone" href="tel:7202426157">
+        <div class="contact-title">
+          <span>Call</span>
+          <!-- <span> Us</span> -->
+        </div>
+        <div class="contact-icon">
+          <ng-container *ngTemplateOutlet="PhoneSvg"></ng-container>
+        </div>
+      </a>
+    </div>
+  </app-icon-card>
+</div>
+
+
+<!------------------------ SVGs ----------------------------->
+<ng-template #PhoneSvg>
+  <svg class="phone-svg" width="100%" height="100%" viewBox="0 0 832 1068" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+      <path
+        d="M5.173,534.113C-2.547,330.886 89.84,56.268 89.84,56.268C99.047,19.46 148.926,-2.948 185.734,6.258L319.117,39.621C355.925,48.828 378.334,86.186 369.127,122.994L319.993,281.307C310.787,318.115 258.303,334.956 236.62,331.317C190.482,323.572 170.194,345.095 167.004,357.473C167.004,357.473 147.139,475.233 147.139,534.113C147.139,592.994 167.004,710.754 167.004,710.754C170.194,723.132 180.026,741.31 236.62,736.91C261.897,734.945 310.787,750.112 319.993,786.92L369.127,945.233C378.334,982.041 355.925,1019.4 319.117,1028.61L185.734,1061.97C148.926,1071.17 99.047,1048.77 89.84,1011.96C89.84,1011.96 -2.547,737.341 5.173,534.113Z" />
+      <path d="M675.849,169.736C838.824,359.234 825.672,648.459 670.109,858.349" style="fill:none;stroke-width:75px;" />
+      <path d="M539.947,265.221C649.178,381.406 669.991,574.347 538.551,778.469" style="fill:none;stroke-width:75px;" />
+      <path d="M422.151,362.339C491.457,458.292 479.369,596.803 403.019,694.808" style="fill:none;stroke-width:75px;" />
+    </g>
+  </svg>
+</ng-template>
+
+<ng-template #MailSvg>
+  <svg class="mail-svg" width="100%" height="100%" viewBox="0 0 423 279" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+      <rect x="9.057" y="9.179" width="405.69" height="261.695" style="fill:none;stroke-width:50px;" />
+      <path d="M211.902,189.485L414.747,9.179L9.057,9.179L211.902,189.485Z" style="fill:none;stroke-width:33.29px;" />
+    </g>
+  </svg>
+</ng-template>

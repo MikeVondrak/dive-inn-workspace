@@ -7,7 +7,7 @@ $animationTime: 5s;
 $cluckLogoSizesLandscape: 16vw, 15vw, 12vw;
 $takiLogoSizesLandscape: 20vw, 20vw, 15vw;
 $cluckLogoSizesPortrait: 26vw, 20vw, 12vw;
-$takiLogoSizesPortrait: 33vw, 27vw, 15vw;
+$takiLogoSizesPortrait: 33vw, 25vw, 15vw;
 
 @keyframes attentionBlink {
   0% {
@@ -106,9 +106,9 @@ $takiLogoSizesPortrait: 33vw, 27vw, 15vw;
 
       @include utility.media-breakpoint-gte(sm) {
         display: block;
-        left: 56%;
+        left: 53%;
         top: 2vw;
-        font-size: 1.6vw;
+        font-size: 1.8vw;
       }
 
       @include utility.media-breakpoint-gte(md) {

@@ -16,7 +16,7 @@ $w_p_md: 9vw;
     position: relative;
 
     .hero-banner-content {
-      position: absolute;  
+      position: absolute;
       font-size: 1.2vw;
       top: 46.15vw;
       left: 68.2vw;
@@ -24,6 +24,7 @@ $w_p_md: 9vw;
       height: $h_zero;
       transform: skew(1deg, 24deg); // perspective(10cm);
       box-shadow: 0px 4px 4px 0px #000;
+
       @include utility.media-breakpoint-gte(md) {
         font-size: 0.72vw;
         top: 36vw;
@@ -31,6 +32,7 @@ $w_p_md: 9vw;
         width: $w_md;
         height: $h_md;
       }
+
       @media (orientation: portrait) {
         font-size: 1.2vw;
         top: 104vw;
@@ -38,6 +40,7 @@ $w_p_md: 9vw;
         width: $w_p_zero;
         height: $h_p_zero;
         transform: skew(1deg, 24deg); //perspective(10cm);
+
         @include utility.media-breakpoint-gte(md) {
           font-size: 0.72vw;
           top: 36vw;
@@ -46,21 +49,23 @@ $w_p_md: 9vw;
           height: $h_p_md;
         }
       }
+
       background-color: black;
-  
+
       img {
         position: relative;
         width: $w_zero - 0.5vw;
+
         //height: $h_zero - 0.5vw;
         @include utility.media-breakpoint-gte(md) {
           width: $w_md - 0.5vw;
           //height: $h_md - 0.5vw;
         }
-  
+
         @media (orientation: portrait) {
           width: $w_p_zero - 0.5vw;
           //height: $h_p_zero - 0.5vw;
-  
+
           @include utility.media-breakpoint-gte(md) {
             width: $w_p_md - 0.5vw;
             //height: $h_p_md - 0.5vw;
@@ -68,9 +73,10 @@ $w_p_md: 9vw;
         }
       }
     }
+
     app-food-logos {
       position: absolute;
-      bottom: 1vw;
+      bottom: 3vw;
       left: 50vw;
       transform: translateX(-50%);
       position: absolute;
@@ -83,4 +89,68 @@ $w_p_md: 9vw;
       }
     }
   }
+
+  $waveSize: 6vw;
+  $waveSizeSm: 5vw;
+  $waveSizeMd: 4vw;
+  $waveSizeLg: 3vw;
+  .waves-separator {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: $waveSize;
+    width: 100%;
+    top: -($waveSize - 0.5vw);
+    background-image: url('/assets/images/wave.svg');
+
+    @include utility.media-breakpoint-gte(sm) {
+      height: $waveSizeSm;
+      top: -($waveSizeSm - 0.5vw);
+    }
+    @include utility.media-breakpoint-gte(md) {
+      height: $waveSizeMd;
+      top: -($waveSizeMd - 0.5vw);
+    }
+    @include utility.media-breakpoint-gte(lg) {
+      height: $waveSizeMd;
+      top: -($waveSizeMd - 0.5vw);
+    }
+
+    &.footer {
+      height: 2vw;
+      top: 2px;
+      background-image: url('/assets/images/wave-red.svg');
+    }
+  }
+
+  $separatorSizes: (
+    'zero': 10vw,
+    'sm': 8.5vw,
+    'md': 7vw,
+    'lg': 5.5vw,
+  );
+
+.intro-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .blurb-separator-top,
+  .blurb-separator-bottom {
+    width: map-get($separatorSizes, 'zero');
+    margin: 6vw 0 2vw;
+
+    @include utility.media-breakpoint-gte(sm) { width: map-get($separatorSizes, 'sm'); }
+    @include utility.media-breakpoint-gte(md) { width: map-get($separatorSizes, 'md'); }
+    @include utility.media-breakpoint-gte(lg) { width: map-get($separatorSizes, 'lg'); }    
+  }
+
+  .blurb-separator-bottom {
+    margin-top: 0;
+    margin-bottom: 5vw;
+  }
+
+}
 }

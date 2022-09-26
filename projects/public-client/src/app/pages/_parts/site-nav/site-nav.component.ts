@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NavItem } from '../site-header/site-header.component';
 import { PageSelectAnimation } from './site-nav.component.animations';
@@ -13,6 +13,7 @@ import { PageSelectAnimation } from './site-nav.component.animations';
 export class SiteNavComponent implements OnInit {
 
   @Input() navItems: NavItem[] = [];
+  @Output() onNavExpand: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public navExpanded: boolean = true;
 
@@ -52,5 +53,6 @@ export class SiteNavComponent implements OnInit {
 
   public toggleNav() {
     this.navExpanded = !this.navExpanded;
+    this.onNavExpand.emit(this.navExpanded);
   }
 }

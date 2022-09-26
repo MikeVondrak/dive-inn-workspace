@@ -1,9 +1,8 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { combineLatest, fromEvent, Subject } from 'rxjs';
 import { debounce, debounceTime, filter, map, startWith, takeUntil } from 'rxjs/operators';
-import { ChangeDetectorRef } from '@angular/core';
 
 export interface NavItem {
   url: string,
@@ -13,7 +12,8 @@ export interface NavItem {
 @Component({
   selector: 'app-site-header',
   templateUrl: './site-header.component.html',
-  styleUrls: ['./site-header.component.scss']
+  styleUrls: ['./site-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SiteHeaderComponent implements OnInit, OnDestroy {
   public showLogo: boolean = false;
@@ -24,13 +24,14 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
     {url: '/find-us', title: 'Find Us', filledState: false},
   ]
 
+  public isNavExpanded: boolean = true;
   private window: any;
   private destroy$ = new Subject<void>();
   
   constructor(
-  @Inject(DOCUMENT) private document: Document,
-  private router: Router,
-  private cdr: ChangeDetectorRef
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
   ) {
     this.window = this.document.defaultView;
   }
@@ -46,15 +47,13 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
     ])
     .pipe(takeUntil(this.destroy$))
     .subscribe(() => { // @TODO - syntax for types on args?
-      if (this.defined(this.document?.scrollingElement?.scrollTop)) {
-        if ((this.document?.scrollingElement?.scrollTop || 0) > 250) {
-          this.showLogo = true;
-        } else {
-          this.showLogo = false;
-        }
-        // TODO: does this have to be fired manually for the logo animation to trigger because app component is set to OnPush?
-        this.cdr.detectChanges();
+      const scrollVal = this.document?.scrollingElement?.scrollTop || 0;
+      if (scrollVal > 250) {
+        this.showLogo = true;
+      } else {
+        this.showLogo = false;
       }
+      this.cdr.detectChanges();
     })
   }
 
@@ -63,7 +62,7 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private defined(x: any) {
-    return x !== undefined && x !== null;
+  public navExpanded(expanded: boolean) {
+    this.isNavExpanded = expanded;
   }
 }

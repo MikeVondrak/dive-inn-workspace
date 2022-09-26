@@ -1,9 +1,7 @@
 <header>
   <div class="logo-container">
-    <!-- <a routerLink="home"> -->
-      <img [ngClass]="{'showLogo': showLogo}" src="../../../../assets/images/logoLg.png">
-    <!-- </a> -->
+      <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/logoLg.svg">
   </div>
-  <app-site-nav [navItems]="navItems"></app-site-nav>
+  <app-site-nav [navItems]="navItems" (onNavExpand)="navExpanded($event)"></app-site-nav>
   <!-- <div class="boat-cam"><span>boat cam</span></div> -->
 </header>

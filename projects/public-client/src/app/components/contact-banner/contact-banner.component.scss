@@ -1,0 +1,239 @@
+@use 'sass:math';
+@use '../../scss/utility';
+
+:host {
+  display: block;
+  background-color: utility.$dive-red;
+
+  .contact-container {
+    z-index: 1;
+    position: relative;
+    width: 100%;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //gap: 4vw;
+    padding: 4vw 4vw 8vw;
+    $bgColor: transparent; //rgba(0, 0, 255, 0.51);
+    $bgColor2: utility.$dive-red;
+    background-color: darken($bgColor2, 17%);
+    //font-family: 'Righteous', sans-serif;
+    //letter-spacing: 0.1vw;
+
+    background-image:
+      radial-gradient(circle at 50% 20%, $bgColor2 20%, $bgColor 60%),
+      radial-gradient(circle at 50% 50%, $bgColor2 15%, $bgColor 60%),
+      radial-gradient(circle at 50% 80%, $bgColor2 15%, $bgColor 60%),
+      linear-gradient(0deg, transparent 0%, transparent 99.5%, utility.$dive-black 100%);
+    @include utility.media-breakpoint-gte(sm) {
+      background-image:
+        radial-gradient(circle at 50% 50%, $bgColor2 20%, $bgColor 40%),
+        radial-gradient(circle at 20% 50%, $bgColor2 15%, $bgColor 30%),
+        radial-gradient(circle at 80% 50%, $bgColor2 15%, $bgColor 30%),
+        linear-gradient(0deg, transparent 0%, transparent 99.5%, utility.$dive-black 100%);
+    }
+
+    app-icon-card {
+      //width: 90vw;
+      flex: 1 16vw; // vertical space between cards
+      // background-color: utility.$dive-red;
+      google-map {
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+
+      .open-hours-card {
+        padding: 1vw;
+        text-align: center;
+        font-size: 1.75vw;
+        font-weight: normal;
+      }
+      .contact-methods-card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        @include utility.media-breakpoint-gte(sm) {
+          flex-direction: column-reverse;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          
+        }
+
+        a {
+          display: flex;
+          flex-direction: row;
+          @include utility.media-breakpoint-gte(sm) {
+            gap: 0;
+            //font-size: 4vw;
+            font-size: 2.5vw;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            gap: 2vw;
+            font-size: 2vw;
+            > div {
+              flex: 1;              
+            }
+          }
+          justify-content: center;
+          align-items: center;
+          //gap: 1vw;
+          width: 100%;
+          padding: 1vw;
+          .contact-title {
+            flex: 0;
+            @include utility.media-breakpoint-gte(md) {
+              flex: 1;
+            }                
+          }
+          &::after {
+            content: none;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+          &.phone {
+            background-color: utility.$dive-black;//utility.$dive-yellow;
+            color: utility.$dive-yellow;//utility.$dive-black;            
+            //font-size: 4vw;
+            > div {
+              span {
+                text-align: right;
+              }
+            }
+
+            @include utility.media-breakpoint-gte(sm) {
+              height: 50%; 
+              //font-size: 3.2vw;
+            }
+            @include utility.media-breakpoint-gte(md) {
+              > div {
+                flex: 1;
+              }
+            }
+            @include utility.media-breakpoint-gte(lg) {
+              //font-size: 2.5vw;
+            }            
+          }
+          &.email {    
+            //padding: 3vw;
+            //font-size: 3vw; // not displayed at mobile sizes
+            text-align: center;
+            color: utility.$dive-black;
+            background-color: utility.$dive-yellow;//utility.$dive-black;      
+            @include utility.media-breakpoint-gte(sm) {
+              height: 50%; 
+              padding: 1vw;              
+            }
+            @include utility.media-breakpoint-gte(lg) {
+              //font-size: 2.5vw;
+            }
+          }
+          > div {
+            @include utility.media-breakpoint-gte(sm) {
+              flex: 1;
+            }
+
+            &.contact-icon {
+              flex: 1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              @include utility.media-breakpoint-gte(md) {
+                justify-content: flex-start;
+              }
+            }
+          }
+          span {
+            display: none;
+            @include utility.media-breakpoint-gte(md) {
+              display: block;
+              text-align: right;
+            }
+          }
+          svg {
+            display: block;
+            //padding-right: 1.5vw; // flex-center doesn't look centered?            
+            path {
+              stroke: utility.$dive-yellow;//utility.$dive-black;
+              fill: utility.$dive-yellow;//utility.$dive-black;
+            }            
+            &.mail-svg {              
+              width: 10vw;
+              //padding: 0 0 0 1.5vw;
+              path, rect {
+                fill: utility.$dive-black;
+                stroke: utility.$dive-black;                
+              }
+              &:hover {
+                path {
+                  fill: utility.$dive-yellow;
+                  stroke: utility.$dive-yellow;
+                }
+              }
+            }
+            &.phone-svg {
+              width: 6vw;
+            }
+
+            @include utility.media-breakpoint-gte(sm) {
+              max-width: 5vw;
+              padding: 0;              
+              &.mail-svg {
+                padding: 0;
+                //max-width: 6vw;
+                width: 6vw;
+              }
+              &.phone-svg {
+                max-width: 4.25vw;
+              }
+            }
+            @include utility.media-breakpoint-gte(lg) {
+              flex: 1;
+              max-width: 3.5vw;
+              &.mail-svg {
+                padding: 0;
+                //max-width: 6vw;
+                width: 4vw;
+              }
+              &.phone-svg {
+                max-width: 3.25vw;
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    @include utility.media-breakpoint-gte(xs) {
+      //padding: 4vw 1vw 10vw;
+      app-icon-card {
+        //width: 70vw;
+      }
+    }
+    @include utility.media-breakpoint-gte(sm) {
+      flex-direction: row;
+      //padding: 4vw 0vw 10vw;
+      gap: 3vw;
+      app-icon-card {
+        //width: unset;
+        flex: 0 28.5vw;
+      }
+    }
+    @include utility.media-breakpoint-gte(md) {
+      //padding: 4vw 2vw 10vw;
+      app-icon-card {
+        flex: 0 26vw;
+      }
+    }
+    @include utility.media-breakpoint-gte(lg) {
+      //padding: 4vw 3vw 10vw;
+      app-icon-card {
+        flex: 0 24vw;
+      }
+    }
+  }
+}
