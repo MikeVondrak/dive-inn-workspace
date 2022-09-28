@@ -60,13 +60,14 @@ $verticalGap: 0.75rem;
       transform: skewX(-22deg);
       background-color: $headerColor;
       box-shadow: 0px 4px 4px 0px #000;
-      width: 23vw;
-      @include utility.media-breakpoint-gte(sm) {
-        width: 20vw;
-      }
-      @include utility.media-breakpoint-gte(md) {
-        width: 10vw;
-      }
+      min-width: math.div(320px,4);
+      //width: 23vw;
+      // @include utility.media-breakpoint-gte(sm) {
+      //   width: 20vw;
+      // }
+      // @include utility.media-breakpoint-gte(md) {
+      //   width: 10vw;
+      // }
       white-space: nowrap;
       text-align: center;
       .selected-bg {
