@@ -7,6 +7,8 @@ import { FoodLogosComponent } from './food-logos/food-logos.component';
 import { ContactBannerComponent } from './contact-banner/contact-banner.component';
 import { IconCardComponent } from './icon-card/icon-card.component';
 import { TextBlurbComponent } from './text-blurb/text-blurb.component';
+import { ExpandingMenuComponent } from './expanding-menu/expanding-menu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { TextBlurbComponent } from './text-blurb/text-blurb.component';
     ContactBannerComponent,
     IconCardComponent,
     TextBlurbComponent,
+    ExpandingMenuComponent,
   ],
   imports: [
     CommonModule,
-    DirectivesModule
+    DirectivesModule,
+    RouterModule,
   ],
   exports: [
     MouseTrackerComponent,
@@ -28,6 +32,7 @@ import { TextBlurbComponent } from './text-blurb/text-blurb.component';
     ContactBannerComponent,
     IconCardComponent,
     TextBlurbComponent,
+    ExpandingMenuComponent,
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,12 @@
+<div class="menu-button" (click)="isExpanded = !isExpanded">
+  =
+</div>
+<div *ngIf="isExpanded">
+  <ng-container *ngFor="let link of links; let first = first; let last = last">
+    <li>
+      <a [routerLink]="link.linkUrl" [fragment]="link.fragment">{{link.uiLabel}}</a>
+    </li>
+    <li *ngIf="!last" class="spacer">|</li>
+  </ng-container>
+</div>
+<!-- <div *ngIf="!isExpanded" class="collapsed"></div> -->
