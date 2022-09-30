@@ -125,7 +125,7 @@ $verticalGap: 0.75rem;
       svg {
         top: -2.75vw;
         right: -2.75vw;
-        transform: rotate(350deg);
+        transform: rotate(180deg);
         @include utility.media-breakpoint-gte(md) {
           top: -2vw;
           right: -2vw;
