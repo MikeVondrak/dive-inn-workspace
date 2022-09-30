@@ -1,9 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { BreakpointsEnum } from '@dive-inn-lib';
+import { ViewportService } from 'projects/dive-inn-lib/src/lib/services/viewport/viewport.service';
 
 @Component({
   selector: 'app-site-footer',
   templateUrl: './site-footer.component.html',
-  styleUrls: ['./site-footer.component.scss']
+  styleUrls: ['./site-footer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SiteFooterComponent implements OnInit {
 
@@ -73,9 +76,25 @@ export class SiteFooterComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  public showMobileMenu: boolean = true;
+
+  constructor(private cdr: ChangeDetectorRef, private viewportService: ViewportService) { }
 
   ngOnInit(): void {
+    this.viewportService.viewportState$.subscribe(state => {
+      if (state.currentBreakpoint === BreakpointsEnum.zero || 
+          state.currentBreakpoint === BreakpointsEnum.min ||
+          state.currentBreakpoint === BreakpointsEnum.xs ||
+          state.currentBreakpoint === BreakpointsEnum.sm ||
+          state.currentBreakpoint === BreakpointsEnum.md //||
+      //    state.currentBreakpoint === BreakpointsEnum.lg
+      ) {
+        this.showMobileMenu = true;
+      } else {
+        this.showMobileMenu = false;      
+      }
+      this.cdr.markForCheck();
+    });
   }
 
 }

@@ -8,6 +8,7 @@ import { SiteNavComponent } from './site-nav/site-nav.component';
 import { RouterModule } from '@angular/router';
 
 import { DirectivesModule } from '@dive-inn-lib';
+import { ComponentsModule } from '../../components/components.module';
 @NgModule({
   declarations: [
     SiteHeaderComponent,
@@ -19,6 +20,7 @@ import { DirectivesModule } from '@dive-inn-lib';
     CommonModule, 
     RouterModule,
     DirectivesModule,
+    ComponentsModule,
   ],
   exports: [
     SiteHeaderComponent,

@@ -42,21 +42,25 @@ footer {
   p {
     padding: 0 0 0.5vw;
     margin: 0;
-    font-size: 1.75vw;
+    font-size: 5vw;
+    @include utility.media-breakpoint-gte(sm) { font-size: 4vw; }
+    @include utility.media-breakpoint-gte(md) { font-size: 3vw; }
+    @include utility.media-breakpoint-gte(xl) { font-size: 2.5vw; }
   }
 
   ul.navigation {
+    //display: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     list-style-type: none;
-    margin: 0;
-    padding: 0 2vw;
+    margin: 0rem 0 0;
+    padding: 0 2rem;
 
     li {
       margin: 0 0 1.5vw;
-      font-size: 1.25vw;
+      font-size: 1.5vw;
 
       a {
         color: utility.$dive-white;
@@ -68,22 +72,29 @@ footer {
         }
       }
     }
+    //@include utility.media-breakpoint-gte(lg) { display: flex;  }
   }
+  
+  // .navigation-small {
+  //   display: inline-block;
+  //   @include utility.media-breakpoint-gte(lg) { display: none;  }
+  // }
 
   .spacer {
     padding: 0 0.5vw;
     color: utility.$dive-black;
   }
 
-  $iconSize: 32px;
+  $iconSize: clamp(32px, 5vw, 5vw);//5vw;//32px;
 
   .social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
+    margin: 1.5rem 0 0.5rem;
     background-color: utility.$dive-black;
-    border-radius: 2rem;
+    border-radius: 5vw;
 
     > a {
       width: $iconSize;

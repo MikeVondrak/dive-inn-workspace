@@ -1,5 +1,12 @@
 <div class="waves-separator footer"></div>
 <footer>
+
+  <!-- <p>
+    <a routerLink="find-us">{{address}}</a>
+    <span class="spacer">|</span>
+    <a href="tel:{{phone}}">{{phone}}</a>
+  </p> -->
+
   <div class="social-icons">
     <!-- NOTE: mis-named so blockers don't filter -->
     <a class="faceburk" target="_blank" href="https://www.facebook.com/diveinndenver/"></a>
@@ -8,11 +15,15 @@
     <a class="needletrest" target="_blank" href="https://www.pinterest.com/diveinndenver"></a>
     <a class="tripsitter" target="_blank" href="https://www.tripadvisor.com/Restaurant_Review-g33388-d2702017-Reviews-Dive_Inn-Denver_Colorado.html"></a>
     <a class="yalp" target="_blank" href="https://www.yelp.com/biz/dive-inn-denver?osq=dive+inn"></a>
-  </div>
+  </div>  
 
-  <p>{{address}}<span class="spacer">|</span>{{phone}}</p>
+  <p>
+    <a routerLink="find-us">{{address}}</a>
+    <span class="spacer">|</span>
+    <a href="tel:{{phone}}">{{phone}}</a>
+  </p>
   
-  <ul class="navigation">
+  <ul *ngIf="!showMobileMenu" class="navigation">
     <ng-container *ngFor="let link of links; let first = first; let last = last">
       <li>
         <a [routerLink]="link.linkUrl" [fragment]="link.fragment">{{link.uiLabel}}</a>
@@ -20,4 +31,9 @@
       <li *ngIf="!last" class="spacer">|</li>
     </ng-container>
   </ul>
+  <!-- <div class="navigation-small"> -->
+    <app-expanding-menu *ngIf="showMobileMenu"
+      [links]="links"
+    ></app-expanding-menu>
+  <!-- </div> -->
 </footer>
