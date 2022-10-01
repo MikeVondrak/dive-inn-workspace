@@ -13,16 +13,17 @@
     <a class="instakilo" target="_blank" href="https://www.instagram.com/explore/locations/13038426/dive-inn/"></a>
     <a class="twatter" target="_blank" href="https://twitter.com/diveinndenver"></a>
     <a class="needletrest" target="_blank" href="https://www.pinterest.com/diveinndenver"></a>
-    <a class="tripsitter" target="_blank" href="https://www.tripadvisor.com/Restaurant_Review-g33388-d2702017-Reviews-Dive_Inn-Denver_Colorado.html"></a>
+    <a class="tripsitter" target="_blank"
+      href="https://www.tripadvisor.com/Restaurant_Review-g33388-d2702017-Reviews-Dive_Inn-Denver_Colorado.html"></a>
     <a class="yalp" target="_blank" href="https://www.yelp.com/biz/dive-inn-denver?osq=dive+inn"></a>
-  </div>  
+  </div>
 
   <p>
     <a routerLink="find-us">{{address}}</a>
     <span class="spacer">|</span>
     <a href="tel:{{phone}}">{{phone}}</a>
   </p>
-  
+
   <ul *ngIf="!showMobileMenu" class="navigation">
     <ng-container *ngFor="let link of links; let first = first; let last = last">
       <li>
@@ -32,8 +33,6 @@
     </ng-container>
   </ul>
   <!-- <div class="navigation-small"> -->
-    <app-expanding-menu *ngIf="showMobileMenu"
-      [links]="links"
-    ></app-expanding-menu>
+  <app-expanding-menu *ngIf="showMobileMenu" [links]="links"></app-expanding-menu>
   <!-- </div> -->
 </footer>

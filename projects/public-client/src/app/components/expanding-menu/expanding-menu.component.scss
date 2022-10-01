@@ -1,0 +1,86 @@
+@use 'sass:math';
+@use '../../scss/utility';
+
+$closeButtonHeight: clamp(2rem, 10vw, 3rem);
+
+:host {
+
+  .menu-button {
+    width: 42vw;
+    padding: 0.5vw 18vw 0;
+    background: utility.$dive-black;
+    border-radius: 50% 50% 0 0;
+    svg {
+      g {
+        path {
+          stroke: utility.$dive-yellow;
+          stroke-width: 10pt;
+          stroke-linecap: round;
+
+          &.shadow {
+            stroke: utility.$dive-black;
+          }
+        }
+      }
+    }
+  }
+  
+  .link-list-container {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    bottom: $closeButtonHeight;
+    left: 0; 
+    right: 0;
+    //padding-top: 10vw;
+    background-color: utility.$dive-black;
+
+    img {
+      width: 24vw;
+      padding: 2vw;
+    }
+
+    ul {
+      position: relative;
+      top: -7vw;
+      margin: 0;
+      padding: 0 0 0vw 0;
+      background-color: utility.$dive-gray-dk3;
+      transform: skew(0, -10deg);
+      list-style: none;
+      height: 100%;
+
+      li {
+        width: 100%;      
+        padding: 3vw 0;
+        text-align: center;        
+        border-top: 1px solid utility.$dive-gray-dk3;
+        background-color: utility.$dive-gray-dk;
+        &:last-child {
+          border-bottom: 1px solid utility.$dive-gray-dk3;
+        }
+      }
+    }
+
+    .close-button {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: $closeButtonHeight;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: utility.$dive-black;
+
+      svg {
+        width: 5vw;
+        height: 5vw;
+        g {
+          path {
+            stroke: utility.$dive-yellow;
+            stroke-width: 10pt;
+          }
+        }
+      }
+    }
+  }
+}

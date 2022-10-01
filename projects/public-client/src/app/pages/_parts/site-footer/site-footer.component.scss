@@ -33,14 +33,14 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 1vw;
-  padding: 1.5vw 0 2vw;
+  padding: 1.5vw 0 0;
   background-color: utility.$dive-red;
 
   color: utility.$dive-white;
   text-shadow: 1px 1px 3px #000;
 
   p {
-    padding: 0 0 0.5vw;
+    padding: 1vw 0 1.15vw;
     margin: 0;
     font-size: 5vw;
     @include utility.media-breakpoint-gte(sm) { font-size: 4vw; }
@@ -83,6 +83,10 @@ footer {
   .spacer {
     padding: 0 0.5vw;
     color: utility.$dive-black;
+  }
+
+  app-expanding-menu {
+    margin-top: 2vw;
   }
 
   $iconSize: clamp(32px, 5vw, 5vw);//5vw;//32px;
