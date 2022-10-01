@@ -1,8 +1,37 @@
 <header>
-  <div class="logo-container">
+  <div class="logo-container" [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded">
     <!-- <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/logoLg.svg"> -->
     <!-- <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/d_logo.svg"> -->
+    
+    <!-- Dive Inn text -->
+    <div>
+      <img src="assets/images/logo/logo.svg" />
+    </div>
+    <!-- Woman head, torso, back arm and back leg -->
+    <div>
+      <img src="assets/images/logo/logo0.svg" />
+    </div>
+    <!-- Diving board -->
+    <div>
+      <!-- <img class="board" src="assets/images/logo/logo1.svg" /> -->
+      <img class="football" src="assets/images/qb_challenge.png" />
+    </div>
+    <!-- Woman front arm and leg -->
+    <div>
+      <img src="assets/images/logo/logo2.svg" />
+    </div>
+    
+    
+    <!-- <div class="logo-callout-behind">
+      <img class="football" src="assets/images/qb_challenge.png" />      
+    </div>
+    
     <ng-container *ngTemplateOutlet="LogoSvg"></ng-container>
+
+    <div class="logo-callout-in-front">
+      <img class="helmet" src="assets/images/football_helmet.svg" />
+    </div> -->
+
   </div>
   <app-site-nav [navItems]="navItems" (onNavExpand)="navExpanded($event)"></app-site-nav>
   <!-- <div class="boat-cam"><span>boat cam</span></div> -->
