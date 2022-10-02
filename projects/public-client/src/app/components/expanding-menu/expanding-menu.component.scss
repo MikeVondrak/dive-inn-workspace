@@ -4,33 +4,43 @@
 $closeButtonHeight: clamp(2rem, 10vw, 3rem);
 
 :host {
+  
+  .menu-button {    
+    overflow: hidden;
+    height: 7vw;
 
-  .menu-button {
-    width: 42vw;
-    padding: 0.5vw 18vw 0;
-    background: utility.$dive-black;
-    border-radius: 50% 50% 0 0;
-    svg {
-      g {
-        path {
-          stroke: utility.$dive-yellow;
-          stroke-width: 10pt;
-          stroke-linecap: round;
+    > div {
+      width: 42vw;
+      //height: 10vw;
+      padding: 10.5vw 18vw 0;
+      background: utility.$dive-black;
+      border-radius: 50% 50% 0 0;
+      
+      svg {
+        position: relative;
+        top: -10vw;
 
-          &.shadow {
-            stroke: utility.$dive-black;
+        g {
+          path {
+            stroke: utility.$dive-yellow;
+            stroke-width: 10pt;
+            stroke-linecap: round;
+
+            &.shadow {
+              stroke: utility.$dive-black;
+            }
           }
         }
       }
     }
   }
-  
+
   .link-list-container {
     z-index: 10;
     position: fixed;
     top: 0;
     bottom: $closeButtonHeight;
-    left: 0; 
+    left: 0;
     right: 0;
     //padding-top: 10vw;
     background-color: utility.$dive-black;
@@ -51,11 +61,12 @@ $closeButtonHeight: clamp(2rem, 10vw, 3rem);
       height: 100%;
 
       li {
-        width: 100%;      
+        width: 100%;
         padding: 3vw 0;
-        text-align: center;        
+        text-align: center;
         border-top: 1px solid utility.$dive-gray-dk3;
         background-color: utility.$dive-gray-dk;
+
         &:last-child {
           border-bottom: 1px solid utility.$dive-gray-dk3;
         }
@@ -64,7 +75,9 @@ $closeButtonHeight: clamp(2rem, 10vw, 3rem);
 
     .close-button {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: $closeButtonHeight;
       display: flex;
       justify-content: center;
@@ -74,6 +87,7 @@ $closeButtonHeight: clamp(2rem, 10vw, 3rem);
       svg {
         width: 5vw;
         height: 5vw;
+
         g {
           path {
             stroke: utility.$dive-yellow;

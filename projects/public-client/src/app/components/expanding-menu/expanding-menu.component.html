@@ -1,5 +1,7 @@
 <div (click)="isExpanded = !isExpanded" class="menu-button">
-  <ng-container *ngTemplateOutlet="MenuSvg"></ng-container>
+  <div>
+    <ng-container *ngTemplateOutlet="MenuSvg"></ng-container>
+  </div>
 </div>
 <div *ngIf="isExpanded" class="link-list-container">
   <img src="assets/images/d_logo.svg" />
