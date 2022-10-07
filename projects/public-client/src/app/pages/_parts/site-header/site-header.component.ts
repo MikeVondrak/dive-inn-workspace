@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
-import { combineLatest, fromEvent, Subject } from 'rxjs';
+import { combineLatest, fromEvent, Observable, Subject } from 'rxjs';
 import { debounce, debounceTime, filter, map, startWith, takeUntil } from 'rxjs/operators';
+import { BreakpointsEnum, ViewportService } from '@dive-inn-lib';
 
 export interface NavItem {
   url: string,
@@ -25,6 +26,8 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
   ]
 
   public isNavExpanded: boolean = true;
+  public isMobileTabletSize$: Observable<boolean>;
+
   private window: any;
   private destroy$ = new Subject<void>();
   
@@ -32,8 +35,17 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
     private cdr: ChangeDetectorRef,
+    private viewportService: ViewportService,
   ) {
     this.window = this.document.defaultView;
+    this.isMobileTabletSize$ = this.viewportService.viewportState$.pipe(
+      takeUntil(this.destroy$),
+      map((vpState) => {
+        const gtBp = this.viewportService.getAtOrAboveBp(BreakpointsEnum.lg);
+        console.log('********', vpState, gtBp);
+        return !gtBp;
+      }),
+    );
   }
 
   ngOnInit(): void {
@@ -54,7 +66,7 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
         this.showLogo = false;
       }
       this.cdr.detectChanges();
-    })
+    });
   }
 
   ngOnDestroy(): void {

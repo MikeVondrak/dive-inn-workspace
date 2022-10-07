@@ -9,10 +9,6 @@ $verticalGap: 0.75rem;
   position: sticky;
   top: 0;
 
-  // @include utility.media-breakpoint-gte(sm) {
-  //   position: sticky;
-  // }
-
   header {
     position: relative;
 
@@ -22,6 +18,7 @@ $verticalGap: 0.75rem;
     box-shadow: 0px 2px 4px utility.$dive-black;
 
     .logo-container {
+      z-index: 11;
       position: absolute;
       top: -22vw;
       left: 0rem;     
@@ -39,58 +36,38 @@ $verticalGap: 0.75rem;
         }
       }
 
-      > div {
-        position: absolute;
-        width: 14vw;
+      .d-logo-container {
+        width: 6vw;
         //height: 10vw;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        padding: 0.25vw;
+      }
 
-        img {
-          &.board {
-            position: absolute;
-            
-          }
-          &.football {
-            position: relative;
-            width: 12vw;
-            top: 4vw;
+      .full-logo-container {
+        position: relative;
+        > div {
+          position: absolute;
+          width: 14vw;
+          //height: 10vw;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+
+          img {
+            &.board {
+              position: absolute;
+              
+            }
+            &.football {
+              position: relative;
+              width: 12vw;
+              top: 4vw;
+              left: 1vw;
+              transform: rotate(-3deg);
+            }
           }
         }
       }
-
-      // .logo-callout-behind {
-      //   position: absolute;
-      //   z-index: 0;
-        
-      //   .football {
-      //     position: absolute;
-      //     width: 12vw;
-      //     top: 2vw;
-      //     left: 3vw;
-      //   }
-      // }
-      // svg {
-      //   position: absolute;
-      //   top: 0;
-      //   left: 0;
-      //   width: 10vw;
-      //   z-index: 1;
-      // }
-      // .logo-callout-in-front {
-      //   position: absolute;
-      //   z-index: 2;
-
-      //   .helmet {
-      //     position: relative;
-      //     width: 1.5vw;
-      //     top: 2.0vw;
-      //     left: 4.1vw;
-      //     border-radius: 0;
-      //   }
-      // }
 
       a {
         &::after {

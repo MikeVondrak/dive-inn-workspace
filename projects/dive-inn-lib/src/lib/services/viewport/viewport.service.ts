@@ -8,15 +8,22 @@ import { debounceTime, distinctUntilChanged, distinctUntilKeyChanged, map, min, 
 
 import { breakpoints, BreakpointsEnum, Orientations, ViewportState } from '../../models/viewport.model';
 
+enum EqualityEnum {
+  LESS = -1,
+  EQUAL = 0,
+  GREATER = 1,
+  ERROR,
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ViewportService {
   // @TODO - how to connect SCSS breakpoint values to these?
-  
+
 
   private _viewportState$: BehaviorSubject<ViewportState> = new BehaviorSubject<ViewportState>(
-    { 
+    {
       previousBreakpoint: BreakpointsEnum.zero,
       currentBreakpoint: BreakpointsEnum.zero,
       orientation: Orientations.LANDSCAPE,
@@ -42,7 +49,7 @@ export class ViewportService {
       startWith(this.getUpdatedViewportState()),
       distinctUntilKeyChanged('currentBreakpoint'),
       shareReplay(1),
-      tap(v => { console.log('viewport state change', v.currentBreakpoint ); })
+      tap(v => { console.log('viewport state change', v.currentBreakpoint); })
     );
   }
 
@@ -55,20 +62,6 @@ export class ViewportService {
     this._viewportState = currentState;
     return currentState;
   }
-
-  // public getCurrentBreakpoint(): Breakpoints {
-  //   // @TODO - what is / how does this syntax work?
-  //   // const [[newSize = 'zero']] = Array.from(this.breakpoints.entries())
-  //   //   .filter(([size, mediaQuery]) => window.matchMedia(mediaQuery).matches);
-  //   //   debugger;
-  //   // return newSize;
-
-  //   const bpMatches = Array.from(this.breakpoints.entries())
-  //     .filter(bp => { const match = this.window?.matchMedia(bp[1]); /*console.log(bp[1], match);*/ return match?.matches; })
-  //     .map(bpQuery => bpQuery[0]);
-  //   const bpMax = bpMatches[bpMatches.length - 1];
-  //   return bpMax;
-  // }
 
   public getCurrentBreakpointEnum(): BreakpointsEnum {
     const bpMatches = Array.from(breakpoints.entries())
@@ -84,36 +77,8 @@ export class ViewportService {
     return (this.window?.innerHeight || 0) < (this.window?.innerWidth || 0) ? Orientations.LANDSCAPE : Orientations.PORTRAIT;
   }
 
-  // public getBpDown(bp: Breakpoints) {
-  //   switch(bp) {
-  //     case 'zero': return 'zero'; break;
-  //     case 'min': return 'zero'; break;
-  //     case 'xs': return 'min'; break;
-  //     case 'sm': return 'xs'; break;
-  //     case 'md': return 'sm'; break;
-  //     case 'lg': return 'md'; break;
-  //     case 'xl': return 'lg'; break;
-  //     case 'ws': return 'xl'; break;
-  //     case 'hd': return 'ws'; break;
-  //   }
-  // }
-
-  // public getBpUp(bp: Breakpoints) {
-  //   switch(bp) {
-  //     case 'zero': return 'min'; break;
-  //     case 'min': return 'xs'; break;
-  //     case 'xs': return 'sm'; break;
-  //     case 'sm': return 'md'; break;
-  //     case 'md': return 'lg'; break;
-  //     case 'lg': return 'xl'; break;
-  //     case 'xl': return 'ws'; break;
-  //     case 'ws': return 'hd'; break;
-  //     case 'hd': return 'hd'; break;
-  //   }
-  // }
-
   public getBpEnumUp(bp: BreakpointsEnum) {
-    switch(bp) {
+    switch (bp) {
       case BreakpointsEnum.zero: return BreakpointsEnum.min; break;
       case BreakpointsEnum.min: return BreakpointsEnum.xs; break;
       case BreakpointsEnum.xs: return BreakpointsEnum.sm; break;
@@ -125,4 +90,31 @@ export class ViewportService {
       case BreakpointsEnum.hd: return BreakpointsEnum.hd; break;
     }
   }
+
+  public getAtOrAboveBp(bp: BreakpointsEnum) {
+    let currentBp = this.getCurrentBreakpointEnum();
+    let eql = this.breakpointsEqual(currentBp, bp);
+    console.log('!!!!!!!', eql);
+    return (eql === EqualityEnum.EQUAL || eql === EqualityEnum.GREATER);
+  }
+
+  private breakpointsEqual(bp1: BreakpointsEnum, bp2: BreakpointsEnum): EqualityEnum {
+    if (bp1 === bp2) {
+      return EqualityEnum.EQUAL;
+    }
+    let bpSearch = BreakpointsEnum.zero;
+    if (bp1 === bpSearch) {
+      return EqualityEnum.LESS;
+    }
+    do {
+      bpSearch = this.getBpEnumUp(bpSearch);
+      if (bp1 === bpSearch) {
+        return EqualityEnum.LESS;
+      } else if (bp2 === bpSearch) {
+        return EqualityEnum.GREATER;
+      }
+    } while(bpSearch !== BreakpointsEnum.hd);
+    return EqualityEnum.ERROR; // should have found bp1 or bp2 at (max bp - 1)
+  }
+
 }
