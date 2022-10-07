@@ -13,6 +13,12 @@ export class SiteFooterComponent implements OnInit {
   @Input() address: string = '1380 S Broadway'; // @TODO - get these defaults from GQL
   @Input() phone: string = '720-242-6157';
 
+  public linkHeaders = [
+    'Main',
+    'Party',
+    'Business',
+  ];
+
   public links = [
     {
       uiLabel: 'Home',
@@ -34,11 +40,30 @@ export class SiteFooterComponent implements OnInit {
       linkUrl: '/inside',
       fragment: 'construction',
     },
+  ];
+  public links2 = [
     {
       uiLabel: 'Private Parties',
       linkUrl: '/inside',
       fragment: 'construction',
     },
+    {
+      uiLabel: 'Dive Shop',
+      linkUrl: '/inside',
+      fragment: 'construction',
+    },
+    {
+      uiLabel: 'PADI Club',
+      linkUrl: '/inside',
+      fragment: 'construction',
+    },
+    {
+      uiLabel: 'Sightings',
+      linkUrl: '/inside',
+      fragment: 'construction',
+    },
+  ];
+  public links3 = [
     {
       uiLabel: 'About Us',
       linkUrl: '/inside',
@@ -55,26 +80,12 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'construction',
     },
     {
-      uiLabel: 'Dive Shop',
-      linkUrl: '/inside',
-      fragment: 'construction',
-    },
-    {
       uiLabel: 'News',
       linkUrl: '/inside',
       fragment: 'construction',
     },
-    {
-      uiLabel: 'PADI Club',
-      linkUrl: '/inside',
-      fragment: 'construction',
-    },
-    {
-      uiLabel: 'Sightings',
-      linkUrl: '/inside',
-      fragment: 'construction',
-    },
   ];
+  public linksArray = [this.links, this.links2, this.links3];
 
   public showMobileMenu: boolean = true;
 

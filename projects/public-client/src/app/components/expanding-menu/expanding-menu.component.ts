@@ -7,7 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExpandingMenuComponent implements OnInit {
 
-  @Input() links: any[] = [{uiLabel: '', linkUrl: '', fragment: ''}];
+  @Input() headers: string[] = [];
+  @Input() links: any[][] = [[{uiLabel: '', linkUrl: '', fragment: ''}]];
+  //@Input() links2: any[] = [{uiLabel: '', linkUrl: '', fragment: ''}];
+  //@Input() links3: any[] = [{uiLabel: '', linkUrl: '', fragment: ''}];
 
   public isExpanded: boolean = false;
 

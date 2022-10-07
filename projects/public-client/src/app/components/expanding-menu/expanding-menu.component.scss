@@ -38,6 +38,8 @@ $closeButtonHeight: clamp(2rem, 10vw, 3rem);
   .link-list-container {
     z-index: 10;
     position: fixed;
+    //display: flex;
+    //align-items: flex-start;
     top: 0;
     bottom: $closeButtonHeight;
     left: 0;
@@ -46,29 +48,46 @@ $closeButtonHeight: clamp(2rem, 10vw, 3rem);
     background-color: utility.$dive-black;
 
     img {
-      width: 24vw;
+      width: 40vw;
+      display: block;
+      @media (orientation: portrait) {
+        width: 16vw;
+      }
       padding: 2vw;
     }
 
     ul {
-      position: relative;
-      top: -7vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      left: 0;
+      //height: 100%;
+      @media (orientation: portrait) {
+        flex-direction: column;
+        width: 100vw;
+      }
       margin: 0;
-      padding: 0 0 0vw 0;
+      padding: 0;
       background-color: utility.$dive-gray-dk3;
-      transform: skew(0, -10deg);
       list-style: none;
-      height: 100%;
 
       li {
-        width: 100%;
-        padding: 3vw 0;
-        text-align: center;
-        border-top: 1px solid utility.$dive-gray-dk3;
-        background-color: utility.$dive-gray-dk;
-
+        //display: block;
         &:last-child {
-          border-bottom: 1px solid utility.$dive-gray-dk3;
+          //border-bottom: 1px solid utility.$dive-gray-dk3;
+        }
+        
+        a {
+          display: block;
+          position: relative;
+          padding: 2vw;
+          margin: 1vw;
+          border: 1px solid utility.$dive-yellow;
+          background-color: utility.$dive-gray-dk;
+          text-align: center;
+          text-transform: uppercase;
         }
       }
     }
