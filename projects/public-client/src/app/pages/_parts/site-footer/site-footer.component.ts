@@ -102,7 +102,7 @@ export class SiteFooterComponent implements OnInit {
       ) {
         this.showMobileMenu = true;
       } else {
-        this.showMobileMenu = false;      
+        this.showMobileMenu = true;// false;      
       }
       this.cdr.markForCheck();
     });
