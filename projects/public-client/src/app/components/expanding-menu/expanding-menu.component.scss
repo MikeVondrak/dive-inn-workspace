@@ -2,20 +2,42 @@
 @use '../../scss/utility';
 
 $closeButtonHeight: clamp(2rem, 10vw, 3rem);
+$baseHeaderFontSize: 6vw;
+$fontSizeIncrement: 0.75vw;
+
+$headerFontSizes: (
+  'zero': $baseHeaderFontSize,
+  'xs': ($baseHeaderFontSize - $fontSizeIncrement),
+  'sm': ($baseHeaderFontSize - 2 * $fontSizeIncrement),
+  'md': ($baseHeaderFontSize - 3 * $fontSizeIncrement),
+  'lg': clamp(2rem, 3vw, 3rem) //($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  //'xl': ($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  //'ws': ($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  //'hd': $baseHeaderFontSize - 1vw
+);
+$buttonFontSizes: (
+  'zero': ($baseHeaderFontSize - $fontSizeIncrement),
+  'xs': ($baseHeaderFontSize - 2 * $fontSizeIncrement),
+  'sm': ($baseHeaderFontSize - 3 * $fontSizeIncrement),
+  'md': ($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  'lg': clamp(1.5rem, 2vw, 2.5rem) //($baseHeaderFontSize - 5 * $fontSizeIncrement),
+);
 
 :host {
-  
-  .menu-button {    
+  position: relative;
+  display: block;
+
+  .menu-button {
     overflow: hidden;
     height: 7vw;
 
-    > div {
+    >div {
       width: 42vw;
       //height: 10vw;
       padding: 10.5vw 18vw 0;
       background: utility.$dive-black;
       border-radius: 50% 50% 0 0;
-      
+
       svg {
         position: relative;
         top: -10vw;
@@ -48,82 +70,127 @@ $closeButtonHeight: clamp(2rem, 10vw, 3rem);
     padding: 1vw;
     background-color: utility.$dive-black;
 
-    // img {
-    //   width: 40vw;
-    //   display: block;
-    //   @media (orientation: portrait) {
-    //     width: 16vw;
-    //   }
-    //   padding: 2vw;
-    // }
+    .grids-container {
+      background-color: utility.$dive-gray-dk;
 
-    h2 {
-      font-size: 5vw;
-      @include utility.media-breakpoint-gte(xs) { font-size: 4.5vw; }
-      @include utility.media-breakpoint-gte(sm) { font-size: 4vw; }
-      @include utility.media-breakpoint-gte(md) { font-size: 3.5vw; }
-      @include utility.media-breakpoint-gte(lg) { font-size: 2vw; }
-      text-align: center;
-      //background-color: utility.$dive-gray-dk;
-      margin: 0;
-      padding: 6vw 0 2vw;
-    }
+      .grid {
+        background-color: utility.$dive-black;
 
-    ul {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      @include utility.media-breakpoint-gte(xs) { grid-template-columns: 1fr 1fr; }
-      @include utility.media-breakpoint-gte(sm) { grid-template-columns: 1fr 1fr; }
-      @include utility.media-breakpoint-gte(md) { grid-template-columns: 1fr 1fr 1fr 1fr; }
-      @include utility.media-breakpoint-gte(lg) { grid-template-columns: 1fr 1fr 1fr 1fr; }
-      gap: 1vw;
-      // display: flex;
-      // flex-direction: row;
-      // flex-wrap: wrap;
-      // justify-content: flex-start;
-      // align-items: flex-start;
-      left: 0;
-      //height: 100%;
-      @media (orientation: portrait) {
-        flex-direction: column;
-        //width: 100vw;
-      }
-      margin: 0;
-      padding: 0;
-      //background-color: utility.$dive-gray-dk3;
-      list-style: none;
+        h2 {
+          //display: inline-block;
+          font-size: map-get($map: $headerFontSizes, $key: 'zero');
+          background-color: utility.$dive-black;
 
-      li {
-        display: flex;
-        flex-direction: row;
-        //flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        &:last-child {
-          //border-bottom: 1px solid utility.$dive-gray-dk3;
-        }
-        
-        a {
-          display: block;
-          //position: relative;
-          width: 100%;
-          //margin: 0.5vw 1vw;
-          padding: 1vw;
-          //border: 1px solid utility.$dive-yellow;
-          background-color: utility.$dive-red-dk;
-          text-align: center;
-          //text-transform: uppercase;
-          font-size: 4.5vw;
-          border-radius: 1vw;
-
-          &::after {
-            content: none;
+          @include utility.media-breakpoint-gte(xs) {
+            font-size: map-get($map: $headerFontSizes, $key: 'xs');
           }
 
-          @include utility.media-breakpoint-gte(xs) { font-size: 3.5vw; }
-          @include utility.media-breakpoint-gte(sm) { font-size: 2.5vw; }
-          @include utility.media-breakpoint-gte(md) { font-size: 2vw; }
-          @include utility.media-breakpoint-gte(lg) { font-size: 1.5vw; }
+          @include utility.media-breakpoint-gte(sm) {
+            font-size: map-get($map: $headerFontSizes, $key: 'sm');
+          }
+
+          @include utility.media-breakpoint-gte(md) {
+            font-size: map-get($map: $headerFontSizes, $key: 'md');
+          }
+
+          @include utility.media-breakpoint-gte(lg) {
+            font-size: map-get($map: $headerFontSizes, $key: 'lg');
+          }
+
+          text-align: center;
+          //background-color: utility.$dive-gray-dk;
+          margin: 0;
+          padding: 6vw 0 2vw;
+        }
+
+        ul {
+          display: grid;
+          grid-template-columns: 1fr;
+
+          @include utility.media-breakpoint-gte(xs) {
+            grid-template-columns: 1fr;
+          }
+
+          @include utility.media-breakpoint-gte(sm) {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          @include utility.media-breakpoint-gte(md) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          }
+
+          @include utility.media-breakpoint-gte(lg) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          }
+
+          gap: 1vw;
+          // display: flex;
+          // flex-direction: row;
+          // flex-wrap: wrap;
+          // justify-content: flex-start;
+          // align-items: flex-start;
+          left: 0;
+
+          //height: 100%;
+          @media (orientation: portrait) {
+            flex-direction: column;
+            //width: 100vw;
+          }
+
+          margin: 0;
+          padding: 0;
+          //background-color: utility.$dive-gray-dk3;
+          list-style: none;
+
+          li {
+            display: flex;
+            flex-direction: row;
+            //flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1vw;
+
+            &:last-child {
+              //border-bottom: 1px solid utility.$dive-gray-dk3;
+            }
+
+            a {
+              display: block;
+              //position: relative;
+              width: 80%;
+              padding: 3vw 1vw;
+
+              @include utility.media-breakpoint-gte(sm) {
+                padding: 1vw;
+                width: 100%;
+              }
+
+              background-color: utility.$dive-gray-dk3; // $dive-red-dk;
+              text-align: center;
+              font-size: map-get($map: $buttonFontSizes, $key: 'zero');
+              border-radius: 1vw;
+
+              &::after {
+                content: none;
+              }
+
+              @include utility.media-breakpoint-gte(xs) {
+                font-size: map-get($map: $buttonFontSizes, $key: 'xs');
+              }
+
+              @include utility.media-breakpoint-gte(sm) {
+                font-size: map-get($map: $buttonFontSizes, $key: 'sm');
+              }
+
+              @include utility.media-breakpoint-gte(md) {
+                font-size: map-get($map: $buttonFontSizes, $key: 'md');
+              }
+
+              @include utility.media-breakpoint-gte(lg) {
+                font-size: map-get($map: $buttonFontSizes, $key: 'lg');
+              }
+            }
+          }
         }
       }
     }

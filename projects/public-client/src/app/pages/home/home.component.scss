@@ -8,6 +8,16 @@ $h_p_zero: 9vw;
 $w_p_zero: 30vw;
 $h_p_md: 2.8vw;
 $w_p_md: 9vw;
+$separatorSizes: (
+  'zero': 10vw,
+  'sm': 8.5vw,
+  'md': 7vw,
+  'lg': 5.5vw,
+);
+$waveSize: 6vw;
+$waveSizeSm: 5vw;
+$waveSizeMd: 4vw;
+$waveSizeLg: 3vw;
 
 .main {
   position: relative;
@@ -90,10 +100,6 @@ $w_p_md: 9vw;
     }
   }
 
-  $waveSize: 6vw;
-  $waveSizeSm: 5vw;
-  $waveSizeMd: 4vw;
-  $waveSizeLg: 3vw;
   .waves-separator {
     position: relative;
     z-index: 1;
@@ -107,10 +113,12 @@ $w_p_md: 9vw;
       height: $waveSizeSm;
       top: -($waveSizeSm - 0.5vw);
     }
+
     @include utility.media-breakpoint-gte(md) {
       height: $waveSizeMd;
       top: -($waveSizeMd - 0.5vw);
     }
+
     @include utility.media-breakpoint-gte(lg) {
       height: $waveSizeMd;
       top: -($waveSizeMd - 0.5vw);
@@ -123,34 +131,35 @@ $w_p_md: 9vw;
     }
   }
 
-  $separatorSizes: (
-    'zero': 10vw,
-    'sm': 8.5vw,
-    'md': 7vw,
-    'lg': 5.5vw,
-  );
+  .intro-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.intro-section {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    .blurb-separator-top,
+    .blurb-separator-bottom {
+      width: map-get($separatorSizes, 'zero');
+      margin: 6vw 0 2vw;
 
-  .blurb-separator-top,
-  .blurb-separator-bottom {
-    width: map-get($separatorSizes, 'zero');
-    margin: 6vw 0 2vw;
+      @include utility.media-breakpoint-gte(sm) {
+        width: map-get($separatorSizes, 'sm');
+      }
 
-    @include utility.media-breakpoint-gte(sm) { width: map-get($separatorSizes, 'sm'); }
-    @include utility.media-breakpoint-gte(md) { width: map-get($separatorSizes, 'md'); }
-    @include utility.media-breakpoint-gte(lg) { width: map-get($separatorSizes, 'lg'); }    
+      @include utility.media-breakpoint-gte(md) {
+        width: map-get($separatorSizes, 'md');
+      }
+
+      @include utility.media-breakpoint-gte(lg) {
+        width: map-get($separatorSizes, 'lg');
+      }
+    }
+
+    .blurb-separator-bottom {
+      margin-top: 0;
+      margin-bottom: 5vw;
+    }
+
   }
-
-  .blurb-separator-bottom {
-    margin-top: 0;
-    margin-bottom: 5vw;
-  }
-
-}
 }

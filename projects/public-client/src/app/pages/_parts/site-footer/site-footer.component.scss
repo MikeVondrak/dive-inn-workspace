@@ -3,10 +3,10 @@
 
 $waveSize: 8vw;
 $waveSizeMin: 5vw;
-$waveSizeSm: 4vw;
-$waveSizeLg: 3vw;
-$waveSizeXl: 2.5vw;
-$waveSizeWs: 2vw;
+$waveSizeSm: 4.5vw;
+$waveSizeLg: 4vw;
+$waveSizeXl: 3.5vw;
+$waveSizeWs: 3vw;
 
 .waves-separator {
   position: relative;
@@ -89,7 +89,7 @@ footer {
     margin-top: 2vw;
   }
 
-  $iconSize: clamp(32px, 5vw, 5vw);//5vw;//32px;
+  $iconSize: clamp(32px, 5vw, 64px);
 
   .social-icons {
     display: flex;

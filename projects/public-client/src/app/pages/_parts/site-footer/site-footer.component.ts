@@ -15,7 +15,7 @@ export class SiteFooterComponent implements OnInit {
 
   public linkHeaders = [
     'Main',
-    'Party',
+    'Fun',
     'Business',
   ];
 

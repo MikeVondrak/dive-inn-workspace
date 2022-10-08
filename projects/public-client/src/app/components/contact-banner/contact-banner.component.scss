@@ -1,6 +1,10 @@
 @use 'sass:math';
 @use '../../scss/utility';
 
+// TODO: make this an input or configurable from place it's being used
+$containerPadding: 9vw 4vw 14vw;
+$containerPaddingSm: 6vw 4vw 10vw;
+
 :host {
   display: block;
   background-color: utility.$dive-red;
@@ -13,14 +17,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    //gap: 4vw;
-    padding: 4vw 4vw 8vw;
-    $bgColor: transparent; //rgba(0, 0, 255, 0.51);
+    padding: $containerPadding;
+    @include utility.media-breakpoint-gte(sm) {
+      padding: $containerPaddingSm;
+    }
+    $bgColor: transparent;
     $bgColor2: utility.$dive-red;
-    background-color: darken($bgColor2, 17%);
-    //font-family: 'Righteous', sans-serif;
-    //letter-spacing: 0.1vw;
-
+    background-color: darken($bgColor2, 17%);    
     background-image:
       radial-gradient(circle at 50% 20%, $bgColor2 20%, $bgColor 60%),
       radial-gradient(circle at 50% 50%, $bgColor2 15%, $bgColor 60%),
