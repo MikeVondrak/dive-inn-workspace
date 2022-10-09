@@ -24,23 +24,27 @@ $buttonFontSizes: (
 );
 
 :host {
-  position: relative;
+  
   display: block;
 
-  .menu-button {
+  .open-menu-button {
+    
     overflow: hidden;
-    height: 7vw;
+    height: clamp(24px, 5.5vw, 64px);
 
     >div {
-      width: 42vw;
-      //height: 10vw;
-      padding: 10.5vw 18vw 0;
+      position: relative;
+      width: clamp(84px, 42vw, 420px);
+      height: clamp(84px, 42vw, 420px);
+      //padding: 10.5vw 18vw 0;
       background: utility.$dive-black;
       border-radius: 50% 50% 0 0;
 
       svg {
-        position: relative;
-        top: -10vw;
+        position: absolute;
+        top: 0vw;
+        left: 0;
+        height: clamp(24px, 5vw, 64px);
 
         g {
           path {

@@ -106,14 +106,32 @@ $takiLogoSizesPortrait: 33vw, 25vw, 15vw;
 
       @include utility.media-breakpoint-gte(sm) {
         display: block;
-        left: 53%;
+        left: 55.5%;
         top: 2vw;
-        font-size: 1.8vw;
+        font-size: 1.5vw;
       }
 
       @include utility.media-breakpoint-gte(md) {
+        display: block;
+        top: 2vw;
         left: 55%;
         font-size: 1.1vw;
+      }
+
+      @media (orientation: portrait) {
+        @include utility.media-breakpoint-gte(sm) {
+          display: block;
+          left: 54%;
+          top: 3vw;
+          font-size: 1.75vw;
+        }
+  
+        @include utility.media-breakpoint-gte(md) {
+          display: block;
+          top: 2vw;
+          left: 55%;
+          font-size: 1.1vw;
+        }
       }
 
       div {

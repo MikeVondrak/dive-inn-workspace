@@ -90,13 +90,6 @@ $waveSizeLg: 3vw;
       left: 50vw;
       transform: translateX(-50%);
       position: absolute;
-
-      @media (orientation: portrait) {
-        @include utility.media-breakpoint-gte(md) {
-          left: 50vw;
-          transform: translateX(-50%);
-        }
-      }
     }
   }
 
