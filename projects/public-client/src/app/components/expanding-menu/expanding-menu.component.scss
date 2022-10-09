@@ -64,14 +64,46 @@ $buttonFontSizes: (
     //display: flex;
     //align-items: flex-start;
     top: 0;
-    bottom: $closeButtonHeight;
+    bottom: 0; //$closeButtonHeight;
     left: 0;
     right: 0;
-    padding: 1vw;
     background-color: utility.$dive-black;
 
     .grids-container {
       background-color: utility.$dive-gray-dk;
+
+      .tab-selector-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1vw;
+
+        .tab-selector {
+          background-color: utility.$dive-red-dk;
+          cursor: pointer;
+          border-radius: clamp(0.5rem, 2vw, 1.5rem);
+
+          h2 {
+            color: utility.$dive-yellow;
+          }
+          &.selected {            
+            background-color: utility.$dive-red;
+            h2 {
+              color: utility.$dive-white;
+            }
+          }
+
+          h2 {
+            width: clamp(200px, 30vw, 300px);
+            margin: 0.5rem 0;// clamp(0.5rem, 1vw, 1.5rem);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            text-align: center;
+          }
+        }
+      }
+
+
 
       .grid {
         background-color: utility.$dive-black;
@@ -116,7 +148,7 @@ $buttonFontSizes: (
           }
 
           @include utility.media-breakpoint-gte(md) {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(1fr, 4);
           }
 
           @include utility.media-breakpoint-gte(lg) {
@@ -198,17 +230,19 @@ $buttonFontSizes: (
     .close-button {
       position: fixed;
       bottom: 0;
-      left: 0;
+      //left: 0;
       right: 0;
-      height: $closeButtonHeight;
+      //height: $closeButtonHeight;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: utility.$dive-gray-dk3;
+      padding: 1vw;
+      background-color: utility.$dive-red-dk;//gray-dk3;
+      border-radius: 50%;
 
       svg {
-        width: 5vw;
-        height: 5vw;
+        width: clamp(24px, 5vw, 48px);
+        //height: 5vw;
 
         g {
           path {

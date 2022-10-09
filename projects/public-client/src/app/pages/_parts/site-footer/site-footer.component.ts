@@ -1,6 +1,11 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BreakpointsEnum } from '@dive-inn-lib';
 import { ViewportService } from 'projects/dive-inn-lib/src/lib/services/viewport/viewport.service';
+import { ExpandingMenuLink, ExpandingMenuLinkGroup } from '../../../models/expanding-menu.model';
+
+enum FooterLinkHeadersEnum {
+  MAIN = 'Main', FUN = 'Fun', BUSINESS = 'Business'
+}
 
 @Component({
   selector: 'app-site-footer',
@@ -13,13 +18,13 @@ export class SiteFooterComponent implements OnInit {
   @Input() address: string = '1380 S Broadway'; // @TODO - get these defaults from GQL
   @Input() phone: string = '720-242-6157';
 
-  public linkHeaders = [
-    'Main',
-    'Fun',
-    'Business',
+  public linkHeaders: string[] = [
+    FooterLinkHeadersEnum.MAIN,
+    FooterLinkHeadersEnum.FUN,
+    FooterLinkHeadersEnum.BUSINESS,
   ];
 
-  public links = [
+  private _links1 = [
     {
       uiLabel: 'Home',
       linkUrl: '/home',
@@ -41,7 +46,7 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'construction',
     },
   ];
-  public links2 = [
+  private _links2 = [
     {
       uiLabel: 'Private Parties',
       linkUrl: '/inside',
@@ -63,7 +68,7 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'construction',
     },
   ];
-  public links3 = [
+  private _links3 = [
     {
       uiLabel: 'About Us',
       linkUrl: '/inside',
@@ -85,7 +90,26 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'construction',
     },
   ];
-  public linksArray = [this.links, this.links2, this.links3];
+
+  // add 'header' property to each links array
+  // private links1 = this._links1.map(link => ({ ...link, header: this.linkHeaders[0] }));
+  // private links2 = this._links2.map(link => ({ ...link, header: this.linkHeaders[1] }));
+  // private links3 = this._links3.map(link => ({ ...link, header: this.linkHeaders[2] }));
+  
+  public linksArray: ExpandingMenuLinkGroup[] = [
+    {
+      title: this.linkHeaders[0],
+      links: this._links1
+    },
+    {
+      title: this.linkHeaders[1],
+      links: this._links2
+    },
+    {
+      title: this.linkHeaders[2],
+      links: this._links3
+    }
+  ];
 
   public showMobileMenu: boolean = true;
 
