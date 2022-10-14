@@ -49,7 +49,7 @@ export class ViewportService {
       startWith(this.getUpdatedViewportState()),
       distinctUntilKeyChanged('currentBreakpoint'),
       shareReplay(1),
-      tap(v => { console.log('viewport state change', v.currentBreakpoint); })
+      //tap(v => { console.log('viewport state change', v.currentBreakpoint); })
     );
   }
 
@@ -93,8 +93,7 @@ export class ViewportService {
 
   public getAtOrAboveBp(bp: BreakpointsEnum) {
     let currentBp = this.getCurrentBreakpointEnum();
-    let eql = this.breakpointsEqual(currentBp, bp);
-    console.log('!!!!!!!', eql);
+    let eql = this.breakpointsEqual(currentBp, bp);    
     return (eql === EqualityEnum.EQUAL || eql === EqualityEnum.GREATER);
   }
 

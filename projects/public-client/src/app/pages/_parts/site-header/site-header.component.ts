@@ -42,7 +42,6 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$),
       map((vpState) => {
         const gtBp = this.viewportService.getAtOrAboveBp(BreakpointsEnum.lg);
-        console.log('********', vpState, gtBp);
         return !gtBp;
       }),
     );

@@ -7,22 +7,36 @@
 
 <div *ngIf="isExpanded" class="link-list-container">
 
-  <div class="grids-container">    
+  <div *ngIf="vpIsSmallOrBigger$ | async" class="grids-container grids-container-large">
     <div class="tab-selector-container">
-      <div *ngFor="let item of menuItems" class="tab-selector" [class.selected]="item.title === selectedGroup" (click)="onClick(item)">
+      <div *ngFor="let item of menuItems" class="tab-selector" [class.selected]="item.title === selectedGroup"
+        (click)="onClick(item)">
         <h2>{{item.title}}</h2>
       </div>
     </div>
     <div [ngSwitch]="selectedGroup">
       <ng-container *ngFor="let item of menuItems">
         <div *ngSwitchCase="item.title">
-          <ul *ngFor="let link of item.links">
-            <li>
-              <a [routerLink]="link.linkUrl" [fragment]="link.fragment" (click)="isExpanded = false">{{link.uiLabel}}</a>
+          <ul>
+            <li *ngFor="let link of item.links">
+              <a [routerLink]="link.linkUrl" [fragment]="link.fragment"
+                (click)="isExpanded = false">{{link.uiLabel}}</a>
             </li>
           </ul>
         </div>
       </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="!(vpIsSmallOrBigger$ | async)" class="grids-container grids-container-small">    
+    <div *ngFor="let item of menuItems" class="menu-section" [class.selected]="item.title === selectedGroup"
+      (click)="onClick(item)">
+      <h2>{{item.title}}</h2>
+      <ul>
+        <li *ngFor="let link of item.links">
+          <a [routerLink]="link.linkUrl" [fragment]="link.fragment" (click)="isExpanded = false">{{link.uiLabel}}</a>
+        </li>
+      </ul>
     </div>
   </div>
 

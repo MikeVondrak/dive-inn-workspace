@@ -65,17 +65,49 @@ $buttonFontSizes: (
     z-index: 10;
     position: fixed;
     overflow-y: scroll;
-    //display: flex;
     //align-items: flex-start;
     top: 0;
     bottom: 0; //$closeButtonHeight;
     left: 0;
     right: 0;
     background-color: utility.$dive-black;
+    
+    .grids-container {      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-    .grids-container {
-      background-color: utility.$dive-gray-dk;
+      h2 {
+        display: block;
+        margin: 0;
+        padding: clamp(1rem, 2vw, 2rem) 0 clamp(1rem, 2vw, 2rem);
+        line-height: 1;
+      }
+      ul {
+        flex-basis: 100%;
+        margin: 0;
+        padding: clamp(1rem, 2vw, 2rem);
+        list-style: none;
 
+        li {
+          width: 100%;
+          text-align: center;
+          margin-bottom: clamp(0.5rem, 1vw, 1rem);
+          background-color: utility.$dive-gray-dk;
+          border-radius: clamp(0.5rem, 2vw, 1.5rem);
+          a {
+            display: block;
+            padding: clamp(1rem, 3vw, 2rem);// 0;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            &::after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+
+    .grids-container-large {
       .tab-selector-container {
         position: relative;
         display: flex;
@@ -89,25 +121,25 @@ $buttonFontSizes: (
           border-radius: clamp(0.5rem, 2vw, 1.5rem);
 
           h2 {
+            min-width: 28vw;
+            padding: clamp(1rem, 2vw, 2rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             color: utility.$dive-yellow;
+            text-align: center;
           }
-          &.selected {            
+          &.selected {
             background-color: utility.$dive-red;
             h2 {
               color: utility.$dive-white;
             }
           }
-
-          h2 {
-            width: clamp(200px, 30vw, 300px);
-            margin: 0.5rem 0;// clamp(0.5rem, 1vw, 1.5rem);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            text-align: center;
-          }
         }
       }
-
-
+      ul {
+        li {
+          min-width: 86vw;
+        }
+      }
 
       .grid {
         background-color: utility.$dive-black;
@@ -227,6 +259,26 @@ $buttonFontSizes: (
               }
             }
           }
+        }
+      }
+    }
+
+    .grids-container-small {
+      .menu-section {        
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h2 {
+          padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
+          //min-width: 40vw;
+          text-align: center;
+          background-color: utility.$dive-red;
+          border-radius: 0.5rem;
+        }
+        ul {
+          width: 100%;
         }
       }
     }
