@@ -86,7 +86,10 @@ footer {
   }
 
   app-expanding-menu {
-    margin-top: 2vw;
+    margin-top: 4vw;
+    @include utility.media-breakpoint-gte(md) {
+      margin-top: 0.5vw;
+    }
   }
 
   $iconSize: clamp(32px, 5vw, 64px);
