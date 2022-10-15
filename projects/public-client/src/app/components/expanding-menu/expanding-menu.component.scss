@@ -23,6 +23,10 @@ $buttonFontSizes: (
   'lg': clamp(1.5rem, 2vw, 2.5rem) //($baseHeaderFontSize - 5 * $fontSizeIncrement),
 );
 
+$skewAmount: 22deg;
+$titleSkew: skew(-$skewAmount, 0deg);
+$titleTextSkew: skew($skewAmount, 0deg);
+
 :host {
   
   display: block;
@@ -77,13 +81,17 @@ $buttonFontSizes: (
       display: flex;
       flex-direction: column;
       align-items: center;
-
+      max-width: 600px;
+      margin: 0 auto;
+    
       h2 {
         display: block;
         margin: 0;
         padding: clamp(1rem, 2vw, 2rem) 0 clamp(1rem, 2vw, 2rem);
         line-height: 1;
+        transform: $titleTextSkew;
       }
+
       ul {
         flex-basis: 100%;
         margin: 0;
@@ -114,12 +122,14 @@ $buttonFontSizes: (
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1vw;
+        //gap: 1vw;
+        transform: $titleSkew;
 
         .tab-selector {
           background-color: utility.$dive-red-dk;
           cursor: pointer;
-          border-radius: clamp(0.5rem, 2vw, 1.5rem);
+          //border-radius: clamp(0.5rem, 2vw, 1.5rem);
+          box-shadow: 0px 4px 4px 0px #000;
 
           h2 {
             min-width: 28vw;
@@ -136,9 +146,14 @@ $buttonFontSizes: (
           }
         }
       }
-      ul {
-        li {
-          min-width: 86vw;
+      .links-container {
+        width: 100%;
+
+        ul {
+          padding: 0;
+          li {
+            width: 100%;
+          }
         }
       }
 
@@ -271,12 +286,16 @@ $buttonFontSizes: (
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        h2 {
-          padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
-          //min-width: 40vw;
-          text-align: center;
+
+        .title-block {
+          transform: $titleSkew;
           background-color: utility.$dive-red;
-          border-radius: 0.5rem;
+          h2 {
+            padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
+            //min-width: 40vw;
+            text-align: center;            
+            transform: $titleTextSkew;
+          }
         }
         ul {
           width: 100%;
