@@ -106,7 +106,7 @@ $titleTextSkew: skew($skewAmount, 0deg);
           border-radius: clamp(0.5rem, 2vw, 1.5rem);
           a {
             display: block;
-            padding: clamp(1rem, 3vw, 2rem);// 0;
+            padding: clamp(1rem, 3vw, 1.5rem);// 0;
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             &::after {
               content: none;
@@ -132,9 +132,9 @@ $titleTextSkew: skew($skewAmount, 0deg);
           box-shadow: 0px 4px 4px 0px #000;
 
           h2 {
-            min-width: 28vw;
-            padding: clamp(1rem, 2vw, 2rem);
-            font-size: clamp(2rem, 4vw, 3rem);
+            width: 200px; //clamp(200px, 5vw, 356px);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            font-size: clamp(1rem, 4vw, 1.5rem);
             color: utility.$dive-yellow;
             text-align: center;
           }
@@ -148,130 +148,14 @@ $titleTextSkew: skew($skewAmount, 0deg);
       }
       .links-container {
         width: 100%;
-
-        ul {
-          padding: 0;
-          li {
-            width: 100%;
-          }
-        }
-      }
-
-      .grid {
-        background-color: utility.$dive-black;
-
-        h2 {
-          //display: inline-block;
-          font-size: map-get($map: $headerFontSizes, $key: 'zero');
-          background-color: utility.$dive-black;
-
-          @include utility.media-breakpoint-gte(xs) {
-            font-size: map-get($map: $headerFontSizes, $key: 'xs');
-          }
-
-          @include utility.media-breakpoint-gte(sm) {
-            font-size: map-get($map: $headerFontSizes, $key: 'sm');
-          }
-
-          @include utility.media-breakpoint-gte(md) {
-            font-size: map-get($map: $headerFontSizes, $key: 'md');
-          }
-
-          @include utility.media-breakpoint-gte(lg) {
-            font-size: map-get($map: $headerFontSizes, $key: 'lg');
-          }
-
-          text-align: center;
-          //background-color: utility.$dive-gray-dk;
-          margin: 0;
-          padding: 6vw 0 2vw;
-        }
-
-        ul {
-          display: grid;
-          grid-template-columns: 1fr;
-
-          @include utility.media-breakpoint-gte(xs) {
-            grid-template-columns: 1fr;
-          }
-
-          @include utility.media-breakpoint-gte(sm) {
-            grid-template-columns: 1fr 1fr;
-          }
-
-          @include utility.media-breakpoint-gte(md) {
-            grid-template-columns: repeat(1fr, 4);
-          }
-
-          @include utility.media-breakpoint-gte(lg) {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-          }
-
-          gap: 1vw;
-          // display: flex;
-          // flex-direction: row;
-          // flex-wrap: wrap;
-          // justify-content: flex-start;
-          // align-items: flex-start;
-          left: 0;
-
-          //height: 100%;
-          @media (orientation: portrait) {
-            flex-direction: column;
-            //width: 100vw;
-          }
-
-          margin: 0;
-          padding: 0;
-          //background-color: utility.$dive-gray-dk3;
-          list-style: none;
-
-          li {
-            display: flex;
-            flex-direction: row;
-            //flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1vw;
-
-            &:last-child {
-              //border-bottom: 1px solid utility.$dive-gray-dk3;
-            }
-
-            a {
-              display: block;
-              //position: relative;
-              width: 80%;
-              padding: 3vw 1vw;
-
-              @include utility.media-breakpoint-gte(sm) {
-                padding: 1vw;
-                width: 100%;
-              }
-
-              background-color: utility.$dive-gray-dk3; // $dive-red-dk;
-              text-align: center;
-              font-size: map-get($map: $buttonFontSizes, $key: 'zero');
-              border-radius: 1vw;
-
-              &::after {
-                content: none;
-              }
-
-              @include utility.media-breakpoint-gte(xs) {
-                font-size: map-get($map: $buttonFontSizes, $key: 'xs');
-              }
-
-              @include utility.media-breakpoint-gte(sm) {
-                font-size: map-get($map: $buttonFontSizes, $key: 'sm');
-              }
-
-              @include utility.media-breakpoint-gte(md) {
-                font-size: map-get($map: $buttonFontSizes, $key: 'md');
-              }
-
-              @include utility.media-breakpoint-gte(lg) {
-                font-size: map-get($map: $buttonFontSizes, $key: 'lg');
+        > div {
+          padding: 2vw 0.5rem;
+          ul {
+            padding: 0;
+            li {
+              width: 100%;
+              a {
+                font-size: clamp(1rem, 4vw, 2rem);
               }
             }
           }
