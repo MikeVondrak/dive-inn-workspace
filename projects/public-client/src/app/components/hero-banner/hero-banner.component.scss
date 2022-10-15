@@ -28,6 +28,12 @@
       padding: var(--textPaddingTop) 0 var(--textPaddingBottom) 0;
       transform: var(--textContainerTransform);
       text-align: var(--textAlign);
+      
+      // TODO: make this another config param
+      min-height: 400px;
+      @include utility.media-breakpoint-gte(lg) {
+        min-height: 800px;
+      }
 
       h1.title {
         z-index: 0;

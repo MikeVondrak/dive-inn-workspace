@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HeroBannerOrientationConfigs } from '../../models/hero-banner.model';
-import { foodpageHeroBannerConfigs } from './menu.menu-banner.config';
+import { foodpageHeroBannerConfigs } from './menu.hero-banner.config';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +10,7 @@ import { foodpageHeroBannerConfigs } from './menu.menu-banner.config';
 })
 export class MenuComponent implements OnInit {
 
-  public heroBannerTitleLinesTaco: string[] = []; //['Menu', '&', 'Specials'];
+  public heroBannerTitleLinesTaco: string[] = []; // ['Menu', '&', 'Specials'];
   public heroBannerConfigsTaco: HeroBannerOrientationConfigs = foodpageHeroBannerConfigs;
   public heroBannerTitleLinesChicken: string[] = []; //['Menu', '&', 'Specials'];
   public heroBannerConfigsChicken: HeroBannerOrientationConfigs = foodpageHeroBannerConfigs;

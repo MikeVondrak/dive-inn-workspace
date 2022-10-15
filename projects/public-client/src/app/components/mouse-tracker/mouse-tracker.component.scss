@@ -26,6 +26,7 @@ $textMaxWidth: 30vw;
       background-image: var(--imgSrc);
       background-size: var(--bgSize);
       background-position: var(--bgPosition);
+      background-repeat: no-repeat;
       transform: scale(1.15) translateZ(100px);
       transition: transform 0.1s linear;
     }
