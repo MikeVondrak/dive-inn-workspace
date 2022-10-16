@@ -21,7 +21,12 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = {
   textTop: '-15vw',
   textLeft: '56vw',
   textAlign: 'left',
+  textPaddingBottom: '20vh'
 };
+
+const heroBannerConfig_landscape_xl: HeroBannerConfig = {
+  textPaddingBottom: '20vw'
+}
 
 const heroBannerConfig_portrait_zero: HeroBannerConfig = {
   bgPosition: '60% 50%',
@@ -43,12 +48,15 @@ const heroBannerConfig_portrait_sm: HeroBannerConfig = {
 
 const heroBannerConfig_portrait_md: HeroBannerConfig = {
   bgSize: '150%',
+  textPaddingTop: '40vh',
+  textPaddingBottom: '20vw'
 };
 
 export const foodpageHeroBannerConfigs = new Map([
   [Orientations.LANDSCAPE, new Map([
     [BreakpointsEnum.zero, heroBannerConfig_landscape_zero],
     [BreakpointsEnum.md, heroBannerConfig_landscape_md],
+    [BreakpointsEnum.xl, heroBannerConfig_landscape_xl]
   ])
   ],
   [Orientations.PORTRAIT, new Map([
