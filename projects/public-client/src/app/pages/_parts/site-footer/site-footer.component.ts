@@ -31,7 +31,7 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'pageTop',
     },
     {
-      uiLabel: 'Menu',
+      uiLabel: 'Food',
       linkUrl: '/menu',
       fragment: ''
     },

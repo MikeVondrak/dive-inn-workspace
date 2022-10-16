@@ -7,9 +7,64 @@
     .taki-tacos {
       position: relative;
 
+      .content-container {
+        position: absolute;
+        top: 8vw;
+        left: 50vw;
+        .menu {
+          z-index: 1;
+          position: absolute;
+          // top: 12.5vw;
+          left: clamp(100px, 18vw, 230px);
+          padding: 2vw 2vw 2.2vw;
+          background-color: rgba(0,0,0,0.5);
+          transform: skew(8deg, 4deg) rotate(8deg); //skew(15deg, 0deg) rotate(15deg);
+          text-align: center;        
+          h1 {
+            margin: 0 0 1vw;
+            font-size: clamp(1rem, 4vw, 4rem);
+            @include utility.text-double-outline('Menu');
+          }
+          img {
+            width: clamp(100px, 15vw, 220px);
+            box-shadow: 2px 2px 16px 0px #000;
+          }
+        }      
+
+        .specials {
+          z-index: 1;
+          position: absolute;
+          top: 1vw;
+          left: -13vw;
+          padding: 2vw 2vw 3vw;
+          background-color: rgba(0,0,0,0.5);
+          text-align: center;
+          transform: skew(-8deg, -4deg) rotate(-8deg); //skew(15deg, 0deg) rotate(15deg);
+          h1 {
+            margin: 0 0 1vw;
+            font-size: clamp(1rem, 4vw, 4rem);
+            @include utility.text-double-outline('Specials');
+          }
+          img {
+            width: clamp(100px, 26vw, 420px);
+            box-shadow: 2px 2px 16px 0px #000;
+          }
+        }
+      }
+
       app-hero-banner {
         // display: inline-block;
-        min-height: 600px;
+        //min-height: 600px;
+        // ::ng-deep {
+        //   .title-container {
+        //     .title {
+        //       > div {
+        //         background-color: rgba(0,0,0,0.5);
+        //         width: 330px;
+        //       }
+        //     }
+        //   }
+        // }
       }
 
       .gradient-overlay {
@@ -19,97 +74,54 @@
         left: 0;
         right: 0;
         background-image: linear-gradient(105deg, utility.$dive-black 0%, utility.$dive-black 10%, transparent 30%, transparent 70%, utility.$dive-black 95%, utility.$dive-black 100%);
+        pointer-events: none3;
       }
 
-      img {
-        &.logo {
-          position: absolute;
-          top: clamp(2rem, 5vw, 3.5rem);
-          @media (orientation: portrait) {
-            @include utility.media-breakpoint-gte(sm) {
-              top: clamp(4.5rem, 7vw, 7.5rem);
+      .logo-container {
+        position: absolute;
+        top: clamp(2rem, 5vw, 3.5rem);
+        @media (orientation: portrait) {
+          @include utility.media-breakpoint-gte(sm) {
+            top: clamp(4.5rem, 7vw, 7.5rem);
+          }
+        }
+        left: 2vw;
+
+        a {
+          &::after {
+            content: none;
+          }
+        }
+        img {
+          &.logo {            
+            width: 30vw;
+            @media (orientation: portrait) {
+              width: 42vw;
             }
           }
-          left: 2vw;
-          width: 30vw;
-          @media (orientation: portrait) {
-            width: 42vw;
-          }
         }
-
-        &.specials {
-          position: relative;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          width: 80vw;
-          margin-top: 2rem;
-        }
-      }
+        .hours {
+          margin: -6vw 0 0 0;
+          padding: 5vw 2vw 1vw 2vw;
+          color: utility.$dive-red;
+          background: rgba(0,0,0,0.5);
+          text-shadow: 2px 2px 6px utility.$dive-black;
+          border-radius: 50%;
+          text-align: center;
+          font-size: clamp(1rem, 3vw, 3rem);
+          font-weight: bold;
+        }      
+      }      
     }
 
-    img {
-      &.menu {
-        width: 90vw;
-        max-width: 800px;
-        margin-top: 6vw;
-      }
-
-      &.cluck {
-        max-width: 8vw;
-      }
-
-      @include utility.media-breakpoint-gte(md) {
-        &.specials {
-          width: 80vw;
-        }
-
-        &.menu {
-          width: 80vw;
-        }
-      }
-
-      @include utility.media-breakpoint-gte(lg) {
-        &.specials {
-          width: 70vw;
-          margin-top: 0;
-        }
-
-        &.menu {
-          width: 70vw;
-        }
-      }
-
-      @include utility.media-breakpoint-gte(xl) {
-        &.specials {
-          width: 44vw;
-        }
-
-        &.menu {
-          width: 44vw;
-          margin-top: 0vw;
-        }
-      }
-
-      @include utility.media-breakpoint-gte(ws) {
-        &.specials {
-          width: 37vw;
-        }
-
-        &.menu {
-          width: 37vw;
-          //margin-top: 9vw;
-        }
-      }
-
-      @include utility.media-breakpoint-gte(hd) {
-        &.specials {
-          width: 30vw;
-        }
-
-        &.menu {
-          width: 30vw;
-          //margin-top: 7.1vw;
+    .separator {
+      display: flex;
+      justify-content: center;
+      padding: clamp(48px, 8vw, 196px);
+      svg {
+        width: clamp(40px, 10vw, 100px);
+        path {
+          fill: utility.$dive-red;
         }
       }
     }

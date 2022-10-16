@@ -7,8 +7,8 @@ const heroBannerConfig_landscape_zero: HeroBannerConfig = {
   textLeft: '0rem',
   textAlign: 'right',
   textContainerTransform: '',
-  textTransform: 'skew(350deg, 346deg) rotate(0)',
-  textWidth: '50vw',
+  textTransform: 'skew(12deg, 6deg) rotate(12deg)',
+  textWidth: '5vw',
   textSize: '6vw',
   textPaddingTop: '45vh', // NOTE: using this for vertical spacing of bg instead of height on container
   textPaddingBottom: '45vh',
@@ -18,12 +18,9 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = {
   //width: '',
   bgPosition: '50% 50%',
   bgSize: '100%',
-  //textTop: '',
-  //textLeft: '2rem',
+  textTop: '-15vw',
+  textLeft: '56vw',
   textAlign: 'left',
-  textContainerTransform: '',
-  textTransform: '',
-  textWidth: '',
 };
 
 const heroBannerConfig_portrait_zero: HeroBannerConfig = {

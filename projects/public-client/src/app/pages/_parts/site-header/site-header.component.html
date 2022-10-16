@@ -2,7 +2,7 @@
   <div class="logo-container" [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded">
 
     <div *ngIf="isMobileTabletSize$ | async" class="d-logo-container">
-      <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/d_logo.svg">
+      <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/d_logo_outline.svg">
     </div>
 
     <div *ngIf="!(isMobileTabletSize$ | async)" class="full-logo-container">

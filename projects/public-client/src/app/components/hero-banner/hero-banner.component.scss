@@ -31,7 +31,10 @@
       
       // TODO: make this another config param
       min-height: 400px;
-      @include utility.media-breakpoint-gte(lg) {
+      @include utility.media-breakpoint-gte(md) {
+        min-height: 600px;
+      }
+      @include utility.media-breakpoint-gte(xl) {
         min-height: 800px;
       }
 
