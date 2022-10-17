@@ -25,18 +25,21 @@
       width: var(--textWidth);
       top: var(--textTop);
       left: var(--textLeft);
-      padding: clamp(0px, var(--textPaddingTop), 200px) 0 clamp(0px, var(--textPaddingBottom), 200px) 0;
+      padding: clamp(0px, var(--textPaddingTop), 600px) 0 clamp(0px, var(--textPaddingBottom), 600px) 0;
       transform: var(--textContainerTransform);
       text-align: var(--textAlign);
       
       // TODO: make this another config param
-      min-height: 300px;
-      @include utility.media-breakpoint-gte(md) {
-        min-height: 600px;
+      min-height: 400px;
+      @include utility.media-breakpoint-gte(xs) {
+        min-height: 420px;
         padding: var(--textPaddingTop) 0 var(--textPaddingBottom) 0;
       }
       @include utility.media-breakpoint-gte(xl) {
         min-height: 800px;
+      }
+      @include utility.media-breakpoint-gte(ws) {
+        min-height: 1000px;
       }
 
       h1.title {

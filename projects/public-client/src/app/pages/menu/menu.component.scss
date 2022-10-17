@@ -11,50 +11,80 @@
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 30vh;
+        gap: 1vw;
+        top: 30vw;
         left: 40vw;
         @include utility.media-breakpoint-gte(xs) {
           flex-direction: row;
-          top: 12vh;
-          left: 50vw;
+          top: 12vw;
         }
         @include utility.media-breakpoint-gte(md) {
-          top: 20vh;
+          top: clamp(100px, 12vw, 240px);
+          left: 50vw;
         }
         @media (orientation: portrait) {
-          top: 30vh;
+          flex-direction: column;
+          top: clamp(150px, 56vw, 160px);
           left: 20vw;
-          @include utility.media-breakpoint-gte(xs) {
+          @include utility.media-breakpoint-gte(xs) {            
+            top: 34vw;
+            left: 25vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
             flex-direction: row;
-            top: 30vh;
-            left: 38vw;
+            top: 32vw;
+            left: 32vw;
           }
           @include utility.media-breakpoint-gte(md) {
-            top: 30vh;
+            top: clamp(100px, 12vw, 240px);
+            left: 50vw;
           }
         }
 
-        >a {
+        >a {          
           z-index: 1;
           position: relative;
-          width: 24vw;
-          height: 24vw;
+          display: block;
+          width: 60vw;
+          height: 60vw;
+          &:hover {
+            img {
+              box-shadow: 2px 2px 16px 0px utility.$dive-red;
+            }
+          }
+
           @include utility.media-breakpoint-gte(xs) {
+            width: 50vw;
+            height: 50vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
             position: absolute;
+            width: 36vw;
+            height: 36vw;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            width: 24vw;
+            height: 24vw;
           }
           padding: 2vw;
           background-color: rgba(0, 0, 0, 0.5);
           text-align: center;
           h1 {
             margin: 0 0 1vw;
-            font-size: clamp(1rem, 4vw, 3.5rem);
+            font-size: clamp(1rem, 7vw, 3.5rem);
+            @include utility.media-breakpoint-gte(sm) {
+              font-size: clamp(1.5rem, 4vw, 3.5rem);
+            }
           }
         }
 
+        $skew: skew(-4deg, -2deg) rotate(-4deg);
         .menu {
           left: 0vw; //clamp(100px, 18vw, 230px);
-          //transform: skew(8deg, 4deg) rotate(8deg) translateX(51%);
-          transform: skew(-8deg, -4deg) rotate(-8deg) translateX(51%);
+          transform: $skew;
+          @include utility.media-breakpoint-gte(sm) {
+            transform: $skew translateX(51%);
+          }
           text-align: center;
 
           h1 {
@@ -62,15 +92,33 @@
           }
 
           img {
-            //width: 100%;
-            height: 60%;
-            //width: clamp(100px, 15vw, 220px);
+            height: 38vw;
+            @include utility.media-breakpoint-gte(xs) {
+              height: 28vw;
+            }
+            @include utility.media-breakpoint-gte(sm) {
+              height: 20vw;
+            }
+            @include utility.media-breakpoint-gte(md) {
+              height: 12vw;
+            }
             box-shadow: 2px 2px 16px 0px #000;
           }
         }
 
         .specials {
-          transform: skew(-8deg, -4deg) rotate(-8deg) translateX(-51%);
+          height: 50vw;
+          transform: $skew;
+          @include utility.media-breakpoint-gte(xs) {
+            height: 42vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
+            height: 36vw;
+            transform: $skew translateX(-51%);
+          }
+          @include utility.media-breakpoint-gte(md) {
+            height: 24vw;
+          }
 
           h1 {
             @include utility.text-double-outline('Specials');
@@ -119,22 +167,16 @@
         justify-content: center;
 
         @media (orientation: portrait) {
-          @include utility.media-breakpoint-gte(sm) {
+          @include utility.media-breakpoint-gte(md) {
             top: clamp(4.5rem, 7vw, 7.5rem);
           }
         }
-
         left: 2vw;
-
-        a {
-          &::after {
-            content: none;
-          }
-        }
 
         img {
           &.logo {
-            width: clamp(120px, 30vw, 440px);
+            width: clamp(120px, 28vw, 440px);
+            margin: 0 auto;
 
             @media (orientation: portrait) {
               //width: 42vw;
@@ -145,9 +187,13 @@
         .hours {
           z-index: -1;
           position: relative;
-          top: -6.25vw;
+          top: clamp(-90px, -5.5vw, 0px);
           margin: 0;
-          padding: 6vw 2vw 1.5vw;
+          padding: clamp(0px, 5vw, 128px) 2vw 3vw;
+          @include utility.media-breakpoint-gte(sm) {
+            top: clamp(-90px, -5.5vw, 0px);
+            padding: clamp(0px, 5vw, 80px) 1vw 1vw;
+          }
           color: utility.$dive-red;
           background: rgba(0, 0, 0, 0.5);
           text-shadow: 2px 2px 6px utility.$dive-black;

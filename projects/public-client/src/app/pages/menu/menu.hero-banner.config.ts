@@ -30,25 +30,35 @@ const heroBannerConfig_landscape_xl: HeroBannerConfig = {
 
 const heroBannerConfig_portrait_zero: HeroBannerConfig = {
   bgPosition: '60% 50%',
-  bgSize: '200%',
+  bgSize: '290%',
   textLeft: '0rem',
   textAlign: 'right',
   textContainerTransform: '',
   textTransform: 'skew(350deg, 346deg) rotate(0)',
   textWidth: '50vw',
   textSize: '6vw',
-  textPaddingTop: '33vh', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '33vh',
+  textPaddingTop: '90vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '100vw',
 };
-
+const heroBannerConfig_portrait_min: HeroBannerConfig = {
+  bgSize: '260%',
+  textPaddingTop: '80vw',
+  textPaddingBottom: '90vw',
+};
+const heroBannerConfig_portrait_xs: HeroBannerConfig = {
+  bgSize: '180%',
+  textPaddingTop: '75vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '70vw',
+};
 const heroBannerConfig_portrait_sm: HeroBannerConfig = {
-  textPaddingTop: '40vh', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '40vh',
+  bgSize: '160%',
+  textPaddingTop: '40vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '50vw',
 };
 
 const heroBannerConfig_portrait_md: HeroBannerConfig = {
   bgSize: '150%',
-  textPaddingTop: '40vh',
+  textPaddingTop: '40vw',
   textPaddingBottom: '20vw'
 };
 
@@ -61,6 +71,8 @@ export const foodpageHeroBannerConfigs = new Map([
   ],
   [Orientations.PORTRAIT, new Map([
     [BreakpointsEnum.zero, heroBannerConfig_portrait_zero],
+    [BreakpointsEnum.min, heroBannerConfig_portrait_min],
+    [BreakpointsEnum.xs, heroBannerConfig_portrait_xs],
     [BreakpointsEnum.sm, heroBannerConfig_portrait_sm],
     [BreakpointsEnum.md, heroBannerConfig_portrait_md],
   ])],
