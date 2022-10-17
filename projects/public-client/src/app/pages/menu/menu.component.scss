@@ -230,50 +230,66 @@
 
       .cluck {
         position: absolute;
-        top: 5vw;
+        top: 4vw;
+        width: 100%;
         max-width: 22vw;
-        left: 35vw;
+        left: 32vw;
         text-align: center;
         text-shadow: 2px 2px 2px #000;
 
         &::after {
           content: none;
-        }
-
-        >* {
-          width: 30vw;
-        }
-
-        img {
-          display: block;
-        }
+        }        
 
         a {
           position: relative;
 
-          >div {
-            position: absolute;
-            top: 4vw;
-            left: 0;
-            right: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h2 {
-              margin: 0;
-              padding-bottom: 3vw;
-              font-size: 3.5vw;
-              font-family: 'Anton', sans-serif;
+          .cluck-logo-bg {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2vw;
+            border-radius: 50%;
+            img {
+              position: relative;
+              left: -10px;
+              top: 10px;
+              display: block;
             }
           }
+
+          // >div {
+          //   position: absolute;
+          //   top: 4vw;
+          //   left: 0;
+          //   right: 0;
+          //   display: flex;
+          //   flex-direction: column;
+          //   justify-content: center;
+          //   align-items: center;
+
+          //   h2 {
+          //     margin: 0;
+          //     padding-bottom: 3vw;
+          //     font-size: 3.5vw;
+          //     font-family: 'Anton', sans-serif;
+          //   }
+          // }
         }
 
+      }
+      $skew: 2deg;
+      .tagline-container {
+        position: absolute;
+        width: 36vw;
+        bottom: 6vw;
+        right: 3vw;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: skew(-$skew * 2, -$skew) rotate(-$skew * 2);
+
         p {
-          width: 24vw;
-          margin: 0 auto;
-          font-size: 1.75vw;
+          margin: 0;
+          padding: 3vw 3.5vw;
+          font-size: 2.5vw;
+          //transform: skew($skew * 2, $skew) rotate($skew * 2);
         }
       }
     }
