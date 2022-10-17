@@ -41,10 +41,13 @@
           }
         }
 
-        >a {          
+        .content {          
           z-index: 1;
           position: relative;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
           width: 60vw;
           height: 60vw;
           &:hover {
@@ -52,6 +55,7 @@
               box-shadow: 2px 2px 16px 0px utility.$dive-red;
             }
           }
+          cursor: pointer;
 
           @include utility.media-breakpoint-gte(xs) {
             width: 50vw;
@@ -69,11 +73,29 @@
           padding: 2vw;
           background-color: rgba(0, 0, 0, 0.5);
           text-align: center;
+          //transition: all 1s ease;          
+
           h1 {
-            margin: 0 0 1vw;
+            margin: 0 0 clamp(0px, 2vw, 24px);
             font-size: clamp(1rem, 7vw, 3.5rem);
             @include utility.media-breakpoint-gte(sm) {
-              font-size: clamp(1.5rem, 4vw, 3.5rem);
+              font-size: clamp(1.5rem, 3vw, 3.5rem);
+            }
+          }
+
+          &.fullscreen {
+            z-index: 11;
+            position: fixed;
+            overflow-y: auto;
+            width: 100vw;
+            height: 100%;
+            top: 0;
+            left: 0;
+            
+            transform: translateX(0) skew(0deg, 0deg);
+
+            img {
+              width: 90%;
             }
           }
         }
@@ -92,15 +114,15 @@
           }
 
           img {
-            height: 38vw;
+            width: 38vw;
             @include utility.media-breakpoint-gte(xs) {
-              height: 28vw;
+              width: 28vw;
             }
             @include utility.media-breakpoint-gte(sm) {
-              height: 20vw;
+              width: 20vw;
             }
             @include utility.media-breakpoint-gte(md) {
-              height: 12vw;
+              width: 8vw;
             }
             box-shadow: 2px 2px 16px 0px #000;
           }
@@ -278,26 +300,7 @@
               display: block;
             }
           }
-
-          // >div {
-          //   position: absolute;
-          //   top: 4vw;
-          //   left: 0;
-          //   right: 0;
-          //   display: flex;
-          //   flex-direction: column;
-          //   justify-content: center;
-          //   align-items: center;
-
-          //   h2 {
-          //     margin: 0;
-          //     padding-bottom: 3vw;
-          //     font-size: 3.5vw;
-          //     font-family: 'Anton', sans-serif;
-          //   }
-          // }
         }
-
       }
       $skew: 2deg;
       .tagline-container {

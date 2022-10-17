@@ -1,14 +1,14 @@
 <div class="main">
   <div class="taki-tacos">
     <div class="content-container">
-      <a class="menu" href="https://takitakos.com/" target="_blank">
+      <button class="content menu" [class.fullscreen]="fullscreenMenu" (click)="onClick(MenuContentItemsEnum.MENU)">
         <h1>Menu</h1>
         <img src="assets/images/menu/Dive_Inn_Menu.jpg" />
-      </a>
-      <a class="specials" href="https://takitakos.com/" target="_blank">
+      </button>
+      <button class="content specials" [class.fullscreen]="fullscreenSpecials" (click)="onClick(MenuContentItemsEnum.SPECIALS)">
         <h1>Specials</h1>
         <img src="assets/images/specials/Taki Takos TNT $8.50.jpg" />
-      </a>
+      </button>
     </div>
     <app-hero-banner 
       imgSrc="url(assets/images/menu/tacos_stock_img.jpg)" 
@@ -44,13 +44,6 @@
     <div class="tagline-container">
       <p>Taste some of Denver's best fried chicken at our friends next door!</p>
     </div> 
-  </div>
-
-  <div class="flyers">
-    <!-- <img id="specials" class="specials" src="assets/images/specials/Taki Takos TNT $8.50.jpg" /> -->
-    <!-- <a href="https://takitakos.com/" target="_blank">
-      <img id="menu" class="menu" src="assets/images/menu/Dive_Inn_Menu.jpg" />
-    </a> -->
   </div>
 
 </div>
