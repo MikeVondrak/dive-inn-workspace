@@ -230,10 +230,25 @@
 
       .cluck {
         position: absolute;
-        top: 4vw;
         width: 100%;
-        max-width: 22vw;
-        left: 32vw;
+        max-width: 52vw;
+        top: 16vw;
+        left: 2vw;
+        @include utility.media-breakpoint-gte(sm) {
+          max-width: 38vw;
+          left: 15vw;
+          top: 2vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          max-width: 28vw;
+          left: 20vw;
+          top: 2vw;
+        }
+        @include utility.media-breakpoint-gte(xl) {
+          max-width: 22vw;
+          left: 32vw;
+          top: 4vw;
+        }
         text-align: center;
         text-shadow: 2px 2px 2px #000;
 
@@ -246,12 +261,20 @@
 
           .cluck-logo-bg {
             background-color: rgba(0, 0, 0, 0.5);
-            padding: 2vw;
+            padding: 5vw;
+            box-shadow: 0px 0px 2vw 2vw rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+            &:hover {
+              box-shadow: 0px 0px 3vw 1vw utility.$dive-yellow;
+            }
+            @include utility.media-breakpoint-gte(md) {
+              padding: 2vw;
+            }
             border-radius: 50%;
             img {
               position: relative;
-              left: -10px;
-              top: 10px;
+              left: -1vw;
+              top: 1vw;
               display: block;
             }
           }
@@ -279,7 +302,10 @@
       $skew: 2deg;
       .tagline-container {
         position: absolute;
-        width: 36vw;
+        width: 66vw;
+        @include utility.media-breakpoint-gte(md) {
+          width: 36vw;
+        }
         bottom: 6vw;
         right: 3vw;
         background-color: rgba(0, 0, 0, 0.5);
@@ -288,7 +314,8 @@
         p {
           margin: 0;
           padding: 3vw 3.5vw;
-          font-size: 2.5vw;
+          font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+          font-weight: bold;
           //transform: skew($skew * 2, $skew) rotate($skew * 2);
         }
       }
