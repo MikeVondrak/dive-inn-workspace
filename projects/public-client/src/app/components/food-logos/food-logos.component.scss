@@ -163,9 +163,10 @@ $takiLogoSizesPortrait: 33vw, 25vw, 15vw;
 
     .title-callout-content {
       display: flex;
-
+      
       a {
         display: block;
+        width: 100%;
 
         &::after {
           content: none;
@@ -193,30 +194,30 @@ $takiLogoSizesPortrait: 33vw, 25vw, 15vw;
         }
 
         img {
-          max-width: nth($takiLogoSizesLandscape, 1);
+          width: nth($takiLogoSizesLandscape, 1);
           max-height: nth($takiLogoSizesLandscape, 1);
 
           @include utility.media-breakpoint-gte(sm) {
-            max-width: nth($takiLogoSizesLandscape, 2);
+            width: nth($takiLogoSizesLandscape, 2);
             max-height: nth($takiLogoSizesLandscape, 2);
           }
 
           @include utility.media-breakpoint-gte(md) {
-            max-width: nth($takiLogoSizesLandscape, 3);
+            width: nth($takiLogoSizesLandscape, 3);
             max-height: nth($takiLogoSizesLandscape, 3);
           }
 
           @media (orientation: portrait) {
-            max-width: nth($takiLogoSizesPortrait, 1);
+            width: nth($takiLogoSizesPortrait, 1);
             max-height: nth($takiLogoSizesPortrait, 1);
 
             @include utility.media-breakpoint-gte(sm) {
-              max-width: nth($takiLogoSizesPortrait, 2);
+              width: nth($takiLogoSizesPortrait, 2);
               max-height: nth($takiLogoSizesPortrait, 2);
             }
 
             @include utility.media-breakpoint-gte(md) {
-              max-width: nth($takiLogoSizesPortrait, 3);
+              width: nth($takiLogoSizesPortrait, 3);
               max-height: nth($takiLogoSizesPortrait, 3);
             }
           }
@@ -241,30 +242,30 @@ $takiLogoSizesPortrait: 33vw, 25vw, 15vw;
         }
 
         img {
-          max-width: nth($cluckLogoSizesLandscape, 1);
+          width: nth($cluckLogoSizesLandscape, 1);
           max-height: nth($cluckLogoSizesLandscape, 1);
 
           @include utility.media-breakpoint-gte(sm) {
-            max-width: nth($cluckLogoSizesLandscape, 2);
+            width: nth($cluckLogoSizesLandscape, 2);
             max-height: nth($cluckLogoSizesLandscape, 2);
           }
 
           @include utility.media-breakpoint-gte(md) {
-            max-width: nth($cluckLogoSizesLandscape, 3);
+            width: nth($cluckLogoSizesLandscape, 3);
             max-height: nth($cluckLogoSizesLandscape, 3);
           }
 
           @media (orientation: portrait) {
-            max-width: nth($cluckLogoSizesPortrait, 1);
+            width: nth($cluckLogoSizesPortrait, 1);
             max-height: nth($cluckLogoSizesPortrait, 1);
 
             @include utility.media-breakpoint-gte(sm) {
-              max-width: nth($cluckLogoSizesPortrait, 2);
+              width: nth($cluckLogoSizesPortrait, 2);
               max-height: nth($cluckLogoSizesPortrait, 2);
             }
 
             @include utility.media-breakpoint-gte(md) {
-              max-width: nth($cluckLogoSizesPortrait, 3);
+              width: nth($cluckLogoSizesPortrait, 3);
               max-height: nth($cluckLogoSizesPortrait, 3);
             }
           }
