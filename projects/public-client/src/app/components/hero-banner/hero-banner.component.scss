@@ -39,7 +39,7 @@
         min-height: 800px;
       }
       @include utility.media-breakpoint-gte(ws) {
-        min-height: 1000px;
+        min-height: 800px;
       }
 
       h1.title {
