@@ -45,13 +45,13 @@ const heroBannerConfig_portrait_zero: HeroBannerConfig = {
 };
 const heroBannerConfig_portrait_min: HeroBannerConfig = {
   bgSize: '260%',
-  textPaddingTop: '80vw',
+  textPaddingTop: '90vw',
   textPaddingBottom: '90vw',
 };
 const heroBannerConfig_portrait_xs: HeroBannerConfig = {
-  bgSize: '180%',
+  bgSize: '220%',
   textPaddingTop: '75vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '70vw',
+  textPaddingBottom: '80vw',
 };
 const heroBannerConfig_portrait_sm: HeroBannerConfig = {
   bgSize: '160%',

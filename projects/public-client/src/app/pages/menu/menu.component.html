@@ -5,23 +5,22 @@
         <h1>Menu</h1>
         <img src="assets/images/menu/Dive_Inn_Menu.jpg" />
       </button>
-      <button class="content specials" [class.fullscreen]="fullscreenSpecials" (click)="onClick(MenuContentItemsEnum.SPECIALS)">
+      <button class="content specials" [class.fullscreen]="fullscreenSpecials"
+        (click)="onClick(MenuContentItemsEnum.SPECIALS)">
         <h1>Specials</h1>
         <img src="assets/images/specials/Taki Takos TNT $8.50.jpg" />
       </button>
     </div>
-    <app-hero-banner 
-      imgSrc="url(assets/images/menu/tacos_stock_img.jpg)" 
-      [textLines]="heroBannerTitleLinesTaco"
-      [orientationConfigs]="heroBannerConfigsTaco"      
-    >
-    </app-hero-banner>
-    <div class="gradient-overlay"></div>
+    <div class="gradient-container">
+      <app-hero-banner imgSrc="url(assets/images/menu/tacos_stock_img.jpg)" [textLines]="heroBannerTitleLinesTaco"
+        [orientationConfigs]="heroBannerConfigsTaco">
+      </app-hero-banner>
+      <div class="gradient-overlay"></div>
+    </div>
     <div class="logo-container">
       <img class="logo" src="assets/images/Taki Takos Logo Transparent Shadow Girl.png" />
-      <p class="hours">Open until 9pm</p>      
+      <p class="hours">Open until 9pm</p>
     </div>
-    <!-- <img class="specials" src="assets/images/specials/Taki Takos TNT $8.50.jpg" /> -->
   </div>
 
   <div class="separator">
@@ -29,21 +28,18 @@
   </div>
 
   <div class="cluck-container">
-    <app-hero-banner 
-      imgSrc="url(assets/images/menu/chicken.jpg)" 
-      [textLines]="heroBannerTitleLinesChicken"
-      [orientationConfigs]="heroBannerConfigsChicken"
-    ></app-hero-banner>
+    <app-hero-banner imgSrc="url(assets/images/menu/chicken.jpg)" [textLines]="heroBannerTitleLinesChicken"
+      [orientationConfigs]="heroBannerConfigsChicken"></app-hero-banner>
     <div class="cluck">
       <a href="http://cluckchickenden.com/" target="_blank">
         <div class="cluck-logo-bg">
           <img id="cluck" src="assets/images/Cluck_Chicken_with_Text.svg" />
         </div>
       </a>
-    </div>   
+    </div>
     <div class="tagline-container">
       <p>Taste some of Denver's best fried chicken at our friends next door!</p>
-    </div> 
+    </div>
   </div>
 
 </div>
