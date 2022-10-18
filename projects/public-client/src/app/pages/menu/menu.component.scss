@@ -289,13 +289,20 @@ $zoomAnimationTime: 0.7s;
         }
         @include utility.media-breakpoint-gte(md) {
           max-width: 28vw;
-          left: 20vw;
+          left: 30vw;
           top: 2vw;
         }
         @include utility.media-breakpoint-gte(xl) {
           max-width: 22vw;
-          left: 32vw;
-          top: 4vw;
+          left: 33.3vw;
+          top: 1.5vw;
+        }
+        @media (orientation: portrait) {
+          @include utility.media-breakpoint-gte(md) {
+            max-width: 28vw;
+            left: 22vw;
+            top: 1vw;
+          }
         }
         text-align: center;
         text-shadow: 2px 2px 2px #000;
@@ -310,15 +317,16 @@ $zoomAnimationTime: 0.7s;
           .cluck-logo-bg {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 5vw;
-            box-shadow: 0px 0px 2vw 2vw rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.5);
             transition: all 0.2s ease;
             &:hover {
               box-shadow: 0px 0px 3vw 1vw utility.$dive-yellow;
             }
             @include utility.media-breakpoint-gte(md) {
-              padding: 2vw;
+              padding: 3vw;
             }
             border-radius: 50%;
+            //border: 2px solid utility.$dive-yellow;
             img {
               position: relative;
               left: -1vw;
