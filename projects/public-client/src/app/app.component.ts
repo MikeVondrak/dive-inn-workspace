@@ -45,13 +45,11 @@ export class AppComponent {
   private watchscrollToFragment() {
     // this.route.fragment.subscribe(fragment => this.routeFragment = fragment);
     // this.router.events.subscribe(event => { if (event instanceof NavigationEnd) { this.scrollToElement(); } });
-    combineLatest([
-      //this.router.events.pipe(filter(event => event instanceof NavigationEnd)),
-      this.route.fragment,
-    ]).subscribe(( fragment) => {
-      const f = fragment[0];
-      console.log('ffffffffffff', f);
-      this.scrollToElement(f);
+    this.route.fragment.subscribe((fragment) => {;
+      console.log('app.component fragment: ', fragment);
+      if (!!fragment) {
+        this.scrollToElement(fragment);
+      }
     });
 
     // this.router.events.pipe(
@@ -63,11 +61,13 @@ export class AppComponent {
   }
 
   private scrollToElement(routeFragment: string | null) {
-    console.log('!!!!!!!!!!', routeFragment);
+    
+    // TODO: need a setTimeout to wait 1 cycle here, why?
     setTimeout(() => {
       // try to scroll element into view if fragment exists
-    if (routeFragment) {
-      const selector = `#${routeFragment}`;
+      if (routeFragment) {
+        const selector = `#${routeFragment}`;
+        console.log('app.component scrollToElement: ', selector);
       try {
         const el = this.renderer.selectRootElement(selector, true); // preserve contents when selecting
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -75,7 +75,6 @@ export class AppComponent {
         console.error(err);
       }
     }
-    }, 300); // wait for route change animation to finish or dom to load?, scroll won't do anything if dom is not ready
-    // @TODO - better way to do this?
+    }, 0);
   }
 }

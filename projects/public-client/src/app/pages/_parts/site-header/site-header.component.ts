@@ -21,7 +21,7 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
   public navItems: NavItem[] = [
     {url: '/home', title: 'Home', filledState: false},
     {url: '/menu', title: 'Food', filledState: false},
-    {url: '/inside', title: 'Events', filledState: false},
+    {url: '/events', title: 'Events', filledState: false},
     {url: '/find-us', title: 'Find Us', filledState: false},
   ]
 

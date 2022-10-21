@@ -43,7 +43,7 @@ export class AnimateViewportOverlayService {
       this.router.navigateByUrl(this.nextRoute);
     } else {
       
-      console.warn('changeRoute skipped');
+      console.warn('changeRoute skipped', );
       
     }
   }

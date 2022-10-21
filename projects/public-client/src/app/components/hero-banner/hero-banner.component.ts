@@ -22,15 +22,15 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   @HostBinding('style.--height') height: string = '';
   @HostBinding('style.--textWidth') textWidth: string = '';;
   @HostBinding('style.--textTop') textTop: string = '';
-  @HostBinding('style.--textLeft') textLeft: string = '';
-  @HostBinding('style.--textContainerTransform') textContainerTransform: string = '';
-  @HostBinding('style.--textTransform') textTransform: string = '';
-  @HostBinding('style.--textAlign') textAlign: string = '';
-  @HostBinding('style.--textSize') textSize: string = '';
-  @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
-  @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
+    @HostBinding('style.--textLeft') textLeft: string = '';
+    @HostBinding('style.--textContainerTransform') textContainerTransform: string = '';
+    @HostBinding('style.--textTransform') textTransform: string = '';
+    @HostBinding('style.--textAlign') textAlign: string = '';
+    @HostBinding('style.--textSize') textSize: string = '';
+    @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
+    @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
 
-  public bgSize: string | undefined = '';
+    public bgSize: string | undefined = '';
   public bgPosition: string | undefined = '';
   
   private destroy$ = new Subject<void>();
@@ -44,7 +44,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.viewportService.viewportState$.pipe(takeUntil(this.destroy$)).subscribe(state => {
       const bp: BreakpointsEnum = this.viewportService.getCurrentBreakpointEnum();            
       const cfg = this.getConfigForBreakpoint(state.currentBreakpoint, state.orientation);
-      console.log('---------', {cfg}, state.orientation, bp);
       if (cfg) {
         this.setPropsForBreakpoints(cfg);
       }
@@ -83,8 +82,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.textSize = bpConfig?.textSize || '';
     this.textPaddingTop = bpConfig?.textPaddingTop || '';
     this.textPaddingBottom = bpConfig?.textPaddingBottom || '';
- 
-    console.log('+++++ SETTING!!', {bpConfig}, this.textPaddingTop);
 
     this.cdr.markForCheck();
   }

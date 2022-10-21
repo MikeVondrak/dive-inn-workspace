@@ -42,8 +42,8 @@ export class SiteFooterComponent implements OnInit {
     },
     {
       uiLabel: 'Events',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/events',
+      fragment: '',
     },
   ];
   private _links2 = [

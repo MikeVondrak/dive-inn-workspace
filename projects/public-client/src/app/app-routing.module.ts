@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EventsComponent } from './pages/events/events.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InsideComponent } from './pages/inside/inside.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -11,8 +12,8 @@ const routes: Routes = [
     data: { animation: 'fadeIn1' } 
   },
   { 
-    path: 'inside',
-    component: InsideComponent,
+    path: 'events',
+    component: EventsComponent,
     data: {
       animation: 'fadeIn2'
     }

@@ -30,6 +30,12 @@ export class SiteNavComponent implements OnInit {
         if (currentRoute === '/') {
           currentRoute = '/home';
         }
+        let fragmentIndex = currentRoute.indexOf('#');
+        if (fragmentIndex > 0) {
+          currentRoute = currentRoute.substring(0, fragmentIndex);
+        }
+        console.log('currentRoute', currentRoute);
+
         const initialSelection = this.navItems.find(navItem => navItem.url === currentRoute);
         this.selectPage(initialSelection);
       }

@@ -9,12 +9,14 @@ import { InsideComponent } from './inside/inside.component';
 import { MenuComponent } from './menu/menu.component';
 import { SitePartsModule } from './_parts/site-parts.module';
 import { ComponentsModule } from '../components/components.module';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     InsideComponent,
     MenuComponent,
+    EventsComponent,
   ],
   imports: [
     CommonModule,
