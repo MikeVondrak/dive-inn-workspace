@@ -87,7 +87,7 @@ $zoomAnimationTime: 0.7s;
           padding: 2vw;
           background-color: rgba(0, 0, 0, 0.5);
           text-align: center;
-          transition: all $zoomAnimationTime ease-in-out;
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
 
           &:hover {
             img {
@@ -103,7 +103,7 @@ $zoomAnimationTime: 0.7s;
             }
           }
           img {
-            transition: all $zoomAnimationTime ease-in-out;
+            transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
           }
 
           &.fullscreen {

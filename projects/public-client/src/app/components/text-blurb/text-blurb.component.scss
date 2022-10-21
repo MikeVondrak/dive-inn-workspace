@@ -36,7 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 4vw;
+    padding-bottom: 16vw;
 
     svg {
       width: 90vw;
@@ -58,6 +58,10 @@
     }
 
     @include utility.media-breakpoint-gte(sm) {
+      max-width: 72vw;
+      font-size: 3.25vw;
+    }
+    @include utility.media-breakpoint-gte(md) {
       max-width: 64vw;
       font-size: 2.75vw;
     }
@@ -71,13 +75,15 @@
     span {
       color: utility.$dive-yellow;
 
-      &.titleFont {
-        color: utility.$dive-black;
+      &.title-font {
+        margin-top: clamp(1rem, 3vw, 3rem);
         display: block;
-        font-family: 'Bevan', serif;
-        @include utility.text-double-outline('Dive Inn');
         font-size: 6vw;
         line-height: 1.6;
+        font-family: 'Bevan', serif;
+        transform: skew(-4deg, -7deg);
+        color: utility.$dive-black;
+        @include utility.text-double-outline('Dive Inn');
 
         @include utility.media-breakpoint-gte(xs) {
           font-size: 5vw;
