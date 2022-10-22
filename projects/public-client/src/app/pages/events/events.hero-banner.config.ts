@@ -1,7 +1,9 @@
 import { BreakpointsEnum, Orientations } from "@dive-inn-lib";
 import { HeroBannerConfig } from "../../models/hero-banner.model";
 
-const heroBannerConfig_landscape_zero: HeroBannerConfig = {
+/****************** LANDSCAPE *******************/
+
+const landscape_zero: HeroBannerConfig = {
   bgPosition: '60% 25%',
   bgSize: '100%',
   textLeft: '0rem',
@@ -13,7 +15,7 @@ const heroBannerConfig_landscape_zero: HeroBannerConfig = {
   textPaddingTop: '45vw', // NOTE: using this for vertical spacing of bg instead of height on container
   textPaddingBottom: '45vw',
 };
-const heroBannerConfig_landscape_md: HeroBannerConfig = {
+const landscape_md: HeroBannerConfig = {
   //height: '',
   //width: '',
   bgPosition: '50% 50%',
@@ -24,63 +26,68 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = {
   textPaddingTop: '30vw',
   textPaddingBottom: '30vw'
 };
-const heroBannerConfig_landscape_lg: HeroBannerConfig = {
+const landscape_lg: HeroBannerConfig = {
   textPaddingBottom: '20vw'
 }
-const heroBannerConfig_landscape_xl: HeroBannerConfig = {
+const landscape_xl: HeroBannerConfig = {
   textPaddingBottom: '20vw'
 }
 
-const heroBannerConfig_portrait_zero: HeroBannerConfig = {
+/******************** PORTRAIT *********************/
+
+const portrait_zero: HeroBannerConfig = {
   bgPosition: '60% 18%',
   bgSize: '400%',
-  textLeft: '0rem',
-  textAlign: 'right',
+  textLeft: '25vw',
+  textAlign: 'center',
   textContainerTransform: '',
-  textTransform: 'skew(350deg, 346deg) rotate(0)',
+  textTransform: 'skew(-12deg, -6deg) rotate(0)',
   textWidth: '50vw',
   textSize: '6vw',
-  textPaddingTop: '100vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '100vw',
+  textPaddingTop: '90vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '90vw',
 };
-const heroBannerConfig_portrait_min: HeroBannerConfig = { // 320px
+const portrait_min: HeroBannerConfig = { // 320px
   bgPosition: '62%, 18%',
   bgSize: '360%',
   textPaddingTop: '90vw',
   textPaddingBottom: '90vw',
 };
-const heroBannerConfig_portrait_xs: HeroBannerConfig = { // 440px
+const portrait_xs: HeroBannerConfig = { // 440px
   bgPosition: '63%, 18%',
   bgSize: '320%',
   textPaddingTop: '65vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '90vw',
+  textPaddingBottom: '70vw',
 };
-const heroBannerConfig_portrait_sm: HeroBannerConfig = { // 600px
+const portrait_sm: HeroBannerConfig = { // 600px
   bgSize: '280%',
-  bgPosition: '50% 32%',
-  textPaddingTop: '40vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '60vw',
+  bgPosition: '65% 32%',
+  textPaddingTop: '30vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '40vw',
 };
 
-const heroBannerConfig_portrait_md: HeroBannerConfig = { // 840px
+const portrait_md: HeroBannerConfig = { // 840px
   bgSize: '220%',
   bgPosition: '69% 24%',
-  textPaddingTop: '40vw',
-  textPaddingBottom: '50vw'
+  textPaddingTop: '20vw',
+  textPaddingBottom: '25vw'
 };
+
+/************* EXPORT ***************/
 
 export const eventsPageHeroBannerConfigs = new Map([
   [Orientations.LANDSCAPE, new Map([
-    [BreakpointsEnum.zero, heroBannerConfig_landscape_zero],
-    [BreakpointsEnum.md, heroBannerConfig_landscape_md],
-    [BreakpointsEnum.xl, heroBannerConfig_landscape_xl]
+    [BreakpointsEnum.zero, landscape_zero],
+    [BreakpointsEnum.md, landscape_md],
+    [BreakpointsEnum.lg, landscape_lg],
+    [BreakpointsEnum.xl, landscape_xl]
   ])
   ],
   [Orientations.PORTRAIT, new Map([
-    [BreakpointsEnum.zero, heroBannerConfig_portrait_zero],
-    [BreakpointsEnum.min, heroBannerConfig_portrait_min],
-    [BreakpointsEnum.xs, heroBannerConfig_portrait_xs],
-    [BreakpointsEnum.sm, heroBannerConfig_portrait_sm],
-    [BreakpointsEnum.md, heroBannerConfig_portrait_md],
+    [BreakpointsEnum.zero, portrait_zero],
+    [BreakpointsEnum.min, portrait_min],
+    [BreakpointsEnum.xs, portrait_xs],
+    [BreakpointsEnum.sm, portrait_sm],
+    [BreakpointsEnum.md, portrait_md],
   ])],
 ]);

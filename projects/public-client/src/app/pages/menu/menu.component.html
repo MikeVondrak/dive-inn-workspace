@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="taki-tacos">
+  <div id="taki" class="taki-tacos">
     <div class="content-container">
       <button class="content menu" [class.fullscreen]="fullscreenMenu" (click)="onClick(MenuContentItemsEnum.MENU)">
         <h1>Menu</h1>
@@ -28,8 +28,14 @@
   </div>
 
   <div id="cluck" class="cluck-container">
-    <app-hero-banner imgSrc="url(assets/images/menu/chicken.jpg)" [textLines]="heroBannerTitleLinesChicken"
-      [orientationConfigs]="heroBannerConfigsChicken"></app-hero-banner>
+    <div class="gradient-container">
+      <app-hero-banner imgSrc="url(assets/images/menu/chicken.jpg)" 
+        [textLines]="heroBannerTitleLinesChicken"
+        [orientationConfigs]="heroBannerConfigsChicken"
+      >
+      </app-hero-banner>
+      <div class="gradient-overlay"></div>
+    </div>
     <div class="cluck">
       <a href="http://cluckchickenden.com/" target="_blank">
         <div class="cluck-logo-bg">

@@ -1,0 +1,48 @@
+@use '../../scss/utility';
+
+$zoomAnimationTime: 0.7s;
+
+:host {
+  .main {
+    .hero-banner-container {
+      position: relative;
+
+      app-hero-banner {
+        .hero-banner-content {
+
+          .content {
+            z-index: 1;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;            
+            padding: 2vw;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+            cursor: pointer;
+
+            top: 60vw;
+            left: 25vw;
+            width: 50vw;
+            //height: 50vw;
+            @include utility.media-breakpoint-gte(xs) {
+            }
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      .logo {
+        position: absolute;
+        width: clamp(120px, 28vw, 440px);
+        top: 6vw;
+        left: 1vw;
+      }
+    }
+  }
+}

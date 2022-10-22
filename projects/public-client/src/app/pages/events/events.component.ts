@@ -13,9 +13,22 @@ export class EventsComponent implements OnInit {
 
   public heroBannerConfigs: HeroBannerOrientationConfigs = eventsPageHeroBannerConfigs;
   public heroBannerTitleLines: string[] = [
-    'Local Events',
-    'Live Sports',
-    '& Games',
+    //'Local Music',
+    //'Live Sports',
+    //'& Specials',
+    //'Themes',
+    //'Parties',
+    //'Bashes',
+    //'Blowouts',
+    //'Festivities',
+    //'Fiestas',
+    //'Holidays',
+    //'Celebrations',
+    //'Competitions',
+    //'Games',
+    //'Prizes',
+    //'Giveaways',
+    //'Challenges',
   ];
 
   constructor() { }
