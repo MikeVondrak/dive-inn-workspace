@@ -30,10 +30,15 @@ export class EventsComponent implements OnInit {
     //'Giveaways',
     //'Challenges',
   ];
+  public fullscreen: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick() {
+    this.fullscreen = !this.fullscreen;
   }
 
 }

@@ -39,6 +39,9 @@
   </div>
   <app-site-nav [navItems]="navItems" (onNavExpand)="navExpanded($event)"></app-site-nav>
   <!-- <div class="boat-cam"><span>boat cam</span></div> -->
+  <div class="bp">
+    {{ (bp$ | async)?.orientation }} , {{ (bp$ | async)?.currentBreakpoint }}
+  </div>
 </header>
 
 <ng-template #LogoSvg>

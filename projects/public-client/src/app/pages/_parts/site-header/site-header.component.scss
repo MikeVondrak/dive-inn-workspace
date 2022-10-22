@@ -124,12 +124,17 @@ $verticalGap: 0.75rem;
       //   }
       // }
     }
-
+    
     app-site-nav {
       position: absolute;
       display: inline-flex;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    .bp {
+      position: absolute;
+      background-color: black;
     }
   }
 
@@ -152,4 +157,5 @@ $verticalGap: 0.75rem;
     font-size: math.div($boat-cam-size, 4);
     text-align: center;
   }
+
 }

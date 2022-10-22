@@ -7,39 +7,99 @@ $zoomAnimationTime: 0.7s;
     .hero-banner-container {
       position: relative;
 
-      app-hero-banner {
-        .hero-banner-content {
+      app-hero-banner {        
+      }
+      .hero-banner-content {
 
-          .content {
-            z-index: 1;
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;            
-            padding: 2vw;
-            background-color: rgba(0, 0, 0, 0.5);
-            text-align: center;
-            transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
-            cursor: pointer;
+        .content {
+          z-index: 1;
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;            
+          padding: 2vw;
+          background-color: rgba(0, 0, 0, 0.5);
+          text-align: center;
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+          cursor: pointer;
 
-            top: 60vw;
-            left: 25vw;
-            width: 50vw;
-            //height: 50vw;
+          top: 25vw;
+          left: 35vw;
+          width: 30vw;
+          @include utility.media-breakpoint-gte(min) {
+            //top: 60vw;
+          }
+          @include utility.media-breakpoint-gte(xs) {
+            //top: 50vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
+            //width: 34vw;
+            //left: 33vw;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            // width: 26vw;
+            // left: 37vw;
+            top: 13vw;
+          }
+          @include utility.media-breakpoint-gte(lg) {            
+            width: 20vw; //clamp(0vw, 20vw, 400px);
+            left: 40vw;
+          }
+
+          @media (orientation: portrait) {
+            top: 80vw;
+            left: 30vw;
+            width: 40vw;
+            @include utility.media-breakpoint-gte(min) {
+              top: 60vw;
+            }
             @include utility.media-breakpoint-gte(xs) {
+              top: 50vw;
+            }
+            @include utility.media-breakpoint-gte(sm) {
+              width: 34vw;
+              left: 33vw;
+            }
+            @include utility.media-breakpoint-gte(md) {
+              width: 26vw;
+              left: 37vw;
+              top: 33vw;
+            }
+            @include utility.media-breakpoint-gte(lg) {              
             }
           }
 
-          img {
-            width: 100%;
+          &.fullscreen {
+            z-index: 11;
+            position: absolute;
+            overflow-y: auto;
+            width: 100vw;
+            height: 120vw;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            flex-shrink: 0;
+            
+            // transform: translateX(0) skew(0deg, 0deg);
+            
+            img {
+              width: 90%;              
+            }
           }
+        }
+
+        img {
+          width: 100%;
+          max-width: 800px;
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
         }
       }
 
       .logo {
+        z-index: 2;
         position: absolute;
-        width: clamp(120px, 28vw, 440px);
+        width: clamp(120px, 24vw, 400px);
         top: 6vw;
         left: 1vw;
       }

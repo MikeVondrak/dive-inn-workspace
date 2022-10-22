@@ -24,8 +24,8 @@ export const breakpoints: Map<BreakpointsEnum, string> = new Map([
 ]);
 
 export enum Orientations {
-  LANDSCAPE,
-  PORTRAIT,
+  LANDSCAPE = 'L',
+  PORTRAIT = 'P',
 };
 
 export interface ViewportState {

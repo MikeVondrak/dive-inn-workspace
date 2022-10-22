@@ -30,6 +30,8 @@ export class SiteHeaderComponent implements OnInit, OnDestroy {
 
   private window: any;
   private destroy$ = new Subject<void>();
+
+  public bp$ = this.viewportService.viewportState$;
   
   constructor(
     @Inject(DOCUMENT) private document: Document,
