@@ -27,9 +27,10 @@ export class AnimateViewportOverlayService {
   public prepareForRouteChange(route: string) {
     
     console.log('Prep for route change', {route});
-    
-    this.nextRoute = route;
-    this.viewportOverlayState$.next(ViewportOverlayState.SHOW);
+    if (this.nextRoute !== route) {
+      this.nextRoute = route;
+      this.viewportOverlayState$.next(ViewportOverlayState.SHOW);
+    }
   }
 
   public changeRoute(event: AnimationEvent) {
