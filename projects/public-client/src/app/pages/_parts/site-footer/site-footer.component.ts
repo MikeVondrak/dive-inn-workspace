@@ -31,24 +31,29 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'pageTop',
     },
     {
-      uiLabel: 'Food',
-      linkUrl: '/menu',
-      fragment: ''
-    },
-    {
       uiLabel: 'Specials',
       linkUrl: '/menu',
-      fragment: '',
+      fragment: 'taki'
+    },
+    {
+      uiLabel: 'Food',
+      linkUrl: '/menu',
+      fragment: 'cluck'
     },
     {
       uiLabel: 'Events',
       linkUrl: '/events',
       fragment: '',
     },
+    {
+      uiLabel: 'Find Us',
+      linkUrl: '/find-us',
+      fragment: '',
+    },
   ];
   private _links2 = [
     {
-      uiLabel: 'Private Parties',
+      uiLabel: 'Games',
       linkUrl: '/inside',
       fragment: 'construction',
     },
@@ -67,15 +72,20 @@ export class SiteFooterComponent implements OnInit {
       linkUrl: '/inside',
       fragment: 'construction',
     },
+    {
+      uiLabel: 'Private Parties',
+      linkUrl: '/inside',
+      fragment: 'construction',
+    },
   ];
   private _links3 = [
     {
       uiLabel: 'About Us',
       linkUrl: '/inside',
       fragment: 'construction',
-    },
+    },        
     {
-      uiLabel: 'Partnerships',
+      uiLabel: 'News',
       linkUrl: '/inside',
       fragment: 'construction',
     },
@@ -85,7 +95,7 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'construction',
     },
     {
-      uiLabel: 'News',
+      uiLabel: 'Partnerships',
       linkUrl: '/inside',
       fragment: 'construction',
     },

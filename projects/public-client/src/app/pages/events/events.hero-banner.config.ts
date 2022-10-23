@@ -27,11 +27,14 @@ const landscape_md: HeroBannerConfig = {
   textPaddingBottom: '30vw'
 };
 const landscape_lg: HeroBannerConfig = {
+  bgSize: '133%',
+  bgPosition: '-22vw 22px',
   textPaddingBottom: '20vw'
 }
 const landscape_xl: HeroBannerConfig = {
   textPaddingBottom: '10vw',
-  bgPosition: '79% 32px',
+  bgSize: '120%',
+  bgPosition: '-22vw 72px',
 }
 
 /******************** PORTRAIT *********************/

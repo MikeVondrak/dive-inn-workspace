@@ -81,33 +81,37 @@ $titleTextSkew: skew($skewAmount, 0deg);
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 600px;
-      margin: 0 auto;
+      
     
       h2 {
         display: block;
         margin: 0;
-        padding: clamp(1rem, 2vw, 2rem) 0 clamp(1rem, 2vw, 2rem);
+        padding: clamp(0.75rem, 2vw, 1.25rem) 0;// clamp(1rem, 2vw, 2rem);
         line-height: 1;
         transform: $titleTextSkew;
       }
 
       ul {
         flex-basis: 100%;
-        margin: 0;
-        padding: clamp(1rem, 2vw, 2rem);
+        margin: 0;      
+        padding: 0;// clamp(1rem, 2vw, 2rem);
         list-style: none;
 
         li {
           width: 100%;
           text-align: center;
-          margin-bottom: clamp(0.5rem, 1vw, 1rem);
+          //margin-bottom: clamp(0.5rem, 1vw, 1rem);
           background-color: utility.$dive-gray-dk;
+          background-image: 
+            radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(0,0,0,0.5));
+            //linear-gradient(-2deg, rgba(0,0,0,0.2) 20%, transparent 50%, rgba(0,0,0,0.2) 80%), 
+            //linear-gradient(90deg, rgba(0,0,0,0.2) 10%, transparent 50%, rgba(0,0,0,0.2) 90%);
+            //linear-gradient(-90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
           border-radius: clamp(0.5rem, 2vw, 1.5rem);
           a {
             display: block;
-            padding: clamp(1rem, 3vw, 1.5rem);// 0;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            padding: clamp(0.5rem, 3vw, 1.5rem);// 0;
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
             &::after {
               content: none;
             }
@@ -116,73 +120,111 @@ $titleTextSkew: skew($skewAmount, 0deg);
       }
     }
 
-    .grids-container-large {
-      .tab-selector-container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        //gap: 1vw;
-        transform: $titleSkew;
+    // .grids-container-large {
+    //   .tab-selector-container {
+    //     position: relative;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     //gap: 1vw;
+    //     transform: $titleSkew;
 
-        .tab-selector {
-          background-color: utility.$dive-red-dk;
-          cursor: pointer;
-          //border-radius: clamp(0.5rem, 2vw, 1.5rem);
-          box-shadow: 0px 4px 4px 0px #000;
+    //     .tab-selector {
+    //       background-color: utility.$dive-red-dk;
+    //       cursor: pointer;
+    //       //border-radius: clamp(0.5rem, 2vw, 1.5rem);
+    //       box-shadow: 0px 4px 4px 0px #000;
 
-          h2 {
-            width: 200px; //clamp(200px, 5vw, 356px);
-            padding: clamp(1rem, 2vw, 1.5rem);
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            color: utility.$dive-yellow;
-            text-align: center;
-          }
-          &.selected {
-            background-color: utility.$dive-red;
-            h2 {
-              color: utility.$dive-white;
-            }
-          }
-        }
-      }
-      .links-container {
-        width: 100%;
-        > div {
-          padding: 2vw 0.5rem;
-          ul {
-            padding: 0;
-            li {
-              width: 100%;
-              a {
-                font-size: clamp(1rem, 4vw, 2rem);
-              }
-            }
-          }
-        }
-      }
-    }
+    //       h2 {
+    //         width: 200px; //clamp(200px, 5vw, 356px);
+    //         padding: clamp(1rem, 2vw, 1.5rem);
+    //         font-size: clamp(1rem, 4vw, 1.5rem);
+    //         color: utility.$dive-yellow;
+    //         text-align: center;
+    //       }
+    //       &.selected {
+    //         background-color: utility.$dive-red;
+    //         h2 {
+    //           color: utility.$dive-white;
+    //         }
+    //       }
+    //     }
+    //   }
+    //   .links-container {
+    //     width: 100%;
+    //     > div {
+    //       padding: 2vw 0.5rem;
+    //       ul {
+    //         padding: 0;
+    //         li {
+    //           width: 100%;
+    //           a {
+    //             font-size: clamp(1rem, 4vw, 2rem);
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     .grids-container-small {
+      padding: 1vw;
+      max-width: 1800px;
+      margin: 0 auto;
+      @include utility.media-breakpoint-gte(lg) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        //gap: 1vw;
+      }
+
       .menu-section {        
-        width: 100%;
+        width: 100%;        
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: center;        
+        max-width: 800px;
 
         .title-block {
           transform: $titleSkew;
           background-color: utility.$dive-red;
+          background-image: radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(0,0,0,0.5));
+          width: 80%;
+          max-width: 400px;
+          margin: clamp(2rem, 2vw, 3rem) 0 clamp(1rem, 2vw, 2rem);
+          @include utility.media-breakpoint-gte(sm) {
+            width: 80%;
+            max-width: 600px;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            width: 92%;
+          }
           h2 {
-            padding: clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem);
-            //min-width: 40vw;
-            text-align: center;            
-            transform: $titleTextSkew;
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            transform: $titleTextSkew;            
           }
         }
         ul {
-          width: 100%;
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          gap: clamp(0.5rem, 2vw, 2rem);
+          @include utility.media-breakpoint-gte(md) {
+            width: 88%;
+          }
+          max-width: 400px;
+          margin: 0 0 2vw;
+          @include utility.media-breakpoint-gte(sm) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 600px;
+          }
+          @include utility.media-breakpoint-gte(lg) {
+            display: flex;
+            flex-direction: column;
+          }
         }
       }
     }

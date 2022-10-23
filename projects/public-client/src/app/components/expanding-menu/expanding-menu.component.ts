@@ -28,7 +28,7 @@ export class ExpandingMenuComponent<ExpandingMenuHeaderEnum> implements OnInit, 
       }),
     );
 
-   }
+  }
 
   ngOnInit(): void {
   }

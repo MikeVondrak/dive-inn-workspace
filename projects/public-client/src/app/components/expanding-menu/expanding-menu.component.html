@@ -7,7 +7,7 @@
 
 <div *ngIf="isExpanded" class="link-list-container">
 
-  <div *ngIf="vpIsSmallOrBigger$ | async" class="grids-container grids-container-large">
+  <!-- <div *ngIf="vpIsSmallOrBigger$ | async" class="grids-container grids-container-large">
     <div class="tab-selector-container">
       <div *ngFor="let item of menuItems" class="tab-selector" [class.selected]="item.title === selectedGroup"
         (click)="onClick(item)">
@@ -26,11 +26,12 @@
         </div>
       </ng-container>
     </div>
-  </div>
-
-  <div *ngIf="!(vpIsSmallOrBigger$ | async)" class="grids-container grids-container-small">    
-    <div *ngFor="let item of menuItems" class="menu-section" [class.selected]="item.title === selectedGroup"
-      (click)="onClick(item)">
+  </div> -->
+  <!-- *ngIf="!(vpIsSmallOrBigger$ | async)" -->
+  <div class="grids-container grids-container-small">    
+    <div *ngFor="let item of menuItems" class="menu-section"
+      (click)="onClick(item)"
+    >
       <div class="title-block">
         <h2>{{item.title}}</h2>
       </div>
