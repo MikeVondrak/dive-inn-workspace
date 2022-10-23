@@ -1,6 +1,6 @@
 @use '../../scss/utility';
 
-$zoomAnimationTime: 0.7s;
+$zoomAnimationTime: 0.6s;
 
 :host {
   .main {
@@ -58,6 +58,7 @@ $zoomAnimationTime: 0.7s;
               top: 50vw;
             }
             @include utility.media-breakpoint-gte(sm) {
+              top: 45vw;
               width: 34vw;
               left: 33vw;
             }
@@ -75,7 +76,7 @@ $zoomAnimationTime: 0.7s;
             position: absolute;
             overflow-y: auto;
             width: 100vw;
-            height: 120vw;
+            height: max(120vh, 120vw);
             top: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.85);
@@ -100,8 +101,15 @@ $zoomAnimationTime: 0.7s;
         z-index: 2;
         position: absolute;
         width: clamp(120px, 24vw, 400px);
-        top: 6vw;
+        top: clamp(2rem, 5vw, 3.5rem);
         left: 1vw;
+      }
+    }
+    .separator {
+      padding: clamp(48px, 12vw, 366px);
+      text-align: center;
+      img {
+        width: clamp(40px, 10vw, 200px);
       }
     }
   }

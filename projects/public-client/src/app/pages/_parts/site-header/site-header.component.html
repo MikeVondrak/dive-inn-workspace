@@ -5,7 +5,10 @@
       <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/d_logo_outline.svg">
     </div>
 
-    <div *ngIf="!(isMobileTabletSize$ | async)" class="full-logo-container">
+    <a *ngIf="!(isMobileTabletSize$ | async)" 
+      appAnimateViewportOverlay="/events#qb"
+      class="full-logo-container"
+    >
       <!-- Dive Inn text -->
       <div>
         <img src="assets/images/logo/logo_0.svg" />
@@ -23,7 +26,7 @@
       <div>
         <img src="assets/images/logo/logo_3.svg" />
       </div>
-    </div>
+    </a>
 
 
     <!-- <div class="logo-callout-behind">
