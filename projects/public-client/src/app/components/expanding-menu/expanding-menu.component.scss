@@ -112,8 +112,19 @@ $titleTextSkew: skew($skewAmount, 0deg);
             display: block;
             padding: clamp(0.5rem, 3vw, 1.5rem);// 0;
             font-size: clamp(1.5rem, 4vw, 1.75rem);
-            &::after {
-              content: none;
+            &::before {
+              content: '';
+              position: absolute;
+              $w: 2px;
+              top: $w;
+              bottom: $w;
+              left: $w;
+              right: $w;
+              border-top: 1px solid rgba(255,255,255,0.25);
+              border-left: 1px solid rgba(255,255,255,0.25);
+              border-bottom: 1px solid rgba(0,0,0,0.25);
+              border-right: 1px solid rgba(0,0,0,0.25);
+              border-radius: clamp(0.5rem, 2vw, 1.5rem);
             }
           }
         }
@@ -187,6 +198,7 @@ $titleTextSkew: skew($skewAmount, 0deg);
         max-width: 800px;
 
         .title-block {
+          position: relative;
           transform: $titleSkew;
           background-color: utility.$dive-red;
           background-image: radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(0,0,0,0.5));
@@ -200,10 +212,25 @@ $titleTextSkew: skew($skewAmount, 0deg);
           @include utility.media-breakpoint-gte(md) {
             width: 92%;
           }
+          &::before {
+            content: '';
+            position: absolute;
+            $width: 4px;
+            top: $width;
+            bottom: $width;
+            left: $width;
+            right: $width;
+            border-top: 1px solid rgba(255,255,255,0.25);
+            border-left: 1px solid rgba(255,255,255,0.25);
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            border-right: 1px solid rgba(0,0,0,0.25);
+            //border: 1px solid rgba(0,0,0,0.25);
+          }
+
           h2 {
             text-align: center;
             font-size: clamp(1.5rem, 5vw, 2.5rem);
-            transform: $titleTextSkew;            
+            transform: $titleTextSkew;
           }
         }
         ul {
