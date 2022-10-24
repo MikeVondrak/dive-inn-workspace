@@ -67,6 +67,10 @@ $containerPaddingSm: 6vw 4vw 10vw;
           justify-content: center;
           align-items: center;
           @include utility.media-breakpoint-gte(sm) {
+            top: clamp(1.5rem, 4vw, 8rem);
+            display: block;
+          }
+          @include utility.media-breakpoint-gte(md) {
             top: clamp(1.5rem, 3.5vw, 8rem);
             display: block;
           }
@@ -80,8 +84,8 @@ $containerPaddingSm: 6vw 4vw 10vw;
           }
           img {
             display: block;
-            width: 5vw;
-            padding: 0.5vw;
+            width: clamp(20px, 3vw, 40px);
+            margin: 0 0.5vw;
             path {
               fill: utility.$dive-yellow;
             }

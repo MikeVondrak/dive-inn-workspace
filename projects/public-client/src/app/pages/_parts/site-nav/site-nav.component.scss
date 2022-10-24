@@ -138,18 +138,17 @@ $verticalGap: 0.75rem;
 
     svg {
       position: absolute;
-      max-width: 8vw;
+      width: clamp(36px, 8vw, 120px);
       right: -2vw; //-2.75vw;
       top: -2vw; //-2.75vw;    
       transform: rotate(0deg) scale(0.75);
       transition: all 0.4s ease-out; //, right 0.4s ease-out;
     }
     @include utility.media-breakpoint-gte(md) {
-      width: 6vw;
-      height: 6vw;
-      svg {        
-        top: -1vw; //-2vw;
-        right: -1vw; //-2vw;
+      width: clamp(36px, 6vw, 120px);
+      height: clamp(36px, 6vw, 120px);
+      svg {
+        transform: translate(-50%, 50%);
       }
     }
 
