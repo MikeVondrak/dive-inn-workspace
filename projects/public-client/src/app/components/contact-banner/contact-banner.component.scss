@@ -41,9 +41,38 @@ $containerPaddingSm: 6vw 4vw 10vw;
       //width: 90vw;
       flex: 1 16vw; // vertical space between cards
       // background-color: utility.$dive-red;
-      google-map {
-        overflow: hidden;
-        border-radius: 0.5rem;
+      // google-map {
+      //   overflow: hidden;
+      //   border-radius: 0.5rem;
+      // }
+
+      .map-card {
+        position: relative;
+        width: 100%;
+        img {
+          width: 100%;
+        }
+        .map-link {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;          
+          width: 100%;
+          padding: 0 0.5vw;
+          text-align: center;
+
+          img {
+            position: relative;
+            display: block;
+            top: clamp(2.5rem, 4vw, 69rem);
+            left: clamp(0.5rem, 0.1vw, 1rem);
+            width: 10%;
+            path {
+              fill: utility.$dive-yellow;
+            }
+          }
+        }
       }
 
       .open-hours-card {

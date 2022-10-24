@@ -200,6 +200,14 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/google-maps@^14.2.5":
+  version "14.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/google-maps/-/google-maps-14.2.5.tgz#1c8cf0b5d587514c6808b9dc21e677d164ab1de1"
+  integrity sha512-4Kkvl6ij+WL5/Ag4Bu9p2NMnBLapx7wItZ1NPx5Apnm5HbBXH2+NdXG1XJaYK+coFEhzDU1w/ZxXLYOWL777Zg==
+  dependencies:
+    "@types/google.maps" "^3.45.6"
+    tslib "^2.3.0"
+
 "@angular/platform-browser-dynamic@^14.0.0":
   version "14.2.0"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-14.2.0.tgz#7d6c44c63628b760eef4fdf99d09fc28f62e92b5"
@@ -2111,6 +2119,11 @@
     "@types/express-serve-static-core" "^4.17.18"
     "@types/qs" "*"
     "@types/serve-static" "*"
+
+"@types/google.maps@^3.45.6":
+  version "3.50.4"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.50.4.tgz#da00c2c6a10ad58b99d480c65a88a4ade562a772"
+  integrity sha512-edePfF9fo29bFdzcNIAS6rM4KnONY5WiZZaTKASfMLQxjdEysJp+RRkzBc71OIjFXd3bWAjriOL/ek1RloJRng==
 
 "@types/http-proxy@^1.17.8":
   version "1.17.9"

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+
 import { DirectivesModule } from '@dive-inn-lib';
 
 import { HomeComponent } from './home/home.component';
@@ -10,6 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SitePartsModule } from './_parts/site-parts.module';
 import { ComponentsModule } from '../components/components.module';
 import { EventsComponent } from './events/events.component';
+import { FindUsComponent } from './find-us/find-us.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,15 @@ import { EventsComponent } from './events/events.component';
     InsideComponent,
     MenuComponent,
     EventsComponent,
+    FindUsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    GoogleMapsModule,
     DirectivesModule,
     SitePartsModule,
-    ComponentsModule,
+    ComponentsModule,    
   ],
   exports: [
     SitePartsModule,

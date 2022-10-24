@@ -11,7 +11,7 @@
     >
       <!-- Dive Inn text -->
       <div>
-        <img src="assets/images/logo/logo_0.svg" />
+        <img class="text" src="assets/images/logo/logo_0.svg" />
       </div>
       <!-- Woman head, torso, back arm and back leg -->
       <div>
@@ -42,9 +42,9 @@
   </div>
   <app-site-nav [navItems]="navItems" (onNavExpand)="navExpanded($event)"></app-site-nav>
   <!-- <div class="boat-cam"><span>boat cam</span></div> -->
-  <div class="bp">
+  <!-- <div class="bp">
     {{ (bp$ | async)?.orientation }} , {{ (bp$ | async)?.currentBreakpoint }}
-  </div>
+  </div> -->
 </header>
 
 <ng-template #LogoSvg>

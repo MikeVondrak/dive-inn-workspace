@@ -1,8 +1,15 @@
 <div class="contact-container">
   <app-icon-card [config]="config[0]">
     <!-- <google-map (click)="mapClick($event)" [width]="(cardDimensions$ | async)?.width || 0" [height]="(cardDimensions$ | async)?.height || 0" [zoom]="13" [center]="mapCenter" [options]="mapOptions">
-       <map-marker [position]="mapMarkerPosition" [title]="mapMarkerTitle" [options]="mapMarkerOptions"></map-marker>
-     </google-map> -->
+      <map-marker [position]="mapMarkerPosition" [title]="mapMarkerTitle" [options]="mapMarkerOptions"></map-marker>
+    </google-map> -->
+    <div class="map-card">
+      <img src="assets/images/map.svg" />
+      <a class="map-link" routerLink="/find-us" fragment="map">
+        <!-- <ng-container *ngTemplateOutlet="MapMarker2Svg"></ng-container> -->
+        <img src="assets/images/Link_Out.svg" />
+      </a>
+    </div>
   </app-icon-card>
   <app-icon-card [config]="config[1]">
     <div class="open-hours-card">
@@ -60,5 +67,16 @@
       <rect x="9.057" y="9.179" width="405.69" height="261.695" style="fill:none;stroke-width:50px;" />
       <path d="M211.902,189.485L414.747,9.179L9.057,9.179L211.902,189.485Z" style="fill:none;stroke-width:33.29px;" />
     </g>
+  </svg>
+</ng-template>
+
+<ng-template #MapMarker2Svg>
+  <svg width="100%" height="100%" viewBox="0 0 144 163" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <!-- <path
+      d="M88.651,130.117C89.421,129.16 90.158,128.252 90.847,127.412L102.18,127.412L143.437,162.59L0.071,162.619L41.327,127.442L51.638,127.412C52.357,128.279 53.101,129.184 53.86,130.117L43.124,130.155L13.143,158.119L129.08,157.322L100.436,130.117L88.651,130.117Z" /> -->
+    <path
+      d="M46.346,112.5C36.589,99.632 27.449,86.527 20.68,72.547L20.676,72.544C18.436,66.726 17.244,60.403 17.244,53.803C17.244,24.117 41.376,0.016 71.1,0.016C100.825,0.016 124.957,24.117 124.957,53.803C124.957,60.4 123.766,66.72 121.527,72.537L121.527,72.537C115.539,87.032 106.082,100.213 95.906,113.112L95.553,113.563C88.137,123.015 80.344,132.318 73.278,141.895L71.1,145.016L69.465,142.672C62.103,132.752 54.28,123.002 46.811,113.112L46.346,112.5ZM71.1,26.91C85.963,26.91 98.029,38.96 98.029,53.803C98.029,68.646 85.963,80.697 71.1,80.697C56.238,80.697 44.172,68.646 44.172,53.803C44.172,38.96 56.238,26.91 71.1,26.91Z" />
   </svg>
 </ng-template>

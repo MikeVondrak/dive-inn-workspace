@@ -40,14 +40,14 @@ $verticalGap: 0.75rem;
       .d-logo-container {        
         width: clamp(2rem, 7vw, 3.5rem);
         //height: 10vw;  
-        margin: -1vw;      
+        margin: -1.5vw 0 0 -1.5vw;      
         padding: 1vw 0.5vw 0.25vw 1vw;
         border-radius: 50%;// 0 0 50% 0;
         background-color: rgba(0,0,0,0.5);
       }
 
       .full-logo-container {
-        position: relative;
+        position: relative;        
         > div {
           position: absolute;
           width: 14vw;
@@ -58,6 +58,9 @@ $verticalGap: 0.75rem;
           right: 0;
 
           img {
+            &.text {
+              background-image: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.95) 20%, transparent 72%);
+            }
             &.board {
               position: absolute;
               

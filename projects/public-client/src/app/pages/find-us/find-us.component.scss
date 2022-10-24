@@ -1,0 +1,61 @@
+@use '../../scss/utility';
+
+:host {
+  display: block;
+  position: relative;
+
+  app-hero-banner {
+    // display: block;
+    // border: 1px solid magenta;
+  }
+
+  .map-container {
+    z-index: 1;
+    position: relative;
+    width: 96vw;
+    height: 90vh;
+    top: -50vw;
+    left: 2vw;    
+    overflow: hidden;
+    border-radius: 1rem;
+    
+    @include utility.media-breakpoint-gte('xs') {
+      width: 90vw;
+      left: 5vw;
+      top: -30vw;
+    }
+    @include utility.media-breakpoint-gte('sm') {
+      width: 80vw;
+      left: 10vw;
+      top: -20vw;
+    }
+    @include utility.media-breakpoint-gte('md') {
+      width: 80vw;
+      left: 10vw;
+      top: -40vw;
+    }
+  }
+  .separator {
+    width: clamp(100px, 12vw, 200px);
+    margin: -20vw auto clamp(4rem, 20vw, 8rem);  
+    @include utility.media-breakpoint-gte('xs') {
+      margin-top: -10vw;
+    }
+    @include utility.media-breakpoint-gte('sm') {
+      margin-top: 0vw;
+    }
+    @include utility.media-breakpoint-gte('md') {
+      margin-top: -22vw;
+    }
+    @include utility.media-breakpoint-gte('lg') {
+      margin-top: -25vw;
+    }
+    svg {
+      path {
+        &.highlight-color {
+          fill: utility.$dive-red;
+        }
+      }
+    }
+  }
+}

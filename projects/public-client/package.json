@@ -6,6 +6,7 @@
   "author": "Mike Vondrak and Rick Haag",
   "license": "MIT",
   "dependencies": {
+    "@angular/google-maps": "^14.2.5",
     "graphql": "^16.6.0"
   }
 }
