@@ -35,12 +35,12 @@
         min-height: 420px;
         padding: var(--textPaddingTop) 0 var(--textPaddingBottom) 0;
       }
-      @include utility.media-breakpoint-gte(xl) {
-        min-height: 800px;
-      }
-      @include utility.media-breakpoint-gte(ws) {
-        min-height: 800px;
-      }
+      // @include utility.media-breakpoint-gte(xl) {
+      //   min-height: 800px;
+      // }
+      // @include utility.media-breakpoint-gte(ws) {
+      //   min-height: 800px;
+      // }
 
       h1.title {
         z-index: 0;

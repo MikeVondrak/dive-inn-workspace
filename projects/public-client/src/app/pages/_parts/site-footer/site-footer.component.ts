@@ -99,6 +99,11 @@ export class SiteFooterComponent implements OnInit {
       linkUrl: '/inside',
       fragment: 'construction',
     },
+    {
+      uiLabel: 'Site Info',
+      linkUrl: '/inside',
+      fragment: 'construction',
+    },
   ];
 
   // add 'header' property to each links array

@@ -12,7 +12,11 @@ import { findUsPageHeroBannerConfigs } from './find-us.hero-banner.config';
 export class FindUsComponent implements OnInit {
 
   public heroBannerConfigs: HeroBannerOrientationConfigs = findUsPageHeroBannerConfigs;
-  public heroBannerTitleLines: string[] = [];
+  public heroBannerTitleLines: string[] = [
+    '1380 S',
+    'Broadway',
+    'Denver CO 80210',
+  ];
 
   public fullscreen: boolean = false;
 

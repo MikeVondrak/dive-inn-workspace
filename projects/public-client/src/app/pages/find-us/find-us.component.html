@@ -9,7 +9,7 @@
     <div class="hero-banner-content">
       
     </div>
-    <div id="map" class="map-container">
+    <div id="map" class="gmap-container">
       <google-map (click)="mapClick($event)" [width]="(cardDimensions$ | async)?.width || 0" [height]="(cardDimensions$ | async)?.height || 0" [center]="mapCenter" [options]="mapOptions">
         <map-marker [position]="mapMarkerPosition" [title]="mapMarkerTitle" [options]="mapMarkerOptions"></map-marker>
       </google-map>
