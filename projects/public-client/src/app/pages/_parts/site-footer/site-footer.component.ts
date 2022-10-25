@@ -28,7 +28,7 @@ export class SiteFooterComponent implements OnInit {
     {
       uiLabel: 'Home',
       linkUrl: '/home',
-      fragment: 'pageTop',
+      fragment: '',
     },
     {
       uiLabel: 'Specials',
@@ -54,75 +54,75 @@ export class SiteFooterComponent implements OnInit {
   private _links2 = [
     {
       uiLabel: 'Games',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Games',
     },
     {
       uiLabel: 'Dive Shop',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Dive Shop',
     },
     {
       uiLabel: 'PADI Club',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'P.A.D.I. Club',
     },
     {
       uiLabel: 'Sightings',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Sightings',
     },
     {
       uiLabel: 'Private Parties',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Private Parties',
     },
   ];
   private _links3 = [
     {
       uiLabel: 'About Us',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Abous Us',
     },        
     {
       uiLabel: 'News',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'News',
     },
     {
       uiLabel: 'Jobs',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Jobs',
     },
     {
       uiLabel: 'Partnerships',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Partnerships',
     },
     {
       uiLabel: 'Site Info',
-      linkUrl: '/inside',
-      fragment: 'construction',
+      linkUrl: '/construction',
+      fragment: 'Site Info',
     },
   ];
 
-  // add 'header' property to each links array
-  // private links1 = this._links1.map(link => ({ ...link, header: this.linkHeaders[0] }));
-  // private links2 = this._links2.map(link => ({ ...link, header: this.linkHeaders[1] }));
-  // private links3 = this._links3.map(link => ({ ...link, header: this.linkHeaders[2] }));
+  // add property to each links array
+  private links1 = this._links1.map(link => ({ ...link, active: true }));
+  private links2 = this._links2.map(link => ({ ...link, active: false }));
+  private links3 = this._links3.map(link => ({ ...link, active: false }));
   
   public linksArray: ExpandingMenuLinkGroup[] = [
     {
       title: this.linkHeaders[0],
-      links: this._links1
+      links: this.links1
     },
     {
       title: this.linkHeaders[1],
-      links: this._links2
+      links: this.links2
     },
     {
       title: this.linkHeaders[2],
-      links: this._links3
+      links: this.links3
     }
   ];
 

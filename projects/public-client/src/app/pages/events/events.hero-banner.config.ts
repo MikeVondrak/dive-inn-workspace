@@ -16,13 +16,8 @@ const landscape_zero: HeroBannerConfig = {
   textPaddingBottom: '46vw',
 };
 const landscape_md: HeroBannerConfig = {
-  //height: '',
-  //width: '',
   bgPosition: '77% 32px',
   bgSize: '151%',
-  textTop: '-15vw',
-  textLeft: '56vw',
-  textAlign: 'left',
   textPaddingTop: '40vw',
   textPaddingBottom: '30vw'
 };

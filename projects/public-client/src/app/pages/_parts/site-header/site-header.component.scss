@@ -71,7 +71,7 @@ $verticalGap: 0.75rem;
 
           img {
             &.text {
-              background-image: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.95) 20%, transparent 72%);
+              background-image: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 20%, transparent 72%);
             }
             &.board {
               position: absolute;

@@ -126,7 +126,11 @@ $titleTextSkew: skew($skewAmount, 0deg);
               border-right: 1px solid rgba(0,0,0,0.25);
               border-radius: clamp(0.5rem, 2vw, 1.5rem);
             }
-          }
+
+            &.inactive {
+              color: utility.$dive-gray-md;
+            }
+          }          
         }
       }
     }

@@ -1,0 +1,28 @@
+<div class="main">
+  <div id="hero" class="hero-banner-container">
+    <app-hero-banner
+      imgSrc="url(assets/images/crane.jpg)"
+      [textLines]="heroBannerTitleLines"
+      [orientationConfigs]="heroBannerConfigs"
+    >
+      <img class="logo" src="assets/images/logoLg_construction.svg" />      
+      <img class="construction" src="assets/images/under_construction.svg" />
+      <div class="page-title">
+        <div class="page-title-bg">
+          <h1>{{pageTitle$ | async}}</h1>
+        </div>
+      </div>
+    </app-hero-banner>
+    <!-- <div class="hero-banner-content">
+      <h2>We're still building...</h2>
+      <p>Check our <a href="https://www.facebook.com/diveinndenver/">Facebook</a> page for the latest announcements.</p>
+    </div> -->
+  </div> 
+  <div class="page-content">
+    <h2>We're still building...</h2>
+    <p>Check our <a href="https://www.facebook.com/diveinndenver/">Facebook</a> page for the latest announcements.</p>
+  </div>    
+  <div class="separator">
+    <img src="assets/images/chains.svg" />
+  </div>
+</div>

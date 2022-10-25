@@ -72,7 +72,7 @@ export class AppComponent {
         const el = this.renderer.selectRootElement(selector, true); // preserve contents when selecting
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } catch(err) {
-        console.error(err);
+        console.warn(err);
       }
     }
     }, 0);

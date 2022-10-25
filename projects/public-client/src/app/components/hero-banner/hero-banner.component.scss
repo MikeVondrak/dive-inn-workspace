@@ -30,7 +30,7 @@
       text-align: var(--textAlign);
       
       // TODO: make this another config param
-      min-height: 400px;
+      min-height: 300px;
       @include utility.media-breakpoint-gte(xs) {
         min-height: 420px;
         padding: var(--textPaddingTop) 0 var(--textPaddingBottom) 0;

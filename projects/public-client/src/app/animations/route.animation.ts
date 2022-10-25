@@ -15,6 +15,9 @@ import {
 
 // https://www.techiediaries.com/angular-router-animations/
 
+const hideOverlayAnimation = '0.33s ease-in-out';
+const showOverlayAnimation = '0.33s ease-in-out';
+
 export const routeAnimations = [ 
   trigger('viewportAnimation', [
     state('HIDE', style({
@@ -28,17 +31,17 @@ export const routeAnimations = [
     ]),
     transition('void => SHOW', [
       style({ opacity: 0, zIndex: 3}),
-      animate('0.2s linear', style({ opacity: 1, zIndex: 3 }))
+      animate(`${hideOverlayAnimation}`, style({ opacity: 1, zIndex: 3 }))
     ]),
     transition('SHOW => HIDE', [      
       style({ opacity: 1, zIndex: 3 }),
-      animate('0.2s linear', style({ opacity: 0, zIndex: 3 })), // hide overlay
+      animate(`${hideOverlayAnimation}`, style({ opacity: 0, zIndex: 3 })), // hide overlay
       animate('0.01s linear', style({ opacity: 0, zIndex: 1 })), // move overlay beneath content
     ]),
     transition('HIDE => SHOW', [
       style({ opacity: 0, zIndex: 1 }),
       animate('0.01s linear', style({ opacity: 0, zIndex: 3 })), // move overlay on top of content
-      animate('0.2s linear', style({ opacity: 1, zIndex: 3 })), // show overlay
+      animate(`${showOverlayAnimation}`, style({ opacity: 1, zIndex: 3 })), // show overlay
     ])
   ])
 ];
