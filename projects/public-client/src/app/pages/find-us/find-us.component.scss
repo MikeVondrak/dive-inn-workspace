@@ -4,50 +4,107 @@
   display: block;
   position: relative;
 
-  app-hero-banner {
-    // display: block;
-    // border: 1px solid magenta;
-  }
-
-  .gmap-container {
-    z-index: 1;
+  .banner-container {
     position: relative;
-    width: 96vw;
-    height: 90vh;
-    overflow: hidden;
-    border-radius: 1rem;
-    left: 2vw;    
-    top: -5vw;
 
-    @include utility.media-breakpoint-gte('xs') {
-      width: 90vw;
-      left: 5vw;
-      top: -4vw;
-    }
-    @include utility.media-breakpoint-gte('sm') {
-      width: 80vw;
-      left: 10vw;
-      top: -6vw;
-    }
-    @include utility.media-breakpoint-gte('md') {
-      width: 80vw;
-      left: 10vw;
-      top: -2vw;
+    app-hero-banner {
+      // display: block;
+      // border: 1px solid magenta;
     }
 
-    @media (orientation: portrait) {
+    .hero-banner-content {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem; //clamp(0.5rem, 2vw, 1rem);
+
+      top: 60vw;
+      right: 4vw;
+      @include utility.media-breakpoint-gte(min) {
+        top: 65vw;
+      }
+      @include utility.media-breakpoint-gte(xs) {
+        top: clamp(19rem, 57vw, 25rem);
+        right: 7vw;
+      }
+      @include utility.media-breakpoint-gte(sm) {
+        top: 67vw;
+        right: 11vw;
+      }
+      @include utility.media-breakpoint-gte(md) {
+        top: 53vw;
+      }
+      @include utility.media-breakpoint-gte(lg) {
+        top: 38vw;
+      }
+      @include utility.media-breakpoint-gte(xl) {
+        top: 38.5vw;
+      }
+      @include utility.media-breakpoint-gte(ws) {
+        top: 40vw;
+      }
+      @include utility.media-breakpoint-gte(hd) {
+        top: 41vw;
+      }
+
+      @media (orientation: portrait) {
+        top: 114vw;
+        right: 6vw;
+
+        @include utility.media-breakpoint-gte(min) {
+          top: 90vw;
+        }
+        @include utility.media-breakpoint-gte(xs) {
+          top: 96vw;
+        }
+        @include utility.media-breakpoint-gte(sm) {
+          top: 85vw;
+          right: 11vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          top: 77vw;
+        }
+        @include utility.media-breakpoint-gte(lg) {
+          top: 77.5vw;
+        }
+      }      
+      //transform: skew(-4deg, 0deg) rotate(-3.5deg);       
+      // border-bottom-left-radius: 1rem;
+      // border-bottom-right-radius: 1rem;      
+      a {
+        display: block;        
+        border-radius: clamp(0.25rem, 2vw, 1rem);
+        background-color: rgba(0,0,0,0.5);
+
+        svg {
+          $minW: 2.5rem;
+          width: clamp($minW, 6vw, 4rem);
+          padding: 0.5rem; //clamp(0.5rem, 1vw, 1rem);
+          max-height: clamp($minW, 6vw, 4rem);
+          path, circle {
+            stroke: utility.$dive-yellow;
+            fill: utility.$dive-yellow;
+          }
+        }
+      }
+    }
+
+    .gmap-container {
+      z-index: 1;
+      position: relative;
       width: 96vw;
       height: 90vh;
+      overflow: hidden;
+      border-radius: 1rem;
       left: 2vw;    
-      top: -60vw;
-    
-      @include utility.media-breakpoint-gte('min') {
-        top: -50vw;
-      }
+      top: -15vw;
+
       @include utility.media-breakpoint-gte('xs') {
         width: 90vw;
         left: 5vw;
-        top: -12vw;
+        top: -14vw;
       }
       @include utility.media-breakpoint-gte('sm') {
         width: 80vw;
@@ -57,7 +114,38 @@
       @include utility.media-breakpoint-gte('md') {
         width: 80vw;
         left: 10vw;
-        top: -6vw;
+        top: -2vw;
+      }
+      @include utility.media-breakpoint-gte('lg') {
+        width: 80vw;
+        left: 10vw;
+        top: -2vw;
+      }
+
+      @media (orientation: portrait) {
+        width: 96vw;
+        height: 90vh;
+        left: 2vw;    
+        top: -60vw;
+      
+        @include utility.media-breakpoint-gte('min') {
+          top: -56vw;
+        }
+        @include utility.media-breakpoint-gte('xs') {
+          width: 90vw;
+          left: 5vw;
+          top: -12vw;
+        }
+        @include utility.media-breakpoint-gte('sm') {
+          width: 80vw;
+          left: 10vw;
+          top: -6vw;
+        }
+        @include utility.media-breakpoint-gte('md') {
+          width: 80vw;
+          left: 10vw;
+          top: -6vw;
+        }
       }
     }
   }

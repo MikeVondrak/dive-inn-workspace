@@ -24,26 +24,38 @@ $verticalGap: 0.75rem;
       left: 0rem;     
       transition: all 0.6s;
       transform: scale(0.5) translate(-50%, -50%);
+      opacity: 0.2;
 
       &.show-logo {
         // position: relative;
-        top: 1vw;
-        left: 1vw;
+        top: 0.05rem;
+        left: 0.15rem;        
 
         //display: inline-flex;
         // transform: display(inline-flex);
         &.nav-expanded {
           transform: scale(1);
+          opacity: 1;
+        }
+
+        @include utility.media-breakpoint-gte(xs) {
+          top: 0rem;
+          left: 0.25rem;
         }
       }
 
       .d-logo-container {        
-        width: clamp(2rem, 7vw, 3.5rem);
+        width: clamp(2rem, 8vw, 3.5rem);
         //height: 10vw;  
-        margin: -1.5vw 0 0 -1.5vw;      
-        padding: 1vw 0.5vw 0.25vw 1vw;
+        
+        padding: 0.25rem 0.25rem 0rem;
         border-radius: 50%;// 0 0 50% 0;
         background-color: rgba(0,0,0,0.5);
+        margin: -0.15rem 0 0 -0.25rem;
+        @include utility.media-breakpoint-gte(xs) {
+          top: 0;
+          left: -0.25rem;
+        }
       }
 
       .full-logo-container {

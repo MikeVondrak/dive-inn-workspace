@@ -10,29 +10,29 @@ $verticalGap: 0.75rem;
   flex-direction: row;
   justify-content: center;
   align-items: center;    
-  width: 100%;  
+  width: 100%;
 
   font-size: 3.5vw;
   @include utility.media-breakpoint-gte(xs) {
-    font-size: 3vw;
+    font-size: 2.75vw;
   }
   @include utility.media-breakpoint-gte(sm) {
     font-size: 2.5vw;
   }
   @include utility.media-breakpoint-gte(md) {
-    font-size: 2vw;
+    font-size: 1.8vw;
   }
   @include utility.media-breakpoint-gte(lg) {
-    font-size: 1.75vw;
+    font-size: 1.5vw;
   }
   @include utility.media-breakpoint-gte(xl) {
-    font-size: 1.5vw;
+    font-size: 1.35vw;
   }
   @include utility.media-breakpoint-gte(ws) {
     font-size: 1.25vw;
   }
   @include utility.media-breakpoint-gte(hd) {
-    font-size: 1vw;
+    font-size: clamp(1.5rem, 1vw, 1.5rem);
   }
 
   ul {
@@ -47,7 +47,7 @@ $verticalGap: 0.75rem;
     margin: 0;
     list-style-type: none;
     z-index: 2;
-    max-width: 90vw;
+    //max-width: 90vw;
 
     transform: translateY(-86%);
     transition: transform 0.4s ease-out;
@@ -76,13 +76,14 @@ $verticalGap: 0.75rem;
         background: utility.$dive-red;
       }
       a {
-        //width: clamp(80px, 25vw, 160px);
-        width: 22vw;
-        max-width: 200px;
+        width: clamp(60px, 20vw, 220px);
+        @include utility.media-breakpoint-gte(xl) {
+          width: clamp(60px, 20vw, 333px);
+        }
         cursor: pointer;
         display: inline-block;
         position: relative;
-        padding: 0.5vw; // 3vw;
+        padding: 0.25rem 0; //clamp(0.25rem, 1vw, 0.5rem);
         transition: all 0.5s ease;
         color: utility.$dive-yellow;
         transform: skewX(22deg);
@@ -101,9 +102,9 @@ $verticalGap: 0.75rem;
   }
 
   svg {    
-    padding: 0.5vw;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 50%;
+    padding: 0rem;
+    //background-color: rgba(0,0,0,0.5);    
+    //border-radius: 50%;
     .outline {
       path {
         fill: transparent; //utility.$dive-black;
@@ -120,35 +121,36 @@ $verticalGap: 0.75rem;
     overflow: hidden;
     top: 0;
     right: 0;
-    width: 8vw;
-    height: 8vw;
+    // width: 8vw;
+    // height: 8vw;
     z-index: 3;
+    //border: 1px solid magenta;
 
-    &.nav-expanded {
-      svg {
-        top: -2.75vw;
-        right: -2.75vw;
-        transform: rotate(180deg);
-        @include utility.media-breakpoint-gte(md) {
-          top: -2vw;
-          right: -2vw;
-        }
-      }
-    }
-
-    svg {
-      position: absolute;
-      width: clamp(36px, 8vw, 120px);
-      right: -2vw; //-2.75vw;
-      top: -2vw; //-2.75vw;    
-      transform: rotate(0deg) scale(0.75);
+    svg {      
+      width: clamp(24px, 8vw, 34px);
+      height: clamp(24px, 8vw, 34px);
+      right: 0; //-2.75vw;
+      top: 0; //-2.75vw;    
+      transform: translate(50%, -50%) rotate(180deg) scale(2);
       transition: all 0.4s ease-out; //, right 0.4s ease-out;
+      background-image: radial-gradient(circle at 50% 50%, black 0%, transparent 70%);
+      @include utility.media-breakpoint-gte(md) {
+        width: clamp(24px, 10vw, 44px);
+        height: clamp(24px, 10vw, 44px);
+      }      
     }
-    @include utility.media-breakpoint-gte(md) {
-      width: clamp(36px, 6vw, 120px);
-      height: clamp(36px, 6vw, 120px);
+
+    &.nav-expanded {      
+      top: 0;//-2.75vw;
+      right: 0;//-2.75vw;
       svg {
-        transform: translate(-50%, 50%);
+        width: clamp(24px, 8vw, 34px);
+        height: clamp(24px, 8vw, 34px);
+        transform: translate(50%, -50%) rotate(0deg) scale(2);
+        @include utility.media-breakpoint-gte(md) {
+          width: clamp(24px, 10vw, 44px);
+          height: clamp(24px, 10vw, 44px);
+        }
       }
     }
 
