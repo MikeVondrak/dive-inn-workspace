@@ -17,13 +17,14 @@ export class SiteNavComponent implements OnInit {
 
   public navExpanded: boolean = true;
 
-  constructor(    
+  constructor(
     private router: Router,
-    private renderer: Renderer2, 
-    private el: ElementRef, 
+    private renderer: Renderer2,
+    private el: ElementRef,
     private cdr: ChangeDetectorRef) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         let currentRoute = val.url;
@@ -34,26 +35,33 @@ export class SiteNavComponent implements OnInit {
         if (fragmentIndex > 0) {
           currentRoute = currentRoute.substring(0, fragmentIndex);
         }
-        console.log('currentRoute', currentRoute);
-
         const initialSelection = this.navItems.find(navItem => navItem.url === currentRoute);
-        this.selectPage(initialSelection);
+        if (!!initialSelection) {
+          this.selectPage(initialSelection);
+        } else {
+          this.clearSelection();
+        }
       }
     });
   }
-  
-  public navTrackBy(index: number, item: NavItem) {    
+
+  public navTrackBy(index: number, item: NavItem) {
     return item.title;
   }
-  
+
+  public clearSelection() {
+    this.navItems.forEach(nav => {
+      nav.filledState = false;      
+    });
+    this.cdr.detectChanges();
+  }
+
   public selectPage(navItem: NavItem | undefined) {
+    this.clearSelection();
     if (!navItem) {
       return;
     }
-    this.navItems.forEach(nav => {
-      nav.filledState = false;
-    });
-    navItem.filledState = true;    
+    navItem.filledState = true;
     this.cdr.detectChanges();
   }
 

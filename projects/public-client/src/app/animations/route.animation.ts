@@ -15,8 +15,8 @@ import {
 
 // https://www.techiediaries.com/angular-router-animations/
 
-const hideOverlayAnimation = '0.33s ease-in-out';
-const showOverlayAnimation = '0.33s ease-in-out';
+const hideOverlayAnimation = '0.33s linear';
+const showOverlayAnimation = '0.33s linear';
 
 export const routeAnimations = [ 
   trigger('viewportAnimation', [

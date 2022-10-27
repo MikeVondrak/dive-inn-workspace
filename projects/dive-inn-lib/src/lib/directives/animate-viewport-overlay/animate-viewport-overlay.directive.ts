@@ -9,9 +9,6 @@ export class AnimateViewportOverlayDirective {
   @Input('appAnimateViewportOverlay') route: string = '';
 
   @HostListener('click', ['$event']) onClick(event: PointerEvent) {
-    
-    console.log('DIRECTIVE CLICK', this.route);
-    
     if (!!this.route) {
       this.animateViewportOverlay.prepareForRouteChange(this.route);
     }
