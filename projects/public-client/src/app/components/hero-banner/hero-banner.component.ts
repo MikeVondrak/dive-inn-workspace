@@ -22,17 +22,17 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   @HostBinding('style.--height') height: string = '';
   @HostBinding('style.--textWidth') textWidth: string = '';;
   @HostBinding('style.--textTop') textTop: string = '';
-    @HostBinding('style.--textLeft') textLeft: string = '';
-    @HostBinding('style.--textContainerTransform') textContainerTransform: string = '';
-    @HostBinding('style.--textTransform') textTransform: string = '';
-    @HostBinding('style.--textAlign') textAlign: string = '';
-    @HostBinding('style.--textSize') textSize: string = '';
-    @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
-    @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
+  @HostBinding('style.--textLeft') textLeft: string = '';
+  @HostBinding('style.--textContainerTransform') textContainerTransform: string = '';
+  @HostBinding('style.--textTransform') textTransform: string = '';
+  @HostBinding('style.--textAlign') textAlign: string = '';
+  @HostBinding('style.--textSize') textSize: string = '';
+  @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
+  @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
 
-    public bgSize: string | undefined = '';
+  public bgSize: string | undefined = '';
   public bgPosition: string | undefined = '';
-  
+
   private destroy$ = new Subject<void>();
 
   constructor(private viewportService: ViewportService, private cdr: ChangeDetectorRef) { }
@@ -42,7 +42,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.getConfigForBreakpoint(bpEnum, this.viewportService.getOrientation());
 
     this.viewportService.viewportState$.pipe(takeUntil(this.destroy$)).subscribe(state => {
-      const bp: BreakpointsEnum = this.viewportService.getCurrentBreakpointEnum();            
+      const bp: BreakpointsEnum = this.viewportService.getCurrentBreakpointEnum();
       const cfg = this.getConfigForBreakpoint(state.currentBreakpoint, state.orientation);
       if (cfg) {
         this.setPropsForBreakpoints(cfg);
@@ -56,13 +56,13 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     let c = this.orientationConfigs.get(or);
     let config: HeroBannerConfig | undefined = c?.get(checkBp);
     let allBpChecked = false;
-    
+
     while (!!config && checkBp !== bp && allBpChecked === false) {
       checkBp = this.viewportService.getBpEnumUp(checkBp);
-      const configForBp = this.orientationConfigs.get(or)?.get(checkBp); 
+      const configForBp = this.orientationConfigs.get(or)?.get(checkBp);
       if (!!configForBp) {
         config = { ...config, ...configForBp };
-      }      
+      }
       if (checkBp === BreakpointsEnum.hd) {
         allBpChecked = true;
       }
@@ -85,7 +85,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
     this.cdr.markForCheck();
   }
-  
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

@@ -29,25 +29,21 @@ export class ConstructionComponent implements OnInit, OnDestroy {
     private location: Location, 
     private cdr: ChangeDetectorRef
   ) {
-    // this.pageTitle$ = this.activatedRoute.data.pipe(
-    //   withLatestFrom(this.activatedRoute.fragment),
+
     this.pageTitle$ = combineLatest([
       this.activatedRoute.data,
       this.activatedRoute.fragment,
     ]).pipe(
       takeUntil(this.destroy$),
-      //filter(frag => !!frag),
       map(([data, frag]) => {
         const state = this.location.getState() as any;
-        console.log('++++++++++', state, data, frag);
-        this.cdr.markForCheck();
-        return state['pageTitle'];
+        return data['pageTitle'];
       })
     );
   }
 
   ngOnInit(): void {
-    //this.pageTitle$ = this.activatedRoute.fragment.pipe(filter(frag => !!frag));    
+    
   }
   ngOnDestroy(): void {
     this.destroy$.next();

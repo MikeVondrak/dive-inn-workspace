@@ -41,13 +41,8 @@ export class AppComponent {
   }
 
   // every time a new route is processed grab the #fragment if there is one
-  private watchscrollToFragment() {
-    // this.route.fragment.subscribe(fragment => this.routeFragment = fragment);
-    // this.router.events.subscribe(event => { if (event instanceof NavigationEnd) { this.scrollToElement(); } });
-    this.route.fragment.subscribe((fragment) => {
-      
-      console.log('APP FRAG', fragment);
-      
+  private watchscrollToFragment() {    
+    this.route.fragment.subscribe((fragment) => {      
       if (!!fragment) {
         this.scrollToElement(fragment);
       }
@@ -55,12 +50,9 @@ export class AppComponent {
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
-    //   withLatestFrom(this.route.fragment)
     ).subscribe((navEnd) => {
       console.log('APP NAV END');
     });
-    //   this.scrollToElement(fragment);
-    // });
   }
 
   private scrollToElement(routeFragment: string | null) {
@@ -77,6 +69,6 @@ export class AppComponent {
           console.warn(err);
         }
       }
-    }, 0);
+    }, 100); // wait 100ms to scroll for smoother transitions
   }
 }
