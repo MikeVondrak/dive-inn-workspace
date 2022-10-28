@@ -10,28 +10,110 @@ import { MenuComponent } from './pages/menu/menu.component';
 const routes: Routes = [
   { 
     path: 'home', 
-    component: HomeComponent, 
-    //data: { animation: 'fadeIn1' } 
+    component: HomeComponent,    
+    data: { 
+      pageTitle: 'Home',
+    }
   },
   { 
     path: 'events',
     component: EventsComponent,
-    //data: { animation: 'fadeIn2' }
+    data: { 
+      pageTitle: 'Events',
+    }
     //loadChildren: () => import('./pages/inside/inside.module').then((module) => module.InsideModule)
   },
   { 
     path: 'menu',
     component: MenuComponent,
-    //data: { animation: 'fadeIn3' }
+    data: { 
+      pageTitle: 'Food',
+    }
     //loadChildren: () => import('./pages/menu/menu.module').then((module) => module.MenuModule)
+  },
+  {
+    path: 'specials',
+    component: MenuComponent,
+    data: { 
+      pageTitle: 'Food',
+    }
   },
   {
     path: 'find-us',
     component: FindUsComponent,
+    data: { 
+      pageTitle: 'Find Us',
+    }
   },
   {
-    path: 'construction',
+    path: 'games',
     component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Games',
+    }
+  },
+  {
+    path: 'dive-shop',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Dive Shop',
+    }
+  },
+  {
+    path: 'padi-club',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'P.A.D.I. Club',
+    }
+  },
+  {
+    path: 'sightings',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Sightings',
+    }
+  },
+  {
+    path: 'private-parties',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Private Parties',
+    }
+  },
+  {
+    path: 'abous-us',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'About Us',
+    }
+  },
+  {
+    path: 'news',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'News',
+    }
+  },
+  {
+    path: 'jobs',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Jobs',
+    }
+  },
+  {
+    path: 'partnerships',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Partnerships',
+    }
+  },
+  {
+    path: 'site-info',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Site Info',
+    }
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }

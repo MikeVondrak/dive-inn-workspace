@@ -38,7 +38,7 @@ export class SiteFooterComponent implements OnInit {
     {
       uiLabel: 'Food',
       linkUrl: '/menu',
-      fragment: 'cluck'
+      fragment: 'taki'
     },
     {
       uiLabel: 'Events',
@@ -54,55 +54,55 @@ export class SiteFooterComponent implements OnInit {
   private _links2 = [
     {
       uiLabel: 'Games',
-      linkUrl: '/construction',
-      fragment: 'Games',
+      linkUrl: '/games',
+      fragment: 'title',
     },
     {
       uiLabel: 'Dive Shop',
-      linkUrl: '/construction',
-      fragment: 'Dive Shop',
+      linkUrl: '/dive-shop',
+      fragment: 'title',
     },
     {
-      uiLabel: 'PADI Club',
-      linkUrl: '/construction',
-      fragment: 'P.A.D.I. Club',
+      uiLabel: 'P.A.D.I. Club',
+      linkUrl: '/padi-club',
+      fragment: 'title',
     },
     {
       uiLabel: 'Sightings',
-      linkUrl: '/construction',
-      fragment: 'Sightings',
+      linkUrl: '/sightings',
+      fragment: 'title',
     },
     {
       uiLabel: 'Private Parties',
-      linkUrl: '/construction',
-      fragment: 'Private Parties',
+      linkUrl: '/private-parties',
+      fragment: 'title',
     },
   ];
   private _links3 = [
     {
       uiLabel: 'About Us',
-      linkUrl: '/construction',
-      fragment: 'Abous Us',
+      linkUrl: '/about-us',
+      fragment: 'title',
     },        
     {
       uiLabel: 'News',
-      linkUrl: '/construction',
-      fragment: 'News',
+      linkUrl: '/news',
+      fragment: 'title',
     },
     {
       uiLabel: 'Jobs',
-      linkUrl: '/construction',
-      fragment: 'Jobs',
+      linkUrl: '/jobs',
+      fragment: 'title',
     },
     {
       uiLabel: 'Partnerships',
-      linkUrl: '/construction',
-      fragment: 'Partnerships',
+      linkUrl: '/partnerships',
+      fragment: 'title',
     },
     {
       uiLabel: 'Site Info',
-      linkUrl: '/construction',
-      fragment: 'Site Info',
+      linkUrl: '/site-info',
+      fragment: 'title',
     },
   ];
 

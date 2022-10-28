@@ -6,10 +6,11 @@
       [orientationConfigs]="heroBannerConfigs"
     >
       <img class="logo" src="assets/images/logoLg_construction.svg" />      
-      <img class="construction" src="assets/images/under_construction.svg" />
+      <img id="title" class="construction" src="assets/images/under_construction.svg" />
       <div class="page-title">
         <div class="page-title-bg">
           <h1>{{pageTitle$ | async}}</h1>
+          <!-- <h1>{{pageTitle}}</h1> -->
         </div>
       </div>
     </app-hero-banner>

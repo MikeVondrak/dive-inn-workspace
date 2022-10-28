@@ -39,7 +39,8 @@
         <li *ngFor="let link of item.links">
           <a [class.inactive]="!link.active"
             [routerLink]="link.linkUrl" 
-            [fragment]="link.fragment" 
+            [fragment]="link.fragment"
+            [state]="{ pageTitle: link.uiLabel }"
             (click)="isExpanded = false"
           >
             {{link.uiLabel}}

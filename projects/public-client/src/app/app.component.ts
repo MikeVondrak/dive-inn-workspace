@@ -45,15 +45,20 @@ export class AppComponent {
     // this.route.fragment.subscribe(fragment => this.routeFragment = fragment);
     // this.router.events.subscribe(event => { if (event instanceof NavigationEnd) { this.scrollToElement(); } });
     this.route.fragment.subscribe((fragment) => {
+      
+      console.log('APP FRAG', fragment);
+      
       if (!!fragment) {
         this.scrollToElement(fragment);
       }
     });
 
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd),
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
     //   withLatestFrom(this.route.fragment)
-    // ).subscribe(([navEnd, fragment]) => {
+    ).subscribe((navEnd) => {
+      console.log('APP NAV END');
+    });
     //   this.scrollToElement(fragment);
     // });
   }
