@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, Renderer2, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { NavItem } from '../site-header/site-header.component';
+import { NavItem } from '../../../models/site-nav-item.model';
 import { PageSelectAnimation } from './site-nav.component.animations';
 
 @Component({
@@ -63,6 +63,7 @@ export class SiteNavComponent implements OnInit {
     }
     navItem.filledState = true;
     this.cdr.detectChanges();
+    console.log('SITE NAV - navItem', navItem);
   }
 
   public toggleNav() {

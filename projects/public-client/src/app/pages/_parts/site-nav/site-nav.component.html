@@ -1,7 +1,7 @@
 <ul [class.nav-expanded]="navExpanded">
   <li *ngFor="let link of navItems; trackBy:navTrackBy">
     <div class="selected-bg" [@fillVerticalTransition]="link.filledState ? 'filled' : 'unfilled'"></div>
-    <a [appAnimateViewportOverlay]="link.url" (click)="selectPage(link)" [class.active]="link.filledState">{{ link.title }}</a>
+    <a [appAnimateViewportOverlay]="link.url + '#' + link.fragment" (click)="selectPage(link)" [class.active]="link.filledState">{{ link.title }}</a>
   </li>
 </ul>
 

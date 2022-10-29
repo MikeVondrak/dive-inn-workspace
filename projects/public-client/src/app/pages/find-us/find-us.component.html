@@ -1,4 +1,4 @@
-<div class="main">
+<div id="top" class="main">
   <div class="banner-container">
     <app-hero-banner imgSrc="url(assets/images/home/Dive_On_Inn_Tom_Boyer_Retouch2.jpg)"
       [textLines]="heroBannerTitleLines" [orientationConfigs]="heroBannerConfigs">
@@ -22,10 +22,16 @@
       </a>
     </div>
     <div id="map" class="gmap-container">
-      <google-map (click)="mapClick($event)" [width]="(cardDimensions$ | async)?.width || 0"
+      <!-- <google-map (click)="mapClick($event)" [width]="(cardDimensions$ | async)?.width || 0"
         [height]="(cardDimensions$ | async)?.height || 0" [center]="mapCenter" [options]="mapOptions">
         <map-marker [position]="mapMarkerPosition" [title]="mapMarkerTitle" [options]="mapMarkerOptions"></map-marker>
-      </google-map>
+      </google-map> -->
+      <iframe        
+        frameborder="0" style="border:0; width:100%; height: 100%;"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC8l6BJOz7ECE70KYZd14-Jzak8biNpPUE&q=1380+S+Broadway+Denver+Colorado&zoom=16"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
   <div class="separator">

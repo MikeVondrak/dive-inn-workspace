@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Renderer2 } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, ChildActivationEnd, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
 import { routeAnimations } from './animations/route.animation';
 import { AnimateViewportOverlayService } from '@dive-inn-lib';
-import { combineLatest, filter, withLatestFrom } from 'rxjs';
+import { combineLatest, filter, map, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
 
 
 @Component({
@@ -19,8 +19,8 @@ export class AppComponent {
 
   // TODO - pre-Angular loader
   //private appReadyEvent: AppReadyEvent;
-
-  //private routeFragment: string | null = null;
+  private lastUrl: string = '';
+  private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
     private viewportOverlay: AnimateViewportOverlayService,
@@ -41,17 +41,22 @@ export class AppComponent {
   }
 
   // every time a new route is processed grab the #fragment if there is one
-  private watchscrollToFragment() {    
-    this.route.fragment.subscribe((fragment) => {      
-      if (!!fragment) {
-        this.scrollToElement(fragment);
-      }
-    });
-
+  private watchscrollToFragment() {
+    
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
-    ).subscribe((navEnd) => {
-      console.log('APP NAV END');
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      withLatestFrom(this.route.fragment)
+    ).pipe(
+      takeUntil(this.destroy$)
+    )
+    .subscribe(([navEnd, frag]) => {
+      const url = navEnd.url + '#' + frag;
+      if (url !== this.lastUrl) {
+
+        console.log('COMBINED', navEnd.url,frag);
+
+        this.scrollToElement(frag);
+      }
     });
   }
 
@@ -64,11 +69,18 @@ export class AppComponent {
         const selector = `#${routeFragment}`;
         try {
           const el = this.renderer.selectRootElement(selector, true); // preserve contents when selecting
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          console.log('APP - scrolling to: ', el);
+
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });          
         } catch (err) {
           console.warn(err);
         }
       }
     }, 100); // wait 100ms to scroll for smoother transitions
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
   }
 }

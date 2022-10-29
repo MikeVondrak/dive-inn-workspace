@@ -4,12 +4,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { combineLatest, fromEvent, Observable, Subject } from 'rxjs';
 import { debounce, debounceTime, filter, map, startWith, takeUntil } from 'rxjs/operators';
 import { BreakpointsEnum, ViewportService } from '@dive-inn-lib';
+import { NavItem } from '../../../models/site-nav-item.model';
 
-export interface NavItem {
-  url: string,
-  title: string,
-  filledState: boolean,
-}
+
 @Component({
   selector: 'app-site-header',
   templateUrl: './site-header.component.html',
@@ -19,10 +16,10 @@ export interface NavItem {
 export class SiteHeaderComponent implements OnInit, OnDestroy {
   public showLogo: boolean = false;
   public navItems: NavItem[] = [
-    {url: '/home', title: 'Home', filledState: false},
-    {url: '/menu', title: 'Food', filledState: false},
-    {url: '/events', title: 'Events', filledState: false},
-    {url: '/find-us', title: 'Find Us', filledState: false},
+    {url: '/home', title: 'Home', filledState: false, fragment: 'top'},
+    {url: '/menu', title: 'Food', filledState: false, fragment: 'top'},
+    {url: '/events', title: 'Events', filledState: false, fragment: 'top'},
+    {url: '/find-us', title: 'Find Us', filledState: false, fragment: 'top'},
   ]
 
   public isNavExpanded: boolean = true;
