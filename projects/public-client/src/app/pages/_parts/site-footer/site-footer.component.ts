@@ -28,7 +28,7 @@ export class SiteFooterComponent implements OnInit {
     {
       uiLabel: 'Home',
       linkUrl: '/home',
-      fragment: '',
+      fragment: 'top',
     },
     {
       uiLabel: 'Specials',
@@ -43,12 +43,12 @@ export class SiteFooterComponent implements OnInit {
     {
       uiLabel: 'Events',
       linkUrl: '/events',
-      fragment: '',
+      fragment: 'top',
     },
     {
       uiLabel: 'Find Us',
       linkUrl: '/find-us',
-      fragment: '',
+      fragment: 'top',
     },
   ];
   private _links2 = [

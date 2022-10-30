@@ -6,28 +6,7 @@
 </div>
 
 <div *ngIf="isExpanded" class="link-list-container">
-
-  <!-- <div *ngIf="vpIsSmallOrBigger$ | async" class="grids-container grids-container-large">
-    <div class="tab-selector-container">
-      <div *ngFor="let item of menuItems" class="tab-selector" [class.selected]="item.title === selectedGroup"
-        (click)="onClick(item)">
-        <h2>{{item.title}}</h2>
-      </div>
-    </div>
-    <div class="links-container" [ngSwitch]="selectedGroup">
-      <ng-container *ngFor="let item of menuItems">
-        <div *ngSwitchCase="item.title">
-          <ul>
-            <li *ngFor="let link of item.links">
-              <a [routerLink]="link.linkUrl" [fragment]="link.fragment"
-                (click)="isExpanded = false">{{link.uiLabel}}</a>
-            </li>
-          </ul>
-        </div>
-      </ng-container>
-    </div>
-  </div> -->
-  <!-- *ngIf="!(vpIsSmallOrBigger$ | async)" -->
+  
   <div class="grids-container grids-container-small">    
     <div *ngFor="let item of menuItems" class="menu-section"
       (click)="onClick(item)"
@@ -37,10 +16,9 @@
       </div>
       <ul>
         <li *ngFor="let link of item.links">
-          <a [class.inactive]="!link.active"
-            [routerLink]="link.linkUrl" 
-            [fragment]="link.fragment"
-            [state]="{ pageTitle: link.uiLabel }"
+          <a 
+            [class.inactive]="!link.active"
+            [appAnimateViewportOverlay]="link.linkUrl + '#' + link.fragment"
             (click)="isExpanded = false"
           >
             {{link.uiLabel}}

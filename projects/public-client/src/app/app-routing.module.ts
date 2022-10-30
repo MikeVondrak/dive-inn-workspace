@@ -81,7 +81,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'abous-us',
+    path: 'about-us',
     component: ConstructionComponent,
     data: { 
       pageTitle: 'About Us',

@@ -50,13 +50,11 @@ export class AppComponent {
       takeUntil(this.destroy$)
     )
     .subscribe(([navEnd, frag]) => {
-      const url = navEnd.url + '#' + frag;
-      if (url !== this.lastUrl) {
-
-        console.log('COMBINED', navEnd.url,frag);
-
+      const url = navEnd.url;
+      if (!!frag) {
         this.scrollToElement(frag);
       }
+      this.lastUrl = url;
     });
   }
 
