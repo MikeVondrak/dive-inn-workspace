@@ -122,7 +122,7 @@ $backBtnSize: 0.35vw;
         &.card-face {
         }
         &.card-back {
-          transform: rotateY(180deg) rotateZ(180deg);
+          transform: rotateY(180deg) rotateZ(180deg) translateZ(1px);
           background-color: utility.$dive-black;
           overflow: hidden;
 
