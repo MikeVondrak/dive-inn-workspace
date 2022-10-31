@@ -67,9 +67,6 @@ export class AppComponent {
         const selector = `#${routeFragment}`;
         try {
           const el = this.renderer.selectRootElement(selector, true); // preserve contents when selecting
-
-          console.log('APP - scrolling to: ', el);
-
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });          
         } catch (err) {
           console.warn(err);

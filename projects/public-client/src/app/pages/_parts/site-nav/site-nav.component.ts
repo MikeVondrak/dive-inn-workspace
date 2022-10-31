@@ -63,7 +63,6 @@ export class SiteNavComponent implements OnInit {
     }
     navItem.filledState = true;
     this.cdr.detectChanges();
-    console.log('SITE NAV - navItem', navItem);
   }
 
   public toggleNav() {

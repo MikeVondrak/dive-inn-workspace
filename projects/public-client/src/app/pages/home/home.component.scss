@@ -27,11 +27,16 @@ $waveSizeLg: 3vw;
 
     .hero-banner-content {
       position: absolute;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       font-size: 1.2vw;
       top: 46.15vw;
       left: 68.2vw;
       width: $w_zero;
       height: $h_zero;
+      padding: 0.25rem;
       transform: skew(1deg, 24deg); // perspective(10cm);
       box-shadow: 0px 4px 4px 0px #000;
 
@@ -64,22 +69,47 @@ $waveSizeLg: 3vw;
 
       img {
         position: relative;
-        width: $w_zero - 0.5vw;
+        width: 100%;
+        //width: $w_zero - 0.5vw;
 
         //height: $h_zero - 0.5vw;
         @include utility.media-breakpoint-gte(md) {
-          width: $w_md - 0.5vw;
+          //width: $w_md - 0.5vw;
           //height: $h_md - 0.5vw;
         }
 
         @media (orientation: portrait) {
-          width: $w_p_zero - 0.5vw;
+          //width: $w_p_zero - 0.5vw;
           //height: $h_p_zero - 0.5vw;
 
           @include utility.media-breakpoint-gte(md) {
-            width: $w_p_md - 0.5vw;
+            //width: $w_p_md - 0.5vw;
             //height: $h_p_md - 0.5vw;
           }
+        }
+      }
+
+      .awards {
+        padding: 4px 0;
+        border-top: 4px dotted utility.$dive-yellow;
+        border-bottom: 4px dotted utility.$dive-yellow;
+        transition: all 0.2s ease;
+
+        &:hover {
+          //padding: 6px 0;
+          border-color: utility.$dive-white;
+          // border-top: 2px solid utility.$dive-yellow;
+          // border-bottom: 2px solid utility.$dive-yellow;
+        }
+
+        a.award {
+          display: block;
+
+          img {
+            display: block; // remove whitespace
+          }
+
+          &.yalp {}
         }
       }
     }

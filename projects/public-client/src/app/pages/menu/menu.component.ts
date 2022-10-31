@@ -30,7 +30,6 @@ export class MenuComponent implements OnInit {
   }
 
   public onClick(contentEnum: MenuContentItems) {
-    console.log(contentEnum);
     switch(contentEnum) {
       case MenuContentItems.MENU: this.fullscreenMenu = !this.fullscreenMenu; break;
       case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
