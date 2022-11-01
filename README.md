@@ -1,4 +1,9 @@
 # Dive Inn Denver<br>
+
+## Links
+- Trello Board: https://trello.com/b/MjiEb3pR/dive-inn-website
+- Code: https://github.com/MikeVondrak/dive-inn-workspace
+
 ## Project Setup - Yarn, Angular
 <br>
 

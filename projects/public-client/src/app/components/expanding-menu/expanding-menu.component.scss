@@ -69,7 +69,7 @@ $titleTextSkew: skew($skewAmount, 0deg);
   .link-list-container {
     z-index: 10;
     position: fixed;
-    overflow-y: scroll;
+    overflow-y: auto;
     //align-items: flex-start;
     top: 0;
     bottom: 0; //$closeButtonHeight;
