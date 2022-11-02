@@ -1,18 +1,19 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { BreakpointsEnum } from '@dive-inn-lib';
 import { ViewportService } from 'projects/dive-inn-lib/src/lib/services/viewport/viewport.service';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
-import { ExpandingMenuLink, ExpandingMenuLinkGroup } from '../../models/expanding-menu.model';
+import { ExpandingMenuLink, ExpandingMenuLinkGroup, ExpandingMenuStateEnum } from '../../models/expanding-menu.model';
 @Component({
   selector: 'app-expanding-menu',
   templateUrl: './expanding-menu.component.html',
   styleUrls: ['./expanding-menu.component.scss']
 })
-export class ExpandingMenuComponent<ExpandingMenuHeaderEnum> implements OnInit, OnDestroy {
+export class ExpandingMenuComponent implements OnInit, OnDestroy {
 
   @Input() menuItems: ExpandingMenuLinkGroup[] = [];
+  @Output() expandingMenuState: EventEmitter<ExpandingMenuStateEnum> = new EventEmitter();
 
   public isExpanded: boolean = false;
   public selectedGroup: string = 'Main';
@@ -33,8 +34,10 @@ export class ExpandingMenuComponent<ExpandingMenuHeaderEnum> implements OnInit, 
   ngOnInit(): void {
   }
 
-  public onClick(item: ExpandingMenuLinkGroup) {
-    this.selectedGroup = item.title;
+  public onClickExpandMenu() {
+    this.isExpanded = !this.isExpanded;
+    const menuState = this.isExpanded ? ExpandingMenuStateEnum.OPEN : ExpandingMenuStateEnum.CLOSED;
+    this.expandingMenuState.emit(menuState);
   }
 
   ngOnDestroy(): void {

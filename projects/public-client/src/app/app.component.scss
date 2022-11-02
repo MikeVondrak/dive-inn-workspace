@@ -22,6 +22,10 @@
 
   main {
     flex: 1;
+
+    &.prevent-scroll {
+      overflow-y: hidden;
+    }
   }
 
   app-site-footer {

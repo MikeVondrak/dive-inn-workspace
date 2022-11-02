@@ -1,4 +1,4 @@
-<div (click)="isExpanded = !isExpanded" class="open-menu-button">
+<div (click)="onClickExpandMenu()" class="open-menu-button">
   <div>
     <ng-container *ngTemplateOutlet="MenuSvg"></ng-container>
   </div>
@@ -7,9 +7,7 @@
 <div *ngIf="isExpanded" class="link-list-container">
 
   <div class="grids-container grids-container-small">    
-    <div *ngFor="let item of menuItems" class="menu-section"
-      (click)="onClick(item)"
-    >
+    <div *ngFor="let item of menuItems" class="menu-section">
       <div class="title-block">
         <h2>{{item.title}}</h2>
       </div>
@@ -27,7 +25,7 @@
     </div>
   </div>
 
-  <div (click)="isExpanded = !isExpanded" class="close-button">
+  <div (click)="onClickExpandMenu()" class="close-button">
     <ng-container *ngTemplateOutlet="CloseSvg"></ng-container>
   </div>
 </div>

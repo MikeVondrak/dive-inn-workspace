@@ -1,12 +1,7 @@
-// export interface ExpandingMenuLink<ExpandingMenuHeaderType> {
-//   header: ExpandingMenuHeaderType;
-//   uiLabel: string;
-//   linkUrl: string;
-//   fragment: string;
-// }
-
-
-
+export enum ExpandingMenuStateEnum {
+  CLOSED,
+  OPEN,
+}
 export interface ExpandingMenuLink {
   uiLabel: string;
   linkUrl: string;

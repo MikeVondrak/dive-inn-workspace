@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { BreakpointsEnum } from '@dive-inn-lib';
 import { ViewportService } from 'projects/dive-inn-lib/src/lib/services/viewport/viewport.service';
-import { ExpandingMenuLink, ExpandingMenuLinkGroup } from '../../../models/expanding-menu.model';
+import { ExpandingMenuLink, ExpandingMenuLinkGroup, ExpandingMenuStateEnum } from '../../../models/expanding-menu.model';
 
 enum FooterLinkHeadersEnum {
   MAIN = 'Main', FUN = 'Fun', BUSINESS = 'Business'
@@ -17,6 +17,7 @@ export class SiteFooterComponent implements OnInit {
 
   @Input() address: string = '1380 S Broadway'; // @TODO - get these defaults from GQL
   @Input() phone: string = '720-242-6157';
+  @Output() expandingMenuState: EventEmitter<ExpandingMenuStateEnum> = new EventEmitter();
 
   public linkHeaders: string[] = [
     FooterLinkHeadersEnum.MAIN,
@@ -136,8 +137,7 @@ export class SiteFooterComponent implements OnInit {
           state.currentBreakpoint === BreakpointsEnum.min ||
           state.currentBreakpoint === BreakpointsEnum.xs ||
           state.currentBreakpoint === BreakpointsEnum.sm ||
-          state.currentBreakpoint === BreakpointsEnum.md //||
-      //    state.currentBreakpoint === BreakpointsEnum.lg
+          state.currentBreakpoint === BreakpointsEnum.md 
       ) {
         this.showMobileMenu = true;
       } else {
@@ -147,4 +147,7 @@ export class SiteFooterComponent implements OnInit {
     });
   }
 
+  public onExpandingMenuStateChange(state: ExpandingMenuStateEnum) {
+    this.expandingMenuState.emit(state);
+  }
 }

@@ -1,11 +1,6 @@
 <div class="waves-separator footer"></div>
-<footer>
 
-  <!-- <p>
-    <a routerLink="find-us">{{address}}</a>
-    <span class="spacer">|</span>
-    <a href="tel:{{phone}}">{{phone}}</a>
-  </p> -->
+<footer>
 
   <div class="social-icons">
     <!-- NOTE: mis-named so blockers don't filter -->
@@ -24,15 +19,6 @@
     <a href="tel:{{phone}}">{{phone}}</a>
   </p>
 
-  <!-- <ul *ngIf="!showMobileMenu" class="navigation">
-    <ng-container *ngFor="let link of linksArray; let first = first; let last = last">
-      <li>
-        <a [routerLink]="link.linkUrl" [fragment]="link.fragment">{{link.uiLabel}}</a>
-      </li>
-      <li *ngIf="!last" class="spacer">|</li>
-    </ng-container>
-  </ul> -->
-  <!-- <div class="navigation-small"> -->
-  <app-expanding-menu *ngIf="showMobileMenu" [menuItems]="linksArray"></app-expanding-menu>
-  <!-- </div> -->
+  <app-expanding-menu *ngIf="showMobileMenu" [menuItems]="linksArray" (expandingMenuState)="onExpandingMenuStateChange($event)"></app-expanding-menu>
+
 </footer>

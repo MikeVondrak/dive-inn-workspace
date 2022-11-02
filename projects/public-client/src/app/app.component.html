@@ -8,14 +8,14 @@
   <app-site-header>Header</app-site-header>
 
   <main>
-
     <div id="Viewport-Overlay" 
       [@viewportAnimation]="viewportOverlayAnimationState$ | async" 
       (@viewportAnimation.done)="viewportOverlayAnimationDone($event)">
     </div>
+    
     <router-outlet #routerOutlet="outlet"></router-outlet>
   </main>
 
-  <app-site-footer>Footer</app-site-footer>
+  <app-site-footer (expandingMenuState)="onFooterMenuStateChange($event)">Footer</app-site-footer>
 
 </div>

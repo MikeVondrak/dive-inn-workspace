@@ -12,6 +12,10 @@ body {
   min-height: 100vh;
   background: utility.$dive-black;
   color: utility.$dive-white;
+
+  &.prevent-scroll {
+    overflow-y: hidden;
+  }
 }
 
 button {
