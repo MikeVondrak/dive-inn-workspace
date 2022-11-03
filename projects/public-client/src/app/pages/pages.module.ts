@@ -14,6 +14,7 @@ import { ComponentsModule } from '../components/components.module';
 import { EventsComponent } from './events/events.component';
 import { FindUsComponent } from './find-us/find-us.component';
 import { ConstructionComponent } from './construction/construction.component';
+import { PrivatePartiesComponent } from './private-parties/private-parties.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ConstructionComponent } from './construction/construction.component';
     EventsComponent,
     FindUsComponent,
     ConstructionComponent,
+    PrivatePartiesComponent,
   ],
   imports: [
     CommonModule,

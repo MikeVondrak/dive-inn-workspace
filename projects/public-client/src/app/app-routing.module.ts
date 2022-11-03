@@ -6,6 +6,7 @@ import { FindUsComponent } from './pages/find-us/find-us.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InsideComponent } from './pages/inside/inside.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { PrivatePartiesComponent } from './pages/private-parties/private-parties.component';
 
 const routes: Routes = [
   { 
@@ -75,7 +76,7 @@ const routes: Routes = [
   },
   {
     path: 'private-parties',
-    component: ConstructionComponent,
+    component: PrivatePartiesComponent,
     data: { 
       pageTitle: 'Private Parties',
     }

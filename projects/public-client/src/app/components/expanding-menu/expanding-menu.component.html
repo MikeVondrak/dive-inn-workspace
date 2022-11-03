@@ -16,7 +16,7 @@
           <a 
             [class.inactive]="!link.active"
             [appAnimateViewportOverlay]="link.linkUrl + '#' + link.fragment"
-            (click)="isExpanded = false"
+            (click)="onClickExpandMenu()"
           >
             {{link.uiLabel}}
           </a>

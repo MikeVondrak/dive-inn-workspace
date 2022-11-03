@@ -30,13 +30,9 @@ export class ConstructionComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef
   ) {
 
-    this.pageTitle$ = combineLatest([
-      this.activatedRoute.data,
-      this.activatedRoute.fragment,
-    ]).pipe(
+    this.pageTitle$ = this.activatedRoute.data.pipe(
       takeUntil(this.destroy$),
-      map(([data, frag]) => {
-        const state = this.location.getState() as any;
+      map((data) => {
         return data['pageTitle'];
       })
     );
