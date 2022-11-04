@@ -45,45 +45,51 @@ const landscape_lg: HeroBannerConfig = {
 /******************** PORTRAIT *********************/
 
 const portrait_zero: HeroBannerConfig = {
-  bgPosition: '92.5% -10vw',
+  bgPosition: '98.5% -15vw',
   bgSize: '260%',
-  textLeft: '25vw',
-  textAlign: 'right',
+  textLeft: '15vw',
+  textAlign: 'center',
   textContainerTransform: '',
-  textTransform: 'skew(-2deg, -2deg) rotate(-2deg)',
-  textWidth: '50vw',
-  textSize: '6vw',
-  textPaddingTop: '80vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textTransform: 'skew(-1deg, -1deg) rotate(-1deg)',
+  textWidth: '70vw',
+  textSize: '7vw',
+  textPaddingTop: '24vw', // NOTE: using this for vertical spacing of bg instead of height on container
   textPaddingBottom: '80vw',
 };
 const portrait_min: HeroBannerConfig = { // 320px
-  bgPosition: '87% 0%',
-  bgSize: '190%',
-  textLeft: '1vw',
-  textPaddingTop: '48vw',
-  textPaddingBottom: '80vw',
+  bgPosition: '102% -10vw',
+  bgSize: '230%',  
+  textPaddingTop: '20vw',
+  textPaddingBottom: '70vw',
 };
 const portrait_xs: HeroBannerConfig = { // 440px
-  bgPosition: '87% 20%',
-  bgSize: '180%',
-  textLeft: '5vw',
-  textPaddingTop: '50vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '35vw',
+  bgPosition: '107% -10vw',
+  bgSize: '200%',
+  textSize: '6vw',
+  textLeft: '20vw',
+  textWidth: '60vw',  
+  textPaddingTop: '18vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '56vw',
 };
-const portrait_sm: HeroBannerConfig = { // 600px
-  bgSize: '165%',
-  bgPosition: '85% 0vw',
-  textLeft: '11vw',
-  textPaddingTop: '45vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '21vw',
+const portrait_sm: HeroBannerConfig = { // 600px    
+  //bgSize: '200%',
+  //bgPosition: '107% -10vw',  
+  textSize: '5vw',
+  textLeft: '23vw',
+  textWidth: '54vw',  
+  textPaddingTop: '22vw', // NOTE: using this for vertical spacing of bg instead of height on container
+  textPaddingBottom: '54vw',
 };
 
 const portrait_md: HeroBannerConfig = { // 840px
-  bgSize: '155%',
-  bgPosition: '82% -4vw',
-  textLeft: '5vw',
-  textPaddingTop: '30vw',
-  textPaddingBottom: '27vw'
+  bgSize: '150%',
+  bgPosition: '107% -6vw',
+  //textTransform: 'skew(-2deg, -2deg) rotate(-2deg)',
+  textSize: '3.5vw',
+  textLeft: '30vw',
+  textWidth: '40vw',
+  textPaddingTop: '20vw',
+  textPaddingBottom: '42vw'
 };
 
 /************* EXPORT ***************/

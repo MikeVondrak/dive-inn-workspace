@@ -1,4 +1,108 @@
 @use '../../scss/utility';
 
+$zoomAnimationTime: 0.6s;
+
 :host {
+  .main {
+    position: relative;
+    .message-bottle {
+      position: absolute;
+      width: 30vw;
+      top: 55vw;
+      @media (orientation: portrait) {
+        @include utility.media-breakpoint-gte(xs) {
+          width: 20vw;
+          top: 48vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          width: 15vw;
+          top: 40vw;
+        }
+        @include utility.media-breakpoint-gte(lg) {
+          //width: 10vw;
+          top: 37vw;
+        }
+      }      
+      left: 50vw;
+      transform: translateX(-50%);
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      padding: 2vw;
+      svg {
+        width: 100%;
+        g {
+          path {
+            stroke: utility.$dive-yellow;
+            fill: utility.$dive-yellow;
+          }
+        }
+      }
+    }
+
+    .page-content {
+      position: relative;
+      display: flex;
+      // flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      bottom: 13vw;   
+      background-color: rgba(0, 0, 0, 0.6);
+      transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+      cursor: pointer;
+      
+      // $skew: 10deg;
+      // transform: skew($skew, $skew) rotate($skew);
+      
+      &.fullscreen {
+        z-index: 11;
+        position: absolute;
+        // overflow-y: auto;
+        width: 100vw;
+        // height: max(120vh, 120vw);
+        height: 100vh;
+        top: 0;
+        left: 0;
+        padding: 5vw;
+        background-color: rgba(0, 0, 0, 0.85);
+        // flex-shrink: 0;
+        
+        // transform: translateX(0) skew(0deg, 0deg);
+        
+        img {
+          //height: fit-content;
+          width: 90vw;
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;   
+        }
+      }
+
+      p, img {
+        margin: 0;
+        padding: 2vw 1.5vw;
+        width: 80vw;
+        font-size: clamp(0.75rem, 3.5vw, 2.5rem);
+        text-align: center;        
+
+        @include utility.media-breakpoint-gte(xs) {
+          width: 60vw;
+        }
+
+      }
+
+      @media (orientation: portrait) {
+        bottom: 22vw;
+        @include utility.media-breakpoint-gte(xs) {
+          bottom: 16vw;
+        }
+        @include utility.media-breakpoint-gte(sm) {
+          bottom: 14vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          bottom: 13vw;
+        }
+        @include utility.media-breakpoint-gte(lg) {
+          bottom: 13vw;
+        }
+      }
+    }
+  }
 }

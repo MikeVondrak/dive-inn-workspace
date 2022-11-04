@@ -14,9 +14,9 @@ import { HeroBannerConfig } from '../../models/hero-banner.model';
 export class HeroBannerComponent implements OnInit, OnDestroy {
 
   @Input() orientationConfigs: Map<Orientations, Map<BreakpointsEnum, HeroBannerConfig>> = new Map();
-
   @Input() imgSrc: string = '';
   @Input() textLines: string[] = [];
+  //@Input() textBackground: string = '';
 
   @HostBinding('style.--width') width: string = '';
   @HostBinding('style.--height') height: string = '';
@@ -29,6 +29,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   @HostBinding('style.--textSize') textSize: string = '';
   @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
   @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
+  @Input() @HostBinding('style.--textBackground') textBackground: string = '';
 
   public bgSize: string | undefined = '';
   public bgPosition: string | undefined = '';

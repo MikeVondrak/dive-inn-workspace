@@ -49,10 +49,11 @@
         font-size: var(--textSize);
         line-height: 1.4;
         color: utility.$dive-black;
+        background: var(--textBackground);
+        transform: var(--textTransform);
         
         div {
           position: relative;
-          transform: var(--textTransform);
           -webkit-text-stroke: 0.05em utility.$dive-red;
           &::after {
             content: attr(card-title);

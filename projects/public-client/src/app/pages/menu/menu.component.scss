@@ -355,7 +355,7 @@ $zoomAnimationTime: 0.6s;
         p {
           margin: 0;
           padding: 3vw 3.5vw;
-          font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+          font-size: clamp(0.75rem, 3.5vw, 2.5rem);
           font-weight: bold;
           //transform: skew($skew * 2, $skew) rotate($skew * 2);
         }
