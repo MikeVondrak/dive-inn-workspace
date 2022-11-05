@@ -5,35 +5,80 @@ $zoomAnimationTime: 0.6s;
 :host {
   .main {
     position: relative;
-    .message-bottle {
+
+    .reserve-container {
       position: absolute;
-      width: 30vw;
-      top: 55vw;
-      @media (orientation: portrait) {
-        @include utility.media-breakpoint-gte(xs) {
-          width: 20vw;
-          top: 48vw;
-        }
-        @include utility.media-breakpoint-gte(md) {
-          width: 15vw;
-          top: 40vw;
-        }
-        @include utility.media-breakpoint-gte(lg) {
-          //width: 10vw;
-          top: 37vw;
-        }
-      }      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      bottom: 50vw;
       left: 50vw;
       transform: translateX(-50%);
-      background-color: rgba(0,0,0,0.5);
-      border-radius: 50%;
-      padding: 2vw;
-      svg {
-        width: 100%;
-        g {
-          path {
-            stroke: utility.$dive-yellow;
-            fill: utility.$dive-yellow;
+      font-size: clamp(1rem, 2vw, 3rem);
+
+      @include utility.media-breakpoint-gte(min) {
+        bottom: 46vw;
+      }
+
+      @include utility.media-breakpoint-gte(xs) {
+        bottom: 35vw;
+      }
+
+      @include utility.media-breakpoint-gte(sm) {
+        bottom: 27vw;
+      }
+
+      @include utility.media-breakpoint-gte(lg) {
+        bottom: 22vw;
+      }
+    }
+
+    a {
+      z-index: 1;
+      position: relative;
+      top: -1vw;
+      padding: 0.5vw 1vw;
+      //border: 0.5vw solid utility.$dive-yellow;
+      border-radius: 2vw;
+      //background: rgba(0, 0, 0, 0.5);
+
+      .message-bottle {
+        position: relative;
+        z-index: 2;
+        width: 33vw;
+
+        @media (orientation: portrait) {
+          @include utility.media-breakpoint-gte(xs) {
+            width: 24vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
+            width: 22vw;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            width: 20vw;
+          }
+          @include utility.media-breakpoint-gte(lg) {
+            //width: 10vw;
+          }
+        }
+
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        padding: 1vw;
+        border: 1vw solid utility.$dive-yellow;
+        box-shadow: 0px 2px 8px 4px #000;
+
+        svg,
+        img {
+          display: block;
+          width: 100%;
+
+          g {
+            path {
+              stroke: utility.$dive-yellow;
+              fill: utility.$dive-yellow;
+            }
           }
         }
       }
@@ -41,18 +86,39 @@ $zoomAnimationTime: 0.6s;
 
     .page-content {
       position: relative;
-      display: flex;
+      display: block;
+      // display: flex;
       // flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      bottom: 13vw;   
-      background-color: rgba(0, 0, 0, 0.6);
+      // justify-content: center;
+      // align-items: center;
+      // bottom: 13vw;   
+      background-color: rgba(0, 0, 0, 0.5);
       transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
       cursor: pointer;
-      
+
       // $skew: 10deg;
       // transform: skew($skew, $skew) rotate($skew);
-      
+
+      @media (orientation: portrait) {
+
+        //bottom: 22vw;
+        @include utility.media-breakpoint-gte(xs) {
+          //bottom: 16vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          //bottom: 14vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          //bottom: 13vw;
+        }
+
+        @include utility.media-breakpoint-gte(lg) {
+          //bottom: 13vw;
+        }
+      }
+
       &.fullscreen {
         z-index: 11;
         position: absolute;
@@ -65,42 +131,43 @@ $zoomAnimationTime: 0.6s;
         padding: 5vw;
         background-color: rgba(0, 0, 0, 0.85);
         // flex-shrink: 0;
-        
+
         // transform: translateX(0) skew(0deg, 0deg);
-        
+
         img {
           //height: fit-content;
           width: 90vw;
-          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;   
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
         }
       }
 
-      p, img {
+      p,
+      img {
         margin: 0;
         padding: 2vw 1.5vw;
         width: 80vw;
         font-size: clamp(0.75rem, 3.5vw, 2.5rem);
-        text-align: center;        
+        text-align: center;
 
         @include utility.media-breakpoint-gte(xs) {
           width: 60vw;
         }
 
       }
+    }
 
-      @media (orientation: portrait) {
-        bottom: 22vw;
-        @include utility.media-breakpoint-gte(xs) {
-          bottom: 16vw;
-        }
-        @include utility.media-breakpoint-gte(sm) {
-          bottom: 14vw;
-        }
-        @include utility.media-breakpoint-gte(md) {
-          bottom: 13vw;
-        }
-        @include utility.media-breakpoint-gte(lg) {
-          bottom: 13vw;
+    .section-red {
+      display: flex;
+      justify-content: center;
+      padding: clamp(1rem, 2vw, 2rem) 0;
+      background: utility.$dive-red;
+
+      .flyer {
+        padding: clamp(0.25rem, 1vw, 2rem);
+        background-color: rgba(0, 0, 0, 0.5);
+        img {
+          display: block;
+          width: 80vw;
         }
       }
     }

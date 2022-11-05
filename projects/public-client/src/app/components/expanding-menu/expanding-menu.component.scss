@@ -91,9 +91,10 @@ $titleTextSkew: skew($skewAmount, 0deg);
         transform: $titleTextSkew;
       }
 
+      // TODO: clean up styles, 2nd ul def below
       ul {
         flex-basis: 100%;
-        margin: 0;      
+        margin: 0;
         padding: 0;// clamp(1rem, 2vw, 2rem);
         list-style: none;
 
@@ -246,7 +247,7 @@ $titleTextSkew: skew($skewAmount, 0deg);
             width: 88%;
           }
           max-width: 400px;
-          margin: 0 0 2vw;
+          margin: 0 0 clamp(1rem, 2vw, 2rem);;
           @include utility.media-breakpoint-gte(sm) {
             display: grid;
             grid-template-columns: 1fr 1fr;

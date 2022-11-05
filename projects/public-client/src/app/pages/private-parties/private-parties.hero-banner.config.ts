@@ -54,7 +54,7 @@ const portrait_zero: HeroBannerConfig = {
   textWidth: '70vw',
   textSize: '7vw',
   textPaddingTop: '24vw', // NOTE: using this for vertical spacing of bg instead of height on container
-  textPaddingBottom: '80vw',
+  textPaddingBottom: '66vw',
 };
 const portrait_min: HeroBannerConfig = { // 320px
   bgPosition: '102% -10vw',
