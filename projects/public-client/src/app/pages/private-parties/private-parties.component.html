@@ -3,32 +3,30 @@
     <app-hero-banner imgSrc="url(assets/images/private-parties/private_parties_bg_retouch.jpg)"
       [textLines]="heroBannerTitleLines" [orientationConfigs]="heroBannerConfigs" [textBackground]="'rgba(0,0,0,0.5)'">
     </app-hero-banner>
+
+    <div class="reserve-container">
+      <a href="mailto:contact@diveinndenver.com?subject=[Reservation Request]&body=Date:%0D%0A%0D%0ANumber in Party:%0D%0A%0D%0AWhich Spaces:%0D%0A%0D%0A">
+        <div class="message-bottle">
+          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
+          <img src="assets/images/message_bottle_with_text.svg" />
+        </div>
+      </a>
+    </div>
+
   </div>
 
-  <div class="reserve-container">
-    <a>
-      <div class="message-bottle">
-        <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
-        <img src="assets/images/message_bottle_with_text.svg" />
-      </div>
-    </a>
-  </div>
-
-  <div class="page-content" [class.fullscreen]="fullscreen" (click)="onClick()">
-    <!-- <p>Plan your next<br>occasion at the<br>Dive Inn</p> -->
+  <!-- <div class="page-content" [class.fullscreen]="fullscreen" (click)="onClick()">
+    <p>Plan your next<br>occasion at the<br>Dive Inn</p>
     
-  </div>
-  <div class="separator">
-    <!-- <img src="assets/images/chains.svg" /> -->
-  </div>
-
+  </div> -->
+  
   <div class="section-red">
-    <div class="flyer">
+    <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
       <img src="assets/images/private-parties/holiday_flyer.jpg" />
     </div>
   </div>
   <div class="separator">
-    <img src="assets/images/" />
+    <img src="assets/images/private-parties/life-preserver-red.svg" />
   </div>
 </div>
 
