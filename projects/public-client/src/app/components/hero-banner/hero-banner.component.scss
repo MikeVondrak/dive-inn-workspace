@@ -45,12 +45,13 @@
       h1.title {
         z-index: 0;
         position: relative;
-        margin: 0;        
+        margin: 0;
+        padding: var(--textBackgroundPadding);
         font-size: var(--textSize);
         line-height: 1.4;
         color: utility.$dive-black;
         background: var(--textBackground);
-        transform: var(--textTransform);
+        transform: var(--textTransform);        
         
         div {
           position: relative;

@@ -1,14 +1,15 @@
 <div class="main" id="title">
   <div id="hero" class="hero-banner-container">
     <app-hero-banner imgSrc="url(assets/images/private-parties/private_parties_bg_retouch.jpg)"
-      [textLines]="heroBannerTitleLines" [orientationConfigs]="heroBannerConfigs" [textBackground]="'rgba(0,0,0,0.5)'">
+      [textLines]="heroBannerTitleLines" [orientationConfigs]="heroBannerConfigs" textBackground="rgba(0,0,0,0.5)" textBackgroundPadding="clamp(1rem, 2vw, 3rem) 0">
     </app-hero-banner>
 
     <div class="reserve-container">
-      <a href="mailto:contact@diveinndenver.com?subject=[Reservation Request]&body=Date:%0D%0A%0D%0ANumber in Party:%0D%0A%0D%0AWhich Spaces:%0D%0A%0D%0A">
+      <a
+        href="mailto:contact@diveinndenver.com?subject=[Reservation Request]&body=Date:%0D%0A%0D%0ANumber in Party:%0D%0A%0D%0AWhich Spaces (Boat, Large Room, Small Room, North Patio, South Patio):%0D%0A%0D%0ANotes:" target="_blank">
         <div class="message-bottle">
           <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
-          <img src="assets/images/message_bottle_with_text.svg" />
+          <img src="assets/images/message_bottle_with_text.svg" alt="Make a reservation now!" />
         </div>
       </a>
     </div>
@@ -19,16 +20,28 @@
     <p>Plan your next<br>occasion at the<br>Dive Inn</p>
     
   </div> -->
-  
-  <div class="section-red">
-    <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
-      <img src="assets/images/private-parties/holiday_flyer.jpg" />
+
+  <div class="red">
+    <div class="section-red">
+      <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
+        <img src="assets/images/private-parties/holiday_flyer.jpg" />
+      </div>
     </div>
+    <!-- Waves separator -->
+    <div class="waves-separator"></div>
   </div>
+
   <div class="separator">
+    <!-- <img src="assets/images/private-parties/life-preserver-with-text.svg" /> -->
     <img src="assets/images/private-parties/life-preserver-red.svg" />
   </div>
+
+  
 </div>
+
+
+
+<!--------------------------------------------->
 
 <ng-template #BottleMessageSvg>
   <svg width="100%" height="100%" viewBox="0 0 702 701" version="1.1" xmlns="http://www.w3.org/2000/svg"

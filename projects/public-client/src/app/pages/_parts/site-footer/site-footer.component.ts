@@ -54,6 +54,11 @@ export class SiteFooterComponent implements OnInit {
   ];
   private _links2 = [
     {
+      uiLabel: 'Private Parties',
+      linkUrl: '/private-parties',
+      fragment: 'title',
+    },
+    {
       uiLabel: 'Games',
       linkUrl: '/games',
       fragment: 'title',
@@ -72,12 +77,7 @@ export class SiteFooterComponent implements OnInit {
       uiLabel: 'Sightings',
       linkUrl: '/sightings',
       fragment: 'title',
-    },
-    {
-      uiLabel: 'Private Parties',
-      linkUrl: '/private-parties',
-      fragment: 'title',
-    },
+    },    
   ];
   private _links3 = [
     {
@@ -145,6 +145,9 @@ export class SiteFooterComponent implements OnInit {
       }
       this.cdr.markForCheck();
     });
+
+    // show Private Parties as active
+    this.links2[0].active = true;
   }
 
   public onExpandingMenuStateChange(state: ExpandingMenuStateEnum) {

@@ -30,6 +30,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   @HostBinding('style.--textPaddingTop') textPaddingTop: string = '';
   @HostBinding('style.--textPaddingBottom') textPaddingBottom: string = '';
   @Input() @HostBinding('style.--textBackground') textBackground: string = '';
+  @Input() @HostBinding('style.--textBackgroundPadding') textBackgroundPadding: string = '';
 
   public bgSize: string | undefined = '';
   public bgPosition: string | undefined = '';

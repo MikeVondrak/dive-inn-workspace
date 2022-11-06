@@ -34,7 +34,7 @@ $zoomAnimationTime: 0.6s;
 
         @include utility.media-breakpoint-gte(lg) {
           //bottom: 22vw;
-        }
+        }        
       }
     }
 
@@ -50,9 +50,25 @@ $zoomAnimationTime: 0.6s;
       .message-bottle {
         position: relative;
         z-index: 2;
-        width: 32vw;
+        width: 22vw;
+
+        @include utility.media-breakpoint-gte(xs) {
+          width: 24vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          width: 22vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          width: 20vw;
+        }
+
+        @include utility.media-breakpoint-gte(lg) {
+        }
 
         @media (orientation: portrait) {
+          width: 32vw;
           @include utility.media-breakpoint-gte(xs) {
             width: 24vw;
           }
@@ -92,67 +108,12 @@ $zoomAnimationTime: 0.6s;
     }
 
     // .page-content {
-    //   position: relative;
-    //   display: block; 
-    //   background-color: rgba(0, 0, 0, 0.5);
-    //   transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
-    //   cursor: pointer;
-
-    //   @media (orientation: portrait) {
-
-    //     //bottom: 22vw;
-    //     @include utility.media-breakpoint-gte(xs) {
-    //       //bottom: 16vw;
-    //     }
-
-    //     @include utility.media-breakpoint-gte(sm) {
-    //       //bottom: 14vw;
-    //     }
-
-    //     @include utility.media-breakpoint-gte(md) {
-    //       //bottom: 13vw;
-    //     }
-
-    //     @include utility.media-breakpoint-gte(lg) {
-    //       //bottom: 13vw;
-    //     }
-    //   }
-
-    //   &.fullscreen {
-    //     z-index: 11;
-    //     position: absolute;
-    //     width: 100vw;
-    //     height: 100vh;
-    //     top: 0;
-    //     left: 0;
-    //     padding: 5vw;
-    //     background-color: rgba(0, 0, 0, 0.85);
-
-    //     img {
-    //       width: 90vw;
-    //       transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
-    //     }
-    //   }
-
-    //   p,
-    //   img {
-    //     margin: 0;
-    //     padding: 2vw 1.5vw;
-    //     width: 80vw;
-    //     font-size: clamp(0.75rem, 3.5vw, 2.5rem);
-    //     text-align: center;
-
-    //     @include utility.media-breakpoint-gte(xs) {
-    //       width: 60vw;
-    //     }
-
-    //   }
     // }
 
     .section-red {
       display: flex;
       justify-content: center;
-      padding: clamp(1rem, 2vw, 2rem) 0;
+      padding: clamp(1rem, 8vw, 12rem) 0 clamp(3rem, 12vw, 15rem);
       
       $bgColor: transparent;
       $bgColor2: utility.$dive-red;
@@ -174,7 +135,7 @@ $zoomAnimationTime: 0.6s;
       .flyer {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center;        
         top: 0;
         left: 0;
         padding: clamp(0.25rem, 1vw, 2rem);
@@ -185,12 +146,13 @@ $zoomAnimationTime: 0.6s;
         img {
           display: block;
           width: 80vw;
+          max-width: 960px;
           transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
         }
 
         &.fullscreen {
           position: relative;
-          width: 100vw;
+          width: 100vw;          
           //height: max(120vh, 120vw);
           //top: 0;
           //left: 0;
@@ -207,6 +169,7 @@ $zoomAnimationTime: 0.6s;
 
           img {
             width: 90vw;
+            max-width: 90vw;
           }
         }
       }
@@ -215,9 +178,44 @@ $zoomAnimationTime: 0.6s;
     .separator {
       display: flex;
       justify-content: center;
-      padding: clamp(2rem, 12vw, 10rem);
+      padding: clamp(2rem, 14vw, 10rem) 0 clamp(2rem, 18vw, 10rem);
       img {
-        width: 15vw;
+        width: 12vw;
+      }
+    }
+
+    $waveSize: 6vw;
+    $waveSizeSm: 5vw;
+    $waveSizeMd: 4vw;
+    $waveSizeLg: 3vw;
+    .waves-separator {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      height: $waveSize;
+      width: 100%;
+      top: -($waveSize - 0.5vw);
+      background-image: url('/assets/images/wave.svg');
+  
+      @include utility.media-breakpoint-gte(sm) {
+        height: $waveSizeSm;
+        top: -($waveSizeSm - 0.5vw);
+      }
+  
+      @include utility.media-breakpoint-gte(md) {
+        height: $waveSizeMd;
+        top: -($waveSizeMd - 0.5vw);
+      }
+  
+      @include utility.media-breakpoint-gte(lg) {
+        height: $waveSizeMd;
+        top: -($waveSizeMd - 0.5vw);
+      }
+  
+      &.footer {
+        height: 2vw;
+        top: 2px;
+        background-image: url('/assets/images/wave-red.svg');
       }
     }
   }
