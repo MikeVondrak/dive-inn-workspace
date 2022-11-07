@@ -178,7 +178,7 @@ $zoomAnimationTime: 0.6s;
     .separator {
       display: flex;
       justify-content: center;
-      padding: clamp(2rem, 14vw, 10rem) 0 clamp(2rem, 18vw, 10rem);
+      padding: clamp(2rem, 14vw, 30rem) 0 clamp(2rem, 18vw, 30rem);
       img {
         width: 12vw;
       }
@@ -216,6 +216,24 @@ $zoomAnimationTime: 0.6s;
         height: 2vw;
         top: 2px;
         background-image: url('/assets/images/wave-red.svg');
+      }
+    }
+
+    .split-content {
+      display: flex;
+      justify-content: center;
+      gap: 2vw;
+
+      &:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+
+      > div {
+        flex-basis: 45vw;        
+      }
+
+      img {
+        width: 75vw;
       }
     }
   }
