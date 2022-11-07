@@ -109,10 +109,10 @@ $zoomAnimationTime: 0.6s;
       }
     }
     .separator {
-      padding: clamp(48px, 12vw, 366px);
+      padding: clamp(2rem, 18vw, 2000px) 0;
       text-align: center;
       img {
-        width: clamp(40px, 10vw, 180px);
+        width: clamp(2rem, 12vw, 180px);
       }
     }
   }
