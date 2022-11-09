@@ -9,6 +9,7 @@ import { IconCardComponent } from './icon-card/icon-card.component';
 import { TextBlurbComponent } from './text-blurb/text-blurb.component';
 import { ExpandingMenuComponent } from './expanding-menu/expanding-menu.component';
 import { RouterModule } from '@angular/router';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     IconCardComponent,
     TextBlurbComponent,
     ExpandingMenuComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { RouterModule } from '@angular/router';
     IconCardComponent,
     TextBlurbComponent,
     ExpandingMenuComponent,
+    CarouselComponent,
   ]
 })
 export class ComponentsModule { }

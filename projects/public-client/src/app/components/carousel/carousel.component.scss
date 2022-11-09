@@ -1,0 +1,54 @@
+@use 'sass:math';
+@use '../../scss/utility';
+
+$cubeSize: 30vw;
+$offset: math.div($cubeSize, 2);
+
+:host {
+  display: block;
+  perspective: 1000px;
+  
+  .carousel-container {
+    position: relative;
+    height: $cubeSize;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    transform-style: preserve-3d;
+    //transform: rotateX(-70deg);//translateZ(-$offset) rotateX(-70deg);
+    transition: transform 1s ease;
+
+    &.rotate {
+      transform:  rotateY(-45deg); //translateZ(-$offset)
+    }
+
+    .face {
+      position: absolute;
+      width: $cubeSize;
+      height: $cubeSize;
+
+      background: utility.$dive-yellow;
+      //backface-visibility: hidden;
+
+      &.left-obscured {
+        background-color: purple;
+        transform: translate3d(-1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(-90deg);
+      }
+      &.left {
+        background-color: red;
+        transform: translate3d(-0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(-45deg);
+      }
+      &.center {
+        transform: rotateY(0deg) translateZ(1.207 * $cubeSize);
+      }
+      &.right {
+        background-color: green;
+        transform: translate3d(0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(45deg);
+      }
+      &.right-obscured {
+        background-color: blue;
+        transform: translate3d(1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(90deg);
+      }
+    }
+  }
+}
