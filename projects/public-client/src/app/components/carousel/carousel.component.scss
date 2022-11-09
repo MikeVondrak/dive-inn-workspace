@@ -3,6 +3,7 @@
 
 $cubeSize: 30vw;
 $offset: math.div($cubeSize, 2);
+$rotateX: -10deg;
 
 :host {
   display: block;
@@ -15,24 +16,29 @@ $offset: math.div($cubeSize, 2);
     justify-content: center;
     align-items: center;    
     transform-style: preserve-3d;
-    //transform: rotateX(-70deg);//translateZ(-$offset) rotateX(-70deg);
+    transform: rotateX($rotateX);//translateZ(-$offset) rotateX(-70deg);
     transition: transform 1s ease;
 
     &.rotate {
-      transform:  rotateY(-45deg); //translateZ(-$offset)
+      transform: rotateX($rotateX) rotateY(-45deg); //translateZ(-$offset)
     }
 
     .face {
       position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: $cubeSize;
       height: $cubeSize;
-
+      
+      font-size: 2rem;
+      font-weight: bold;
       background: utility.$dive-yellow;
       //backface-visibility: hidden;
 
       &.left-obscured {
         background-color: purple;
-        transform: translate3d(-1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(-90deg);
+        transform: var(--transform1);
       }
       &.left {
         background-color: red;

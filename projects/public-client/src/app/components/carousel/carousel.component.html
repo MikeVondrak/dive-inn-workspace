@@ -1,9 +1,9 @@
 <div class="carousel-container" [class.rotate]="rotate">
-  <div class="face left-obscured"></div>
-  <div class="face left"></div>
-  <div class="face center"></div>
-  <div class="face right"></div>
-  <div class="face right-obscured"></div>
+  <div class="face left-obscured">{{faces[0] | async}}</div>
+  <div class="face left">{{faces[1] | async}}</div>
+  <div class="face center">{{faces[2] | async}}</div>
+  <div class="face right">{{faces[3] | async}}</div>
+  <div class="face right-obscured">{{faces[4] | async}}</div>
 </div>
 
 <div>
