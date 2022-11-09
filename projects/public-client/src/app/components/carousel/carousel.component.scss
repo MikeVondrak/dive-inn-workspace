@@ -44,7 +44,8 @@ $rotateX: -10deg;
 
         &.w {
           background-color: purple;
-          transform: var(--transform1);
+          //transform: var(--transformW);
+          transform:translate3d(-1.207 * $cubeSize, 0, 0) rotateY(-90deg)
         }
 
         &.sw {
