@@ -3,57 +3,68 @@
 
 $cubeSize: 30vw;
 $offset: math.div($cubeSize, 2);
+$offsetZ: $cubeSize * 1.35;
 $rotateX: -10deg;
 
 :host {
   display: block;
   perspective: 1000px;
   
-  .carousel-container {
-    position: relative;
-    height: $cubeSize;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
+  .carousel {
+    transform: translateZ(-$offsetZ);
+    perspective: 10000px;
     transform-style: preserve-3d;
-    transform: rotateX($rotateX);//translateZ(-$offset) rotateX(-70deg);
-    transition: transform 1s ease;
-
-    &.rotate {
-      transform: rotateX($rotateX) rotateY(-45deg); //translateZ(-$offset)
-    }
-
-    .face {
-      position: absolute;
+    
+    &-container {
+      transform-style: preserve-3d;
+      position: relative;
+      height: $cubeSize;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: $cubeSize;
-      height: $cubeSize;
-      
-      font-size: 2rem;
-      font-weight: bold;
-      background: utility.$dive-yellow;
-      //backface-visibility: hidden;
+      transform: rotateX($rotateX);
+      transition: transform 1s ease;
 
-      &.left-obscured {
-        background-color: purple;
-        transform: var(--transform1);
+      &.rotate {
+        transform: rotateX($rotateX) rotateY(-45deg);
       }
-      &.left {
-        background-color: red;
-        transform: translate3d(-0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(-45deg);
-      }
-      &.center {
-        transform: rotateY(0deg) translateZ(1.207 * $cubeSize);
-      }
-      &.right {
-        background-color: green;
-        transform: translate3d(0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(45deg);
-      }
-      &.right-obscured {
-        background-color: blue;
-        transform: translate3d(1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(90deg);
+
+      .face {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $cubeSize;
+        height: $cubeSize;
+
+        font-size: 2rem;
+        font-weight: bold;
+        background: utility.$dive-yellow;
+        //backface-visibility: hidden;
+
+        &.left-obscured {
+          background-color: purple;
+          transform: var(--transform1);
+        }
+
+        &.left {
+          background-color: red;
+          transform: translate3d(-0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(-45deg);
+        }
+
+        &.center {
+          transform: rotateY(0deg) translateZ(1.207 * $cubeSize);
+        }
+
+        &.right {
+          background-color: green;
+          transform: translate3d(0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(45deg);
+        }
+
+        &.right-obscured {
+          background-color: blue;
+          transform: translate3d(1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(90deg);
+        }
       }
     }
   }
