@@ -22,7 +22,7 @@ $rotateX: -10deg;
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: rotateX($rotateX);
+      transform: rotateX($rotateX) var(--rotation);
       transition: transform 1s ease;
 
       &.rotate {
@@ -42,29 +42,41 @@ $rotateX: -10deg;
         background: utility.$dive-yellow;
         //backface-visibility: hidden;
 
-        &.left-obscured {
+        &.w {
           background-color: purple;
           transform: var(--transform1);
         }
 
-        &.left {
+        &.sw {
           background-color: red;
           transform: translate3d(-0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(-45deg);
         }
 
-        &.center {
-          transform: rotateY(0deg) translateZ(1.207 * $cubeSize);
+        &.s {
+          transform: translateZ(1.207 * $cubeSize) rotateY(0deg) ;
         }
 
-        &.right {
+        &.se {
           background-color: green;
-          transform: translate3d(0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(45deg);
+          transform: translate3d(0.854 * $cubeSize, 0, 0.854 * $cubeSize) rotateY(45deg);
         }
 
-        &.right-obscured {
+        &.e {
           background-color: blue;
           transform: translate3d(1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(90deg);
         }
+        &.ne {
+          background-color: orange;
+          transform: translate3d(0.854 * $cubeSize, 0, -0.854 * $cubeSize) rotateY(135deg);
+        }
+        &.n {
+          background-color: teal;
+          transform: translateZ(-1.207 * $cubeSize) rotateY(180deg);
+        }
+        &.nw {
+          background-color: brown;
+          transform: translate3d(-0.854 * $cubeSize, 0, -0.854 * $cubeSize) rotateY(-135deg);
+        }        
       }
     }
   }

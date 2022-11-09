@@ -1,13 +1,18 @@
 <div class="carousel">
-  <div class="carousel-container" [class.rotate]="rotate">
-    <div class="face left-obscured">{{faces[0] | async}}</div>
-    <div class="face left">{{faces[1] | async}}</div>
-    <div class="face center">{{faces[2] | async}}</div>
-    <div class="face right">{{faces[3] | async}}</div>
-    <div class="face right-obscured">{{faces[4] | async}}</div>
+  <div class="carousel-container">    
+    <div class="face s">0 {{faces[0] | async}}</div>
+    <div class="face se">1 {{faces[1] | async}}</div>
+    <div class="face e">2 {{faces[2] | async}}</div>
+    <div class="face ne">3 {{faces[3] | async}}</div>
+    <div class="face n">4 {{faces[4] | async}}</div>
+    <div class="face nw">5 {{faces[5] | async}}</div>
+    <div class="face w">6 {{faces[6] | async}}</div>
+    <div class="face sw">7 {{faces[7] | async}}</div>
   </div>
 </div>
 
 <div>
-  <button (click)="rotate = !rotate">Rotate</button>
+  <button (click)="rotateLeft()">&lt;</button>
+  <button (click)="rotateRight()">&gt;</button>
 </div>
+{{ currentFace }}:{{ currentRotation }}
