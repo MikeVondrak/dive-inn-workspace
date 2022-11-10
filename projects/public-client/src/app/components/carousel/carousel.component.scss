@@ -1,7 +1,7 @@
 @use 'sass:math';
 @use '../../scss/utility';
 
-$cubeSize: 40vw;
+$cubeSize: 50vw;
 $offset: math.div($cubeSize, 2);
 $offsetZ: $cubeSize * 1.35;
 $rotateX: 0deg;
@@ -37,7 +37,6 @@ $pixelBleedScaleFix: 1.001;
         align-items: center;
         width: $cubeSize;
         height: $cubeSize;
-
         font-size: 2rem;
         font-weight: bold;
         background: utility.$dive-yellow;
@@ -45,7 +44,6 @@ $pixelBleedScaleFix: 1.001;
         background-size: 200%;
         background-position: 50% 0%;
         background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
-        transform: scale(1.1);
         transition: all 1s ease;
 
         &.w {
@@ -87,13 +85,26 @@ $pixelBleedScaleFix: 1.001;
 
         &.left-gradient {
           background-position: 0% 0%;
-          //background-size: 100%;
-          //background-image: linear-gradient(-90deg, transparent 50%, utility.$dive-black);
+          
+          .overlay {
+            background-position: left;
+          }
         }
         &.right-gradient {
           background-position: 100% 0%;
-          //background-size: 100%;
-          //background-image: linear-gradient(90deg, transparent 50%, utility.$dive-black);
+
+          .overlay {
+            background-position: right;
+          }
+        }
+        .overlay {
+          position: absolute;
+          top: 0; bottom: 0; left: 0; right: 0;
+          background-size: 200%;
+          background-position: center;
+          background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
+          z-index: 1;
+          transition: all 1s ease;
         }
       }
 

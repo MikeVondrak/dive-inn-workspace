@@ -1,13 +1,20 @@
 <div class="carousel">
   <div class="carousel-container">    
-    <div [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">0 {{faces[0] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[1], 'right-gradient': rightGradient[1] }" class="face se">1 {{faces[1] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[2], 'right-gradient': rightGradient[2] }" class="face e">2 {{faces[2] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[3], 'right-gradient': rightGradient[3] }" class="face ne">3 {{faces[3] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[4], 'right-gradient': rightGradient[4] }" class="face n">4 {{faces[4] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[5], 'right-gradient': rightGradient[5] }" class="face nw">5 {{faces[5] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[6], 'right-gradient': rightGradient[6] }" class="face w">6 {{faces[6] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[7], 'right-gradient': rightGradient[7] }" class="face sw">7 {{faces[7] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">
+      <!-- {{faces[0] | async}} -->
+      <ng-content select="[mainRoom]"></ng-content>
+      <ng-content select="[sideRoom]"></ng-content>
+      <ng-content select="[southPatio]"></ng-content>
+      <ng-content select="[northPatio]"></ng-content>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[1], 'right-gradient': rightGradient[1] }" class="face se">{{faces[1] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[2], 'right-gradient': rightGradient[2] }" class="face e">{{faces[2] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[3], 'right-gradient': rightGradient[3] }" class="face ne">{{faces[3] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[4], 'right-gradient': rightGradient[4] }" class="face n">{{faces[4] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[5], 'right-gradient': rightGradient[5] }" class="face nw">{{faces[5] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[6], 'right-gradient': rightGradient[6] }" class="face w">{{faces[6] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[7], 'right-gradient': rightGradient[7] }" class="face sw">{{faces[7] | async}}</div>
   </div>
 </div>
 

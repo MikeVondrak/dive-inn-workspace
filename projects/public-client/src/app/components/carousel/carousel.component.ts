@@ -94,7 +94,6 @@ export class CarouselComponent implements OnInit {
 
     this.leftGradient = this.leftGradient.map(g => false);
     this.rightGradient = this.rightGradient.map(g => false);
-    console.log('GRAD', this.leftGradient, leftCardIdx, rightCardIdx, this.currentFace);
     this.leftGradient[leftCardIdx] = true;
     this.rightGradient[rightCardIdx] = true;
 
@@ -117,6 +116,11 @@ export class CarouselComponent implements OnInit {
     this.faces[6].next(this.faceLabels[idx]);
     idx = this.getNextFaceLabelIndex(idx);
     this.faces[7].next(this.faceLabels[idx]);
+    
+    this.leftGradient = this.leftGradient.map(g => false);
+    this.rightGradient = this.rightGradient.map(g => false);
+    this.leftGradient[7] = true;
+    this.rightGradient[1] = true;
   }
 
   private getNextFaceLabelIndex(i: number) {
