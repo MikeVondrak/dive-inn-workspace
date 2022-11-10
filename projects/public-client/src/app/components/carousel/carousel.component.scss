@@ -1,14 +1,15 @@
 @use 'sass:math';
 @use '../../scss/utility';
 
-$cubeSize: 30vw;
+$cubeSize: 40vw;
 $offset: math.div($cubeSize, 2);
 $offsetZ: $cubeSize * 1.35;
-$rotateX: -10deg;
+$rotateX: 0deg;
+$pixelBleedScaleFix: 1.001;
 
 :host {
   display: block;
-  perspective: 1000px;
+  perspective: 100vw;
   
   .carousel {
     transform: translateZ(-$offsetZ);
@@ -23,7 +24,7 @@ $rotateX: -10deg;
       justify-content: center;
       align-items: center;
       transform: rotateX($rotateX) var(--rotation);
-      transition: transform 1s ease;
+      transition: all 1s ease;
 
       &.rotate {
         transform: rotateX($rotateX) rotateY(-45deg);
@@ -40,45 +41,62 @@ $rotateX: -10deg;
         font-size: 2rem;
         font-weight: bold;
         background: utility.$dive-yellow;
-        //backface-visibility: hidden;
+        backface-visibility: hidden;        
+        background-size: 200%;
+        background-position: 50% 0%;
+        background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
+        transform: scale(1.1);
+        transition: all 1s ease;
 
         &.w {
           background-color: purple;
           //transform: var(--transformW);
-          transform:translate3d(-1.207 * $cubeSize, 0, 0) rotateY(-90deg)
+          transform: translate3d(-1.207 * $cubeSize, 0, 0) rotateY(-90deg) scale($pixelBleedScaleFix);
         }
 
         &.sw {
           background-color: red;
-          transform: translate3d(-0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(-45deg);
+          transform: translate3d(-0.854 * $cubeSize, 0, $cubeSize * 0.854) rotateY(-45deg) scale($pixelBleedScaleFix);
         }
 
         &.s {
-          transform: translateZ(1.207 * $cubeSize) rotateY(0deg) ;
+          transform: translateZ(1.207 * $cubeSize) rotateY(0deg) scale($pixelBleedScaleFix);
         }
 
         &.se {
           background-color: green;
-          transform: translate3d(0.854 * $cubeSize, 0, 0.854 * $cubeSize) rotateY(45deg);
+          transform: translate3d(0.854 * $cubeSize, 0, 0.854 * $cubeSize) rotateY(45deg) scale($pixelBleedScaleFix);
         }
 
         &.e {
           background-color: blue;
-          transform: translate3d(1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(90deg);
+          transform: translate3d(1.207 * $cubeSize, 0, 0 * $cubeSize) rotateY(90deg) scale($pixelBleedScaleFix);
         }
         &.ne {
           background-color: orange;
-          transform: translate3d(0.854 * $cubeSize, 0, -0.854 * $cubeSize) rotateY(135deg);
+          transform: translate3d(0.854 * $cubeSize, 0, -0.854 * $cubeSize) rotateY(135deg) scale($pixelBleedScaleFix);
         }
         &.n {
           background-color: teal;
-          transform: translateZ(-1.207 * $cubeSize) rotateY(180deg);
+          transform: translateZ(-1.207 * $cubeSize) rotateY(180deg) scale($pixelBleedScaleFix);
         }
         &.nw {
           background-color: brown;
-          transform: translate3d(-0.854 * $cubeSize, 0, -0.854 * $cubeSize) rotateY(-135deg);
+          transform: translate3d(-0.854 * $cubeSize, 0, -0.854 * $cubeSize) rotateY(-135deg) scale($pixelBleedScaleFix);
         }        
+
+        &.left-gradient {
+          background-position: 0% 0%;
+          //background-size: 100%;
+          //background-image: linear-gradient(-90deg, transparent 50%, utility.$dive-black);
+        }
+        &.right-gradient {
+          background-position: 100% 0%;
+          //background-size: 100%;
+          //background-image: linear-gradient(90deg, transparent 50%, utility.$dive-black);
+        }
       }
+
     }
   }
 }

@@ -9,13 +9,16 @@ import { Observable, of, Subject } from 'rxjs';
 })
 export class CarouselComponent implements OnInit {
   @Input() cubeSizeVw: number = 30;
-  @Input() faceLabels: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-  
+  @Input() faceLabels: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+
   @HostBinding('style.--rotation') rotation: string = 'rotateY(0deg)';
   //@HostBinding('style.--transformW') transformW: string = `translate3d(${-1.207 * this.cubeSizeVw + 'vw'}, 0, 0) rotateY(-90deg)`;
-  
+
+  public leftGradient: boolean[] = this.faceLabels.map(() => false);
+  public rightGradient: boolean[] = this.faceLabels.map(() => false);
+
   public faces: Subject<string>[] = [];
-  public readonly positions = [0, 1, 2, 3, 4, 5, 6, 7];
+  public readonly positions = [0, 1, 2, 3, 4, 5, 6, 7]; // currently only handling octagon
   public currentFace: number = 0;
   public currentPosition: number = 0;
   public currentRotation = 0;
@@ -36,6 +39,8 @@ export class CarouselComponent implements OnInit {
     // NOTE: necessary to detect changes prior to initializeFacesContent for proper initialization of carousel, 
     // - does not have initial values shown w/o doing this
     this.cdr.detectChanges();
+
+    // NOTE: be sure to have called detectChanges() prior to calling this, otherwise the function needs a setTimeout
     this.initializeFacesContent();
   }
 
@@ -65,6 +70,8 @@ export class CarouselComponent implements OnInit {
     const numberOfPositionsLength = this.numberOfPositions;
     let nextLeftFace = this.currentFace - 2;
     let nextRightFace = this.currentFace + 2;
+    let leftCardIdx = (this.currentPosition - 1) < 0 ? numberOfPositionsLength - 1 : this.currentPosition - 1;
+    let rightCardIdx = (this.currentPosition + 1) > numberOfPositionsLength - 1 ? 0 : this.currentPosition + 1;
 
     if (nextLeftFace < 0) {
       // if the index goes below 0 reset to end of array
@@ -79,11 +86,17 @@ export class CarouselComponent implements OnInit {
       nextRightFace -= faceLabelsLength;
     }
 
-    let leftPosition =  idx - 2 >= 0 ? idx - 2 : idx - 2 + (numberOfPositionsLength);
-    let rightPosition =  idx + 2 < numberOfPositionsLength ? idx + 2 : (idx - numberOfPositionsLength) + 2;
+    let nextLeftPosition =  idx - 2 >= 0 ? idx - 2 : idx - 2 + (numberOfPositionsLength);
+    let nextRightPosition =  idx + 2 < numberOfPositionsLength ? idx + 2 : (idx - numberOfPositionsLength) + 2;
     //console.log(`currentFace: ${this.currentFace}, position: ${position}, lf: ${nextLeftFace}, rf: ${nextRightFace}, leftFace: ${this.faceLabels[nextLeftFace]} rightFace: ${this.faceLabels[nextRightFace]}, leftPosition: ${leftPosition}, rightPosition: ${rightPosition}, faceLabels: ${this.faceLabels}, faces: ${this.faces.length}`);
-    this.faces[leftPosition].next(this.faceLabels[nextLeftFace]);    
-    this.faces[rightPosition].next(this.faceLabels[nextRightFace]);
+    this.faces[nextLeftPosition].next(this.faceLabels[nextLeftFace]);    
+    this.faces[nextRightPosition].next(this.faceLabels[nextRightFace]);
+
+    this.leftGradient = this.leftGradient.map(g => false);
+    this.rightGradient = this.rightGradient.map(g => false);
+    console.log('GRAD', this.leftGradient, leftCardIdx, rightCardIdx, this.currentFace);
+    this.leftGradient[leftCardIdx] = true;
+    this.rightGradient[rightCardIdx] = true;
 
     this.cdr.detectChanges();
   }
