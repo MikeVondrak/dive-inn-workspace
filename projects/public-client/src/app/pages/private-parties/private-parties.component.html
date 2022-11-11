@@ -20,7 +20,7 @@ Date: %0D%0A
 Start Time: %0D%0A
 End Time: %0D%0A%0D%0A
 Headcount: %0D%0A%0D%0A
-Spaces (Boat, Large Room, Side Room, North Patio, South Patio): %0D%0A%0D%0A
+Spaces (Boat, Large Room, Side Room, Game Room, North Patio, South Patio): %0D%0A%0D%0A
 Notes: "
         target="_blank">
         <div class="message-bottle">
@@ -49,7 +49,7 @@ Notes: "
 
 
   <app-carousel
-    [faceContents]="[MainRoom, SideRoom, SouthPatio]"
+    [faceContents]="[MainRoom, Boat, SideRoom, GameRoom, SouthPatio, NorthPatio]"
   ></app-carousel><!-- , NorthPatio -->
 
   <div class="separator">
@@ -80,6 +80,23 @@ Notes: "
   </div>
 </ng-template>
 
+<ng-template #Boat>
+  <div class="rental-space">
+    <div class="boat rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Party Boat</h2>
+    </div>
+    <div class="description-container">
+      <p>Exciting excursions</p>
+      <p>for a few friends</p>
+    </div>
+    <div class="occupancy">
+      8
+      <!-- TODO: people image -->
+    </div>
+  </div>
+</ng-template>
+
 <ng-template #SideRoom>
   <div class="rental-space">
     <div class="side-room rental-space-bg"></div>
@@ -91,7 +108,24 @@ Notes: "
       <p>private parties perfectly</p>
     </div>
     <div class="occupancy">
-      28
+      32
+      <!-- TODO: people image -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #GameRoom>
+  <div class="rental-space">
+    <div class="game-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Game Room</h2>
+    </div>
+    <div class="description-container">
+      <p>All your favorites games</p>
+      <p>with a satellite bar</p>
+    </div>
+    <div class="occupancy">
+      24
       <!-- TODO: people image -->
     </div>
   </div>

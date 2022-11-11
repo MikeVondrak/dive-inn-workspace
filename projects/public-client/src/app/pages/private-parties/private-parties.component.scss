@@ -306,14 +306,24 @@ $zoomAnimationTime: 0.6s;
           left: 0;
           right: 0;
         }
-        .main-room {
-          
+        .main-room {          
           background-image: url('/assets/images/private-parties/main_room.jpg');
           background-size: 170%;
           background-position: 60% 42%;
         }
+        .boat {
+          background-image: url('/assets/images/private-parties/boat.svg');
+          background-size: 80%;
+          background-position: 50% 90%;
+          background-repeat: no-repeat;
+        }
         .side-room {          
           background-image: url('/assets/images/private-parties/side_room.jpg');
+          background-size: 170%;
+          background-position: 60% 42%;
+        }
+        .game-room {          
+          background-image: url('/assets/images/private-parties/game_room.jpg');
           background-size: 170%;
           background-position: 60% 42%;
         }
@@ -321,6 +331,12 @@ $zoomAnimationTime: 0.6s;
           background-image: url('/assets/images/private-parties/south_patio.jpg');
           background-size: cover;
           background-position: 60% 42%;
+        }
+        .north-patio {
+          background-image: url('/assets/images/private-parties/patio.svg');
+          background-size: 120%;
+          background-position: 50% bottom;
+          background-repeat: no-repeat;
         }
       }
     }
