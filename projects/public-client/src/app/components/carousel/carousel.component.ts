@@ -1,5 +1,5 @@
-import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
@@ -10,51 +10,67 @@ import { Observable, of, Subject } from 'rxjs';
 export class CarouselComponent implements OnInit {
   @Input() cubeSizeVw: number = 30;
   @Input() faceLabels: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+  @Input() faceContents: TemplateRef<any>[] = []; // <any> is for template context class
 
   @HostBinding('style.--rotation') rotation: string = 'rotateY(0deg)';
   //@HostBinding('style.--transformW') transformW: string = `translate3d(${-1.207 * this.cubeSizeVw + 'vw'}, 0, 0) rotateY(-90deg)`;
 
-  public leftGradient: boolean[] = this.faceLabels.map(() => false);
-  public rightGradient: boolean[] = this.faceLabels.map(() => false);
-
-  public faces: Subject<string>[] = [];
   public readonly positions = [0, 1, 2, 3, 4, 5, 6, 7]; // currently only handling octagon
+  public faces$: Subject<string>[] = [];
+  public templates$: Subject<TemplateRef<any>>[] = [];
   public currentFace: number = 0;
   public currentPosition: number = 0;
   public currentRotation = 0;
-
+  public leftGradient: boolean[] = this.positions.map(() => false);
+  public rightGradient: boolean[] = this.positions.map(() => false);
+  
+  public debugging = false;
+  
   private numberOfPositions = this.positions.length;
-  private numberOfFaceLabels = this.faceLabels.length;
+  private numberOfFaceLabels = 0;
+  private numberOfFaceContents = 0;
 
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // create a subject for each face of the octagon to be able to change content when rotated
-    this.faces = this.positions.map(() => new Subject<string>());
 
-    if (this.numberOfFaceLabels <= 0) {
-      console.error('Carousel initialized with no face labels');
+    this.numberOfFaceContents = this.faceContents.length;
+    this.numberOfFaceLabels = this.faceLabels.length;
+
+    // create a subject for each face of the octagon to be able to change content when rotated
+    this.faces$ = this.positions.map(() => new Subject<string>());
+    this.templates$ = this.positions.map(() => new Subject<TemplateRef<any>>());
+
+    if ((this.debugging && this.numberOfFaceLabels <= 0) || ( !this.debugging && this.numberOfFaceContents <= 0)) {
+      console.error(`Carousel initialized with no face content, ${this.numberOfFaceContents}, ${this.numberOfFaceLabels}`);
       return;
     }
     // NOTE: necessary to detect changes prior to initializeFacesContent for proper initialization of carousel, 
     // - does not have initial values shown w/o doing this
+    // - TODO: try BehaviorSubject for panes$ to solve this?
     this.cdr.detectChanges();
 
     // NOTE: be sure to have called detectChanges() prior to calling this, otherwise the function needs a setTimeout
-    this.initializeFacesContent();
+    if (this.debugging) {
+      this.initializeFacesLabels();
+    } else {
+      this.initializeFacesContent();
+    }
   }
 
-  public rotateLeft() {    
+  public rotateLeft() {
+    const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = ++this.currentPosition >= this.numberOfPositions ? 0 : this.currentPosition;
-    this.currentFace = ++this.currentFace < this.numberOfFaceLabels ? this.currentFace : 0;
+    this.currentFace = ++this.currentFace < numberOfFaces ? this.currentFace : 0;
     this.currentRotation = this.currentRotation -= 45;
     //this.currentRotation = this.currentRotation < -90 ? -90 : this.currentRotation; // prevent rotation past
     this.updateRotation();    
   }
 
   public rotateRight() {
+    const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = --this.currentPosition < 0 ? this.numberOfPositions - 1 : this.currentPosition;
-    this.currentFace = --this.currentFace < 0 ? this.numberOfFaceLabels - 1 : this.currentFace;
+    this.currentFace = --this.currentFace < 0 ? numberOfFaces - 1 : this.currentFace;
     this.currentRotation += 45;
     this.updateRotation();
   }
@@ -65,32 +81,38 @@ export class CarouselComponent implements OnInit {
   }
 
   private setPreviousNextFacesContent(position: number) {
-    let idx = position;
-    const faceLabelsLength = this.faceLabels.length;
-    const numberOfPositionsLength = this.numberOfPositions;
+    let leftCardIdx = (this.currentPosition - 1) < 0 ? this.numberOfPositions - 1 : this.currentPosition - 1;
+    let rightCardIdx = (this.currentPosition + 1) > this.numberOfPositions - 1 ? 0 : this.currentPosition + 1;
+    let facesLength = this.debugging ? this.faceLabels.length : this.faceContents.length;
     let nextLeftFace = this.currentFace - 2;
     let nextRightFace = this.currentFace + 2;
-    let leftCardIdx = (this.currentPosition - 1) < 0 ? numberOfPositionsLength - 1 : this.currentPosition - 1;
-    let rightCardIdx = (this.currentPosition + 1) > numberOfPositionsLength - 1 ? 0 : this.currentPosition + 1;
 
     if (nextLeftFace < 0) {
       // if the index goes below 0 reset to end of array
-      nextLeftFace += faceLabelsLength;
-    } else if (nextLeftFace >= faceLabelsLength) {
+      nextLeftFace += facesLength;
+    } else if (nextLeftFace >= facesLength) {
       // if the index goes above number of face labels reset to start of array
-      nextLeftFace -= faceLabelsLength;
+      nextLeftFace -= facesLength;
     }
     if (nextRightFace < 0) {
-      nextRightFace += faceLabelsLength;
-    } else if (nextRightFace >= faceLabelsLength) {
-      nextRightFace -= faceLabelsLength;
+      nextRightFace += facesLength;
+    } else if (nextRightFace >= facesLength) {
+      nextRightFace -= facesLength;
     }
 
-    let nextLeftPosition =  idx - 2 >= 0 ? idx - 2 : idx - 2 + (numberOfPositionsLength);
-    let nextRightPosition =  idx + 2 < numberOfPositionsLength ? idx + 2 : (idx - numberOfPositionsLength) + 2;
-    //console.log(`currentFace: ${this.currentFace}, position: ${position}, lf: ${nextLeftFace}, rf: ${nextRightFace}, leftFace: ${this.faceLabels[nextLeftFace]} rightFace: ${this.faceLabels[nextRightFace]}, leftPosition: ${leftPosition}, rightPosition: ${rightPosition}, faceLabels: ${this.faceLabels}, faces: ${this.faces.length}`);
-    this.faces[nextLeftPosition].next(this.faceLabels[nextLeftFace]);    
-    this.faces[nextRightPosition].next(this.faceLabels[nextRightFace]);
+    // wrap position if below zero or above last index
+    let nextLeftPosition =  position - 2 >= 0 ? position - 2 : position - 2 + (this.numberOfPositions);
+    let nextRightPosition =  position + 2 < this.numberOfPositions ? position + 2 : (position - this.numberOfPositions) + 2;
+    
+    //console.log(`currentFace: ${this.currentFace}, position: ${position}, lf: ${nextLeftFace}, rf: ${nextRightFace}, leftFace: ${this.faceLabels[nextLeftFace]} rightFace: ${this.faceLabels[nextRightFace]}, faceLabels: ${this.faceLabels}, faces: ${this.faces$.length}`);
+    
+    if (this.debugging) {
+      this.faces$[nextLeftPosition].next(this.faceLabels[nextLeftFace]);    
+      this.faces$[nextRightPosition].next(this.faceLabels[nextRightFace]);
+    } else {
+      this.templates$[nextLeftPosition].next(this.faceContents[nextLeftFace]);
+      this.templates$[nextRightPosition].next(this.faceContents[nextRightFace]);
+    }
 
     this.leftGradient = this.leftGradient.map(g => false);
     this.rightGradient = this.rightGradient.map(g => false);
@@ -100,23 +122,57 @@ export class CarouselComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  // NOTE: currently assumes 8 faces
+  /**
+   * Initializes the inital 3 visible and the previous/next content panes
+   * NOTE: currently assumes 8 face "slots", i.e. an octagon
+   */
   private initializeFacesContent() {
     let idx = 0;
+    
     // set center face
-    let label = this.faceLabels[idx];
-    this.faces[0].next(label);    
-    idx = this.getNextFaceLabelIndex(idx);
+    this.templates$[0].next(this.faceContents[idx]);
+    
     // set right faces
-    this.faces[1].next(this.faceLabels[idx]);
+    idx = this.getNextIndex(this.faceContents, idx);
+    this.templates$[1].next(this.faceContents[idx]);
+    idx = this.getNextIndex(this.faceContents, idx);
+    this.templates$[2].next(this.faceContents[idx]);
+
+    // set left faces
+    idx = this.faceContents.length - 2 >= 0 ? this.faceContents.length - 2 : 0; // get 2nd-to-last index
+    this.templates$[6].next(this.faceContents[idx]);
+    idx = this.getNextIndex(this.faceContents, idx);
+    this.templates$[7].next(this.faceContents[idx]);
+    
+      this.initializeSideFadeGradients();
+  }
+
+  /**
+   * Initialize debugging labels for faces
+   * NOTE: currently assumes 8 faces (octagon)
+   */
+  private initializeFacesLabels() {
+    let idx = 0;
+    
+    // set center face
+    this.faces$[0].next(this.faceLabels[idx]);
     idx = this.getNextFaceLabelIndex(idx);
-    this.faces[2].next(this.faceLabels[idx]);
+    
+    // set right faces
+    this.faces$[1].next(this.faceLabels[idx]);
+    idx = this.getNextFaceLabelIndex(idx);
+    this.faces$[2].next(this.faceLabels[idx]);
+    
     // set left faces
     idx = this.faceLabels.length - 2 >= 0 ? this.faceLabels.length - 2 : 0;
-    this.faces[6].next(this.faceLabels[idx]);
+    this.faces$[6].next(this.faceLabels[idx]);
     idx = this.getNextFaceLabelIndex(idx);
-    this.faces[7].next(this.faceLabels[idx]);
+    this.faces$[7].next(this.faceLabels[idx]);
     
+    this.initializeSideFadeGradients();
+  }
+
+  private initializeSideFadeGradients() {
     this.leftGradient = this.leftGradient.map(g => false);
     this.rightGradient = this.rightGradient.map(g => false);
     this.leftGradient[7] = true;
@@ -125,6 +181,11 @@ export class CarouselComponent implements OnInit {
 
   private getNextFaceLabelIndex(i: number) {
     let idx = (i + 1) >= this.numberOfFaceLabels ? 0 : i + 1;    
+    return idx;
+  }
+
+  private getNextIndex(arr: any[], i: number, offset: number = 1) {
+    let idx = (i + offset) >= arr.length ? 0 : (i + offset);    
     return idx;
   }
 }

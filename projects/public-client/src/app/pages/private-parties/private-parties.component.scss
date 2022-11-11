@@ -228,20 +228,12 @@ $zoomAnimationTime: 0.6s;
         top: 0; bottom: 0; left: 0; right: 0;
         padding: 2vw;
         //background-color: utility.$dive-gray-dk3;        
-        .main-room-bg {
-          z-index: -1;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-image: url('/assets/images/private-parties/main_room.jpg');
-          background-size: 170%;
-          background-position: 60% 42%;
-        }
         .title-container {
           display: inline-block;
-          margin: 2vw 0 0 4vw;
+          margin: 2vw 0 0;
+          @include utility.media-breakpoint-gte(md) {
+            margin: 2vw 0 0 2vw;
+          }
           padding: 2vw 3vw;
           background-color: rgba(0, 0, 0, 0.5);
           transform: skew(-8deg, -4deg) rotate(-4deg);
@@ -250,32 +242,85 @@ $zoomAnimationTime: 0.6s;
             font-size: 6vw;
             text-align: center;
             //transform: skew(8deg, 4deg) rotate(4deg);
+            text-shadow: 0px 4px 2px #000;
             @include utility.media-breakpoint-gte(sm) {
               font-size: 3vw;
             }
           }
         }
-        p {
+        .description-container {
           position: relative;
-          display: none;
-          @include utility.media-breakpoint-gte(md) {
-            left: 12vw;
-            display: inline-block;
+          top: 5vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          p {
+            position: relative;
+            display: none;
+            margin: 0 0 0vw;
+            padding: 1vw 1.5vw;
+            
+            text-align: center;
+            text-shadow: 0px 4px 2px #000;
+            transform: skew(-8deg, -4deg) rotate(-4deg);
+            font-size: 2vw;
+            
+            @include utility.media-breakpoint-gte(md) {
+              display: inline-block;
+            }
+            
+            &::before {
+              content: '';
+              z-index: -1;
+              position: absolute;
+              top: 0; left: 0; bottom: 0; right: 0;
+              background-color: rgba(0, 0, 0, 0.5);
+              transform: skew(4deg, 0deg) rotate(0deg);
+            }
+
+            &:nth-of-type(2) {              
+              left: 4vw;
+            }
           }
-          padding: 1vw 1.5vw;
-          background-color: rgba(0, 0, 0, 0.5);
-          text-align: center;
         }
         .occupancy {
-          position: relative;
+          position: absolute;
           display: inline-block;
-          top: 8vw;
+          display: none;
+          top: 4vw;
+          right: 4vw;
           margin: 0vw 0 0 0;
           padding: 1vw;
           font-size: 5vw;
           font-weight: bold;
           background:rgba(0, 0, 0, 0.5);
           border-radius: 50%;
+        }
+
+        &-bg {
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+        .main-room {
+          
+          background-image: url('/assets/images/private-parties/main_room.jpg');
+          background-size: 170%;
+          background-position: 60% 42%;
+        }
+        .side-room {          
+          background-image: url('/assets/images/private-parties/side_room.jpg');
+          background-size: 170%;
+          background-position: 60% 42%;
+        }
+        .south-patio {
+          background-image: url('/assets/images/private-parties/south_patio.jpg');
+          background-size: cover;
+          background-position: 60% 42%;
         }
       }
     }

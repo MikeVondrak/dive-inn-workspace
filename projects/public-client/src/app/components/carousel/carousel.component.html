@@ -1,25 +1,50 @@
 <div class="carousel">
   <div class="carousel-container">    
     <div [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">
-      <!-- {{faces[0] | async}} -->
-      <ng-content select="[mainRoom]"></ng-content>
-      <ng-content select="[sideRoom]"></ng-content>
-      <ng-content select="[southPatio]"></ng-content>
-      <ng-content select="[northPatio]"></ng-content>
+      <ng-container *ngIf="debugging">{{faces$[0] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[0] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[1], 'right-gradient': rightGradient[1] }" class="face se">{{faces[1] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[2], 'right-gradient': rightGradient[2] }" class="face e">{{faces[2] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[3], 'right-gradient': rightGradient[3] }" class="face ne">{{faces[3] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[4], 'right-gradient': rightGradient[4] }" class="face n">{{faces[4] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[5], 'right-gradient': rightGradient[5] }" class="face nw">{{faces[5] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[6], 'right-gradient': rightGradient[6] }" class="face w">{{faces[6] | async}}</div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[7], 'right-gradient': rightGradient[7] }" class="face sw">{{faces[7] | async}}</div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[1], 'right-gradient': rightGradient[1] }" class="face se">
+      <ng-container *ngIf="debugging">{{faces$[1] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[1] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[2], 'right-gradient': rightGradient[2] }" class="face e">
+      <ng-container *ngIf="debugging">{{faces$[2] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[2] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[3], 'right-gradient': rightGradient[3] }" class="face ne">
+      <ng-container *ngIf="debugging">{{faces$[3] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[3] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[4], 'right-gradient': rightGradient[4] }" class="face n">
+      <ng-container *ngIf="debugging">{{faces$[4] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[4] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[5], 'right-gradient': rightGradient[5] }" class="face nw">
+      <ng-container *ngIf="debugging">{{faces$[5] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[5] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[6], 'right-gradient': rightGradient[6] }" class="face w">
+      <ng-container *ngIf="debugging">{{faces$[6] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[6] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+    <div [ngClass]="{ 'left-gradient': leftGradient[7], 'right-gradient': rightGradient[7] }" class="face sw">
+      <ng-container *ngIf="debugging">{{faces$[7] | async}}</ng-container>
+      <ng-container *ngTemplateOutlet="templates$[7] | async"></ng-container>
+      <div class="overlay"></div>
+    </div>
+  </div>
+  <div class="rotaters">
+    <button class="rotate left" (click)="rotateLeft()">&lt;</button>
+    <button class="rotate right" (click)="rotateRight()">&gt;</button>
   </div>
 </div>
 
-<div>
-  <button (click)="rotateLeft()">&lt;</button>
-  <button (click)="rotateRight()">&gt;</button>
-</div>
-{{ currentFace }}:{{ currentRotation }}
+<!-- {{ currentFace }}:{{ currentRotation }} -->

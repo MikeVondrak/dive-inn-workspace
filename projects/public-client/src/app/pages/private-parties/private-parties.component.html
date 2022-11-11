@@ -48,23 +48,9 @@ Notes: "
   </div>
 
 
-  <app-carousel>
-    <div mainRoom class="rental-space">
-      <div class="main-room-bg"></div>
-      <div class="title-container">
-        <h2>Main Room</h2>
-      </div>
-      <p>Space for larger parties and events</p>
-      <div class="occupancy">
-        60
-        <!-- TODO: people image -->
-      </div>
-      <!-- <img src="assets/images/private-parties/main_room.jpg" /> -->
-    </div>
-    <div sideRoom class="rental-space">
-      <div class="rental-space-bg"></div>
-    </div>
-  </app-carousel>
+  <app-carousel
+    [faceContents]="[MainRoom, SideRoom, SouthPatio]"
+  ></app-carousel><!-- , NorthPatio -->
 
   <div class="separator">
     <!-- <img src="assets/images/private-parties/life-preserver-with-text.svg" /> -->
@@ -72,6 +58,78 @@ Notes: "
   </div>
 
 </div>
+
+
+<!--------------------------------------------->
+
+<ng-template #MainRoom>
+  <div class="rental-space">
+    <div class="main-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Main Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Ample space for larger</p>
+      <p>parties and events</p>
+    </div>
+    <div class="occupancy">
+      60
+      <!-- TODO: people image -->
+    </div>
+    <!-- <img src="assets/images/private-parties/main_room.jpg" /> -->
+  </div>
+</ng-template>
+
+<ng-template #SideRoom>
+  <div class="rental-space">
+    <div class="side-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Side Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Smaller space that suits</p>
+      <p>private parties perfectly</p>
+    </div>
+    <div class="occupancy">
+      28
+      <!-- TODO: people image -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #SouthPatio>
+  <div class="rental-space">
+    <div class="south-patio rental-space-bg"></div>
+    <div class="title-container">
+      <h2>South Patio</h2>
+    </div>
+    <div class="description-container">
+      <p>Medium sized area to</p>
+      <p>enjoy the outdoors</p>
+    </div>
+    <div class="occupancy">
+      42
+      <!-- TODO: people image -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #NorthPatio>
+  <div class="rental-space">
+    <div class="north-patio rental-space-bg"></div>
+    <div class="title-container">
+      <h2>North Patio</h2>
+    </div>
+    <div class="description-container">
+      <p>Large outdoor area</p>
+      <p>great for big crowds</p>
+    </div>
+    <div class="occupancy">
+      88
+      <!-- TODO: people image -->
+    </div>
+  </div>
+</ng-template>
 
 <!--------------------------------------------->
 
