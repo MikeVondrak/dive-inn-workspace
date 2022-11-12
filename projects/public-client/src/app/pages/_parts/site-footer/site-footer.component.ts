@@ -59,6 +59,16 @@ export class SiteFooterComponent implements OnInit {
       fragment: 'top',
     },
     {
+      uiLabel: 'Tour',
+      linkUrl: '/tour',
+      fragment: 'title',
+    },
+    {
+      uiLabel: 'Boat Cam',
+      linkUrl: '/boat-cam',
+      fragment: 'title',
+    },
+    {
       uiLabel: 'Games',
       linkUrl: '/games',
       fragment: 'title',
