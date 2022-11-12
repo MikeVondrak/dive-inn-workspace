@@ -116,6 +116,7 @@ $pixelBleedScaleFix: 1.001;
           background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 45%, transparent 55%, utility.$dive-black 100%);
           z-index: 1;
           transition: all 1s ease;
+          pointer-events: none;
         }
       }
 

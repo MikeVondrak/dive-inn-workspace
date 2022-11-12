@@ -7,22 +7,7 @@
 
     <div class="reserve-container">
       <!-- NOTE: weird whitespace is for email content -->
-      <a title="Send a reservation email"
-        href="mailto:contact@diveinndenver.com?subject=[Reservation Request]&body=
-Organizer Name: %0D%0A
-  Phone: %0D%0A
-  Email: %0D%0A%0D%0A
-Theme: %0D%0A%0D%0A
-Birthday (yes / no): %0D%0A
-  Name: %0D%0A
-  Age: %0D%0A%0D%0A
-Date: %0D%0A
-Start Time: %0D%0A
-End Time: %0D%0A%0D%0A
-Headcount: %0D%0A%0D%0A
-Spaces (Boat, Large Room, Side Room, Game Room, North Patio, South Patio): %0D%0A%0D%0A
-Notes: "
-        target="_blank">
+      <a class="top-cta" title="Send a reservation email" href="" target="_blank">
         <div class="message-bottle">
           <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
           <img src="assets/images/message_bottle_with_text.svg" alt="Make a reservation now!" />
@@ -48,9 +33,9 @@ Notes: "
   </div>
 
 
-  <app-carousel
-    [faceContents]="[MainRoom, Boat, SideRoom, GameRoom, SouthPatio, NorthPatio]"
-  ></app-carousel><!-- , NorthPatio -->
+  <div class="carousel-container">
+    <app-carousel [faceContents]="[MainRoom, Boat, SideRoom, GameRoom, SouthPatio, NorthPatio]"></app-carousel>
+  </div>
 
   <div class="separator">
     <!-- <img src="assets/images/private-parties/life-preserver-with-text.svg" /> -->
@@ -67,7 +52,7 @@ Notes: "
     <div class="main-room rental-space-bg"></div>
     <div class="title-container">
       <h2>Main Room</h2>
-    </div>
+    </div>    
     <div class="description-container">
       <p>Ample space for larger</p>
       <p>parties and events</p>
@@ -76,7 +61,9 @@ Notes: "
       60
       <!-- TODO: people image -->
     </div>
-    <!-- <img src="assets/images/private-parties/main_room.jpg" /> -->
+    <a class="reserve" [href]="mailto_mainRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
   </div>
 </ng-template>
 
@@ -94,6 +81,9 @@ Notes: "
       8
       <!-- TODO: people image -->
     </div>
+    <a class="reserve reverse" [href]="mailto_boat | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
   </div>
 </ng-template>
 
@@ -111,6 +101,9 @@ Notes: "
       32
       <!-- TODO: people image -->
     </div>
+    <a class="reserve" [href]="mailto_sideRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
   </div>
 </ng-template>
 
@@ -122,12 +115,15 @@ Notes: "
     </div>
     <div class="description-container">
       <p>All your favorites games</p>
-      <p>with a satellite bar</p>
+      <p>plus a satellite bar</p>
     </div>
     <div class="occupancy">
       24
       <!-- TODO: people image -->
     </div>
+    <a class="reserve reverse" [href]="mailto_gameRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
   </div>
 </ng-template>
 
@@ -145,6 +141,9 @@ Notes: "
       42
       <!-- TODO: people image -->
     </div>
+    <a class="reserve" [href]="mailto_southPatio | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
   </div>
 </ng-template>
 
@@ -162,6 +161,9 @@ Notes: "
       88
       <!-- TODO: people image -->
     </div>
+    <a class="reserve reverse" [href]="mailto_northPatio | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
   </div>
 </ng-template>
 
