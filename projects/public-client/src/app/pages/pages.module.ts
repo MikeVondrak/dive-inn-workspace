@@ -15,6 +15,9 @@ import { EventsComponent } from './events/events.component';
 import { FindUsComponent } from './find-us/find-us.component';
 import { ConstructionComponent } from './construction/construction.component';
 import { PrivatePartiesComponent } from './private-parties/private-parties.component';
+import { PipesModule } from 'projects/dive-inn-lib/src/lib/pipes/pipes.module';
+import { TourComponent } from './tour/tour.component';
+import { SiteInfoComponent } from './site-info/site-info.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { PrivatePartiesComponent } from './private-parties/private-parties.compo
     FindUsComponent,
     ConstructionComponent,
     PrivatePartiesComponent,
+    TourComponent,
+    SiteInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +37,8 @@ import { PrivatePartiesComponent } from './private-parties/private-parties.compo
     GoogleMapsModule,
     DirectivesModule,
     SitePartsModule,
-    ComponentsModule,    
+    ComponentsModule,
+    PipesModule,
   ],
   exports: [
     SitePartsModule,

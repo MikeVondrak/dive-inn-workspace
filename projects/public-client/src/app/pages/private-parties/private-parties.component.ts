@@ -20,6 +20,29 @@ export class PrivatePartiesComponent implements OnInit {
     //'Gala, Soiree, Shindig, Bash, Affair'
   ];
   public fullscreen: boolean = false;
+
+  // NOTE: whitespace matters for email body
+  public mailto_pre: string = `mailto:contact@diveinndenver.com?subject=[Reservation Request]&body=
+Organizer Name: %0D%0A
+  Phone: %0D%0A
+  Email: %0D%0A%0D%0A
+Theme: %0D%0A%0D%0A
+Birthday (yes / no): %0D%0A
+  Name: %0D%0A
+  Age: %0D%0A%0D%0A
+Date: %0D%0A
+Start Time: %0D%0A
+End Time: %0D%0A%0D%0A
+Headcount: %0D%0A%0D%0A
+Spaces (Boat, Main Room, Side Room, Game Room, North Patio, South Patio): %0D%0A`;
+  public mailto_post: string = `%0D%0A%0D%0ANotes: `
+
+  public mailto_boat: string = this.mailto_pre + `Boat` + this.mailto_post;
+  public mailto_mainRoom: string = this.mailto_pre + `Main Room` + this.mailto_post;
+  public mailto_sideRoom: string = this.mailto_pre + `Side Room` + this.mailto_post;
+  public mailto_gameRoom: string = this.mailto_pre + `Game Room` + this.mailto_post;
+  public mailto_southPatio: string = this.mailto_pre + `South Patio` + this.mailto_post;
+  public mailto_northPatio: string= this.mailto_pre + `North Patio` + this.mailto_post;
   
   private destroy$: Subject<void> = new Subject<void>();
 

@@ -4,9 +4,9 @@ import { ConstructionComponent } from './pages/construction/construction.compone
 import { EventsComponent } from './pages/events/events.component';
 import { FindUsComponent } from './pages/find-us/find-us.component';
 import { HomeComponent } from './pages/home/home.component';
-import { InsideComponent } from './pages/inside/inside.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { PrivatePartiesComponent } from './pages/private-parties/private-parties.component';
+import { TourComponent } from './pages/tour/tour.component';
 
 const routes: Routes = [
   { 
@@ -44,6 +44,20 @@ const routes: Routes = [
     component: FindUsComponent,
     data: { 
       pageTitle: 'Find Us',
+    }
+  },
+  {
+    path: 'tour',
+    component: TourComponent,
+    data: { 
+      pageTitle: 'Tour',
+    }
+  },
+  {
+    path: 'boat-cam',
+    component: ConstructionComponent,
+    data: { 
+      pageTitle: 'Boat Cam',
     }
   },
   {
