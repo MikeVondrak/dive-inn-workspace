@@ -37,6 +37,7 @@ Headcount: %0D%0A%0D%0A
 Spaces (Boat, Main Room, North Patio, North Room, Game Room, South Room, South Patio): %0D%0A`;
   public mailto_post: string = `%0D%0A%0D%0ANotes: `
 
+  public mailto: string = this.mailto_pre + this.mailto_post;
   public mailto_boat: string = this.mailto_pre + `Boat` + this.mailto_post;
   public mailto_mainRoom: string = this.mailto_pre + `Main Room` + this.mailto_post;
   public mailto_sideRoom: string = this.mailto_pre + `South Room` + this.mailto_post;
