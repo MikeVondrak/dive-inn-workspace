@@ -327,9 +327,9 @@ $zoomAnimationTime: 0.6s;
             background-position: 60% 42%;
           }
           .boat {
-            background-image: url('/assets/images/private-parties/boat.svg');
-            background-size: 80%;
-            background-position: 50% 90%;
+            background-image: url('/assets/images/tour/boat_diagonal2.jpg');
+            background-size: cover;
+            background-position: 50% 50%;
             background-repeat: no-repeat;
           }
           .side-room {          
@@ -338,18 +338,23 @@ $zoomAnimationTime: 0.6s;
             background-position: 60% 42%;
           }
           .game-room {          
-            background-image: url('/assets/images/private-parties/game_room.jpg');
+            background-image: url('/assets/images/tour/game_room6.jpg');
             background-size: 170%;
             background-position: 60% 42%;
           }
-          .south-patio {
-            background-image: url('/assets/images/private-parties/south_patio.jpg');
+          .north-room {
+            background-image: url('/assets/images/tour/north_room4.jpg');
             background-size: cover;
-            background-position: 60% 42%;
+            background-position: 50% 50%;
+          }
+          .south-patio {
+            background-image: url('/assets/images/tour/south_patio2.jpg');
+            background-size: cover;
+            background-position: right 42%;
           }
           .north-patio {
-            background-image: url('/assets/images/private-parties/patio.svg');
-            background-size: 120%;
+            background-image: url('/assets/images/tour/north_patio6.jpg');
+            background-size: cover;
             background-position: 50% bottom;
             background-repeat: no-repeat;
           }
