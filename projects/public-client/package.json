@@ -7,6 +7,11 @@
   "license": "MIT",
   "dependencies": {
     "@angular/google-maps": "^14.2.5",
-    "graphql": "^16.6.0"
+    "@types/hammerjs": "^2.0.41",
+    "graphql": "^16.6.0",
+    "hammerjs": "^2.0.8"
+  },
+  "devDependencies": {
+    "@types/hammerjs": "^2.0.41"
   }
 }

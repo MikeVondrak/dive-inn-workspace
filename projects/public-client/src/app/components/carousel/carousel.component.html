@@ -1,41 +1,41 @@
 <div class="carousel">
   <div class="carousel-container">    
-    <div [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">
       <ng-container *ngIf="debugging">{{faces$[0] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[0] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[1], 'right-gradient': rightGradient[1] }" class="face se">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[1], 'right-gradient': rightGradient[1] }" class="face se">
       <ng-container *ngIf="debugging">{{faces$[1] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[1] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[2], 'right-gradient': rightGradient[2] }" class="face e">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[2], 'right-gradient': rightGradient[2] }" class="face e">
       <ng-container *ngIf="debugging">{{faces$[2] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[2] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[3], 'right-gradient': rightGradient[3] }" class="face ne">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[3], 'right-gradient': rightGradient[3] }" class="face ne">
       <ng-container *ngIf="debugging">{{faces$[3] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[3] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[4], 'right-gradient': rightGradient[4] }" class="face n">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[4], 'right-gradient': rightGradient[4] }" class="face n">
       <ng-container *ngIf="debugging">{{faces$[4] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[4] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[5], 'right-gradient': rightGradient[5] }" class="face nw">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[5], 'right-gradient': rightGradient[5] }" class="face nw">
       <ng-container *ngIf="debugging">{{faces$[5] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[5] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[6], 'right-gradient': rightGradient[6] }" class="face w">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[6], 'right-gradient': rightGradient[6] }" class="face w">
       <ng-container *ngIf="debugging">{{faces$[6] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[6] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-    <div [ngClass]="{ 'left-gradient': leftGradient[7], 'right-gradient': rightGradient[7] }" class="face sw">
+    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[7], 'right-gradient': rightGradient[7] }" class="face sw">
       <ng-container *ngIf="debugging">{{faces$[7] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[7] | async"></ng-container>
       <div class="overlay"></div>

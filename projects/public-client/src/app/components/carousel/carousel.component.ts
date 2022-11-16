@@ -58,6 +58,17 @@ export class CarouselComponent implements OnInit {
     }
   }
 
+  public onSwipe($event: any, loc?: string) {
+    console.log('SWIPE!', loc, $event);
+
+    if ($event.direction === 2) {
+      this.rotateLeft();
+    } else if ($event.direction === 4) {
+      this.rotateRight();
+    }
+
+  }
+
   public rotateLeft() {
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = ++this.currentPosition >= this.numberOfPositions ? 0 : this.currentPosition;

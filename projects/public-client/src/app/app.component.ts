@@ -7,7 +7,6 @@ import { AnimateViewportOverlayService } from '@dive-inn-lib';
 import { combineLatest, filter, map, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
 import { ExpandingMenuStateEnum } from './models/expanding-menu.model';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,6 +36,10 @@ export class AppComponent {
 
   ngOnDestroy(): void {
     this.destroy$.next();
+  }
+
+  public onSwipe() {
+    console.log('SWIPE');
   }
 
   // TODO - pre-Angular loader
