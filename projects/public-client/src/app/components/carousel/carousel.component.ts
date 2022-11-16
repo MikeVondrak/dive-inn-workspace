@@ -16,6 +16,7 @@ export class CarouselComponent implements OnInit {
   //@HostBinding('style.--transformW') transformW: string = `translate3d(${-1.207 * this.cubeSizeVw + 'vw'}, 0, 0) rotateY(-90deg)`;
 
   public readonly positions = [0, 1, 2, 3, 4, 5, 6, 7]; // currently only handling octagon
+  public faceDir = ['s', 'se', 'e', 'ne', 'n', 'nw', 'w', 'sw'];
   public faces$: Subject<string>[] = [];
   public templates$: Subject<TemplateRef<any>>[] = [];
   public currentFace: number = 0;
@@ -70,6 +71,7 @@ export class CarouselComponent implements OnInit {
   }
 
   public rotateLeft() {
+    console.log('ROTATE LEFT');
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = ++this.currentPosition >= this.numberOfPositions ? 0 : this.currentPosition;
     this.currentFace = ++this.currentFace < numberOfFaces ? this.currentFace : 0;
@@ -79,6 +81,7 @@ export class CarouselComponent implements OnInit {
   }
 
   public rotateRight() {
+    console.log('ROTATE RIGHT');
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = --this.currentPosition < 0 ? this.numberOfPositions - 1 : this.currentPosition;
     this.currentFace = --this.currentFace < 0 ? numberOfFaces - 1 : this.currentFace;
@@ -87,6 +90,7 @@ export class CarouselComponent implements OnInit {
   }
 
   private updateRotation() {
+    console.log(`cur rot: ${this.currentRotation}, pos: ${this.currentPosition}`);
     this.rotation = `rotateY(${this.currentRotation}deg)`;
     this.setPreviousNextFacesContent(this.currentPosition);
   }

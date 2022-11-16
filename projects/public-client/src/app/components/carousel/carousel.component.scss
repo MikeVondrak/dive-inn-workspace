@@ -36,89 +36,89 @@ $pixelBleedScaleFix: 1.001;
       transform: rotateX($rotateX) var(--rotation);
       transition: all 1s ease;
 
-      // &.rotate {
-      //   transform: rotateX($rotateX) rotateY(-45deg);
-      // }
+      app-carousel-pane {
 
-      .face {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: var(--cubeSize);
-        height: var(--cubeSize);        
-        font-size: 2rem;
-        font-weight: bold;
-        background: utility.$dive-black;
-        backface-visibility: hidden;        
-        background-size: 200%;
-        background-position: 50% 0%;
-        background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
-        transition: all 1s ease;
-
-        &.w {
-          @if ($debugging) { background-color: red; }
-          //transform: var(--transformW);
-          transform: translate3d(calc(-1.207 * var(--cubeSize)), 0, 0) rotateY(-90deg) scale($pixelBleedScaleFix);
-        }
-
-        &.sw {
-          @if ($debugging) { background-color: purple; }
-          transform: translate3d(calc(-0.854 * var(--cubeSize)), 0, calc(var(--cubeSize) * 0.854)) rotateY(-45deg) scale($pixelBleedScaleFix);
-        }
-
-        &.s {
-          @if ($debugging) { background-color: blue; }
-          transform: translateZ(calc(1.207 * var(--cubeSize))) rotateY(0deg) scale($pixelBleedScaleFix);
-        }
-
-        &.se {
-          @if ($debugging) { background-color: teal; }
-          transform: translate3d(calc(0.854 * var(--cubeSize)), 0, calc(0.854 * var(--cubeSize))) rotateY(45deg) scale($pixelBleedScaleFix);
-        }
-
-        &.e {
-          @if ($debugging) { background-color: green; }
-          transform: translate3d(calc(1.207 * var(--cubeSize)), 0, calc(0 * var(--cubeSize))) rotateY(90deg) scale($pixelBleedScaleFix);
-        }
-        &.ne {
-          @if ($debugging) { background-color: yellowgreen; }
-          transform: translate3d(calc(0.854 * var(--cubeSize)), 0, calc(-0.854 * var(--cubeSize))) rotateY(135deg) scale($pixelBleedScaleFix);
-        }
-        &.n {
-          @if ($debugging) { background-color: darkkhaki; }
-          transform: translateZ(calc(-1.207 * var(--cubeSize))) rotateY(180deg) scale($pixelBleedScaleFix);
-        }
-        &.nw {
-          @if ($debugging) { background-color: orange; }
-          transform: translate3d(calc(-0.854 * var(--cubeSize)), 0, calc(-0.854 * var(--cubeSize))) rotateY(-135deg) scale($pixelBleedScaleFix);
-        }        
-
-        &.left-gradient {
-          background-position: 0% 0%;
-          
-          .overlay {
-            background-position: left;
-          }
-        }
-        &.right-gradient {
-          background-position: 100% 0%;
-
-          .overlay {
-            background-position: right;
-          }
-        }
-        .overlay {
-          position: absolute;
-          top: 0; bottom: 0; left: 0; right: 0;
-          background-size: 400%;
-          background-position: center;
-          background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 45%, transparent 55%, utility.$dive-black 100%);
-          z-index: 1;
-          transition: all 1s ease;
-          pointer-events: none;
-        }
       }
+
+    //   .face {
+    //     position: absolute;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     width: var(--cubeSize);
+    //     height: var(--cubeSize);        
+    //     font-size: 2rem;
+    //     font-weight: bold;
+    //     background: utility.$dive-black;
+    //     backface-visibility: hidden;        
+    //     background-size: 200%;
+    //     background-position: 50% 0%;
+    //     background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
+    //     transition: all 1s ease;
+
+    //     &.w {
+    //       @if ($debugging) { background-color: red; }
+    //       //transform: var(--transformW);
+    //       transform: translate3d(calc(-1.207 * var(--cubeSize)), 0, 0) rotateY(-90deg) scale($pixelBleedScaleFix);
+    //     }
+
+    //     &.sw {
+    //       @if ($debugging) { background-color: purple; }
+    //       transform: translate3d(calc(-0.854 * var(--cubeSize)), 0, calc(var(--cubeSize) * 0.854)) rotateY(-45deg) scale($pixelBleedScaleFix);
+    //     }
+
+    //     &.s {
+    //       @if ($debugging) { background-color: blue; }
+    //       transform: translateZ(calc(1.207 * var(--cubeSize))) rotateY(0deg) scale($pixelBleedScaleFix);
+    //     }
+
+    //     &.se {
+    //       @if ($debugging) { background-color: teal; }
+    //       transform: translate3d(calc(0.854 * var(--cubeSize)), 0, calc(0.854 * var(--cubeSize))) rotateY(45deg) scale($pixelBleedScaleFix);
+    //     }
+
+    //     &.e {
+    //       @if ($debugging) { background-color: green; }
+    //       transform: translate3d(calc(1.207 * var(--cubeSize)), 0, calc(0 * var(--cubeSize))) rotateY(90deg) scale($pixelBleedScaleFix);
+    //     }
+    //     &.ne {
+    //       @if ($debugging) { background-color: yellowgreen; }
+    //       transform: translate3d(calc(0.854 * var(--cubeSize)), 0, calc(-0.854 * var(--cubeSize))) rotateY(135deg) scale($pixelBleedScaleFix);
+    //     }
+    //     &.n {
+    //       @if ($debugging) { background-color: darkkhaki; }
+    //       transform: translateZ(calc(-1.207 * var(--cubeSize))) rotateY(180deg) scale($pixelBleedScaleFix);
+    //     }
+    //     &.nw {
+    //       @if ($debugging) { background-color: orange; }
+    //       transform: translate3d(calc(-0.854 * var(--cubeSize)), 0, calc(-0.854 * var(--cubeSize))) rotateY(-135deg) scale($pixelBleedScaleFix);
+    //     }        
+
+    //     &.left-gradient {
+    //       background-position: 0% 0%;
+          
+    //       .overlay {
+    //         background-position: left;
+    //       }
+    //     }
+    //     &.right-gradient {
+    //       background-position: 100% 0%;
+
+    //       .overlay {
+    //         background-position: right;
+    //       }
+    //     }
+    //     .overlay {
+    //       position: absolute;
+    //       top: 0; bottom: 0; left: 0; right: 0;
+    //       background-size: 400%;
+    //       background-position: center;
+    //       background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 45%, transparent 55%, utility.$dive-black 100%);
+    //       z-index: 1;
+    //       transition: all 1s ease;
+    //       pointer-events: none;
+    //     }
+    //   }
 
     }
 
