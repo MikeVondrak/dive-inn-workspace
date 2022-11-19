@@ -362,9 +362,9 @@ $zoomAnimationTime: 0.6s;
           right: 25vw;
         }
         @include utility.media-breakpoint-gte(md) {
-          width: 46vw;
+          //width: 50vw;
           top: 44vw;
-          right: 27vw;
+          //right: 25vw;
         }
         @include utility.media-breakpoint-gte(lg) {
           //width: 46vw;
