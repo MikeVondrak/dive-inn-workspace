@@ -338,12 +338,21 @@ $zoomAnimationTime: 0.6s;
               // top: 1vw;
               display: block;
             }
+
+            .click {
+              position: absolute;
+              bottom: 6vw;
+              right: 6vw;
+              width: 5vw;
+            }
           }
         }
       }
       $skew: 2deg;
       .tagline-container {
         position: absolute;
+        display: flex;
+        align-items: center;
         width: 66vw;
         top: 70vw;
         right: 17vw;
@@ -358,20 +367,43 @@ $zoomAnimationTime: 0.6s;
           right: 27vw;
         }
         @include utility.media-breakpoint-gte(lg) {
-          width: 46vw;
+          //width: 46vw;
           top: 40vw;
-          right: 27vw;
-        }
-        background-color: rgba(0, 0, 0, 0.5);
+          //right: 27vw;
+        }        
         transform: skew(-$skew * 2, -$skew) rotate(-$skew * 2);
-        text-align: center;
-
         p {
           margin: 0;
           padding: 3vw 3.5vw;
           font-size: clamp(0.75rem, 3.5vw, 2.5rem);
           font-weight: bold;
-          //transform: skew($skew * 2, $skew) rotate($skew * 2);
+          background-color: rgba(0, 0, 0, 0.5);
+          
+          text-align: center;
+        }
+      }
+      .qr-code-container {
+        position: absolute;
+        right: 2vw;
+        bottom: 2vw;
+        //transform: skew($skew * 2, $skew) rotate($skew * 2);          
+        //margin: 14vw 0 0 3vw;
+
+        h2 {
+          top: -5vw;
+          //left: 1.8vw;
+          text-align: center;
+          @include utility.text-double-outline('Order now');
+          font-size: 2vw;
+          position: absolute;
+        }
+        
+        .qr-code {
+          display: block;
+          height: 11.9vw;
+          padding: 0.5vw;
+          background-color: rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 4px 2px utility.$dive-yellow;
         }
       }
     }
