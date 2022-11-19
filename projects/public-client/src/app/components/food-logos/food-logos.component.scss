@@ -226,6 +226,8 @@ $takiLogoSizesPortrait: 33vw, 25vw, 15vw;
 
       .cluck {
         position: relative;
+        display: flex;
+        align-items: center;
         padding-left: 1vw;
 
         @include utility.media-breakpoint-gte(sm) {

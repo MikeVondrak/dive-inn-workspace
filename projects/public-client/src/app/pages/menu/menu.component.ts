@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HeroBannerOrientationConfigs } from '../../models/hero-banner.model';
+import { cluckHeroBannerConfigs } from './cluck.hero-banner.config';
 import { foodpageHeroBannerConfigs } from './menu.hero-banner.config';
 
 enum MenuContentItems {
@@ -18,7 +19,7 @@ export class MenuComponent implements OnInit {
   public heroBannerTitleLinesTaco: string[] = []; // ['Menu', '&', 'Specials'];
   public heroBannerConfigsTaco: HeroBannerOrientationConfigs = foodpageHeroBannerConfigs;
   public heroBannerTitleLinesChicken: string[] = []; //['Menu', '&', 'Specials'];
-  public heroBannerConfigsChicken: HeroBannerOrientationConfigs = foodpageHeroBannerConfigs;
+  public heroBannerConfigsChicken: HeroBannerOrientationConfigs = cluckHeroBannerConfigs;
 
   public MenuContentItemsEnum = MenuContentItems;
   public fullscreenMenu: boolean = false;
