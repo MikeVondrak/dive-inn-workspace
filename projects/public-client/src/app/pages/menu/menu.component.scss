@@ -282,30 +282,29 @@ $zoomAnimationTime: 0.6s;
 
       .cluck {
         position: absolute;
-        width: 100%;
-        max-width: 52vw;
-        top: 16vw;
-        left: 2vw;
+        width: 70vw;
+        top: 4vw;
+        left: 15vw;
         @include utility.media-breakpoint-gte(sm) {
-          max-width: 38vw;
-          left: 15vw;
-          top: 2vw;
+          width: 50vw;
+          left: 25vw;
+          //top: 2vw;
         }
         @include utility.media-breakpoint-gte(md) {
-          max-width: 28vw;
+          width: 40vw;
           left: 30vw;
-          top: 2vw;
+          //top: 2vw;
         }
         @include utility.media-breakpoint-gte(xl) {
-          max-width: 22vw;
-          left: 33.3vw;
-          top: 1.5vw;
+          width: 36vw;
+          left: 32vw;
+          //top: 1.5vw;
         }
         @media (orientation: portrait) {
           @include utility.media-breakpoint-gte(md) {
-            max-width: 28vw;
-            left: 22vw;
-            top: 1vw;
+            width: 40vw;
+            left: 30vw;
+            // top: 1vw;
           }
         }
         text-align: center;
@@ -318,24 +317,33 @@ $zoomAnimationTime: 0.6s;
         a {
           position: relative;
 
-          .cluck-logo-bg {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 5vw;
-            box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.5);
+          &.cluck-logo-bg {
+            display: block;            
+            // padding: 5vw;
+            // background-color: rgba(0, 0, 0, 0.5);
+            // box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.5);
             transition: all 0.2s ease;
-            &:hover {
-              box-shadow: 0px 0px 3vw 1vw utility.$dive-yellow;
-            }
-            @include utility.media-breakpoint-gte(md) {
-              padding: 3vw;
-            }
-            border-radius: 50%;
+            // &:hover {
+            //   box-shadow: 0px 0px 3vw 1vw utility.$dive-yellow;
+            // }
+            //@include utility.media-breakpoint-gte(md) {
+              //padding: 3vw;
+            //}
+            //border-radius: 50%;
             //border: 2px solid utility.$dive-yellow;
             img {
               position: relative;
-              left: -1vw;
-              top: 1vw;
+              width: 100%;
+              // left: 1vw;
+              // top: 1vw;
               display: block;
+            }
+
+            .click {
+              position: absolute;
+              bottom: 6vw;
+              right: 6vw;
+              width: 5vw;
             }
           }
         }
@@ -343,21 +351,59 @@ $zoomAnimationTime: 0.6s;
       $skew: 2deg;
       .tagline-container {
         position: absolute;
+        display: flex;
+        align-items: center;
         width: 66vw;
-        @include utility.media-breakpoint-gte(md) {
-          width: 36vw;
+        top: 70vw;
+        right: 17vw;
+        @include utility.media-breakpoint-gte(sm) {
+          width: 50vw;
+          top: 54vw;
+          right: 25vw;
         }
-        bottom: 6vw;
-        right: 3vw;
-        background-color: rgba(0, 0, 0, 0.5);
+        @include utility.media-breakpoint-gte(md) {
+          //width: 50vw;
+          top: 44vw;
+          //right: 25vw;
+        }
+        @include utility.media-breakpoint-gte(lg) {
+          //width: 46vw;
+          top: 40vw;
+          //right: 27vw;
+        }        
         transform: skew(-$skew * 2, -$skew) rotate(-$skew * 2);
-
         p {
           margin: 0;
           padding: 3vw 3.5vw;
-          font-size: clamp(0.75rem, 3.5vw, 2.5rem);
+          font-size: clamp(0.75rem, 3.5vw, 4.5rem);
           font-weight: bold;
-          //transform: skew($skew * 2, $skew) rotate($skew * 2);
+          background-color: rgba(0, 0, 0, 0.5);
+          
+          text-align: center;
+        }
+      }
+      .qr-code-container {
+        position: absolute;
+        right: 2vw;
+        bottom: 2vw;
+        //transform: skew($skew * 2, $skew) rotate($skew * 2);          
+        //margin: 14vw 0 0 3vw;
+
+        h2 {
+          top: -5vw;
+          //left: 1.8vw;
+          text-align: center;
+          @include utility.text-double-outline('Order now');
+          font-size: 2vw;
+          position: absolute;
+        }
+        
+        .qr-code {
+          display: block;
+          height: 11.9vw;
+          padding: 0.5vw;
+          background-color: rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 4px 2px utility.$dive-yellow;
         }
       }
     }

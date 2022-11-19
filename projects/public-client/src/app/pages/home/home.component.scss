@@ -36,7 +36,7 @@ $waveSizeLg: 3vw;
       left: 68.2vw;
       width: $w_zero;
       height: $h_zero;
-      padding: 0.25rem;
+      //padding: 0 4px;
       transform: skew(1deg, 24deg); // perspective(10cm);
       box-shadow: 0px 4px 4px 0px #000;
 
@@ -90,26 +90,46 @@ $waveSizeLg: 3vw;
       }
 
       .awards {
-        padding: 4px 0;
-        border-top: 4px dotted utility.$dive-yellow;
-        border-bottom: 4px dotted utility.$dive-yellow;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        //padding: 4px 0;
+        //border-top: 3px dotted utility.$dive-yellow;
+        //border-bottom: 3px dotted utility.$dive-yellow;
         transition: all 0.2s ease;
 
         &:hover {
           //padding: 6px 0;
-          border-color: utility.$dive-white;
+          //border-color: utility.$dive-white;
           // border-top: 2px solid utility.$dive-yellow;
           // border-bottom: 2px solid utility.$dive-yellow;
         }
 
         a.award {
           display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0 clamp(3px, 0.25vw, 100px);
 
           img {
             display: block; // remove whitespace
           }
 
-          &.yalp {}
+          &.yalp {
+            img {
+              width: 100%;
+              height: 100%;
+              
+              // height: 1.8vw;
+              // @media(orientation: portrait) {                
+              //   height: 6vw;
+              // }
+              // @include utility.media-breakpoint-gte(md) {
+              //   height: 2.8vw;
+              // }
+            }
+          }
         }
       }
     }
