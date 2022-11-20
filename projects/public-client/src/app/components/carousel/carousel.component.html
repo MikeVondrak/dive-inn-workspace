@@ -1,6 +1,13 @@
 <div class="carousel">
-  <div class="carousel-container">    
-    <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">
+  <div class="carousel-container">
+
+    <app-carousel-pane *ngFor="let face of faces$; let i = index"
+      [gradient]="gradients[i]"
+      [faceDirection]="faceDirections[i]"
+      [face$]="face"
+    ></app-carousel-pane>
+
+    <!-- <div (swipe)="onSwipe($event)" [ngClass]="{ 'left-gradient': leftGradient[0], 'right-gradient': rightGradient[0] }" class="face s">
       <ng-container *ngIf="debugging">{{faces$[0] | async}}</ng-container>
       <ng-container *ngTemplateOutlet="templates$[0] | async"></ng-container>
       <div class="overlay"></div>
@@ -40,11 +47,11 @@
       <ng-container *ngTemplateOutlet="templates$[7] | async"></ng-container>
       <div class="overlay"></div>
     </div>
-  </div>
-  <div class="rotaters">
-    <button class="rotate left" (click)="rotateLeft()">&lt;</button>
-    <button class="rotate right" (click)="rotateRight()">&gt;</button>
-  </div>
+  </div> -->
+</div>
+<div class="rotaters">
+  <button class="rotate left" (click)="rotateLeft()">&lt;</button>
+  <button class="rotate right" (click)="rotateRight()">&gt;</button>
 </div>
 
 <!-- {{ currentFace }}:{{ currentRotation }} -->

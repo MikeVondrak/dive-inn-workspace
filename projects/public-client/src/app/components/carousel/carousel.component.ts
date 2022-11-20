@@ -1,5 +1,6 @@
 import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { CarouselPaneGradientTypes, CarouselPaneFaceDirections } from '../../models/carousel.model';
 
 @Component({
   selector: 'app-carousel',
@@ -16,6 +17,7 @@ export class CarouselComponent implements OnInit {
   //@HostBinding('style.--transformW') transformW: string = `translate3d(${-1.207 * this.cubeSizeVw + 'vw'}, 0, 0) rotateY(-90deg)`;
 
   public readonly positions = [0, 1, 2, 3, 4, 5, 6, 7]; // currently only handling octagon
+  public readonly faceDirections = [CarouselPaneFaceDirections.S, CarouselPaneFaceDirections.SE, CarouselPaneFaceDirections.E, CarouselPaneFaceDirections.NE, CarouselPaneFaceDirections.N, CarouselPaneFaceDirections.NW, CarouselPaneFaceDirections.W, CarouselPaneFaceDirections.SW];
   public faces$: Subject<string>[] = [];
   public templates$: Subject<TemplateRef<any>>[] = [];
   public currentFace: number = 0;
@@ -23,6 +25,14 @@ export class CarouselComponent implements OnInit {
   public currentRotation = 0;
   public leftGradient: boolean[] = this.positions.map(() => false);
   public rightGradient: boolean[] = this.positions.map(() => false);
+  public gradients: CarouselPaneGradientTypes[] = this.positions.map((val, idx) => {
+    if (this.leftGradient[idx]) {
+      return CarouselPaneGradientTypes.LEFT;
+    } else if (this.rightGradient[idx]) {
+      return CarouselPaneGradientTypes.RIGHT;
+    }
+    return CarouselPaneGradientTypes.NONE;
+  });
   
   public debugging = false;
   
@@ -33,7 +43,6 @@ export class CarouselComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-
     this.numberOfFaceContents = this.faceContents.length;
     this.numberOfFaceLabels = this.faceLabels.length;
 
