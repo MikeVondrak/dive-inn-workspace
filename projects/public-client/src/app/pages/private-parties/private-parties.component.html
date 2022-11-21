@@ -5,16 +5,26 @@
       textBackgroundPadding="clamp(1rem, 2vw, 3rem) 0">
     </app-hero-banner>
 
-    <div class="reserve-container">
-      <!-- NOTE: weird whitespace is for email content -->
+    <div class="reserve-container">      
+      <a class="top-cta secondary-link" title="See photos of rental spaces" appAnimateViewportOverlay="/private-parties#Photos">
+        <div class="circle-link">
+          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
+          <img src="assets/images/private-parties/photos.svg" alt="View photos!" />
+        </div>
+      </a>
       <a class="top-cta" title="Send a reservation email" [href]="mailto" target="_blank">
-        <div class="message-bottle">
+        <div class="circle-link message-bottle">
           <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
           <img src="assets/images/message_bottle_with_text.svg" alt="Make a reservation now!" />
         </div>
       </a>
+      <a class="top-cta secondary-link" title="See deals and specials" appAnimateViewportOverlay="/private-parties#Deals">
+        <div class="circle-link">
+          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
+          <img src="assets/images/private-parties/deals.svg" alt="View deals!" />
+        </div>
+      </a>
     </div>
-
   </div>
 
   <!-- <div class="page-content" [class.fullscreen]="fullscreen" (click)="onClick()">
@@ -22,7 +32,7 @@
     
   </div> -->
 
-  <div class="red">
+  <div id="Deals" class="red">
     <div class="section-red">
       <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
         <img src="assets/images/private-parties/holiday_flyer_retouch.jpg" />
@@ -33,7 +43,7 @@
   </div>
 
 
-  <div class="carousel-container">
+  <div id="Photos" class="carousel-container">
     <app-carousel [faceContents]="[MainRoom, Boat, NorthPatio, NorthRoom, GameRoom, SideRoom, SouthPatio]"></app-carousel>
   </div>
 

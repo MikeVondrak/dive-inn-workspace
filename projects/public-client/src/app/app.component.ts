@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, ChildActivationEnd, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
 import { routeAnimations } from './animations/route.animation';
-import { AnimateViewportOverlayService } from '@dive-inn-lib';
+import { AnimateViewportOverlayService, ScrollService } from '@dive-inn-lib';
 import { combineLatest, filter, map, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
 import { ExpandingMenuStateEnum } from './models/expanding-menu.model';
 
@@ -26,20 +26,16 @@ export class AppComponent {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
     private viewportOverlay: AnimateViewportOverlayService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private renderer: Renderer2,    
+    private scroll: ScrollService,
   ) {
-    this.watchscrollToFragment();
+    // start the scroll service watching router events
+    // this.scroll.watchRouterEvents();
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
-  }
-
-  public onSwipe() {
-    console.log('SWIPE');
   }
 
   // TODO - pre-Angular loader
@@ -47,7 +43,12 @@ export class AppComponent {
   //   this.appReadyEvent.trigger(); // remove the "Loading..." overlay when app is ready    
   // }
   
+  /**
+   * Callback for viewport animation complete
+   * @param event AnimationEvent from Angular animation
+   */
   public viewportOverlayAnimationDone(event: AnimationEvent) {
+    // Change route via service so viewport overlay will be removed
     this.viewportOverlay.changeRoute(event);
   }
 
@@ -60,38 +61,4 @@ export class AppComponent {
     
   }
 
-  // every time a new route is processed grab the #fragment if there is one
-  private watchscrollToFragment() {
-
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      withLatestFrom(this.route.fragment)
-    ).pipe(
-      takeUntil(this.destroy$)
-    )
-      .subscribe(([navEnd, frag]) => {
-        const url = navEnd.url;
-        if (!!frag) {
-          this.scrollToElement(frag);
-        }
-        this.lastUrl = url;
-      });
-  }
-
-  private scrollToElement(routeFragment: string | null) {
-
-    // TODO: need a setTimeout to wait 1 cycle here, why?
-    setTimeout(() => {
-      // try to scroll element into view if fragment exists
-      if (!!routeFragment) {
-        const selector = `#${routeFragment}`;
-        try {
-          const el = this.renderer.selectRootElement(selector, true); // preserve contents when selecting
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } catch (err) {
-          console.warn(err);
-        }
-      }
-    }, 100); // wait 100ms to scroll for smoother transitions
-  }
 }
