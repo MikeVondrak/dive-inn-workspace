@@ -34,7 +34,7 @@ export class CarouselComponent implements OnInit {
     return CarouselPaneGradientTypes.NONE;
   });
   
-  public debugging = false;
+  public debugging = true;
   
   private numberOfPositions = this.positions.length;
   private numberOfFaceLabels = 0;
@@ -139,6 +139,11 @@ export class CarouselComponent implements OnInit {
     this.leftGradient[leftCardIdx] = true;
     this.rightGradient[rightCardIdx] = true;
 
+    this.gradients = this.gradients.map(g => CarouselPaneGradientTypes.NONE);
+    this.gradients[leftCardIdx] = CarouselPaneGradientTypes.LEFT;
+    this.gradients[rightCardIdx] = CarouselPaneGradientTypes.RIGHT;
+
+
     this.cdr.detectChanges();
   }
 
@@ -197,6 +202,10 @@ export class CarouselComponent implements OnInit {
     this.rightGradient = this.rightGradient.map(g => false);
     this.leftGradient[7] = true;
     this.rightGradient[1] = true;
+
+    this.gradients = this.gradients.map(g => CarouselPaneGradientTypes.NONE);
+    this.gradients[7] = CarouselPaneGradientTypes.LEFT;
+    this.gradients[1] = CarouselPaneGradientTypes.RIGHT;
   }
 
   private getNextFaceLabelIndex(i: number) {

@@ -16,7 +16,7 @@ $pixelBleedScaleFix: 1.001;
     --cubeSize: 40vw;
   }  
   display: block;
-  perspective: 100vw;
+  perspective: 80vw;
   
   .carousel {
     transform: translateZ(-$offsetZ);

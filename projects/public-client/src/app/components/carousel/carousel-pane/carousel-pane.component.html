@@ -1,6 +1,5 @@
 <div (swipe)="handleOnSwipe($event)" [ngClass]="{ 'left-gradient': gradient === carouselPaneGradientTypes.LEFT, 'right-gradient': gradient === carouselPaneGradientTypes.RIGHT }" class="face {{faceDirection}}">
-  <!-- <ng-container *ngIf="debugging">{{faces$[1] | async}}</ng-container>
-  <ng-container *ngTemplateOutlet="templates$[1] | async"></ng-container> -->
-  <span>{{face$ | async}}</span>
+  <!--<ng-container *ngTemplateOutlet="templates$[1] | async"></ng-container> -->
+  <span *ngIf="debugging">{{face}}</span>
   <div class="overlay"></div>
 </div>
