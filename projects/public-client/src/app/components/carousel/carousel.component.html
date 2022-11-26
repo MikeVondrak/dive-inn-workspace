@@ -1,7 +1,19 @@
 <div class="carousel">
   <div class="carousel-container">
-    <app-carousel-pane *ngFor="let face of faces$; let i = index" [gradient]="gradients[i]"
-      [faceDirection]="faceDirections[i]" [face]="(face | async) || ''"></app-carousel-pane>
+    <ng-container *ngIf="debugging; else faceContents">
+      <app-carousel-pane *ngFor="let face of faces$; let i = index" [gradient]="gradients[i]"
+        [faceDirection]="faceDirections[i]" 
+        [faceLabel]="(face | async) || ''"
+        (swipe)="onSwipe($event)"
+      ></app-carousel-pane>
+    </ng-container>
+    <ng-template #faceContents>
+      <app-carousel-pane *ngFor="let template of templates$; let i = index" [gradient]="gradients[i]"
+        [faceDirection]="faceDirections[i]" 
+        [faceTemplate]="(templates$[i] | async)"
+        (swipe)="onSwipe($event)"
+      ></app-carousel-pane>
+    </ng-template>
   </div>
   <div class="rotaters">
     <button class="rotate left" (click)="rotateLeft()">&lt;</button>

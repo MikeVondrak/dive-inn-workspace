@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarouselPaneGradientTypes, CarouselPaneFaceDirections } from '../../../models/carousel.model';
 
@@ -15,8 +15,8 @@ export class CarouselPaneComponent implements OnInit {
 
   @Input() gradient: CarouselPaneGradientTypes = CarouselPaneGradientTypes.NONE;
   @Input() faceDirection: CarouselPaneFaceDirections = CarouselPaneFaceDirections.S;
-  @Input() face$: Observable<string> = new Observable;
-  @Input() face: string = '';
+  @Input() faceLabel: string = '';
+  @Input() faceTemplate: TemplateRef<any> | null = null;
 
   public carouselPaneGradientTypes = CarouselPaneGradientTypes;
   public carouselPaneFaceDirections = CarouselPaneFaceDirections;

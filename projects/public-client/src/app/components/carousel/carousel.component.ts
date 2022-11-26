@@ -34,7 +34,7 @@ export class CarouselComponent implements OnInit {
     return CarouselPaneGradientTypes.NONE;
   });
   
-  public debugging = true;
+  public debugging = false;
   
   private numberOfPositions = this.positions.length;
   private numberOfFaceLabels = 0;

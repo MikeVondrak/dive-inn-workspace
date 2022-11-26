@@ -1,7 +1,8 @@
 export enum CarouselPaneGradientTypes {
   NONE,
   LEFT,
-  RIGHT
+  RIGHT,
+  FULL,
 }
 
 export enum CarouselPaneFaceDirections {
