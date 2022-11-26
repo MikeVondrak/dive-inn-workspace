@@ -141,7 +141,9 @@ export class CarouselComponent implements OnInit {
 
     this.gradients = this.gradients.map(g => CarouselPaneGradientTypes.NONE);
     this.gradients[leftCardIdx] = CarouselPaneGradientTypes.LEFT;
+    this.gradients[nextLeftPosition] = CarouselPaneGradientTypes.LEFT;
     this.gradients[rightCardIdx] = CarouselPaneGradientTypes.RIGHT;
+    this.gradients[nextRightPosition] = CarouselPaneGradientTypes.RIGHT;
 
 
     this.cdr.detectChanges();
