@@ -75,6 +75,18 @@ $pixelBleedScaleFix: 1.001;
         }
         &.right {
           right: -1rem;
+
+          &::after {
+            z-index: -1;
+            content: '';            
+            position: absolute;
+            width: 400%;
+            height: 120%;
+            top: -10%;
+            right: 0;
+            background-image: linear-gradient(-90deg, utility.$dive-black 10%, transparent);
+            pointer-events: none;
+          }
         }
         @include utility.media-breakpoint-gte(lg) {
           &.left {

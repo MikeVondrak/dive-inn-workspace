@@ -1,3 +1,8 @@
+export enum CarouselPaneViewModes {
+  NORMAL,
+  FULL_SCREEN,
+}
+
 export enum CarouselPaneGradientTypes {
   NONE,
   LEFT,

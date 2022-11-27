@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CarouselPaneGradientTypes, CarouselPaneFaceDirections } from '../../../models/carousel.model';
+import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes } from '../../../models/carousel.model';
 
 @Component({
   selector: 'app-carousel-pane',
@@ -13,6 +13,7 @@ export class CarouselPaneComponent implements OnInit {
   // @TODO: figure out type for Event
   @Output() onSwipe = new EventEmitter<any>();
 
+  @Input() viewMode: CarouselPaneViewModes = CarouselPaneViewModes.NORMAL;
   @Input() gradient: CarouselPaneGradientTypes = CarouselPaneGradientTypes.NONE;
   @Input() faceDirection: CarouselPaneFaceDirections = CarouselPaneFaceDirections.S;
   @Input() faceLabel: string = '';
@@ -20,6 +21,7 @@ export class CarouselPaneComponent implements OnInit {
 
   public carouselPaneGradientTypes = CarouselPaneGradientTypes;
   public carouselPaneFaceDirections = CarouselPaneFaceDirections;
+  public carouselPaneViewModes = CarouselPaneViewModes;
 
   public debugging = true;
 

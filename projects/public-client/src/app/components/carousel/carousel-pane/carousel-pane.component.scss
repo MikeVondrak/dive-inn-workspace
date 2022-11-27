@@ -114,7 +114,11 @@ $pixelBleedScaleFix: 1.001;
         background-position: right;
       }
     }
-
+    
+    &.view-full-screen {
+      --cubeSize: 70vw;
+    }
+    
     .overlay {
       position: absolute;
       top: 0;
@@ -128,6 +132,7 @@ $pixelBleedScaleFix: 1.001;
       transition: all 1s ease;
       pointer-events: none;
     }
+
   }
 
 }

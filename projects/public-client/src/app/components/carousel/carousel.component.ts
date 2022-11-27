@@ -1,6 +1,6 @@
 import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CarouselPaneGradientTypes, CarouselPaneFaceDirections } from '../../models/carousel.model';
+import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes } from '../../models/carousel.model';
 
 @Component({
   selector: 'app-carousel',
@@ -34,6 +34,8 @@ export class CarouselComponent implements OnInit {
     return CarouselPaneGradientTypes.NONE;
   });
   
+  public carouselPaneExpanded: CarouselPaneViewModes[] = []; //CarouselPaneViewModes.NORMAL;
+
   public debugging = false;
   
   private numberOfPositions = this.positions.length;
@@ -49,6 +51,7 @@ export class CarouselComponent implements OnInit {
     // create a subject for each face of the octagon to be able to change content when rotated
     this.faces$ = this.positions.map(() => new Subject<string>());
     this.templates$ = this.positions.map(() => new Subject<TemplateRef<any>>());
+    this.carouselPaneExpanded = this.positions.map(() => CarouselPaneViewModes.NORMAL);
 
     if ((this.debugging && this.numberOfFaceLabels <= 0) || ( !this.debugging && this.numberOfFaceContents <= 0)) {
       console.error(`Carousel initialized with no face content, ${this.numberOfFaceContents}, ${this.numberOfFaceLabels}`);
@@ -68,14 +71,21 @@ export class CarouselComponent implements OnInit {
   }
 
   public onSwipe($event: any, loc?: string) {
-    console.log('SWIPE!', loc, $event);
-
     if ($event.direction === 2) {
       this.rotateLeft();
     } else if ($event.direction === 4) {
       this.rotateRight();
     }
+  }
 
+  public onClick($event: MouseEvent) {
+    console.log('CLICK', $event);
+    this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
+    this.cdr.detectChanges();
+  }
+
+  public onTap($event: any) {
+    console.log('TAP', $event);
   }
 
   public rotateLeft() {

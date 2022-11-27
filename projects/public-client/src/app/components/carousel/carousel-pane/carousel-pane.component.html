@@ -1,5 +1,5 @@
 <div (swipe)="handleOnSwipe($event)"
-  [ngClass]="{ 'left-gradient': gradient === carouselPaneGradientTypes.LEFT, 'right-gradient': gradient === carouselPaneGradientTypes.RIGHT }"
+  [ngClass]="{ 'left-gradient': gradient === carouselPaneGradientTypes.LEFT, 'right-gradient': gradient === carouselPaneGradientTypes.RIGHT, 'view-full-screen': viewMode === carouselPaneViewModes.FULL_SCREEN }"
   class="face {{faceDirection}}">
   <ng-container *ngTemplateOutlet="faceTemplate"></ng-container>
   <span *ngIf="debugging">{{faceLabel}}</span>
