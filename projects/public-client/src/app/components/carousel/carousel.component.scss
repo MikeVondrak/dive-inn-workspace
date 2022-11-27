@@ -3,6 +3,7 @@
 
 $debugging: false;
 
+$carouselRotationAnimation: all 1s ease;
 $cubeSize: 50vw;
 $cubeSizeLg: 40vw;
 $offset: math.div($cubeSize, 2);
@@ -30,7 +31,7 @@ $pixelBleedScaleFix: 1.001;
         height: $cubeSizeLg;
       }
       transform: rotateX($rotateX) var(--rotation);
-      transition: all 1s ease;
+      transition: $carouselRotationAnimation;
 
       app-carousel-pane {
         transform-style: preserve-3d;
@@ -59,6 +60,18 @@ $pixelBleedScaleFix: 1.001;
         font-size: clamp(1rem, 2vw, 3rem);
         &.left {
           left: -1rem;
+
+          &::after {
+            z-index: -1;
+            content: '';            
+            position: absolute;
+            width: 400%;
+            height: 120%;
+            top: -10%;
+            left: 0;
+            background-image: linear-gradient(90deg, utility.$dive-black 10%, transparent);
+            pointer-events: none;
+          }
         }
         &.right {
           right: -1rem;

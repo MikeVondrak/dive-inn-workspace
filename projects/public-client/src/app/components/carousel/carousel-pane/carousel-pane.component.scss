@@ -1,7 +1,7 @@
 @use 'sass:math';
 @use '../../../scss/utility';
 
-$debugging: true;
+$debugging: false;
 
 $cubeSize: 50vw;
 $cubeSizeLg: 40vw;
@@ -32,7 +32,7 @@ $pixelBleedScaleFix: 1.001;
     background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
     transition: all 1s ease;
 
-    background-color: red;
+    background-color: utility.$dive-black;
 
     &.w {
       @if ($debugging) {
