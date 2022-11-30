@@ -4,15 +4,15 @@
 $debugging: false;
 
 $carouselRotationAnimation: all 1s ease;
-$cubeSize: 50vw;
+$cubeSize: 40vw;
 $cubeSizeLg: 40vw;
-$offset: math.div($cubeSize, 2);
-$offsetZ: $cubeSize * 1.35;
+$offset: 1.207 * $cubeSize; //math.div($cubeSize, 2) + 0.707 * $cubeSize;
+//$offsetZ: $cubeSize * 1.35;
 $rotateX: 0deg;
 $pixelBleedScaleFix: 1.001;
 
 :host {
-  --cubeSize: 50vw;
+  --cubeSize: 40vw;
   @include utility.media-breakpoint-gte(lg) {
     --cubeSize: 40vw;
   }  
@@ -20,7 +20,7 @@ $pixelBleedScaleFix: 1.001;
   perspective: 80vw;
   
   .carousel {
-    transform: translateZ(-$offsetZ);
+    transform: translateZ(-$offset);
     transform-style: preserve-3d;
     
     &-container {

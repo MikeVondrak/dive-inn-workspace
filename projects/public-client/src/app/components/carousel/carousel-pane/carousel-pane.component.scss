@@ -3,11 +3,8 @@
 
 $debugging: false;
 
-$cubeSize: 50vw;
+$cubeSize: 40vw;
 $cubeSizeLg: 40vw;
-$offset: math.div($cubeSize, 2);
-$offsetZ: $cubeSize * 1.35;
-$rotateX: 0deg;
 $pixelBleedScaleFix: 1.001;
 
 :host {
@@ -116,7 +113,10 @@ $pixelBleedScaleFix: 1.001;
     }
     
     &.view-full-screen {
-      --cubeSize: 70vw;
+      //--cubeSize: 70vw;
+      width: 100vw;
+      height: 100vh;
+      //transform: translateZ(-1px);
     }
     
     .overlay {
