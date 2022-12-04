@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { DiveInnLibComponent } from './dive-inn-lib.component';
-
+import { DirectivesModule } from './directives/directives.module';
+import { GraphQLModule } from './graphql/graphql.module';
 
 
 @NgModule({
   declarations: [
-    DiveInnLibComponent
   ],
   imports: [
+    DirectivesModule,
+    GraphQLModule,
   ],
   exports: [
-    DiveInnLibComponent
+    DirectivesModule,
+    GraphQLModule,
   ]
 })
 export class DiveInnLibModule { }

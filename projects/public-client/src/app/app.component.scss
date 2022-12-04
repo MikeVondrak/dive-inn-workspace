@@ -1,0 +1,36 @@
+@use 'scss/utility';
+
+:host { 
+  #Viewport-Overlay {
+    position: fixed;
+    z-index: -1;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: utility.$dive-black;
+  }
+  #Viewport-Content {    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    z-index: 2;
+  }
+
+  app-site-header {
+    //position: absolute;
+    transform: translate(0%, 0%);
+  }
+
+  main {
+    flex: 1;
+
+    &.prevent-scroll {
+      overflow-y: hidden;
+    }
+  }
+
+  app-site-footer {
+    z-index: 10;
+    position: relative;
+  }
+  
+}

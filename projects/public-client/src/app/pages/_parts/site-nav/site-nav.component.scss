@@ -1,0 +1,158 @@
+@use 'sass:math';
+@use '../../../scss/utility';
+
+$headerColor: utility.$dive-gray-dk3;
+$verticalGap: 0.75rem;
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;    
+  width: 100%;
+
+  font-size: 3.5vw;
+  @include utility.media-breakpoint-gte(xs) {
+    font-size: 2.75vw;
+  }
+  @include utility.media-breakpoint-gte(sm) {
+    font-size: 2.5vw;
+  }
+  @include utility.media-breakpoint-gte(md) {
+    font-size: 1.8vw;
+  }
+  @include utility.media-breakpoint-gte(lg) {
+    font-size: 1.5vw;
+  }
+  @include utility.media-breakpoint-gte(xl) {
+    font-size: 1.35vw;
+  }
+  @include utility.media-breakpoint-gte(ws) {
+    font-size: 1.25vw;
+  }
+  @include utility.media-breakpoint-gte(hd) {
+    font-size: clamp(1.5rem, 1vw, 1.5rem);
+  }
+
+  ul {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    @include utility.media-breakpoint-gte(sm) {
+      justify-content: center;
+    }
+    gap: 0vw;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    z-index: 2;
+    //max-width: 90vw;
+
+    transform: translateY(-86%);
+    transition: transform 0.4s ease-out;
+    &.nav-expanded {
+      transform: translateY(0%);
+    }
+
+    li {
+      position: relative;      
+      overflow: hidden;
+      transform: skewX(-22deg);
+      background-color: $headerColor;
+      box-shadow: 0px 4px 4px 0px #000;      
+      //width: 23vw;
+      // @include utility.media-breakpoint-gte(sm) {
+      //   width: 20vw;
+      // }
+      // @include utility.media-breakpoint-gte(md) {
+      //   width: 10vw;
+      // }
+      white-space: nowrap;
+      text-align: center;
+      .selected-bg {
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        background: utility.$dive-red;
+      }
+      a {
+        width: clamp(60px, 20vw, 220px);
+        @include utility.media-breakpoint-gte(xl) {
+          width: clamp(60px, 20vw, 333px);
+        }
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        padding: 0.25rem 0; //clamp(0.25rem, 1vw, 0.5rem);
+        transition: all 0.5s ease;
+        color: utility.$dive-yellow;
+        transform: skewX(22deg);
+        font-family: 'Righteous', cursive;
+        &::after {
+          content: none;
+        }
+        &.active {
+          color: utility.$dive-white;
+          text-shadow: 1px 1px 2px #000;
+          cursor: default;
+          pointer-events: none;
+        } 
+      }      
+    }
+  }
+
+  svg {    
+    padding: 0rem;
+    //background-color: rgba(0,0,0,0.5);    
+    //border-radius: 50%;
+    .outline {
+      path {
+        fill: transparent; //utility.$dive-black;
+      }
+    }
+    .fill {
+      path {
+        fill: utility.$dive-yellow;
+      }
+    }
+  }
+  .nav-toggle-button {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    // width: 8vw;
+    // height: 8vw;
+    z-index: 3;
+    //border: 1px solid magenta;
+
+    svg {      
+      width: clamp(24px, 8vw, 34px);
+      height: clamp(24px, 8vw, 34px);
+      right: 0; //-2.75vw;
+      top: 0; //-2.75vw;    
+      transform: translate(50%, -50%) rotate(180deg) scale(2);
+      transition: all 0.4s ease-out; //, right 0.4s ease-out;
+      background-image: radial-gradient(circle at 50% 50%, black 0%, transparent 70%);
+      @include utility.media-breakpoint-gte(md) {
+        width: clamp(24px, 10vw, 44px);
+        height: clamp(24px, 10vw, 44px);
+      }      
+    }
+
+    &.nav-expanded {      
+      top: 0;//-2.75vw;
+      right: 0;//-2.75vw;
+      svg {
+        width: clamp(24px, 8vw, 34px);
+        height: clamp(24px, 8vw, 34px);
+        transform: translate(50%, -50%) rotate(0deg) scale(2);
+        @include utility.media-breakpoint-gte(md) {
+          width: clamp(24px, 10vw, 44px);
+          height: clamp(24px, 10vw, 44px);
+        }
+      }
+    }
+
+  }
+}

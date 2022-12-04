@@ -1,0 +1,98 @@
+@use '../../scss/utility';
+
+.blurb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vw 0.5vw;
+  text-align: center;
+
+  @include utility.media-breakpoint-gte(sm) {
+    padding: 4vw 1vw 0vw;
+  }
+
+  svg {
+    display: block;
+    width: 5vw;
+    margin-top: 2vw;
+
+    @include utility.media-breakpoint-gte(sm) {
+      width: 4.5vw;
+    }
+
+    g path {
+      fill: utility.$dive-red;
+    }
+  }
+
+  .diver {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16vw;
+
+    svg {
+      width: 90vw;
+
+      g path {
+        fill: utility.$dive-gray-dk3;
+      }
+    }
+  }
+
+  p {
+    z-index: 1;
+    max-width: 90vw;
+    font-size: 5vw;
+
+    @include utility.media-breakpoint-gte(xs) {
+      max-width: 80vw;
+      font-size: 4vw;
+    }
+
+    @include utility.media-breakpoint-gte(sm) {
+      max-width: 72vw;
+      font-size: 3.25vw;
+    }
+    @include utility.media-breakpoint-gte(md) {
+      max-width: 64vw;
+      font-size: 2.75vw;
+    }
+
+    line-height: 1.75;
+
+    &:first-of-type {
+      margin: 4vw 0 0;
+    }
+
+    span {
+      color: utility.$dive-yellow;
+
+      &.title-font {
+        margin-top: clamp(1rem, 3vw, 3rem);
+        display: block;
+        font-size: 6vw;
+        line-height: 1.6;
+        font-family: 'Bevan', serif;
+        transform: skew(-4deg, -7deg);
+        color: utility.$dive-black;
+        @include utility.text-double-outline('Dive Inn');
+
+        @include utility.media-breakpoint-gte(xs) {
+          font-size: 5vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          font-size: 4vw;
+        }
+      }
+    }
+  }
+}

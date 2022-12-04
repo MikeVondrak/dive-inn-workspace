@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'app/scss/utility';
+
+* {
+  box-sizing: border-box;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: utility.$dive-black;
+  color: utility.$dive-white;
+
+  &.prevent-scroll {
+    overflow-y: hidden;
+  }
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: utility.$dive-red;
+  color: utility.$dive-white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px 2px utility.$dive-black;
+}

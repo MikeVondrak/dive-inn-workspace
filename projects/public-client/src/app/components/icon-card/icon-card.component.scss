@@ -1,0 +1,294 @@
+@use "sass:map";
+@use '../../scss/utility';
+
+@mixin FlexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin DiagonalCorner($size) {
+  background: transparent;
+  border-top: $size solid transparent;
+  border-right: $size solid transparent;
+  border-bottom: $size solid rgba(0,0,0,0.75);//utility.$dive-black;
+  border-left: $size solid rgba(0,0,0,0.75);//utility.$dive-black;
+}
+@mixin ArrowLeft {
+  position: relative;
+  border-top: map-get($backButtonSizes, 'zero') * 2 solid transparent;
+  border-bottom: map-get($backButtonSizes, 'zero') * 2 solid transparent;
+  border-right: map-get($backButtonSizes, 'zero') * 2 solid utility.$dive-black;
+  //background-color: aqua;
+  &::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: -(map-get($backButtonSizes, 'zero') * 2) - 0.5;
+    left: -1px;
+    bottom: 0;
+    right: 0;
+    border-top: map-get($backButtonSizes, 'zero') * 2 solid transparent;
+    border-bottom: map-get($backButtonSizes, 'zero') * 2 solid transparent;
+    border-right: map-get($backButtonSizes, 'zero') * 2 solid utility.$dive-red;
+    //background-color: magenta;
+  }
+
+  @include utility.media-breakpoint-gte('sm') {
+    border-top: map-get($backButtonSizes, 'sm') * 2 solid transparent;
+    border-bottom: map-get($backButtonSizes, 'sm') * 2 solid transparent;
+    border-right: map-get($backButtonSizes, 'sm') * 2 solid utility.$dive-black;
+    &::after {
+      top: -(map-get($backButtonSizes, 'sm') * 2) - 0.25;
+      border-top: map-get($backButtonSizes, 'sm') * 2 solid transparent;
+      border-bottom: map-get($backButtonSizes, 'sm') * 2 solid transparent;
+      border-right: map-get($backButtonSizes, 'sm') * 2 solid utility.$dive-red;
+    }
+  }
+}
+
+$cardWidths: ('zero': 90vw, 'xs': 70vw, 'sm': 28vw, 'md': 28vw, 'lg': 24vw);
+$cardMaxWidth: 30rem;
+$cardHeights: ('zero': 14vw, 'sm': 21vw, 'md': 22.5vw, 'lg': 18vw);
+$imgSizes: ('zero': 8.5vw, 'md': 7.5vw, 'lg': 6.5vw);
+$fontPrimarySizes: ('zero': 4.5vw, 'sm': 3vw, 'md': 2.75vw, 'lg': 2.25vw);
+$fontSecondarySizes: ('zero': 3.5vw, 'sm': 2vw, 'md': 2vw, 'lg': 1.5vw);
+$backButtonSizes: ('zero': 1vw, 'sm': 0.65vw, 'md': 0.35vw);
+
+// $cardWidth: 28vw;
+// $cardWidthLg: 24vw;
+// $cardHeight: 19.5vw;
+// $cardHeightLg: 17vw;
+// $imgSize: 7.5vw;
+// $imgSizeLg: 6.5vw;
+
+$cornerButtonSize: 7vw;
+// $fontSize: 2.0vw;
+// $fontSize2: 2.75vw;
+// $fontSizeLg: 1.5vw;
+// $fontSize2Lg: 2.25vw;
+$backBtnSize: 0.35vw;
+
+:host {
+  display: block;
+  font-family: "Righteous", cursive;
+
+  .card-container {    
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    //gap: 4vw; // only flex up to sm size
+    font-size: 1.65rem;
+    perspective: 2000px;
+    cursor: pointer;
+    
+    .card-content {
+      position: relative;
+      width: map.get($cardWidths, 'zero');
+      height: map.get($cardHeights, 'zero');
+      //max-width: $cardMaxWidth;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);      
+      border-radius: 1rem;
+      background-color: utility.$dive-red;
+      transition: box-shadow 0.2s ease;
+      color: utility.$dive-white;
+      
+      box-shadow: 1px 1px 4px 0px utility.$dive-black;
+      &:hover {
+        box-shadow: 3px 3px 6px 0px utility.$dive-black;
+        //color: utility.$dive-yellow;
+
+        .icon-container {
+          svg {
+            path, rect, circle {
+              fill: utility.$dive-yellow;
+              stroke: utility.$dive-yellow;
+            }
+          }
+        }
+      }
+      &:active {
+        box-shadow: 0px 0px 2px 0px utility.$dive-black;
+      }
+
+      > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;        
+        @include FlexCenter();
+        backface-visibility: hidden;
+        border-radius: 1rem;
+
+        &.card-face {
+        }
+        &.card-back {
+          transform: rotateY(180deg) rotateZ(180deg) translateZ(1px);
+          background-color: utility.$dive-black;
+          overflow: hidden;
+
+          .corner-button {
+            z-index: 1;
+            position: absolute;
+            //width: 8vw;
+            //height: 8vw;
+            bottom: 0vw;
+            left: 0vw;
+            width: $cornerButtonSize;
+            height: $cornerButtonSize;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,0.5);
+            border-top-right-radius: 1rem;            
+            cursor: pointer;
+
+            @include utility.media-breakpoint-gte(sm) {
+              width: $cornerButtonSize * 0.6;
+              height: $cornerButtonSize * 0.6;
+            }
+            > div {
+              z-index: 1;
+              width: 0;
+              height: 0;
+              //position: absolute;
+              top: 0.7vw;
+              left: -0.7vw;
+              //top: $cornerButtonSize * 0.55;
+              //left: $cornerButtonSize * 0;
+              //transform: translate(-50%, -50%);
+              
+              @include ArrowLeft();
+
+              @include utility.media-breakpoint-gte(sm) {
+                top: 0.275vw;
+                left: -0.25vw;
+              }
+            }
+          }
+        }
+      }
+
+      .icon-container {
+        position: absolute;
+        left: 2vw;        
+        @include FlexCenter();
+        height: 100%;     
+
+        svg {
+          display: block;
+          max-width: map.get($imgSizes, 'zero');
+          max-height: map.get($imgSizes, 'zero');
+
+          path, rect, circle {
+            transition: all 0.2s ease;
+            fill: utility.$dive-black;
+            stroke: utility.$dive-black;
+          }
+        }
+        > div {
+        }
+      }
+
+      .text-container {
+        width: 100%;
+        margin-right: 1vw;
+        text-shadow: 1px 1px 2px utility.$dive-black;
+        white-space: nowrap;
+        
+        font-size: map.get($fontSecondarySizes, 'zero');
+        .large {
+          font-size: map.get($fontPrimarySizes, 'zero');
+        }
+
+        .center {
+          @include FlexCenter();
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    }
+    @include utility.media-breakpoint-gte(xs) {
+      .card-content {
+        width: map-get($cardWidths, 'xs');
+        height: map-get($cardHeights, 'xs');
+      }
+    }
+
+    @include utility.media-breakpoint-gte(sm) {      
+      .card-content {
+        width: map-get($cardWidths, 'sm');
+        height: map-get($cardHeights, 'sm');
+        > div {
+          flex-direction: column;
+
+          &.card-back {
+            .corner-button {
+              //@include DiagonalCorner($cornerButtonSize * 0.5);
+              // > div {
+              //   top: $cornerButtonSize * 0.1;
+              //   left: -($cornerButtonSize * 0.1);
+              // }
+            }
+          }
+        }
+        .icon-container {
+          position: relative;
+          width: 100%;
+          height: unset;
+          left: 0;
+          margin-bottom: 1.5vw;
+        }
+        .text-container {
+          margin: 0;
+          font-size: map.get($fontSecondarySizes, 'sm');
+          .large {
+            font-size: map.get($fontPrimarySizes, 'sm');
+          }
+        }
+      }
+    }
+
+    @include utility.media-breakpoint-gte(md) {
+      display: block;
+      .card-content {
+        width: map-get($cardWidths, 'md');
+        height: map-get($cardHeights, 'md');
+        .icon-container {}
+        .text-container {
+          @include FlexCenter;
+          margin: 0;
+          flex-direction: column;
+
+          .large {
+          }
+        }
+      }
+    }
+
+    @include utility.media-breakpoint-gte(lg) {
+      .card-content {
+        width: map.get($cardWidths, 'lg');
+        height: map.get($cardHeights, 'lg');
+
+        .icon-container {
+          svg {
+            max-width: map.get($imgSizes, 'lg');
+            max-height: map.get($imgSizes, 'lg');
+          }
+        }
+        
+        .text-container {
+          @include FlexCenter;
+          margin: 0;
+          flex-direction: column;
+          font-size: map.get($fontSecondarySizes, 'lg');
+
+          .large {
+            font-size: map.get($fontPrimarySizes, 'lg');
+          }
+        }
+      }
+    }
+  }
+
+}

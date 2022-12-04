@@ -1,0 +1,87 @@
+@use 'colors';
+
+.button {
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+  color: colors.$dive-yellow;
+  $c1: colors.$dive-yellow;
+  $len: 5px;
+  $containerHeight: 0.25em;
+  $dotHeight: 0.125em;
+  $dotGap: 0.75em;
+  $lineHeight: 0.05em;
+
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: -0.05em;
+  //   width: 100%;
+  //   min-height: $containerHeight;
+  //   left: 0;
+  //   display: flex;
+  //   align-items: center;
+  //   background-image: radial-gradient(0.1em circle at 50% 50%, $c1 50%, transparent 50.5%, transparent 100%);
+  //   background-position: -1em bottom;
+  //   background-size: $dotGap $dotHeight;
+  //   background-repeat: repeat-x;
+  //   opacity: 0.25;
+  //   transition: all 0.2s ease;
+  // }
+  &:hover, &:focus {    
+    &::after {      
+      background-size: 0.01em $lineHeight;
+      background-position: bottom;
+      opacity: 1;
+    }
+  }
+}
+
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+  
+  width: 100%;
+  border: none;
+  
+  thead {
+    th {
+      padding: 0.25rem;
+      margin-bottom: 0.25rem;
+      background: colors.$dive-red-dk;
+      text-align: left;
+    }
+  }
+  tbody {
+    tr.selected {
+      background-color: colors.$dive-gray-dk;
+    }
+    th {
+    }
+    td {
+      padding: 0.25rem 0 0.25rem 0.25rem;
+    }
+  }
+}
+
+select {
+  padding-right: 1rem;
+  option {
+  }
+}
+
+ul.compass {
+  list-style-type: none;
+  li::before {
+      content: '';
+      position: absolute;
+      display: block;
+      //background-image: url('../../public-client/src/assets/images/Compass_Red.svg'); // @TODO - how to use image from root level shared assets?
+      background-size: cover;
+      width: 3.5vw;
+      height: 3.5vw;
+      left: 1vw;
+    }
+}

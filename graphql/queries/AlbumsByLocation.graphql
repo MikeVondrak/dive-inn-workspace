@@ -1,0 +1,15 @@
+query GetAlbumsByLocation {  
+  album_location @NgModule(module: "../generated.module#GeneratedModule") {
+    __typename
+    id
+    name
+    description
+    albums {
+      __typename
+      flickr_photo_set_id
+      title
+      description
+    }
+    modified @client
+  }
+}

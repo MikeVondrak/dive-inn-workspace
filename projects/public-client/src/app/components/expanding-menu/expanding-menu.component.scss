@@ -1,0 +1,290 @@
+@use 'sass:math';
+@use '../../scss/utility';
+
+$closeButtonHeight: clamp(2rem, 10vw, 3rem);
+$baseHeaderFontSize: 6vw;
+$fontSizeIncrement: 0.75vw;
+
+$headerFontSizes: (
+  'zero': $baseHeaderFontSize,
+  'xs': ($baseHeaderFontSize - $fontSizeIncrement),
+  'sm': ($baseHeaderFontSize - 2 * $fontSizeIncrement),
+  'md': ($baseHeaderFontSize - 3 * $fontSizeIncrement),
+  'lg': clamp(2rem, 3vw, 3rem) //($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  //'xl': ($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  //'ws': ($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  //'hd': $baseHeaderFontSize - 1vw
+);
+$buttonFontSizes: (
+  'zero': ($baseHeaderFontSize - $fontSizeIncrement),
+  'xs': ($baseHeaderFontSize - 2 * $fontSizeIncrement),
+  'sm': ($baseHeaderFontSize - 3 * $fontSizeIncrement),
+  'md': ($baseHeaderFontSize - 4 * $fontSizeIncrement),
+  'lg': clamp(1.5rem, 2vw, 2.5rem) //($baseHeaderFontSize - 5 * $fontSizeIncrement),
+);
+
+$skewAmount: 22deg;
+$titleSkew: skew(-$skewAmount, 0deg);
+$titleTextSkew: skew($skewAmount, 0deg);
+
+:host {
+  
+  display: block;
+
+  .open-menu-button {
+    position: relative;
+    //top: -0.5vw;
+    overflow: hidden;
+    height: clamp(30px, 6vw, 88px);
+
+    >div {
+      position: relative;      
+      width: clamp(84px, 42vw, 420px);
+      height: clamp(84px, 42vw, 420px);
+      //padding: 10.5vw 18vw 0;
+      background: utility.$dive-black;
+      border-radius: 50% 50% 0 0;
+
+      svg {
+        position: absolute;
+        top: 0.5vw;
+        left: 0;
+        height: clamp(24px, 5vw, 64px);
+
+        g {
+          path {
+            stroke: utility.$dive-yellow;
+            stroke-width: 10pt;
+            stroke-linecap: round;
+
+            &.shadow {
+              stroke: utility.$dive-black;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .link-list-container {
+    z-index: 10;
+    position: fixed;
+    overflow-y: auto;
+    //align-items: flex-start;
+    top: 0;
+    bottom: 0; //$closeButtonHeight;
+    left: 0;
+    right: 0;
+    background-color: utility.$dive-black;
+    
+    .grids-container {      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    
+      h2 {
+        display: block;
+        margin: 0;
+        padding: clamp(0.75rem, 2vw, 1.25rem) 0;// clamp(1rem, 2vw, 2rem);
+        line-height: 1;
+        transform: $titleTextSkew;
+      }
+
+      // TODO: clean up styles, 2nd ul def below
+      ul {
+        flex-basis: 100%;
+        margin: 0;
+        padding: 0;// clamp(1rem, 2vw, 2rem);
+        list-style: none;
+
+        li {
+          width: 100%;
+          text-align: center;
+          //margin-bottom: clamp(0.5rem, 1vw, 1rem);
+          background-color: utility.$dive-gray-dk;
+          background-image: 
+            radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(0,0,0,0.5));
+            //linear-gradient(-2deg, rgba(0,0,0,0.2) 20%, transparent 50%, rgba(0,0,0,0.2) 80%), 
+            //linear-gradient(90deg, rgba(0,0,0,0.2) 10%, transparent 50%, rgba(0,0,0,0.2) 90%);
+            //linear-gradient(-90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+          border-radius: clamp(0.5rem, 2vw, 1.5rem);
+          a {
+            display: block;
+            padding: clamp(0.5rem, 3vw, 1.5rem);// 0;
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
+            &::before {
+              content: '';
+              position: absolute;
+              $w: 2px;
+              top: $w;
+              bottom: $w;
+              left: $w;
+              right: $w;
+              border-top: 1px solid rgba(255,255,255,0.25);
+              border-left: 1px solid rgba(255,255,255,0.25);
+              border-bottom: 1px solid rgba(0,0,0,0.25);
+              border-right: 1px solid rgba(0,0,0,0.25);
+              border-radius: clamp(0.5rem, 2vw, 1.5rem);
+            }
+
+            &.inactive {
+              color: utility.$dive-gray-md;
+            }
+          }          
+        }
+      }
+    }
+
+    // .grids-container-large {
+    //   .tab-selector-container {
+    //     position: relative;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     //gap: 1vw;
+    //     transform: $titleSkew;
+
+    //     .tab-selector {
+    //       background-color: utility.$dive-red-dk;
+    //       cursor: pointer;
+    //       //border-radius: clamp(0.5rem, 2vw, 1.5rem);
+    //       box-shadow: 0px 4px 4px 0px #000;
+
+    //       h2 {
+    //         width: 200px; //clamp(200px, 5vw, 356px);
+    //         padding: clamp(1rem, 2vw, 1.5rem);
+    //         font-size: clamp(1rem, 4vw, 1.5rem);
+    //         color: utility.$dive-yellow;
+    //         text-align: center;
+    //       }
+    //       &.selected {
+    //         background-color: utility.$dive-red;
+    //         h2 {
+    //           color: utility.$dive-white;
+    //         }
+    //       }
+    //     }
+    //   }
+    //   .links-container {
+    //     width: 100%;
+    //     > div {
+    //       padding: 2vw 0.5rem;
+    //       ul {
+    //         padding: 0;
+    //         li {
+    //           width: 100%;
+    //           a {
+    //             font-size: clamp(1rem, 4vw, 2rem);
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    .grids-container-small {
+      padding: 1vw;
+      max-width: 1800px;
+      margin: 0 auto;
+      @include utility.media-breakpoint-gte(lg) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        //gap: 1vw;
+      }
+
+      .menu-section {        
+        width: 100%;        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;        
+        max-width: 800px;
+
+        .title-block {
+          position: relative;
+          transform: $titleSkew;
+          background-color: utility.$dive-red;
+          background-image: radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(0,0,0,0.5));
+          width: 80%;
+          max-width: 400px;
+          margin: clamp(2rem, 2vw, 3rem) 0 clamp(1rem, 2vw, 2rem);
+          @include utility.media-breakpoint-gte(sm) {
+            width: 80%;
+            max-width: 600px;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            width: 92%;
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            $width: 4px;
+            top: $width;
+            bottom: $width;
+            left: $width;
+            right: $width;
+            border-top: 1px solid rgba(255,255,255,0.25);
+            border-left: 1px solid rgba(255,255,255,0.25);
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            border-right: 1px solid rgba(0,0,0,0.25);
+            //border: 1px solid rgba(0,0,0,0.25);
+          }
+
+          h2 {
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            transform: $titleTextSkew;
+          }
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          gap: clamp(0.5rem, 2vw, 2rem);
+          @include utility.media-breakpoint-gte(md) {
+            width: 88%;
+          }
+          max-width: 400px;
+          margin: 0 0 clamp(1rem, 2vw, 2rem);;
+          @include utility.media-breakpoint-gte(sm) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 600px;
+          }
+          @include utility.media-breakpoint-gte(lg) {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+
+    .close-button {
+      position: fixed;
+      bottom: 0;
+      //left: 0;
+      right: 0;
+      //height: $closeButtonHeight;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1vw;
+      background-color: utility.$dive-red-dk;//gray-dk3;
+      border-radius: 50%;
+
+      svg {
+        width: clamp(24px, 5vw, 48px);
+        //height: 5vw;
+
+        g {
+          path {
+            stroke: utility.$dive-yellow;
+            stroke-width: 10pt;
+          }
+        }
+      }
+    }
+  }
+}

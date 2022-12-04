@@ -1,0 +1,110 @@
+@use 'sass:math';
+@use '../../scss/utility';
+
+$debugging: false;
+
+$carouselRotationAnimation: all 1s ease;
+$cubeSize: 40vw;
+$cubeSizeLg: 40vw;
+$offset: 1.207 * $cubeSize; //math.div($cubeSize, 2) + 0.707 * $cubeSize;
+//$offsetZ: $cubeSize * 1.35;
+$rotateX: 0deg;
+$pixelBleedScaleFix: 1.001;
+
+:host {
+  --cubeSize: 40vw;
+  @include utility.media-breakpoint-gte(lg) {
+    --cubeSize: 40vw;
+  }  
+  display: block;
+  perspective: 80vw;
+  
+  .carousel {
+    transform: translateZ(-$offset);
+    transform-style: preserve-3d;
+    
+    &-container {
+      transform-style: preserve-3d;
+      position: relative;
+      height: var(--cubeSize);
+      @include utility.media-breakpoint-gte(lg) {
+        height: $cubeSizeLg;
+      }
+      transform: rotateX($rotateX) var(--rotation);
+      transition: $carouselRotationAnimation;
+
+      app-carousel-pane {
+        transform-style: preserve-3d;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .rotaters {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateZ(var(--cubeSize));
+      .rotate {
+        position: relative;
+        background-color: rgba(0,0,0,0.15);
+        height: calc(0.85 * var(--cubeSize));
+        font-size: clamp(1rem, 2vw, 3rem);
+        &.left {
+          left: -1rem;
+
+          &::after {
+            z-index: -1;
+            content: '';            
+            position: absolute;
+            width: 400%;
+            height: 120%;
+            top: -10%;
+            left: 0;
+            background-image: linear-gradient(90deg, utility.$dive-black 10%, transparent);
+            pointer-events: none;
+          }
+        }
+        &.right {
+          right: -1rem;
+
+          &::after {
+            z-index: -1;
+            content: '';            
+            position: absolute;
+            width: 400%;
+            height: 120%;
+            top: -10%;
+            right: 0;
+            background-image: linear-gradient(-90deg, utility.$dive-black 10%, transparent);
+            pointer-events: none;
+          }
+        }
+        @include utility.media-breakpoint-gte(lg) {
+          &.left {
+            left: 7vw;
+          }
+          &.right {
+            right: 7vw;
+          }
+        }
+        @include utility.media-breakpoint-gte(ws) {
+          &.left {
+            left: 9vw;
+          }
+          &.right {
+            right: 9vw;
+          }
+        }
+      }
+    }
+  }
+}

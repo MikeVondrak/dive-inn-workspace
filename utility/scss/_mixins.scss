@@ -1,0 +1,22 @@
+@use './breakpoints';
+@use './colors';
+
+@mixin media-breakpoint-gte($bp) {
+  @media (min-width: map-get(breakpoints.$breakpoints, $bp) + 'px') {
+    @content;
+  }
+}
+
+@mixin text-double-outline($text, $colorText: colors.$dive-black, $colorOutline1: colors.$dive-red, $colorOutline2: colors.$dive-white) {
+  position: relative;
+  z-index: 0;
+  color: $colorText;
+  -webkit-text-stroke: 0.05em $colorOutline1;
+  &::after {
+    position: absolute;
+    content: $text;
+    -webkit-text-stroke: 0.15em $colorOutline2;
+    top: 0; right: 0rem; bottom: 0; left: 0;
+    z-index: -1;
+  }
+}

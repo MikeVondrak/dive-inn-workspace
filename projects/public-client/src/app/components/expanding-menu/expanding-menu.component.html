@@ -1,0 +1,53 @@
+<div (click)="onClickExpandMenu()" class="open-menu-button">
+  <div>
+    <ng-container *ngTemplateOutlet="MenuSvg"></ng-container>
+  </div>
+</div>
+
+<div *ngIf="isExpanded" class="link-list-container">
+
+  <div class="grids-container grids-container-small">    
+    <div *ngFor="let item of menuItems" class="menu-section">
+      <div class="title-block">
+        <h2>{{item.title}}</h2>
+      </div>
+      <ul>
+        <li *ngFor="let link of item.links">
+          <a 
+            [class.inactive]="!link.active"
+            [appAnimateViewportOverlay]="link.linkUrl + '#' + link.fragment"
+            (click)="onClickExpandMenu()"
+          >
+            {{link.uiLabel}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div (click)="onClickExpandMenu()" class="close-button">
+    <ng-container *ngTemplateOutlet="CloseSvg"></ng-container>
+  </div>
+</div>
+
+
+<!-------------------- SVGs -------------------->
+<ng-template #MenuSvg>
+  <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+      <path class="shadow" d="M25.0,27.0l50.0,0.0M25.0,52.0l50.0,0.0M25.0,77.0l50.0,0.0" />
+      <path d="M25.0,25.0l50.0,0.0M25.0,50.0l50.0,0.0M25.0,75.0l50.0,0.0" />
+    </g>
+  </svg>
+</ng-template>
+
+<ng-template #CloseSvg>
+  <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+      <path class="shadow" d="M25.0,27.0l50.0,50.0M25.0,77.0l50.0,-50.0" />
+      <path d="M25.0,25.0l50.0,50.0M25.0,75.0l50.0,-50.0" />
+    </g>
+  </svg>
+</ng-template>

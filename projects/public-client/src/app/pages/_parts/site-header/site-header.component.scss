@@ -1,0 +1,177 @@
+@use 'sass:math';
+@use '../../../scss/utility';
+
+$headerColor: utility.$dive-gray-dk3;
+$verticalGap: 0.75rem;
+
+:host {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+
+  header {
+    position: relative;
+
+    top: 0;
+    left: 0rem;
+    width: 100%;
+    box-shadow: 0px 2px 4px utility.$dive-black;
+
+    .logo-container {
+      z-index: 11;
+      position: absolute;
+      top: -22vw;
+      left: 0rem;     
+      transition: all 0.6s;
+      transform: scale(0.5) translate(-50%, -50%);
+      opacity: 0.2;
+
+      &.show-logo {
+        // position: relative;
+        top: 0.05rem;
+        left: 0.15rem;        
+
+        //display: inline-flex;
+        // transform: display(inline-flex);
+        &.nav-expanded {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        @include utility.media-breakpoint-gte(xs) {
+          top: 0rem;
+          left: 0.25rem;
+        }
+      }
+
+      .d-logo-container {        
+        width: clamp(2rem, 8vw, 3.5rem);
+        //height: 10vw;  
+        
+        padding: 0.25rem 0.25rem 0rem;
+        border-radius: 50%;// 0 0 50% 0;
+        background-color: rgba(0,0,0,0.5);
+        margin: -0.15rem 0 0 -0.25rem;
+        @include utility.media-breakpoint-gte(xs) {
+          top: 0;
+          left: -0.25rem;
+        }
+      }
+
+      .full-logo-container {
+        position: relative;        
+        > div {
+          position: absolute;
+          width: 14vw;
+          //height: 10vw;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+
+          img {
+            &.text {
+              background-image: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 20%, transparent 72%);
+            }
+            &.board {
+              position: absolute;
+              
+            }
+            &.football {
+              position: relative;
+              width: 12vw;
+              top: 4vw;
+              left: 1vw;
+              transform: rotate(-3deg);
+            }
+          }
+        }
+      }
+
+      a {
+        &::after {
+          content: none;
+        }
+      }
+
+      // img {
+      //   z-index: 2;
+      //   width: 24vw;
+      //   position: relative;
+      //   padding: 0.5vw;
+      //   $t1: 20%;
+      //   $t2: 38%;
+      //   // background-image: linear-gradient(163deg, utility.$dive-black 0%, utility.$dive-black $t1, $headerColor (
+      //   //     $t1 + 0.5%),
+      //   //   $headerColor $t2,
+      //   //   transparent $t2 + 1.2%
+      //   // );
+
+
+      //   border-bottom-right-radius: 50%;
+
+      //   transition: all 0.65s ease;
+
+      //   @include utility.media-breakpoint-gte(sm) {
+      //     width: 22vw;
+      //   }
+
+      //   @include utility.media-breakpoint-gte(md) {
+      //     width: 20vw;
+      //   }
+
+      //   @include utility.media-breakpoint-gte(ws) {
+      //     width: 18vw;
+      //   }
+
+      //   &.anniversary {
+      //     position: relative;
+      //     top: -18vw;
+      //     left: -16vw;
+      //     width: 8vw;
+      //     background: none;
+
+      //     &.showLogo {
+      //       // position: relative;
+      //       top: 0.25vw; //5.5vw;
+      //       // top: 20%;
+      //       left: -8.25vw; //7.75vw;
+      //     }
+      //   }
+      // }
+    }
+    
+    app-site-nav {
+      position: absolute;
+      display: inline-flex;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bp {
+      position: absolute;
+      background-color: black;
+    }
+  }
+
+  $boat-cam-size: 15vw;
+
+  .boat-cam {
+    z-index: 5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    background-color: utility.$dive-black;
+    color: utility.$dive-white;
+    width: $boat-cam-size;
+    height: $boat-cam-size;
+    border-radius: math.div($boat-cam-size, 2);
+    font-size: math.div($boat-cam-size, 4);
+    text-align: center;
+  }
+
+}

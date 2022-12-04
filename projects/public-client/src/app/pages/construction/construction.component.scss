@@ -1,0 +1,341 @@
+@use '../../scss/utility';
+
+:host {
+  .main {
+    .hero-banner-container {
+      position: relative;
+
+      app-hero-banner {}
+
+      .hero-banner-content {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+
+        @include utility.media-breakpoint-gte(sm) {
+          flex-direction: row;
+        }
+
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        bottom: 0vw;
+        //background-color: rgba(0, 0, 0, 0.5);
+        transform: translateY(125%);
+
+        h2,
+        p {
+          margin: 1.5vw 5vw;
+          text-align: center;
+          text-shadow: 2px 2px 4px #000;
+          font-size: clamp(2rem, 4vw, 4rem);
+        }
+
+        p {
+          font-size: clamp(1rem, 3vw, 2rem);
+        }
+      }
+
+      .page-title {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        transform: skew(5deg, 5deg) rotate(5deg);
+        font-size: clamp(0.75rem, 3vw, 10rem);
+
+        bottom: 20vw;
+
+        @include utility.media-breakpoint-gte(min) {
+          bottom: 19.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(xs) {
+          bottom: 20vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          bottom: 21vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          bottom: 18vw;
+        }
+
+        @include utility.media-breakpoint-gte(lg) {
+          bottom: 17.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(ws) {
+          bottom: 12.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(hd) {
+          //bottom: 13.5vw;
+        }
+
+        @media (orientation: portrait) {
+          bottom: 42vw;
+
+          @include utility.media-breakpoint-gte(min) {
+            bottom: 40vw;
+          }
+
+          @include utility.media-breakpoint-gte(xs) {
+            bottom: 31vw;
+          }
+
+          @include utility.media-breakpoint-gte(sm) {
+            bottom: 23vw;
+          }
+
+          @include utility.media-breakpoint-gte(md) {
+            bottom: 16vw;
+          }
+
+          @include utility.media-breakpoint-gte(xl) {
+            bottom: 15vw;
+          }
+        }
+
+        .page-title-bg {
+          $borderW: 0.2vw;
+          border-top: $borderW solid utility.$dive-red;
+          border-left: $borderW solid utility.$dive-white;
+          border-bottom: $borderW solid utility.$dive-red-dk;
+          border-right: $borderW solid utility.$dive-red-dk;
+          text-shadow: 1px 1px 0.25vw #000;
+          box-shadow: 0px 2px 2px 0px #000;
+          background-color: utility.$dive-red;
+          background-image: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.5));
+          transform: skew(-20deg, 0deg) rotate(0deg);
+
+          h1 {
+            margin: 0;
+            padding: 0.5vw clamp(2rem, 3vw, 5rem) 1vw;
+            //border-radius: clamp(0.5rem, 1vw, 2rem);            
+            font-family: Righteous, cursive;
+            transform: skew(20deg, 2deg) rotate(-1deg);
+          }
+        }
+      }
+
+      .logo {
+        position: absolute;
+        transform: skew(-12deg, -6deg) rotate(-13deg);
+        width: 33vw;
+        top: 18.75vw;
+        left: 34vw;
+
+        @include utility.media-breakpoint-gte(min) {}
+
+        @include utility.media-breakpoint-gte(xs) {
+          // top: 19.5vw;
+          // left: 33.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          // width: 40vw;
+          // top: 18.5vw;
+          // left: 30.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          width: 33.75vw;
+          top: 14vw;
+          left: 33.75vw;
+        }
+
+        @include utility.media-breakpoint-gte(lg) {
+          // width: 26vw;
+          // top: 19.5vw;
+          // left: 37.25vw;
+        }
+
+        @include utility.media-breakpoint-gte(ws) {
+          width: 30vw;
+          top: 14.5vw;
+          left: 35.75vw;
+        }
+
+
+        @media (orientation: portrait) {
+          width: 50vw;
+          top: 32vw;
+          left: 25vw;
+
+          @include utility.media-breakpoint-gte(min) {}
+
+          @include utility.media-breakpoint-gte(xs) {
+            top: 28.5vw;
+            left: 25vw;
+          }
+
+          @include utility.media-breakpoint-gte(sm) {
+            width: 40vw;
+            top: 19.5vw;
+            left: 30.5vw;
+          }
+
+          @include utility.media-breakpoint-gte(md) {
+            width: 33vw;
+            top: 16vw;
+            left: 33.75vw;
+          }
+
+          @include utility.media-breakpoint-gte(lg) {
+            // width: 26vw;
+            // top: 19.5vw;
+            // left: 37.25vw;
+          }
+
+          @include utility.media-breakpoint-gte(xl) {
+            width: 26vw;
+            top: 13.5vw;
+            left: 37.25vw;
+          }
+        }
+      }
+
+      .construction {
+        position: absolute;
+        transform: skew(-10deg, -19deg) rotate(-10deg);
+
+        width: 14vw;
+        top: 42vw;
+        left: 39.5vw;
+
+        @include utility.media-breakpoint-gte(min) {
+          // width: 16vw;
+          // top: 41vw;
+          // left: 38vw;
+        }
+
+        @include utility.media-breakpoint-gte(xs) {
+          // width: 13vw;
+          // top: 40.75vw;
+          // left: 39.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          // width: 15vw;
+          // top: 44.5vw;
+          // left: 39.5vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          width: 13vw;
+          top: 36.75vw;
+          left: 41vw;
+        }
+
+        @include utility.media-breakpoint-gte(ws) {
+          width: 12vw;
+          top: 34.5vw;
+          left: 41.75vw;
+        }
+
+        @media (orientation: portrait) {
+          width: 33vw;
+          top: 72vw;
+          left: 28vw;
+
+          @include utility.media-breakpoint-gte(min) {
+            width: 28vw;
+            top: 67vw;
+            left: 30.25vw;
+          }
+
+          @include utility.media-breakpoint-gte(xs) {
+            width: 18.5vw;
+            top: 60vw;
+            left: 37vw;
+          }
+
+          @include utility.media-breakpoint-gte(sm) {
+            width: 15vw;
+            top: 44.5vw;
+            left: 39.5vw;
+          }
+
+          @include utility.media-breakpoint-gte(md) {
+            width: 12vw;
+            top: 38.25vw;
+            left: 41.4vw;
+          }
+
+          // @include utility.media-breakpoint-gte(lg) {
+          //   top: 30vw;
+          //   left: 41.25vw;
+          // }
+        }
+      }
+    }
+
+    .page-content {
+      display: flex;
+      flex-direction: column;
+
+      @include utility.media-breakpoint-gte(sm) {
+        flex-direction: row;
+      }
+
+      justify-content: center;
+      align-items: center;
+      margin-top: clamp(2rem, 2vw, 3rem);
+
+      h2,
+      p {
+        margin: 1.5vw 5vw 0;
+        text-align: center;
+        text-shadow: 2px 2px 4px #000;
+        font-size: clamp(2rem, 4vw, 4rem);
+      }
+
+      p {
+        font-size: clamp(1rem, 3vw, 2rem);
+      }
+    }
+
+    .separator {
+      display: flex;
+      justify-content: center;
+      margin: 10vw 0 10vw 0;
+
+      @include utility.media-breakpoint-gte(min) {
+        margin: 10vw 0 20vw 0;
+      }
+
+      @include utility.media-breakpoint-gte(xs) {
+        margin: 10vw 0;
+      }
+
+      @include utility.media-breakpoint-gte(sm) {
+        margin: 6vw 0;
+      }
+      @include utility.media-breakpoint-gte(md) {
+        margin: 4vw 0;
+      }
+      @include utility.media-breakpoint-gte(lg) {
+        margin: 3vw 0;
+      }
+
+      img {
+        width: 30vw;
+
+        @include utility.media-breakpoint-gte(sm) {
+          width: 20vw;
+        }
+
+        @include utility.media-breakpoint-gte(md) {
+          width: 15vw;
+        }
+
+        @include utility.media-breakpoint-gte(xl) {
+          width: 10vw;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="waves-separator footer"></div>
+
+<footer>
+
+  <div class="social-icons">
+    <!-- NOTE: mis-named so blockers don't filter -->
+    <a class="faceburk" target="_blank" href="https://www.facebook.com/diveinndenver/"></a>
+    <a class="yalp" target="_blank" href="https://www.yelp.com/biz/dive-inn-denver?osq=dive+inn"></a>
+    <a class="twatter" target="_blank" href="https://twitter.com/diveinndenver"></a>
+    <a class="choob" target="_blank" href="https://www.youtube.com/@diveinndenver"></a>
+    <a class="needletrest" target="_blank" href="https://www.pinterest.com/diveinndenver"></a>
+    <a class="tripsitter" target="_blank"
+    href="https://www.tripadvisor.com/Restaurant_Review-g33388-d2702017-Reviews-Dive_Inn-Denver_Colorado.html"></a>
+    <a class="instakilo" target="_blank" href="https://www.instagram.com/explore/locations/13038426/dive-inn/"></a>
+  </div>
+
+  <p>
+    <a routerLink="/find-us" fragment="map">{{address}}</a>
+    <span class="spacer">|</span>
+    <a href="tel:{{phone}}">{{phone}}</a>
+  </p>
+
+  <app-expanding-menu *ngIf="showMobileMenu" [menuItems]="linksArray" (expandingMenuState)="onExpandingMenuStateChange($event)"></app-expanding-menu>
+
+</footer>

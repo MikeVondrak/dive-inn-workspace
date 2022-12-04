@@ -1,0 +1,84 @@
+<div class="contact-container">
+  <app-icon-card [config]="config[0]">
+    <!-- <google-map (click)="mapClick($event)" [width]="(cardDimensions$ | async)?.width || 0" [height]="(cardDimensions$ | async)?.height || 0" [zoom]="13" [center]="mapCenter" [options]="mapOptions">
+      <map-marker [position]="mapMarkerPosition" [title]="mapMarkerTitle" [options]="mapMarkerOptions"></map-marker>
+    </google-map> -->
+    <div class="map-card">
+      <img src="assets/images/map.svg" />
+      <a class="map-link" routerLink="/find-us" fragment="map">
+        <!-- <ng-container *ngTemplateOutlet="MapMarker2Svg"></ng-container> -->
+        <span>View Map</span>
+        <img src="assets/images/Magnifying_Glass.svg" />
+      </a>
+    </div>
+  </app-icon-card>
+  <app-icon-card [config]="config[1]">
+    <div class="open-hours-card">
+      <h3>Is it a day today?</h3>
+      <h3>Then we're open!</h3>
+    </div>
+  </app-icon-card>
+  <app-icon-card [config]="config[2]">
+    <div class="contact-methods-card">
+      <a class="email" href="mailto:contact@diveinndenver.com" target="_blank">
+        <div class="contact-title">
+          <!-- <span>contact@</span><span>diveinndenver.com</span> -->
+          <span>Email</span>
+          <!-- <span> Us</span> -->
+        </div>
+        <div class="contact-icon">
+          <ng-container *ngTemplateOutlet="MailSvg"></ng-container>
+        </div>
+      </a>
+      <a class="phone" href="tel:7202426157">
+        <div class="contact-title">
+          <span>Call</span>
+          <!-- <span> Us</span> -->
+        </div>
+        <div class="contact-icon">
+          <ng-container *ngTemplateOutlet="PhoneSvg"></ng-container>
+        </div>
+      </a>
+    </div>
+  </app-icon-card>
+</div>
+
+
+<!------------------------ SVGs ----------------------------->
+<ng-template #PhoneSvg>
+  <svg class="phone-svg" width="100%" height="100%" viewBox="0 0 832 1068" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+      <path
+        d="M5.173,534.113C-2.547,330.886 89.84,56.268 89.84,56.268C99.047,19.46 148.926,-2.948 185.734,6.258L319.117,39.621C355.925,48.828 378.334,86.186 369.127,122.994L319.993,281.307C310.787,318.115 258.303,334.956 236.62,331.317C190.482,323.572 170.194,345.095 167.004,357.473C167.004,357.473 147.139,475.233 147.139,534.113C147.139,592.994 167.004,710.754 167.004,710.754C170.194,723.132 180.026,741.31 236.62,736.91C261.897,734.945 310.787,750.112 319.993,786.92L369.127,945.233C378.334,982.041 355.925,1019.4 319.117,1028.61L185.734,1061.97C148.926,1071.17 99.047,1048.77 89.84,1011.96C89.84,1011.96 -2.547,737.341 5.173,534.113Z" />
+      <path d="M675.849,169.736C838.824,359.234 825.672,648.459 670.109,858.349" style="fill:none;stroke-width:75px;" />
+      <path d="M539.947,265.221C649.178,381.406 669.991,574.347 538.551,778.469" style="fill:none;stroke-width:75px;" />
+      <path d="M422.151,362.339C491.457,458.292 479.369,596.803 403.019,694.808" style="fill:none;stroke-width:75px;" />
+    </g>
+  </svg>
+</ng-template>
+
+<ng-template #MailSvg>
+  <svg class="mail-svg" width="100%" height="100%" viewBox="0 0 423 279" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+      <rect x="9.057" y="9.179" width="405.69" height="261.695" style="fill:none;stroke-width:50px;" />
+      <path d="M211.902,189.485L414.747,9.179L9.057,9.179L211.902,189.485Z" style="fill:none;stroke-width:33.29px;" />
+    </g>
+  </svg>
+</ng-template>
+
+<ng-template #MapMarker2Svg>
+  <svg width="100%" height="100%" viewBox="0 0 144 163" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <!-- <path
+      d="M88.651,130.117C89.421,129.16 90.158,128.252 90.847,127.412L102.18,127.412L143.437,162.59L0.071,162.619L41.327,127.442L51.638,127.412C52.357,128.279 53.101,129.184 53.86,130.117L43.124,130.155L13.143,158.119L129.08,157.322L100.436,130.117L88.651,130.117Z" /> -->
+    <path
+      d="M46.346,112.5C36.589,99.632 27.449,86.527 20.68,72.547L20.676,72.544C18.436,66.726 17.244,60.403 17.244,53.803C17.244,24.117 41.376,0.016 71.1,0.016C100.825,0.016 124.957,24.117 124.957,53.803C124.957,60.4 123.766,66.72 121.527,72.537L121.527,72.537C115.539,87.032 106.082,100.213 95.906,113.112L95.553,113.563C88.137,123.015 80.344,132.318 73.278,141.895L71.1,145.016L69.465,142.672C62.103,132.752 54.28,123.002 46.811,113.112L46.346,112.5ZM71.1,26.91C85.963,26.91 98.029,38.96 98.029,53.803C98.029,68.646 85.963,80.697 71.1,80.697C56.238,80.697 44.172,68.646 44.172,53.803C44.172,38.96 56.238,26.91 71.1,26.91Z" />
+  </svg>
+</ng-template>

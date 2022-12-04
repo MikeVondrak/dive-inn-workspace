@@ -1,0 +1,169 @@
+@use 'sass:math';
+@use '../../../scss/utility';
+
+$waveSize: 8vw;
+$waveSizeMin: 5vw;
+$waveSizeSm: 4.5vw;
+$waveSizeLg: 4vw;
+$waveSizeXl: 3.5vw;
+$waveSizeWs: 3vw;
+
+.waves-separator {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  top: 2px;
+
+  &.footer {
+    height: $waveSize;
+    @include utility.media-breakpoint-gte(min) { height: $waveSizeMin; }
+    @include utility.media-breakpoint-gte(sm) { height: $waveSizeSm; }
+    @include utility.media-breakpoint-gte(lg) { height: $waveSizeLg; }
+    @include utility.media-breakpoint-gte(xl) { height: $waveSizeXl; }
+    @include utility.media-breakpoint-gte(ws) { height: $waveSizeWs; }
+    top: 1px;
+    background-image: url('/assets/images/wave-red.svg');
+  }
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+  padding: 1.5vw 0 0;
+  background-color: utility.$dive-red;
+  background-image: 
+    linear-gradient(0deg, rgba(0,0,0,0.75), rgba(0,0,0,0.35) 3%, rgba(0,0,0,0.15) 50%, transparent 75%),
+    radial-gradient(80vw clamp(6rem, 6vw, 12rem) at 50% 56%, rgba(0,0,0,0.25) 0%, transparent 80%);
+  //background-image: radial-gradient(2000px 740px at 50% -40%, transparent 60%, utility.$dive-black);
+
+  color: utility.$dive-white;
+  text-shadow: 1px 1px 3px #000;
+
+  p {
+    padding: 1vw 0 1.15vw;
+    margin: 0;
+    font-size: 5vw;
+    @include utility.media-breakpoint-gte(sm) { font-size: 4vw; }
+    @include utility.media-breakpoint-gte(md) { font-size: 3vw; }
+    @include utility.media-breakpoint-gte(xl) { font-size: 2.5vw; }
+  }
+
+  ul.navigation {
+    //display: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0rem 0 0;
+    padding: 0 2rem;
+
+    li {
+      margin: 0 0 1.5vw;
+      font-size: 1.5vw;
+
+      a {
+        color: utility.$dive-white;
+        &::after {
+          content: none;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    //@include utility.media-breakpoint-gte(lg) { display: flex;  }
+  }
+  
+  // .navigation-small {
+  //   display: inline-block;
+  //   @include utility.media-breakpoint-gte(lg) { display: none;  }
+  // }
+
+  .spacer {
+    padding: 0 clamp(0.5rem, 1vw, 1rem);
+    color: utility.$dive-black;
+  }
+
+  app-expanding-menu {
+    margin-top: 4vw;
+    @include utility.media-breakpoint-gte(md) {
+      margin-top: 0.5vw;
+    }
+  }
+
+  $iconSize: clamp(32px, 5vw, 64px);
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.25rem, 1vw, 0.5rem);
+    margin: 1.5rem 0 0.5rem;
+    background-color: utility.$dive-black;    
+    border-radius: clamp(64px, 5vw, 128px);
+    //box-shadow: 0px -2px 4px 2px utility.$dive-black;
+    border: 1px solid black;
+    // border-top: 1px solid rgba(0,0,0,0.5);
+    // border-left: 1px solid rgba(55,0,0,0.5);
+    // border-bottom: 1px solid rgba(255,100,100,0.5);
+    // border-right: 1px solid rgba(155,100,100,0.5);
+
+    > a {
+      width: $iconSize;
+      height: $iconSize;
+      margin: 0 0.25rem;
+      background-repeat: no-repeat;
+      &::after {
+        content: none;
+      }
+    }
+
+    // don't name like ".facebook" as it can be filtered by ad blockers
+    .gurgleplus {}
+
+    .faceburk {
+      //background-position: -($iconSize * 1) 0;
+      background-image: url('/assets/images/social/fabook.svg');
+    }
+
+    .instakilo {
+      //background-position: -($iconSize * 6) 0;
+      background-image: url('/assets/images/social/igram.svg');
+    }
+
+    .twatter {
+      //background-position: -($iconSize * 4) 0;
+      background-image: url('/assets/images/social/twit.svg');
+    }
+
+    .needletrest {
+      //background-position: -($iconSize * 5) 0;
+      background-image: url('/assets/images/social/pinny.svg');
+    }
+
+    .tripsitter {
+      //background-position: -($iconSize * 7) 0;
+      background-image: url('/assets/images/social/tadviser.svg');
+    }
+
+    .yalp {
+      //background-position: -($iconSize * 2) 0;
+      background-image: url('/assets/images/social/yalp.svg');
+    }
+
+    .choob {
+      border-radius: 50%;
+      background-color: white;
+      background-image: url('/assets/images/social/youtube.svg');
+      background-position: 50% 50%;
+    }
+  }
+}
+
+// end footer

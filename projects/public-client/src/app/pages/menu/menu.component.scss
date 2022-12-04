@@ -1,0 +1,411 @@
+@use '../../scss/utility';
+
+$zoomAnimationTime: 0.6s;
+
+
+:host {
+  .main {
+    // position: relative;
+
+    .taki-tacos {
+      // position: relative;
+
+      .content-container {        
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+        top: 30vw;
+        left: 40vw;
+        @include utility.media-breakpoint-gte(xs) {
+          flex-direction: row;
+          top: 12vw;
+        }
+        // @include utility.media-breakpoint-gte(sm) {
+        //   position: unset;
+        // }
+        @include utility.media-breakpoint-gte(md) {
+          top: clamp(100px, 12vw, 240px);
+          left: 50vw;
+        }
+        @media (orientation: portrait) {
+          flex-direction: column;
+          top: clamp(150px, 56vw, 160px);
+          left: 20vw;
+          @include utility.media-breakpoint-gte(xs) {            
+            top: 34vw;
+            left: 25vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
+            flex-direction: row;
+            top: 32vw;
+            left: 32vw;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            top: clamp(100px, 12vw, 240px);
+            left: 50vw;
+          }
+        }
+
+        .content {          
+          z-index: 1;
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          width: 60vw;
+          height: 60vw;
+          cursor: pointer;
+
+          left: 20vw;
+          top: clamp(160px, 42vw, 200px);
+          @include utility.media-breakpoint-gte(xs) {
+            width: 50vw;
+            height: 50vw;
+            left: 25vw;
+            top: 37vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
+            position: absolute;
+            width: 36vw;
+            height: 36vw;
+            left: 14vw;
+            top: 33vw;
+          }
+          @include utility.media-breakpoint-gte(md) {
+            width: 24vw;
+            height: 24vw;
+            left: 40vw;
+            top: 18vw;
+          }
+          @include utility.media-breakpoint-gte(xl) {
+            top: 20vw;
+          }
+          @include utility.media-breakpoint-gte(ws) {
+            top: 13.333vw;
+          }
+          padding: 2vw;
+          background-color: rgba(0, 0, 0, 0.5);
+          text-align: center;
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+
+          &:hover {
+            img {
+              box-shadow: 2px 2px 16px 0px utility.$dive-red;
+            }
+          }
+
+          h1 {
+            margin: 0 0 clamp(0px, 2vw, 24px);
+            font-size: clamp(1rem, 7vw, 3.5rem);
+            @include utility.media-breakpoint-gte(sm) {
+              font-size: clamp(1.5rem, 3vw, 3.5rem);
+            }
+          }
+          img {
+            transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+          }
+
+          &.fullscreen {
+            z-index: 11;
+            position: absolute;
+            overflow-y: auto;
+            width: 100vw;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            
+            transform: translateX(0) skew(0deg, 0deg);
+
+            img {
+              width: 80%;
+            }
+          }
+        }
+
+        $skew: skew(-4deg, -2deg) rotate(-4deg);
+        .menu {
+          transform: $skew;
+          @include utility.media-breakpoint-gte(sm) {
+            transform: $skew translateX(102%);
+          }
+          text-align: center;
+
+          h1 {
+            @include utility.text-double-outline('Menu');
+          }
+
+          img {
+            width: 44%;
+            // @include utility.media-breakpoint-gte(xs) {
+            //   width: 28vw;
+            // }
+            // @include utility.media-breakpoint-gte(sm) {
+            //   width: 20vw;
+            // }
+            // @include utility.media-breakpoint-gte(md) {
+            //   width: 8vw;
+            // }
+            box-shadow: 2px 2px 16px 0px #000;            
+          }
+        }
+
+        .specials {
+          height: 50vw;
+          transform: $skew translateY(122%);
+          @include utility.media-breakpoint-gte(xs) {
+            height: 44vw;
+          }
+          @include utility.media-breakpoint-gte(sm) {
+            height: 36vw;
+            transform: $skew; // translateX(-51%);
+          }
+          @include utility.media-breakpoint-gte(md) {
+            height: 24vw;
+          }
+
+          h1 {
+            @include utility.text-double-outline('Specials');
+          }
+
+          img {
+            width: 100%;
+            //width: clamp(100px, 26vw, 420px);
+            box-shadow: 2px 2px 16px 0px #000;
+          }
+        }
+      }
+
+      .gradient-container {
+        position: relative;
+        app-hero-banner {
+          // display: inline-block;
+          //min-height: 600px;
+          // ::ng-deep {
+          //   .title-container {
+          //     .title {
+          //       > div {
+          //         background-color: rgba(0,0,0,0.5);
+          //         width: 330px;
+          //       }
+          //     }
+          //   }
+          // }
+        }
+
+        .gradient-overlay {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-image: linear-gradient(105deg, utility.$dive-black 0%, transparent 50%, transparent 70%, utility.$dive-black 100%);
+          pointer-events: none;
+        }
+      }
+
+      .logo-container {
+        z-index: 2;
+        position: absolute;
+        top: clamp(2rem, 5vw, 3.5rem);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (orientation: portrait) {
+          @include utility.media-breakpoint-gte(md) {
+            top: clamp(4.5rem, 7vw, 7.5rem);
+          }
+        }
+        left: 2vw;
+
+        img {
+          &.logo {
+            width: clamp(120px, 28vw, 440px);
+            margin: 0 auto;
+
+            @media (orientation: portrait) {
+              //width: 42vw;
+            }
+          }
+        }
+
+        .hours {
+          z-index: -1;
+          position: relative;
+          top: clamp(-90px, -5.5vw, 0px);
+          margin: 0;
+          padding: clamp(0px, 5vw, 128px) 2vw 3vw;
+          @include utility.media-breakpoint-gte(sm) {
+            top: clamp(-90px, -5.5vw, 0px);
+            padding: clamp(0px, 5vw, 80px) 1vw 1vw;
+          }
+          color: utility.$dive-red;
+          background: rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 6px utility.$dive-black;
+          border-radius: 50%;
+          text-align: center;
+          font-size: clamp(1rem, 2.5vw, 2.25rem);
+          font-weight: bold;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .separator {
+      display: flex;
+      justify-content: center;
+      padding: clamp(48px, 12vw, 366px);
+
+      svg {
+        width: clamp(40px, 10vw, 100px);
+
+        path {
+          fill: utility.$dive-red;
+        }
+      }
+
+      img {
+        width: clamp(50px, 12vw, 280px);
+      }
+    }
+
+    .cluck-container {
+      position: relative;
+      // width: 100%;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      //margin-bottom: 6vw;
+
+      .cluck {
+        position: absolute;
+        width: 70vw;
+        top: 4vw;
+        left: 15vw;
+        @include utility.media-breakpoint-gte(sm) {
+          width: 50vw;
+          left: 25vw;
+          //top: 2vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          width: 40vw;
+          left: 30vw;
+          //top: 2vw;
+        }
+        @include utility.media-breakpoint-gte(xl) {
+          width: 36vw;
+          left: 32vw;
+          //top: 1.5vw;
+        }
+        @media (orientation: portrait) {
+          @include utility.media-breakpoint-gte(md) {
+            width: 40vw;
+            left: 30vw;
+            // top: 1vw;
+          }
+        }
+        text-align: center;
+        text-shadow: 2px 2px 2px #000;
+
+        &::after {
+          content: none;
+        }        
+
+        a {
+          position: relative;
+
+          &.cluck-logo-bg {
+            display: block;            
+            // padding: 5vw;
+            // background-color: rgba(0, 0, 0, 0.5);
+            // box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+            // &:hover {
+            //   box-shadow: 0px 0px 3vw 1vw utility.$dive-yellow;
+            // }
+            //@include utility.media-breakpoint-gte(md) {
+              //padding: 3vw;
+            //}
+            //border-radius: 50%;
+            //border: 2px solid utility.$dive-yellow;
+            img {
+              position: relative;
+              width: 100%;
+              // left: 1vw;
+              // top: 1vw;
+              display: block;
+            }
+
+            .click {
+              position: absolute;
+              bottom: 6vw;
+              right: 6vw;
+              width: 5vw;
+            }
+          }
+        }
+      }
+      $skew: 2deg;
+      .tagline-container {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: 66vw;
+        top: 70vw;
+        right: 17vw;
+        @include utility.media-breakpoint-gte(sm) {
+          width: 50vw;
+          top: 54vw;
+          right: 25vw;
+        }
+        @include utility.media-breakpoint-gte(md) {
+          //width: 50vw;
+          top: 44vw;
+          //right: 25vw;
+        }
+        @include utility.media-breakpoint-gte(lg) {
+          //width: 46vw;
+          top: 40vw;
+          //right: 27vw;
+        }        
+        transform: skew(-$skew * 2, -$skew) rotate(-$skew * 2);
+        p {
+          margin: 0;
+          padding: 3vw 3.5vw;
+          font-size: clamp(0.75rem, 3.5vw, 4.5rem);
+          font-weight: bold;
+          background-color: rgba(0, 0, 0, 0.5);
+          
+          text-align: center;
+        }
+      }
+      .qr-code-container {
+        position: absolute;
+        right: 2vw;
+        bottom: 2vw;
+        //transform: skew($skew * 2, $skew) rotate($skew * 2);          
+        //margin: 14vw 0 0 3vw;
+
+        h2 {
+          top: -5vw;
+          //left: 1.8vw;
+          text-align: center;
+          @include utility.text-double-outline('Order now');
+          font-size: 2vw;
+          position: absolute;
+        }
+        
+        .qr-code {
+          display: block;
+          height: 11.9vw;
+          padding: 0.5vw;
+          background-color: rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 4px 2px utility.$dive-yellow;
+        }
+      }
+    }
+  }
+}

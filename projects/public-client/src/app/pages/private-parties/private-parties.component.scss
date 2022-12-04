@@ -1,0 +1,445 @@
+@use '../../scss/utility';
+
+$zoomAnimationTime: 0.6s;
+
+:host {
+  .main {
+    position: relative;
+
+    .hero-banner-container {
+      position: relative;
+
+      .reserve-container {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        bottom: 0vw;
+        left: 50vw;
+        transform: translate(-50%, 25%);
+        font-size: clamp(1rem, 2vw, 3rem);
+
+        @include utility.media-breakpoint-gte(min) {
+          //bottom: 46vw;
+        }
+
+        @include utility.media-breakpoint-gte(xs) {
+          //bottom: 35vw;
+        }
+
+        @include utility.media-breakpoint-gte(sm) {
+          //bottom: 27vw;
+        }
+
+        @include utility.media-breakpoint-gte(lg) {
+          //bottom: 22vw;
+        }
+
+        .top-cta {
+          z-index: 2;
+          position: relative;
+          top: -1vw;
+          //padding: 0.5vw 1vw;
+          //border: 0.5vw solid utility.$dive-yellow;
+          border-radius: 2vw;
+          //background: rgba(0, 0, 0, 0.5);
+
+          .circle-link {
+            z-index: 2;
+            position: relative;
+            padding: 1vw;
+            border: 1vw solid utility.$dive-yellow;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 2px 8px 4px #000;
+
+            svg,
+            img {
+              display: block;
+              width: 100%;
+
+              g {
+                path {
+                  stroke: utility.$dive-yellow;
+                  fill: utility.$dive-yellow;
+                }
+              }
+            }
+
+            &.message-bottle {
+              width: 22vw;
+
+              @include utility.media-breakpoint-gte(xs) {
+                width: 24vw;
+              }
+
+              @include utility.media-breakpoint-gte(sm) {
+                width: 22vw;
+              }
+
+              @include utility.media-breakpoint-gte(md) {
+                width: 20vw;
+              }
+
+              @include utility.media-breakpoint-gte(lg) {}
+
+              @media (orientation: portrait) {
+                width: 32vw;
+
+                @include utility.media-breakpoint-gte(xs) {
+                  width: 24vw;
+                }
+
+                @include utility.media-breakpoint-gte(sm) {
+                  width: 22vw;
+                }
+
+                @include utility.media-breakpoint-gte(md) {
+                  width: 20vw;
+                }
+
+                @include utility.media-breakpoint-gte(lg) {
+                  //width: 10vw;
+                }
+              }
+            }
+          }
+
+          &.secondary-link {
+            z-index: 1;
+            position: relative;
+            margin: 2vw -3vw 0;
+
+            width: 18vw;
+
+              @include utility.media-breakpoint-gte(xs) {
+                width: 20vw;
+              }
+
+              @include utility.media-breakpoint-gte(sm) {
+                width: 18vw;
+              }
+
+              @include utility.media-breakpoint-gte(md) {
+                width: 16vw;
+              }
+
+              @include utility.media-breakpoint-gte(lg) {}
+
+              @media (orientation: portrait) {
+                width: 28vw;
+
+                @include utility.media-breakpoint-gte(xs) {
+                  width: 20vw;
+                }
+
+                @include utility.media-breakpoint-gte(sm) {
+                  width: 18vw;
+                }
+
+                @include utility.media-breakpoint-gte(md) {
+                  width: 16vw;
+                }
+
+                @include utility.media-breakpoint-gte(lg) {
+                  //width: 10vw;
+                }
+              }
+
+            .circle-link {
+              border-width: 0.7vw;
+            }
+          }
+        }
+      }
+    }
+
+    .section-red {
+      display: flex;
+      justify-content: center;
+      padding: clamp(1rem, 8vw, 12rem) 0 clamp(3rem, 12vw, 15rem);
+
+      $bgColor: transparent;
+      $bgColor2: utility.$dive-red;
+      background-color: darken($bgColor2, 17%);
+      background-image:
+        radial-gradient(circle at 50% 20%, $bgColor2 20%, $bgColor 60%),
+        radial-gradient(circle at 50% 50%, $bgColor2 15%, $bgColor 60%),
+        radial-gradient(circle at 50% 80%, $bgColor2 15%, $bgColor 60%),
+        linear-gradient(0deg, transparent 0%, transparent 99.5%, utility.$dive-black 100%);
+
+      @include utility.media-breakpoint-gte(sm) {
+        background-image:
+          radial-gradient(circle at 50% 50%, $bgColor2 20%, $bgColor 40%),
+          radial-gradient(circle at 20% 50%, $bgColor2 15%, $bgColor 30%),
+          radial-gradient(circle at 80% 50%, $bgColor2 15%, $bgColor 30%),
+          linear-gradient(0deg, transparent 0%, transparent 99.5%, utility.$dive-black 100%);
+      }
+
+
+      .flyer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        padding: clamp(0.25rem, 1vw, 2rem);
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+
+        img {
+          display: block;
+          width: 80vw;
+          max-width: 960px;
+          transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
+        }
+
+        &.fullscreen {
+          position: relative;
+          width: 100vw;
+          //height: max(120vh, 120vw);
+          //top: 0;
+          //left: 0;
+          background-color: rgba(0, 0, 0, 0.85);
+
+          // padding: 5vw;
+          z-index: 11;
+
+          //overflow-y: auto;
+          // height: max(120vh, 120vw);
+          // flex-shrink: 0;
+
+          // transform: translateX(0) skew(0deg, 0deg);
+
+          img {
+            width: 90vw;
+            max-width: 90vw;
+          }
+        }
+      }
+    }
+
+    .separator {
+      display: flex;
+      justify-content: center;
+      padding: clamp(2rem, 14vw, 30rem) 0 clamp(2rem, 18vw, 30rem);
+
+      img {
+        width: 12vw;
+      }
+    }
+
+    $waveSize: 6vw;
+    $waveSizeSm: 5vw;
+    $waveSizeMd: 4vw;
+    $waveSizeLg: 3vw;
+
+    .waves-separator {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      height: $waveSize;
+      width: 100%;
+      top: -($waveSize - 0.5vw);
+      background-image: url('/assets/images/wave.svg');
+
+      @include utility.media-breakpoint-gte(sm) {
+        height: $waveSizeSm;
+        top: -($waveSizeSm - 0.5vw);
+      }
+
+      @include utility.media-breakpoint-gte(md) {
+        height: $waveSizeMd;
+        top: -($waveSizeMd - 0.5vw);
+      }
+
+      @include utility.media-breakpoint-gte(lg) {
+        height: $waveSizeMd;
+        top: -($waveSizeMd - 0.5vw);
+      }
+
+      &.footer {
+        height: 2vw;
+        top: 2px;
+        background-image: url('/assets/images/wave-red.svg');
+      }
+    }
+
+    .carousel-container {
+      position: relative;
+      perspective: 1000px;
+
+      app-carousel {
+        position: relative;
+        margin-top: 8vw;
+
+        .rental-space {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 2vw;
+
+          //background-color: utility.$dive-gray-dk3;        
+          .title-container {
+            display: inline-block;
+            margin: 2vw 0 0;
+
+            @include utility.media-breakpoint-gte(md) {
+              margin: 2vw 0 0 2vw;
+            }
+
+            padding: 2vw 3vw;
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: skew(-8deg, -4deg) rotate(-4deg);
+
+            h2 {
+              margin: 0;
+              font-size: 6vw;
+              text-align: center;
+              //transform: skew(8deg, 4deg) rotate(4deg);
+              text-shadow: 0px 4px 2px #000;
+
+              @include utility.media-breakpoint-gte(sm) {
+                font-size: 3vw;
+              }
+            }
+          }
+
+          .description-container {
+            position: relative;
+            top: 5vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            p {
+              position: relative;
+              display: none;
+              margin: 0 0 0vw;
+              padding: 1vw 1.5vw;
+
+              text-align: center;
+              text-shadow: 0px 4px 2px #000;
+              transform: skew(-8deg, -4deg) rotate(-4deg);
+              font-size: 2vw;
+
+              @include utility.media-breakpoint-gte(md) {
+                display: inline-block;
+              }
+
+              &::before {
+                content: '';
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                transform: skew(4deg, 0deg) rotate(0deg);
+              }
+
+              &:nth-of-type(2) {
+                left: 4vw;
+              }
+            }
+          }
+
+          .occupancy {
+            position: absolute;
+            display: inline-block;
+            display: none;
+            top: 4vw;
+            right: 4vw;
+            margin: 0vw 0 0 0;
+            padding: 1vw;
+            font-size: 5vw;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+          }
+
+          .reserve {
+            position: absolute;
+            z-index: 1;
+            width: 8vw;
+            height: 8vw;
+            bottom: 1vw;
+            right: 1vw;
+
+            &.reverse {
+              right: unset;
+              left: 1vw;
+            }
+          }
+
+          &-bg {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+
+          .main-room {
+            background-image: url('/assets/images/private-parties/main_room.jpg');
+            background-size: 170%;
+            background-position: 60% 42%;
+          }
+
+          .boat {
+            background-image: url('/assets/images/tour/boat_diagonal2.jpg');
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+          }
+
+          .side-room {
+            background-image: url('/assets/images/private-parties/side_room.jpg');
+            background-size: 170%;
+            background-position: 60% 42%;
+          }
+
+          .game-room {
+            background-image: url('/assets/images/tour/game_room6.jpg');
+            background-size: 170%;
+            background-position: 60% 42%;
+          }
+
+          .north-room {
+            background-image: url('/assets/images/tour/north_room4.jpg');
+            background-size: cover;
+            background-position: 50% 50%;
+          }
+
+          .south-patio {
+            background-image: url('/assets/images/tour/south_patio2.jpg');
+            background-size: cover;
+            background-position: right 42%;
+          }
+
+          .north-patio {
+            background-image: url('/assets/images/tour/north_patio6.jpg');
+            background-size: cover;
+            background-position: 50% bottom;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+
+      .occupancy-meter {
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20vw;
+      }
+    }
+  }
+}

@@ -1,0 +1,208 @@
+@use '../../scss/utility';
+
+$h_zero: 3.25vw;
+$w_zero: 12.5vw;
+$h_md: 2.8vw;
+$w_md: 9vw;
+$h_p_zero: 9vw;
+$w_p_zero: 30vw;
+$h_p_md: 2.8vw;
+$w_p_md: 9vw;
+$separatorSizes: (
+  'zero': 10vw,
+  'sm': 8.5vw,
+  'md': 7vw,
+  'lg': 5.5vw,
+);
+$waveSize: 6vw;
+$waveSizeSm: 5vw;
+$waveSizeMd: 4vw;
+$waveSizeLg: 3vw;
+
+.main {
+  position: relative;
+
+  .hero-banner-container {
+    position: relative;
+
+    .hero-banner-content {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2vw;
+      top: 46.15vw;
+      left: 68.2vw;
+      width: $w_zero;
+      height: $h_zero;
+      //padding: 0 4px;
+      transform: skew(1deg, 24deg); // perspective(10cm);
+      box-shadow: 0px 4px 4px 0px #000;
+
+      @include utility.media-breakpoint-gte(md) {
+        font-size: 0.72vw;
+        top: 36vw;
+        left: 63vw;
+        width: $w_md;
+        height: $h_md;
+      }
+
+      @media (orientation: portrait) {
+        font-size: 1.2vw;
+        top: 104vw;
+        left: 57.2vw;
+        width: $w_p_zero;
+        height: $h_p_zero;
+        transform: skew(1deg, 24deg); //perspective(10cm);
+
+        @include utility.media-breakpoint-gte(md) {
+          font-size: 0.72vw;
+          top: 36vw;
+          left: 63vw;
+          width: $w_p_md;
+          height: $h_p_md;
+        }
+      }
+
+      background-color: black;
+
+      img {
+        position: relative;
+        width: 100%;
+        //width: $w_zero - 0.5vw;
+
+        //height: $h_zero - 0.5vw;
+        @include utility.media-breakpoint-gte(md) {
+          //width: $w_md - 0.5vw;
+          //height: $h_md - 0.5vw;
+        }
+
+        @media (orientation: portrait) {
+          //width: $w_p_zero - 0.5vw;
+          //height: $h_p_zero - 0.5vw;
+
+          @include utility.media-breakpoint-gte(md) {
+            //width: $w_p_md - 0.5vw;
+            //height: $h_p_md - 0.5vw;
+          }
+        }
+      }
+
+      .awards {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        //padding: 4px 0;
+        //border-top: 3px dotted utility.$dive-yellow;
+        //border-bottom: 3px dotted utility.$dive-yellow;
+        transition: all 0.2s ease;
+
+        &:hover {
+          //padding: 6px 0;
+          //border-color: utility.$dive-white;
+          // border-top: 2px solid utility.$dive-yellow;
+          // border-bottom: 2px solid utility.$dive-yellow;
+        }
+
+        a.award {
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0 clamp(3px, 0.25vw, 100px);
+
+          img {
+            display: block; // remove whitespace
+          }
+
+          &.yalp {
+            img {
+              width: 100%;
+              height: 100%;
+              
+              // height: 1.8vw;
+              // @media(orientation: portrait) {                
+              //   height: 6vw;
+              // }
+              // @include utility.media-breakpoint-gte(md) {
+              //   height: 2.8vw;
+              // }
+            }
+          }
+        }
+      }
+    }
+
+    app-food-logos {
+      position: absolute;
+      bottom: 3vw;
+      left: 50vw;
+      transform: translateX(-50%);
+      position: absolute;
+    }
+  }
+
+  .waves-separator {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: $waveSize;
+    width: 100%;
+    top: -($waveSize - 0.5vw);
+    background-image: url('/assets/images/wave.svg');
+
+    @include utility.media-breakpoint-gte(sm) {
+      height: $waveSizeSm;
+      top: -($waveSizeSm - 0.5vw);
+    }
+
+    @include utility.media-breakpoint-gte(md) {
+      height: $waveSizeMd;
+      top: -($waveSizeMd - 0.5vw);
+    }
+
+    @include utility.media-breakpoint-gte(lg) {
+      height: $waveSizeMd;
+      top: -($waveSizeMd - 0.5vw);
+    }
+
+    &.footer {
+      height: 2vw;
+      top: 2px;
+      background-image: url('/assets/images/wave-red.svg');
+    }
+  }
+
+  .intro-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .blurb-separator-top,
+    .blurb-separator-bottom {
+      width: map-get($separatorSizes, 'zero');
+      margin: 6vw 0 2vw;
+
+      @include utility.media-breakpoint-gte(sm) {
+        width: map-get($separatorSizes, 'sm');
+      }
+
+      @include utility.media-breakpoint-gte(md) {
+        width: map-get($separatorSizes, 'md');
+      }
+
+      @include utility.media-breakpoint-gte(lg) {
+        width: map-get($separatorSizes, 'lg');
+      }
+    }
+
+    .blurb-separator-bottom {
+      margin-top: 0;
+      margin-bottom: 8vw;
+    }
+
+  }
+}

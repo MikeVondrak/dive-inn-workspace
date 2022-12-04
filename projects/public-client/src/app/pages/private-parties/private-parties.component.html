@@ -1,0 +1,263 @@
+<div class="main" id="top">
+  <div id="hero" class="hero-banner-container">
+    <app-hero-banner imgSrc="url(assets/images/private-parties/private_parties_bg_retouch.jpg)"
+      [textLines]="heroBannerTitleLines" [orientationConfigs]="heroBannerConfigs" textBackground="rgba(0,0,0,0.5)"
+      textBackgroundPadding="clamp(1rem, 2vw, 3rem) 0">
+    </app-hero-banner>
+
+    <div class="reserve-container">      
+      <a class="top-cta secondary-link" title="See photos of rental spaces" appAnimateViewportOverlay="/private-parties#Photos">
+        <div class="circle-link">
+          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
+          <img src="assets/images/private-parties/photos.svg" alt="View photos!" />
+        </div>
+      </a>
+      <a class="top-cta" title="Send a reservation email" [href]="mailto" target="_blank">
+        <div class="circle-link message-bottle">
+          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
+          <img src="assets/images/message_bottle_with_text.svg" alt="Make a reservation now!" />
+        </div>
+      </a>
+      <a class="top-cta secondary-link" title="See deals and specials" appAnimateViewportOverlay="/private-parties#Deals">
+        <div class="circle-link">
+          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
+          <img src="assets/images/private-parties/deals.svg" alt="View deals!" />
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- <div class="page-content" [class.fullscreen]="fullscreen" (click)="onClick()">
+    <p>Plan your next<br>occasion at the<br>Dive Inn</p>
+    
+  </div> -->
+
+  <div id="Deals" class="red">
+    <div class="section-red">
+      <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
+        <img src="assets/images/private-parties/holiday_flyer_retouch.jpg" />
+      </div>
+    </div>
+    <!-- Waves separator -->
+    <div class="waves-separator"></div>
+  </div>
+
+
+  <div id="Photos" class="carousel-container">
+    <app-carousel [faceContents]="[MainRoom, Boat, NorthPatio, NorthRoom, GameRoom, SideRoom, SouthPatio]"></app-carousel>
+  </div>
+
+  <div class="separator">
+    <!-- <img src="assets/images/private-parties/life-preserver-with-text.svg" /> -->
+    <img src="assets/images/private-parties/life-preserver-red.svg" />
+  </div>
+
+</div>
+
+
+<!--------------------------------------------->
+
+<ng-template #MainRoom>
+  <div class="rental-space">
+    <div class="main-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Main Room</h2>
+    </div>    
+    <div class="description-container">
+      <p>Ample space for larger</p>
+      <p>parties and events</p>
+    </div>
+    <div class="occupancy">
+      60
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve" [href]="mailto_mainRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #Boat>
+  <div class="rental-space">
+    <div class="boat rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Party Boat</h2>
+    </div>
+    <div class="description-container">
+      <p>Exciting excursions</p>
+      <p>for a few friends</p>
+    </div>
+    <div class="occupancy">
+      8
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve reverse" [href]="mailto_boat | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #SideRoom>
+  <div class="rental-space">
+    <div class="side-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>South Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Smaller space that suits</p>
+      <p>private parties perfectly</p>
+    </div>
+    <div class="occupancy">
+      32
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve" [href]="mailto_sideRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #GameRoom>
+  <div class="rental-space">
+    <div class="game-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Game Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Your favorites games</p>
+      <p>plus a satellite bar</p>
+    </div>
+    <div class="occupancy">
+      24
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve reverse" [href]="mailto_gameRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #NorthRoom>
+  <div class="rental-space">
+    <div class="north-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>North Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Supplementary seating</p>
+      <p>in a convertible space</p>
+    </div>
+    <div class="occupancy">
+      32
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve" [href]="mailto_northRoom | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #SouthPatio>
+  <div class="rental-space">
+    <div class="south-patio rental-space-bg"></div>
+    <div class="title-container">
+      <h2>South Patio</h2>
+    </div>
+    <div class="description-container">
+      <p>Medium sized area to</p>
+      <p>enjoy the outdoors</p>
+    </div>
+    <div class="occupancy">
+      42
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve reverse" [href]="mailto_southPatio | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #NorthPatio>
+  <div class="rental-space">
+    <div class="north-patio rental-space-bg"></div>
+    <div class="title-container">
+      <h2>North Patio</h2>
+    </div>
+    <div class="description-container">
+      <p>Large outdoor area</p>
+      <p>great for big crowds</p>
+    </div>
+    <div class="occupancy">
+      88
+      <!-- TODO: people image -->
+    </div>
+    <a class="reserve" [href]="mailto_northPatio | safeHtml: 'url'" target="_blank">
+      <img src="assets/images/message_bottle_with_text.svg" />
+    </a>
+  </div>
+</ng-template>
+
+<!--------------------------------------------->
+
+<ng-template #BottleMessageSvg>
+  <svg width="100%" height="100%" viewBox="0 0 702 701" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+
+    <clipPath id="_clip1">
+      <rect x="-0" y="-0" width="701.288" height="700.11" />
+    </clipPath>
+    <g clip-path="url(#_clip1)">
+      <g id="Bottle-45" serif:id="Bottle 45">
+        <clipPath id="_clip2">
+          <path
+            d="M348.501,0C433.625,0 700.435,-0 700.435,-0L700.435,351.933C700.435,546.17 542.739,703.866 348.501,703.866C154.264,703.866 -3.432,546.17 -3.432,351.933C-3.432,157.696 154.264,0 348.501,0Z" />
+        </clipPath>
+        <g clip-path="url(#_clip2)">
+          <path
+            d="M615.085,27.016C612.779,46.251 645.826,87.889 672.006,85.046C681.333,80.937 683.9,71.644 683.892,57.93C683.886,46.998 680.596,36.94 672.498,27.405C664.982,19.89 641.148,10.317 633.633,17.833L615.085,27.016Z" />
+          <path
+            d="M628.094,105.264C610.739,98.833 600.069,84.275 594.055,73.095C586.54,80.61 577.755,95.604 585.271,103.119L598.94,116.636C606.456,124.152 620.578,112.779 628.094,105.264Z" />
+          <path
+            d="M517.759,350.055L700.435,350.055C700.435,350.055 700.434,350.378 700.434,350.539C700.172,543.518 543.419,700.11 350.38,700.11C157.447,700.11 0.76,543.69 0.326,350.859C0.325,350.591 0.325,350.055 0.325,350.055L181.325,350.055L110.286,421.095C90.861,440.519 94.688,478.422 108.688,503.254C123.85,530.148 171.014,578.116 198.347,592.913C223.064,606.294 259.085,608.743 278.509,589.318L517.122,350.706C517.336,350.492 517.547,350.276 517.759,350.055Z" />
+          <path
+            d="M524.125,261.177L662.455,122.848C672.228,113.075 672.91,109.879 661.231,98.201C631.288,95.772 607.058,74.325 601.966,40.38C590.287,28.702 587.587,28.434 577.814,38.207L440.803,175.218C409.508,163.419 368.322,163.058 348.898,182.482L110.286,421.095C90.861,440.519 94.688,478.422 108.688,503.254C123.85,530.148 171.014,578.116 198.347,592.913C223.064,606.294 259.085,608.743 278.509,589.318L517.122,350.706C536.546,331.282 539.615,290.69 524.125,261.177Z"
+            style="fill:none;stroke-width:16.67px;" />
+          <path
+            d="M456.486,363.487C386.174,351.288 354.565,325.595 335.528,244.013L141.887,440.203C142.046,479.712 154.012,546.776 255.994,566.24L456.486,363.487Z"
+            style="stroke-width:8.33px;stroke-linecap:butt;" />
+          <path
+            d="M472.201,337.578C471.535,296.384 410.156,231.367 373.204,246.936L344.596,275.361C361.714,338.203 444.706,380.346 472.201,337.578Z"
+            style="fill:none;" />
+          <path
+            d="M468.686,351.618L263.245,558.988C253.01,569.224 237.782,563.448 217.95,556.213C202.1,550.43 185.654,540.137 172.561,527.043C143.085,497.568 137.41,462.584 138.949,438.624L341.278,237.631C336.275,255.265 344.597,297.171 374.33,325.274C404.619,353.903 450.27,370.034 468.686,351.618C487.102,333.202 452.253,288.161 435.176,271.084C418.1,254.008 390.82,234.618 376.345,249.093C361.869,263.569 383.27,294.615 393.634,304.979C401.905,313.251 429.995,334.71 438.933,323.988C444.672,317.103 412.746,281.468 402.548,275.297"
+            style="fill:none;stroke-width:16.67px;" />
+          <path d="M670.122,76.895L688.987,61.921C687.896,31.149 671.232,12.345 637.313,9.151L623.228,27.752"
+            style="fill:none;stroke-width:16.67px;" />
+          <path d="M586.484,76.276L576.082,90.013C577.663,107.173 596.504,122.504 611.014,123.813L624.779,112.888"
+            style="fill:none;stroke-width:16.67px;" />
+        </g>
+      </g>
+      <g>
+        <path
+          d="M0.158,350.052C20.389,350.116 23.188,333.191 31.103,320.4C34.215,315.37 38.87,308.149 49.002,305.501C66.091,301.035 74.777,305.924 78.937,313.051C81.357,317.199 81.08,320.376 80.86,324.006C80.693,326.754 78.681,332.12 75.763,334.286C76.584,330.727 76.258,324.638 70.356,320.873C65.019,317.468 57.185,319.071 54.179,322.712C47.59,330.694 48.427,346.357 66.664,349.141C71.839,349.93 80.012,350.078 84.689,350.052"
+          style="stroke-width:1px;" />
+      </g>
+      <g>
+        <path
+          d="M84.689,350.052C104.92,350.116 107.719,333.191 115.633,320.4C118.746,315.37 123.401,308.149 133.532,305.501C150.621,301.035 159.308,305.924 163.467,313.051C165.888,317.199 165.611,320.376 165.39,324.006C165.223,326.754 163.212,332.12 160.293,334.286C161.114,330.727 160.788,324.638 154.886,320.873C149.549,317.468 141.716,319.071 138.709,322.712C132.12,330.694 132.957,346.357 151.195,349.141C156.369,349.93 164.542,350.078 169.219,350.052"
+          style="stroke-width:1px;" />
+      </g>
+      <g>
+        <path
+          d="M518.724,350.052C540.303,350.116 543.288,333.191 551.729,320.4C555.049,315.37 560.014,308.149 570.82,305.501C589.047,301.035 598.312,305.924 602.748,313.051C605.33,317.199 605.035,320.376 604.8,324.006C604.622,326.754 602.476,332.12 599.364,334.286C600.239,330.727 599.891,324.638 593.596,320.873C587.904,317.468 579.549,319.071 576.342,322.712C569.314,330.694 570.207,346.357 589.659,349.141C595.178,349.93 603.895,350.078 608.883,350.052"
+          style="stroke-width:1px;" />
+      </g>
+      <g>
+        <path
+          d="M608.883,350.052C630.461,350.116 633.447,333.191 641.888,320.4C645.208,315.37 650.173,308.149 660.979,305.501C679.206,301.035 688.471,305.924 692.907,313.051C695.489,317.199 695.194,320.376 694.959,324.006C694.781,326.754 692.635,332.12 689.522,334.286C690.398,330.727 690.05,324.638 683.755,320.873C678.063,317.468 669.708,319.071 666.501,322.712C659.473,330.694 660.366,346.357 679.818,349.141C685.337,349.93 694.054,350.078 699.042,350.052"
+          style="stroke-width:1px;" />
+      </g>
+    </g>
+  </svg>
+</ng-template>

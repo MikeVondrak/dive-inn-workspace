@@ -7,6 +7,12 @@
     "paths": {
       "dive-inn-lib": [
         "dist/dive-inn-lib"
+      ],
+      "@dive-inn-lib/*": [
+        "projects/dive-inn-lib/src/lib/directives/*"
+      ],
+      "@dive-inn-lib": [
+        "projects/dive-inn-lib/src/public-api.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
