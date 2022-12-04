@@ -21,13 +21,6 @@ enum EqualityEnum {
 export class ViewportService {
   // @TODO - how to connect SCSS breakpoint values to these?
 
-
-  private _viewportState$: BehaviorSubject<ViewportState> = new BehaviorSubject<ViewportState>(
-    {
-      previousBreakpoint: BreakpointsEnum.zero,
-      currentBreakpoint: BreakpointsEnum.zero,
-      orientation: Orientations.LANDSCAPE,
-    });
   private _viewportState: ViewportState;
 
   public window: Window | null;

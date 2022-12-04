@@ -10,6 +10,7 @@ import { TextBlurbComponent } from './text-blurb/text-blurb.component';
 import { ExpandingMenuComponent } from './expanding-menu/expanding-menu.component';
 import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     TextBlurbComponent,
     ExpandingMenuComponent,
     CarouselComponent,
+    CarouselPaneComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes } from '../../models/carousel.model';
 
 @Component({
   selector: 'app-carousel',
@@ -16,6 +17,7 @@ export class CarouselComponent implements OnInit {
   //@HostBinding('style.--transformW') transformW: string = `translate3d(${-1.207 * this.cubeSizeVw + 'vw'}, 0, 0) rotateY(-90deg)`;
 
   public readonly positions = [0, 1, 2, 3, 4, 5, 6, 7]; // currently only handling octagon
+  public readonly faceDirections = [CarouselPaneFaceDirections.S, CarouselPaneFaceDirections.SE, CarouselPaneFaceDirections.E, CarouselPaneFaceDirections.NE, CarouselPaneFaceDirections.N, CarouselPaneFaceDirections.NW, CarouselPaneFaceDirections.W, CarouselPaneFaceDirections.SW];
   public faces$: Subject<string>[] = [];
   public templates$: Subject<TemplateRef<any>>[] = [];
   public currentFace: number = 0;
@@ -23,7 +25,17 @@ export class CarouselComponent implements OnInit {
   public currentRotation = 0;
   public leftGradient: boolean[] = this.positions.map(() => false);
   public rightGradient: boolean[] = this.positions.map(() => false);
+  public gradients: CarouselPaneGradientTypes[] = this.positions.map((val, idx) => {
+    if (this.leftGradient[idx]) {
+      return CarouselPaneGradientTypes.LEFT;
+    } else if (this.rightGradient[idx]) {
+      return CarouselPaneGradientTypes.RIGHT;
+    }
+    return CarouselPaneGradientTypes.NONE;
+  });
   
+  public carouselPaneExpanded: CarouselPaneViewModes[] = []; //CarouselPaneViewModes.NORMAL;
+
   public debugging = false;
   
   private numberOfPositions = this.positions.length;
@@ -33,13 +45,13 @@ export class CarouselComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-
     this.numberOfFaceContents = this.faceContents.length;
     this.numberOfFaceLabels = this.faceLabels.length;
 
     // create a subject for each face of the octagon to be able to change content when rotated
     this.faces$ = this.positions.map(() => new Subject<string>());
     this.templates$ = this.positions.map(() => new Subject<TemplateRef<any>>());
+    this.carouselPaneExpanded = this.positions.map(() => CarouselPaneViewModes.NORMAL);
 
     if ((this.debugging && this.numberOfFaceLabels <= 0) || ( !this.debugging && this.numberOfFaceContents <= 0)) {
       console.error(`Carousel initialized with no face content, ${this.numberOfFaceContents}, ${this.numberOfFaceLabels}`);
@@ -59,14 +71,21 @@ export class CarouselComponent implements OnInit {
   }
 
   public onSwipe($event: any, loc?: string) {
-    console.log('SWIPE!', loc, $event);
-
     if ($event.direction === 2) {
       this.rotateLeft();
     } else if ($event.direction === 4) {
       this.rotateRight();
     }
+  }
 
+  public onClick($event: MouseEvent) {
+    console.log('CLICK', $event);
+    this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
+    this.cdr.detectChanges();
+  }
+
+  public onTap($event: any) {
+    console.log('TAP', $event);
   }
 
   public rotateLeft() {
@@ -130,6 +149,13 @@ export class CarouselComponent implements OnInit {
     this.leftGradient[leftCardIdx] = true;
     this.rightGradient[rightCardIdx] = true;
 
+    this.gradients = this.gradients.map(g => CarouselPaneGradientTypes.NONE);
+    this.gradients[leftCardIdx] = CarouselPaneGradientTypes.LEFT;
+    this.gradients[nextLeftPosition] = CarouselPaneGradientTypes.LEFT;
+    this.gradients[rightCardIdx] = CarouselPaneGradientTypes.RIGHT;
+    this.gradients[nextRightPosition] = CarouselPaneGradientTypes.RIGHT;
+
+
     this.cdr.detectChanges();
   }
 
@@ -188,6 +214,10 @@ export class CarouselComponent implements OnInit {
     this.rightGradient = this.rightGradient.map(g => false);
     this.leftGradient[7] = true;
     this.rightGradient[1] = true;
+
+    this.gradients = this.gradients.map(g => CarouselPaneGradientTypes.NONE);
+    this.gradients[7] = CarouselPaneGradientTypes.LEFT;
+    this.gradients[1] = CarouselPaneGradientTypes.RIGHT;
   }
 
   private getNextFaceLabelIndex(i: number) {
