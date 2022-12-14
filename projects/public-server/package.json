@@ -1,0 +1,17 @@
+{
+  "name": "public-server",
+  "version": "1.0.0",
+  "description": "Dive Inn Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
