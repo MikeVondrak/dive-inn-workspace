@@ -4,38 +4,40 @@ import express, { Application, Request, Response, NextFunction, RequestHandler, 
 import { Client, Pool, Query, QueryConfig, QueryResult } from 'pg';
 import { routes } from './routes';
 import { Observable, Observer } from 'rxjs';
-import { SQL } from 'sql';
+//import { SQL } from 'sql';
 import { take } from 'rxjs/operators';
 
 export class ServerApp {
   private app: Application;
-  private pool: Pool;
-  private readonly dbConfig: Pool = new Pool({
-    host: 'localhost',
-    port: 5432,
-    user: 'postgres',
-    password: 'D1v31nnD4t4!?',
-    database: 'postgres',
-  });
-  private readonly herokuDbConfig: Pool = new Pool({
-    host: 'ec2-34-195-115-225.compute-1.amazonaws.com',
-    port: 5432,
-    user: 'gjdceezcnugnyv',
-    password: '01830a0a446a61701aee908b0c6443262b943703339bd17bc7a6823f70cddc11',
-    database: 'd125dfl39tajfu',
-    //ssl: true,
-    ssl: {
-      rejectUnauthorized: false
-    },
-    connectionString: process.env.DATABASE_URL
-  });
+  //private pool: Pool;
+  // private readonly dbConfig: Pool = new Pool({
+  //   host: 'localhost',
+  //   port: 5432,
+  //   user: 'postgres',
+  //   password: 'D1v31nnD4t4!?',
+  //   database: 'postgres',
+  // });
+  // private readonly herokuDbConfig: Pool = new Pool({
+  //   host: 'ec2-34-195-115-225.compute-1.amazonaws.com',
+  //   port: 5432,
+  //   user: 'gjdceezcnugnyv',
+  //   password: '01830a0a446a61701aee908b0c6443262b943703339bd17bc7a6823f70cddc11',
+  //   database: 'd125dfl39tajfu',
+  //   //ssl: true,
+  //   ssl: {
+  //     rejectUnauthorized: false
+  //   },
+  //   connectionString: process.env.DATABASE_URL
+  // });
 
   constructor(
     private angularAppLocation: string = '',
     private port: string = '5432',
     private staticPathList: string[],
     private middleWareList: RequestHandler[],
-    private controllerList: Router[]
+    private controllerList: Router[],
+    private rootRoute: string,
+    private catchAllRoute: string,
   ) {
     this.app = express(); // create a new express application instance
     this.port = process.env.PORT ? process.env.PORT : this.port; // process.env.PORT set by Heroku
@@ -43,11 +45,11 @@ export class ServerApp {
 
     if (process.env.NODE_ENV === 'production') {
       console.log('DB connection:\t\tHEROKU');
-      this.pool = this.herokuDbConfig;
+      //this.pool = this.herokuDbConfig;
       //this.pool = this.createPool(this.herokuDbConfig);
     } else {
       console.log('DB connection:\t\tLOCAL');
-      this.pool = this.dbConfig;
+      //this.pool = this.dbConfig;
       //this.pool = this.createPool(this.dbConfig);
     }
     
@@ -92,7 +94,7 @@ export class ServerApp {
   private useControllers(routers: Router[]) {
     routers.forEach(router => {
       // this.app.use(routes.api.root, router);
-      this.app.use(routes.api._root, router);
+      this.app.use(this.rootRoute, router);
     });
   }
 
@@ -101,7 +103,7 @@ export class ServerApp {
    * @TODO proper 404 etc error handling
    */
   private setCatchAllRoutes() {
-    this.app.all(routes.error._404, (req, res) => {
+    this.app.all(this.catchAllRoute, (req, res) => {
       // res.status(200).sendFile('/', {root: angularAppLocation});
       res.status(404).send('Route Not Found');
     });
@@ -123,28 +125,28 @@ export class ServerApp {
    * @param sqlQuery SQL query string
    * @returns Observable of array of provided type, containing query results
    */
-  public poolQuery<T>(sqlQuery: string, values?: any): Observable<T[]> {
+  // public poolQuery<T>(sqlQuery: string, values?: any): Observable<T[]> {
 
-    const queryResult$ = (observer: Observer<T[]>) => {
+  //   const queryResult$ = (observer: Observer<T[]>) => {
       
-      const queryConfig: QueryConfig = {
-        text: sqlQuery,
-        values: values
-      };
+  //     const queryConfig: QueryConfig = {
+  //       text: sqlQuery,
+  //       values: values
+  //     };
 
-      const responseCallback = (err: Error, result: QueryResult) => {
-        if (err) {
-          observer.error(err);
-        }
-        const typedResult: T[] = result?.rows;
-        observer.next(typedResult);
-        observer.complete();
-      };
+  //     const responseCallback = (err: Error, result: QueryResult) => {
+  //       if (err) {
+  //         observer.error(err);
+  //       }
+  //       const typedResult: T[] = result?.rows;
+  //       observer.next(typedResult);
+  //       observer.complete();
+  //     };
       
-      this.pool.query(queryConfig, responseCallback);      
-    };
+  //     this.pool.query(queryConfig, responseCallback);      
+  //   };
 
-    return new Observable<T[]>(queryResult$);
-  }
+  //   return new Observable<T[]>(queryResult$);
+  // }
   
 }
