@@ -29,7 +29,6 @@ export class ServerApp {
   //   },
   //   connectionString: process.env.DATABASE_URL
   // });
-
   constructor(
     private angularAppLocation: string = '',
     private port: string = '5432',

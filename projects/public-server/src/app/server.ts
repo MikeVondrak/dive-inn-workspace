@@ -63,6 +63,7 @@ const routers: Router[] = [];
  */
 function makePoolQuery<ReturnType>(route: string, query: string, res: Response, values?: any[]) {
   console.log('***** makePoolQuery: route= ' + route + ', query= ' + query + '\n\tthese were passed values= ' + (values ? JSON.stringify(values,null,4) : 'none') + '\n\n');
+
   // serverApp.poolQuery<ReturnType>(query, values)
   //   .pipe(take(1))
   //   .subscribe(
