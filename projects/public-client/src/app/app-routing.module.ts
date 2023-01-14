@@ -89,7 +89,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'private-parties',
+    path: 'party',
     component: PrivatePartiesComponent,
     data: { 
       pageTitle: 'Private Parties',
