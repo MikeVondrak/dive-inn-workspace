@@ -44,7 +44,7 @@ export class AnimateViewportOverlayService {
       const oldRouteParts = this.utility.getRouteRootAndFragment(this.route);
       
       this.route = newRoute;
-      if (oldRouteParts.root !== newRouteParts.root) {
+      if ((oldRouteParts.root !== newRouteParts.root) && (oldRouteParts.root !== '')) {
         // if this is a different route, hide the screen with the viewport overlay before navigating
         this.viewportOverlayState$.next(ViewportOverlayState.SHOW);
       } else if (oldRouteParts.fragment !== newRouteParts.fragment) {
