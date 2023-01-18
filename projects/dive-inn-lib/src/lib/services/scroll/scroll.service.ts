@@ -64,7 +64,8 @@ export class ScrollService implements OnDestroy {
         const route = this.utility.getRouteRootAndFragment(url);
         
         console.log(`scroll service - router event: ${this.lastUrl}, ${route.root} | ${route.fragment}`);
-        if (!!route.fragment) {
+        if (!!route?.fragment) {
+          console.log('FRAG: ', route.fragment);
           this.scrollToElement(route.fragment);
         }
         this.lastUrl = url;

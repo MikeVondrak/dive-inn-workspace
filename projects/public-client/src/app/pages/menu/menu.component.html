@@ -2,12 +2,12 @@
   <div id="taki" class="taki-tacos">
     <div class="content-container">
       <button class="content menu" [class.fullscreen]="fullscreenMenu" (click)="onClick(MenuContentItemsEnum.MENU)">
-        <h1>Menu</h1>
+        <h1 class="scroll-offset" id="menu">Menu</h1>
         <img src="assets/images/menu/Dive_Inn_Menu.jpg" />
       </button>
-      <button id="menu" class="content specials" [class.fullscreen]="fullscreenSpecials"
+      <button class="content specials" [class.fullscreen]="fullscreenSpecials"
         (click)="onClick(MenuContentItemsEnum.SPECIALS)">
-        <h1>Specials</h1>
+        <h1 class="scroll-offset" id="specials">Specials</h1>
         <img src="assets/images/menu/Taki Takos TNT $8.50.jpg" />
       </button>
     </div>

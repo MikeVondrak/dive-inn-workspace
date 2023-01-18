@@ -46,6 +46,10 @@ $zoomAnimationTime: 0.6s;
           }
         }
 
+        .scroll-offset {
+          scroll-margin: clamp(2rem, 4vw, 10rem);
+        }
+
         .content {          
           z-index: 1;
           position: absolute;

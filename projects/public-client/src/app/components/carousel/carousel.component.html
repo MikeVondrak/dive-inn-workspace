@@ -13,7 +13,6 @@
         [viewMode]="carouselPaneExpanded[i]"
         [faceDirection]="faceDirections[i]" 
         [faceTemplate]="(templates$[i] | async)"
-        (click)="onClick($event)"
         (tap)="onTap($event)"
         (swipe)="onSwipe($event)"
       ></app-carousel-pane>
