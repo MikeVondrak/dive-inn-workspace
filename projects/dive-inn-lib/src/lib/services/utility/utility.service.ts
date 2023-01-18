@@ -14,7 +14,6 @@ export class UtilityService {
    */
   public getRouteRootAndFragment(route: string): { root: string, fragment: string } {
     const routeHashIdx = (route.indexOf('#') > 0) ? route.indexOf('#') : route.length;
-    console.log('HASHIDX', routeHashIdx);
     const routeRoot = route.substring(0, routeHashIdx);
     // if there is text after the '#' grab it
     const routeHash = routeHashIdx < (route.length - 1) ? route.substring(routeHashIdx + 1) : '';

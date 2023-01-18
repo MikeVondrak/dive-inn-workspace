@@ -80,13 +80,11 @@ export class CarouselComponent implements OnInit {
   }
 
   public onClick($event: MouseEvent) {
-    // console.log('CLICK', $event);
     // this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
     // this.cdr.detectChanges();
   }
 
   public onTap($event: any) {
-    // console.log('TAP', $event);
     // this.carouselPaneExpanded[this.currentPosition] = this.carouselPaneExpanded[this.currentPosition] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
     this.cdr.detectChanges();
   }
