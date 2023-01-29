@@ -24,6 +24,8 @@ import 'hammerjs';
     DirectivesModule,
     ComponentsModule,
   ],
+  exports: [
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

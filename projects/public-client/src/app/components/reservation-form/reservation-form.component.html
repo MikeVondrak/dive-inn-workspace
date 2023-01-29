@@ -1,0 +1,81 @@
+<form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+  <div>
+    <label for="party-theme">Party Name/Theme or Birthday Party:</label>
+    <input type="text" id="party-theme" size="50" formControlName="partyTheme">
+    <label>(Example: A-1 Scuba Holiday Party or Jacques Is Diving Into “50”)</label>
+  </div>
+  <div>
+    <label for="birthday-name">If birthday, </label>
+    <label for="birthday-name">Full Name:</label>
+    <input type="text" id="birthday-name" size="30" formControlName="birthdayName">
+    <label for="birthday-age">Age:</label>
+    <input type="text" id="birthday-age" size="10" formControlName="birthdayAge">
+  </div>
+  <div>
+    <label for="organizer">Organizer:</label>
+    <input type="text" id="organizer" size="30" formControlName="organizer">
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('organizer')?.hasError('required')">
+      *required
+    </small>
+  </div>
+  <div>
+    <label for="date">Date:</label>
+    <input type="text" id="date" formControlName="partyDate">
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('partyDate')?.hasError('required')">
+      *required
+    </small>
+  </div>
+  <div>
+    <label for="start-time">Start Time:</label>
+    <input type="text" id="start-time" formControlName="startTime">
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('startTime')?.hasError('required')">
+      *required
+    </small>
+  </div>
+  <div>
+    <label for="end-time">End Time:</label>
+    <input type="text" id="end-time" formControlName="endTime">
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('endTime')?.hasError('required')">
+      *required
+    </small>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" formControlName="phone">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" size="40" formControlName="email">
+    <small class="invalid-message" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.hasError('pattern')">
+      Please provide a valid email address
+    </small>
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('email')?.hasError('required')">
+      *required
+    </small>
+  </div>
+  <div>
+    <label for="preferred-contact">Best way to get in contact: </label>
+    <input type="text" id="preferred-contact" formControlName="contactMethod">
+  </div>
+  <div>
+    <label for="preferred-space">Space: </label>
+    <input type="text" id="preferred-space" size="50" formControlName="preferredSpace">
+    <label for="preferred-space">Will be determined based on group size.  But feel free to let us know what section you would prefer</label>
+  </div>
+  <div>
+    <label for="headcount">Headcount: </label>
+      <small class="invalid-message" *ngIf="submitted && emailForm.get('headcount')?.hasError('required')">
+        *required
+      </small>
+    <input type="text" id="headcount" formControlName="headcount">
+    <label for="headcount">(If your party grows drastically one way or the other + or – please let us know)</label>
+  </div>
+  <div>
+    <!-- <label for="comments">Comments: </label> -->
+    <label for="comments">Comments | Notes | Special | Requests | Questions:</label>
+    <textarea type="text" id="comments" class="large-input" formControlName="comments"></textarea>
+  </div>
+  <div>
+    <button type="submit" (click)="sendEmail()">Reserve</button>
+  </div>
+</form>

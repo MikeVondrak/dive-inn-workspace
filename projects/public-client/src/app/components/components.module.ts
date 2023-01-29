@@ -11,6 +11,8 @@ import { ExpandingMenuComponent } from './expanding-menu/expanding-menu.componen
 import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.co
     ExpandingMenuComponent,
     CarouselComponent,
     CarouselPaneComponent,
+    ReservationFormComponent,
   ],
   imports: [
     CommonModule,
     DirectivesModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MouseTrackerComponent,
@@ -38,6 +42,7 @@ import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.co
     TextBlurbComponent,
     ExpandingMenuComponent,
     CarouselComponent,
+    ReservationFormComponent,
   ]
 })
 export class ComponentsModule { }
