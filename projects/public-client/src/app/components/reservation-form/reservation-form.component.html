@@ -1,11 +1,12 @@
 <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
   <div>
-    <label for="party-theme">Party Name/Theme or Birthday Party:</label>
+    <label for="party-theme">Theme:</label>
     <input type="text" id="party-theme" size="50" formControlName="partyTheme">
     <label>(Example: A-1 Scuba Holiday Party or Jacques Is Diving Into “50”)</label>
   </div>
   <div>
-    <label for="birthday-name">If birthday, </label>
+    <label for="birthday">Birthday</label>
+    <input type="checkbox" id="birthday" formControlName="birthday">
     <label for="birthday-name">Full Name:</label>
     <input type="text" id="birthday-name" size="30" formControlName="birthdayName">
     <label for="birthday-age">Age:</label>
@@ -54,13 +55,31 @@
     </small>
   </div>
   <div>
-    <label for="preferred-contact">Best way to get in contact: </label>
-    <input type="text" id="preferred-contact" formControlName="contactMethod">
+    <label for="preferred-contact">Preferred Contact</label>
+    <input type="radio" id="preferred-contact" [value]="'email'" formControlName="contactMethod">Email
+    <input type="radio" id="preferred-contact" [value]="'voice'" formControlName="contactMethod">Voice
+    <input type="radio" id="preferred-contact" [value]="'text'" formControlName="contactMethod">Text
   </div>
   <div>
-    <label for="preferred-space">Space: </label>
-    <input type="text" id="preferred-space" size="50" formControlName="preferredSpace">
-    <label for="preferred-space">Will be determined based on group size.  But feel free to let us know what section you would prefer</label>
+    <label>Preferred Space:</label>
+    <input type="checkbox" id="space-none" formControlName="preferredSpaceNone">
+    <label for="space">No Preference</label>
+    <input type="checkbox" id="space-main-room" formControlName="preferredSpaceMainRoom">
+    <label for="space-main-room">Main Room</label>
+    <input type="checkbox" id="space-party-boat" formControlName="preferredSpacePartyBoat">
+    <label for="space-party-boat">Party Boat</label>
+    <input type="checkbox" id="space-north-patio" formControlName="preferredSpaceNorthPatio">
+    <label for="space-north-patio">North Patio</label>
+    <input type="checkbox" id="space-north-room" formControlName="preferredSpaceNorthRoom">
+    <label for="space-north-room">North Room</label>
+    <input type="checkbox" id="space-game-room" formControlName="preferredSpaceGameRoom">
+    <label for="space-south-room">Game Room</label>
+    <input type="checkbox" id="space-south-room" formControlName="preferredSpaceSouthRoom">
+    <label for="space-south-room">South Room</label>
+    <input type="checkbox" id="space-south-patio" formControlName="preferredSpaceSouthPatio">
+    <label for="space-south-patio">South Patio</label>
+    <!-- <input type="checkbox" id="preferred-space">
+    <label for="preferred-space">Will be determined based on group size.  But feel free to let us know what section you would prefer</label> -->
   </div>
   <div>
     <label for="headcount">Headcount: </label>
@@ -72,8 +91,8 @@
   </div>
   <div>
     <!-- <label for="comments">Comments: </label> -->
-    <label for="comments">Comments | Notes | Special | Requests | Questions:</label>
-    <textarea type="text" id="comments" class="large-input" formControlName="comments"></textarea>
+    <label for="comments">Notes:</label>
+    <textarea type="text" id="comments" class="large-input" style="resize: none" formControlName="comments"></textarea>
   </div>
   <div>
     <button type="submit" (click)="sendEmail()">Reserve</button>
