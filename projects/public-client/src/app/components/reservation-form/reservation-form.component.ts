@@ -15,13 +15,15 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.subscribeToCheckbox();
   }
 
   createForm() {
     this.emailForm = this.fb.group({
       partyTheme: [''],
-      birthdayName: new FormControl(''),
-      birthdayAge: new FormControl(''),
+      birthday: [false],
+      birthdayName: [{value: '', disabled: true}],
+      birthdayAge: [{value: null, disabled: true}],
       // organizer: [''],
       // partyDate: [''],
       // startTime: [''],
@@ -32,15 +34,32 @@ export class ReservationFormComponent implements OnInit {
       endTime: ['', [Validators.required]],
       phone: [''],
       email: ['', [Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
-      contactMethod: [''],
-      preferredSpace: [''],
-      headcount: ['', Validators.required],
+      contactMethod: [null],
+      preferredSpaceNone: [false],
+      preferredSpaceMainRoom: [false],
+      preferredSpacePartyBoat: [false],
+      preferredSpaceNorthPatio: [false],
+      preferredSpaceNorthRoom: [false],
+      preferredSpaceGameRoom: [false],
+      preferredSpaceSouthRoom: [false],
+      preferredSpaceSouthPatio: [false],
+      headcount: [null, Validators.required],
       comments: [''],
     })
   }
 
-  get form(): { [key: string]: AbstractControl} {
-    return this.emailForm.controls;
+  subscribeToCheckbox() {
+    this.emailForm.get('birthday')?.valueChanges.subscribe(value => {
+      if (value) {
+        this.emailForm.get('birthdayName')?.enable();
+        this.emailForm.get('birthdayAge')?.enable();
+      } else {
+        this.emailForm.get('birthdayName')?.disable();
+        this.emailForm.get('birthdayAge')?.disable();
+        this.emailForm.get('birthdayName')?.setValue(null);
+        this.emailForm.get('birthdayAge')?.setValue(null);
+      }
+    })
   }
 
   sendEmail() {
