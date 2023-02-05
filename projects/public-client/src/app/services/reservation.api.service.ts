@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { routes } from 'projects/public-server/src/app/routes';
+import { routes } from 'projects/dive-inn-lib/src/lib/constants';
+import { Reservation } from '../models/api/reservations.api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ export class ReservationApiService {
 
   constructor(private http: HttpClient) { }
 
-  public submitReservation(reservationDetails: any) {
+  public submitReservation(reservationDetails: Reservation) {
     const postResponse = this.http.post(
-      routes.api._root + routes.api.reservation_request._root, reservationDetails
+      routes.api._root + routes.api.reservation._root, reservationDetails
     );
 
     return postResponse;

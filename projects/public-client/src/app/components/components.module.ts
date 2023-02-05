@@ -13,6 +13,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DirectivesModule,
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports: [
     MouseTrackerComponent,

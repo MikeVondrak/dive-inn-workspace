@@ -22,6 +22,36 @@
     height: 10vh;
   }
 
+  .small-input {
+    width: 3rem;
+  }
+
+  .checkboxes {
+    display: flex;
+    flex-flow: row wrap;
+
+    div {
+      padding: 0;
+    }
+  }
+
+  .birthday {
+    margin-right: 2rem;
+  }
+
+  .organizer-details {
+    margin-left: 2rem;
+  }
+
+  .invalid-message {
+    background-color: utility.$dive-gray-dk;
+    // color: utility.$dive-red;
+  }
+
+  input[type=checkbox] {
+    margin: 0 .25rem 0 .75rem;
+  }
+
   @media (max-width: 500px) {
     font-size: .75rem;
   }
