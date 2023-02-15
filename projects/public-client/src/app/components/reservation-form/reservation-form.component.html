@@ -1,69 +1,110 @@
 <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
-  <div>
-    <label for="party-theme">Theme:</label>
-    <input type="text" id="party-theme" size="50" formControlName="partyTheme">
-    <label>(Example: A-1 Scuba Holiday Party or Jacques Is Diving Into “50”)</label>
+  <div class="text-right-align">
+    <label for="party-theme">Theme</label>
+  </div>
+  <div class="">
+    <input type="text" id="party-theme" size="40" formControlName="partyTheme">
+    <!-- <label>(Example: A-1 Scuba Holiday Party or Jacques Is Diving Into “50”)</label> -->
+  </div>
+  <div></div>
+  <div></div>
+  <div class="text-right-align">
+    <label for="birthday" class="birthday">Birthday</label>
   </div>
   <div>
     <input type="checkbox" id="birthday" formControlName="birthday">
-    <label for="birthday" class="birthday">Birthday</label>
-    <label for="birthday-name">Name:</label>
-    <input type="text" id="birthday-name" size="30" formControlName="birthdayName">
-    <label for="birthday-age">Age:</label>
+  </div>
+  <div></div>
+  <div>
+    <label for="birthday-age"class="text-right-align">Age</label>
     <input type="text" id="birthday-age" size="2" formControlName="birthdayAge">
   </div>
-  <div>
-    <label for="organizer">Organizer:</label>
-    <input type="text" id="organizer" size="30" formControlName="organizer">
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('organizer')?.hasError('required')">
-      * required
-    </small>
-    <div class="organizer-details">
-      <div>
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" formControlName="phone">
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="text" id="email" size="40" formControlName="email">
-        <small class="invalid-message" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.hasError('pattern')">
-          * Please provide a valid email address
-        </small>
-        <small class="invalid-message" *ngIf="submitted && emailForm.get('email')?.hasError('required')">
-          * required
-        </small>
-      </div>
-      <div>
-        <label for="preferred-contact">Preferred Contact</label>
-        <input type="radio" id="preferred-contact" [value]="'EMAIL'" formControlName="contactMethod">Email
-        <input type="radio" id="preferred-contact" [value]="'VOICE'" formControlName="contactMethod">Voice
-        <input type="radio" id="preferred-contact" [value]="'TEXT'" formControlName="contactMethod">Text
-      </div>
-    </div>
+  <div class="text-right-align">
+    <label for="birthday-name">Name</label>
+  </div>
+  <div class="">
+    <input type="text" id="birthday-name" size="40" formControlName="birthdayName">
+  </div>
+  <div></div>
+  <div></div>
+  <div class="text-right-align">
+    <label for="organizer">Organizer</label>
   </div>
   <div>
-    <label for="date">Date:</label>
+    <input type="text" id="organizer" size="40" formControlName="organizer">
+      <small class="invalid-message" *ngIf="submitted && emailForm.get('organizer')?.hasError('required')">
+        * required
+      </small>
+  </div>
+  <div></div>
+  <div></div>
+    <!-- <div class="organizer-details"> -->
+  <div class="text-right-align">
+    <label for="phone">Phone</label>
+  </div>
+  <div>
+    <input type="text" id="phone" size="40" formControlName="phone">
+  </div>
+  <div></div>
+  <div></div>
+  <div class="text-right-align">
+    <label for="email">Email</label>
+  </div>
+  <div>
+    <input type="text" id="email" size="40" formControlName="email">
+    <small class="invalid-message" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.hasError('pattern')">
+      * Please provide a valid email address
+    </small>
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('email')?.hasError('required')">
+      * required
+    </small>
+  </div>
+  <div></div>
+  <div></div>
+  <div class="text-right-align">
+    <label for="preferred-contact">Preferred Contact</label>
+  </div>
+  <div>
+    <input type="radio" id="preferred-contact" [value]="'EMAIL'" formControlName="contactMethod">Email
+  </div>
+  <div>
+    <input type="radio" id="preferred-contact" [value]="'VOICE'" formControlName="contactMethod">Voice
+  </div>
+  <div>
+    <input type="radio" id="preferred-contact" [value]="'TEXT'" formControlName="contactMethod">Text
+  </div>
+  <div class="text-right-align">
+    <label for="date">Date</label>
+  </div>
+  <div>
     <input type="text" id="date" formControlName="partyDate">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('partyDate')?.hasError('required')">
       * required
     </small>
   </div>
+  <div></div>
+  <div></div>
+  <div class="text-right-align">
+    <label for="start-time">Start Time</label>
+  </div>
   <div>
-    <label for="start-time">Start Time:</label>
-    <input type="text" id="start-time" formControlName="startTime">
+    <input type="text" id="start-time" size="8" formControlName="startTime">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('startTime')?.hasError('required')">
       * required
     </small>
   </div>
+  <div class="text-right-align">
+    <label for="end-time">End Time</label>
+  </div>
   <div>
-    <label for="end-time">End Time:</label>
-    <input type="text" id="end-time" formControlName="endTime">
+    <input type="text" id="end-time" size="8" formControlName="endTime">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('endTime')?.hasError('required')">
       * required
     </small>
   </div>
-  <div class="checkboxes">
-    <label>Preferred Space:</label>
+  <div class="checkboxes text-right-align">
+    <label>Preferred Space</label>
+  </div>
     <div>
       <input type="checkbox" id="space-none" formControlName="preferredSpaceNone">
       <label for="space-none">No Preference</label>
@@ -76,6 +117,7 @@
       <input type="checkbox" id="space-party-boat" formControlName="preferredSpacePartyBoat">
       <label for="space-party-boat">Party Boat</label>
     </div>
+    <div></div>
     <div>
       <input type="checkbox" id="space-north-patio" formControlName="preferredSpaceNorthPatio">
       <label for="space-north-patio">North Patio</label>
@@ -88,6 +130,7 @@
       <input type="checkbox" id="space-game-room" formControlName="preferredSpaceGameRoom">
       <label for="space-south-room">Game Room</label>
     </div>
+    <div></div>
     <div>
       <input type="checkbox" id="space-south-room" formControlName="preferredSpaceSouthRoom">
       <label for="space-south-room">South Room</label>
@@ -96,23 +139,54 @@
       <input type="checkbox" id="space-south-patio" formControlName="preferredSpaceSouthPatio">
       <label for="space-south-patio">South Patio</label>
     </div>
+    <div></div>
     <!-- <input type="checkbox" id="preferred-space">
     <label for="preferred-space">Will be determined based on group size.  But feel free to let us know what section you would prefer</label> -->
+  <!-- </div> -->
+  <div class="text-right-align">
+    <label for="headcount">Headcount</label>
   </div>
   <div>
-    <label for="headcount">Headcount: </label>
-    <input type="text" id="headcount" size="2" formControlName="headcount">
+    <input type="number" id="headcount" size="3" pattern="[0-9]" formControlName="headcount" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('headcount')?.hasError('required')">
-      * required
+      * required, numbers only
     </small>
-    <label for="headcount">(If your party grows drastically one way or the other + or – please let us know)</label>
+    <!-- <small class="invalid-message" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.hasError('pattern')">
+      * Number only please
+    </small> -->
+    <!-- <label for="headcount">(If your party count changes drastically + or – please let us know)</label> -->
+  </div>
+  <div></div>
+  <div></div>
+  <div class="text-right-align">
+    <!-- <label for="comments">Comments: </label> -->
+    <label for="comments">Notes</label>
   </div>
   <div>
-    <!-- <label for="comments">Comments: </label> -->
-    <label for="comments">Notes:</label>
     <textarea type="text" id="comments" class="large-input" style="resize: none" formControlName="comments"></textarea>
   </div>
+  <div></div>
+  <div></div>
   <div>
     <button type="submit">Send Reservation Request</button>
   </div>
 </form>
+
+
+
+<div class="test-grid">
+  <label for="input-theme" class="label-theme">Theme</label>
+  <div class="data-theme">
+    <input type="text" id="input-theme">
+  </div>
+  
+  <label for="checkbox-birthday" class="label-birthday">Birthday</label>
+  <div class="data-birthday">
+    <input type="checkbox" id="checkbox-birthday" />
+  </div>
+  
+  <div class="data-age">
+    <label for="input-age" class="label-age">Age</label>
+    <input type="number" id="input-age" maxlength="3" />
+  </div>
+</div>

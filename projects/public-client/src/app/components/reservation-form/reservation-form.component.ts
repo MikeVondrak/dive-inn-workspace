@@ -45,7 +45,7 @@ export class ReservationFormComponent implements OnInit {
       preferredSpaceGameRoom: [false],
       preferredSpaceSouthRoom: [false],
       preferredSpaceSouthPatio: [false],
-      headcount: [null, Validators.required],
+      headcount: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
       comments: [''],
     })
   }

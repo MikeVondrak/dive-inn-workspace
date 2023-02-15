@@ -3,19 +3,33 @@
 :host {
 
   margin: 0 5vw;
+  
+  form {
+    border: solid 1px black;
+    width: 450px;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-auto-rows: minmax(1rem, auto);
+    row-gap: .5rem;
+  }
+
+  .text-right-align {
+    // grid-column: 1/2;
+    // grid-row: 1;
+    text-align: right;
+    padding-right: .5rem;
+  }
+
+  .grid-full-input {
+    // grid-column: 2/5;
+    // grid-row: 1;
+  }
 
   button {
     background-color: utility.$dive-gray-dk;
     color: utility.$dive-yellow;
     cursor: pointer;
-  }
-
-  div {
-    padding: .3rem;
-  }
-
-  input, textarea {
-    margin: 0 1rem;
   }
 
   .large-input {
@@ -26,33 +40,87 @@
     width: 3rem;
   }
 
-  .checkboxes {
-    display: flex;
-    flex-flow: row wrap;
+  // .checkboxes {
+  //   display: flex;
+  //   flex-flow: row wrap;
 
-    div {
-      padding: 0;
-    }
-  }
+  //   div {
+  //     padding: 0;
+  //   }
+  // }
 
-  .birthday {
-    margin-right: 2rem;
-  }
+  // .birthday {
+  //   margin-right: 2rem;
+  // }
 
-  .organizer-details {
-    margin-left: 2rem;
-  }
+  // .organizer-details {
+  //   margin-left: 2rem;
+  // }
 
   .invalid-message {
     background-color: utility.$dive-gray-dk;
     // color: utility.$dive-red;
   }
 
-  input[type=checkbox] {
-    margin: 0 .25rem 0 .75rem;
-  }
+  // input[type=checkbox] {
+  //   margin: 0 .25rem 0 .75rem;
+  // }
 
   @media (max-width: 500px) {
     font-size: .75rem;
+    // width: 350px;
+  }
+
+
+
+
+
+  .test-grid {
+    > div {
+      border: 1px solid magenta;
+      > div {
+        border: 1px solid blue;
+      }
+    }
+    margin-top: 3rem;
+    border: 1px solid yellow;
+
+    display: grid;
+    grid-template-columns: 80px repeat(3, 1fr);
+    grid-template-rows: auto;// 50px 50px 50px;
+    grid-template-areas: 
+      "l1 d1 d1 d1"
+      "l2 d2 . d3"
+    ;
+
+    .label-theme {
+      grid-area: l1;
+    }
+    .data-theme {
+      grid-area: d1;
+      input {
+        width: 100%;
+      }
+    }
+    .label-birthday {
+      grid-area: l2;
+    }
+    .data-birthday {
+      grid-area: d2;
+    }
+    .data-age {
+      grid-area: d3;
+      display: flex;
+      justify-content: flex-end;
+      white-space: nowrap;
+
+      .label-age {
+        margin-right: 0.5rem;
+      }
+      input {
+       width: 2rem;
+      }
+
+    }
   }
 }
