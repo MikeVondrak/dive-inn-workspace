@@ -104,6 +104,9 @@ export class ReservationFormComponent implements OnInit {
         email: this.emailForm.get('email')?.value,
         voice: this.emailForm.get('phone')?.value
       },
+      date: this.emailForm.get('partyDate')?.value,
+      startTime: this.emailForm.get('startTime')?.value,
+      endTime: this.emailForm.get('endTime')?.value,
       rentalSpaces: spaces,
       notes: this.emailForm.get('comments')?.value,
       

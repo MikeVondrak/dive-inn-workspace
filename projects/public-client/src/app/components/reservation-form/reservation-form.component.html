@@ -77,7 +77,7 @@
     <label for="date">Date</label>
   </div>
   <div>
-    <input type="text" id="date" formControlName="partyDate">
+    <input type="date" id="date" formControlName="partyDate">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('partyDate')?.hasError('required')">
       * required
     </small>
@@ -88,7 +88,7 @@
     <label for="start-time">Start Time</label>
   </div>
   <div>
-    <input type="text" id="start-time" size="8" formControlName="startTime">
+    <input type="time" id="start-time" size="8" formControlName="startTime">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('startTime')?.hasError('required')">
       * required
     </small>
@@ -97,7 +97,7 @@
     <label for="end-time">End Time</label>
   </div>
   <div>
-    <input type="text" id="end-time" size="8" formControlName="endTime">
+    <input type="time" id="end-time" size="8" formControlName="endTime">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('endTime')?.hasError('required')">
       * required
     </small>

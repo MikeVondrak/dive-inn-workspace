@@ -6,7 +6,7 @@
   
   form {
     border: solid 1px black;
-    width: 450px;
+    width: clamp(380px, 85%, 500px);
     padding-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4, 25%);
@@ -66,9 +66,9 @@
   //   margin: 0 .25rem 0 .75rem;
   // }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     font-size: .75rem;
-    // width: 350px;
+    // width: 390px;
   }
 
 
