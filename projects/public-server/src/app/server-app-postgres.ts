@@ -101,8 +101,8 @@ export class ServerApp {
   private setCatchAllRoutes() {
     if (!!this.catchAllRoute) {
       this.app.all(this.catchAllRoute, (req, res) => {
-        // res.status(200).sendFile('/', {root: angularAppLocation});
-        res.status(404).send('Route Not Found');
+        res.status(200).sendFile('/', {root: this.angularAppLocation});
+        //res.status(404).send('Route Not Found');
       });
     }
   }
