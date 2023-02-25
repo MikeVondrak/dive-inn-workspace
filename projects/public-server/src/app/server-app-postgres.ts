@@ -1,11 +1,8 @@
 // https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
 
-import express, { Application, Request, Response, NextFunction, RequestHandler, Router } from 'express';
-import { Client, Pool, Query, QueryConfig, QueryResult } from 'pg';
-import { routes } from './routes';
-import { Observable, Observer } from 'rxjs';
+import express, { Application, RequestHandler, Router } from 'express';
 //import { SQL } from 'sql';
-import { take } from 'rxjs/operators';
+
 
 export class ServerApp {
   private app: Application;
@@ -102,10 +99,12 @@ export class ServerApp {
    * @TODO proper 404 etc error handling
    */
   private setCatchAllRoutes() {
-    this.app.all(this.catchAllRoute, (req, res) => {
-      // res.status(200).sendFile('/', {root: angularAppLocation});
-      res.status(404).send('Route Not Found');
-    });
+    if (!!this.catchAllRoute) {
+      this.app.all(this.catchAllRoute, (req, res) => {
+        // res.status(200).sendFile('/', {root: angularAppLocation});
+        res.status(404).send('Route Not Found');
+      });
+    }
   }
 
   /**
