@@ -51,9 +51,6 @@ const routers: Router[] = [];
 const reservationsRouter = new ReservationsRouter(makePoolQuery);
 routers.push(reservationsRouter.router);
 
-
-console.log('~~~~~~~~~~~~~~~~~~~~~~~', reservationsRouter);
-
 // Angular app is served as static file
 // All other routes are for API
 const serverApp = new ServerApp(angularDist, PORT, staticPaths, middleWare, routers, '/', '/*');
