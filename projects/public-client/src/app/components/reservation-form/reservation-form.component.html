@@ -147,7 +147,7 @@
     <label for="headcount">Headcount</label>
   </div>
   <div>
-    <input type="number" id="headcount" size="3" pattern="[0-9]" formControlName="headcount" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+    <input type="number" id="headcount" size="3" formControlName="headcount">
     <small class="invalid-message" *ngIf="submitted && emailForm.get('headcount')?.hasError('required')">
       * required, numbers only
     </small>

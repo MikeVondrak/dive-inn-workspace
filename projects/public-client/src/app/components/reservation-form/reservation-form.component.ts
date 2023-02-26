@@ -35,7 +35,8 @@ export class ReservationFormComponent implements OnInit {
       // startTime: ['', [Validators.required]],
       // endTime: ['', [Validators.required]],
       phone: [''],
-      email: ['', [Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
+      email: [''],
+      //email: ['', [Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
       contactMethod: [null],
       preferredSpaceNone: [false],
       preferredSpaceMainRoom: [false],
@@ -45,7 +46,7 @@ export class ReservationFormComponent implements OnInit {
       preferredSpaceGameRoom: [false],
       preferredSpaceSouthRoom: [false],
       preferredSpaceSouthPatio: [false],
-      headcount: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      headcount: [null, [Validators.required]],//, Validators.pattern("^[0-9*]*$")]],
       comments: [''],
     })
   }
@@ -65,6 +66,9 @@ export class ReservationFormComponent implements OnInit {
   }
 
   sendEmail() {
+
+    console.log('SEND EMAIL', this.emailForm.valid);
+
     this.submitted = true;
     let spaces: RentalSpaces[] = [];
     if (this.emailForm.get('preferredSpaceNone')?.value) {
@@ -111,6 +115,7 @@ export class ReservationFormComponent implements OnInit {
       notes: this.emailForm.get('comments')?.value,
       
     };
+
     if (this.emailForm.valid) {
       console.log('submit res', this.emailForm.value, formModel);
       const sub = this.reservationService.submitReservation(formModel);
