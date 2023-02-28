@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
+import { take } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
 
@@ -66,7 +67,6 @@ export class ReservationFormComponent implements OnInit {
   }
 
   sendEmail() {
-
     console.log('SEND EMAIL', this.emailForm.valid);
 
     this.submitted = true;
@@ -117,11 +117,15 @@ export class ReservationFormComponent implements OnInit {
     };
 
     if (this.emailForm.valid) {
-      console.log('submit res', this.emailForm.value, formModel);
-      const sub = this.reservationService.submitReservation(formModel);
-      sub.subscribe();
-      this.emailForm.reset();
-      this.submitted = false;
+      console.log('SENDING EMAIL', formModel);
+      this.reservationService.submitReservation(formModel).pipe(take(1)).subscribe(response => {
+        if (response.success) {
+          this.emailForm.reset();
+        } else {
+          console.error('Error sending reservation request');
+        }
+        this.submitted = false;      
+      });
     }
   }
 }

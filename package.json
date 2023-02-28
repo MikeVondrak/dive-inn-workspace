@@ -4,16 +4,16 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start-node": "ng serve --proxy-config proxy.config.json",
+    "start-ng": "ng serve public-client",
+    "start-ng-proxy": "ng serve --proxy-config proxy.config.json public-client",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "run-ac": "yarn start admin-client",
     "run-pc": "yarn start public-client",
     "run-ps": "ts-node projects/public-server/src/app/server.ts",
-    "run-ps-dev": "nodemon ts-node projects/public-server/src/app/server.ts",
-    "gql_codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
+    "run-ps-dev": "nodemon projects/public-server/src/app/server.ts",
+    "gql-codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "workspaces": [
     "projects/**"
