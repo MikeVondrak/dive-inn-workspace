@@ -2,125 +2,182 @@
 
 :host {
 
-  margin: 0 5vw;
-  
   form {
-    border: solid 1px black;
-    width: clamp(380px, 85%, 500px);
-    padding-top: 1rem;
+    // border: solid 2px utility.$dive-gray-dk;
+    // padding: 2rem;
+    width: 380px; //clamp(380px, 85%, 500px);
     display: grid;
-    grid-template-columns: repeat(4, 25%);
-    grid-auto-rows: minmax(1rem, auto);
-    row-gap: .5rem;
-  }
+    grid-template-columns: 2fr 3fr 3fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    //grid-auto-rows: minmax(1rem, auto);
 
-  .text-right-align {
-    // grid-column: 1/2;
-    // grid-row: 1;
-    text-align: right;
-    padding-right: .5rem;
-  }
-
-  .grid-full-input {
-    // grid-column: 2/5;
-    // grid-row: 1;
-  }
-
-  button {
-    background-color: utility.$dive-gray-dk;
-    color: utility.$dive-yellow;
-    cursor: pointer;
-  }
-
-  .large-input {
-    height: 10vh;
-  }
-
-  .small-input {
-    width: 3rem;
-  }
-
-  // .checkboxes {
-  //   display: flex;
-  //   flex-flow: row wrap;
-
-  //   div {
-  //     padding: 0;
-  //   }
-  // }
-
-  // .birthday {
-  //   margin-right: 2rem;
-  // }
-
-  // .organizer-details {
-  //   margin-left: 2rem;
-  // }
-
-  .invalid-message {
-    background-color: utility.$dive-gray-dk;
-    // color: utility.$dive-red;
-  }
-
-  // input[type=checkbox] {
-  //   margin: 0 .25rem 0 .75rem;
-  // }
-
-  @media (max-width: 600px) {
-    font-size: .75rem;
-    // width: 390px;
-  }
-
-
-
-
-
-  .test-grid {
-    > div {
-      border: 1px solid magenta;
-      > div {
-        border: 1px solid blue;
-      }
-    }
-    margin-top: 3rem;
-    border: 1px solid yellow;
-
-    display: grid;
-    grid-template-columns: 80px repeat(3, 1fr);
-    grid-template-rows: auto;// 50px 50px 50px;
-    grid-template-areas: 
-      "l1 d1 d1 d1"
-      "l2 d2 . d3"
+    gap: .5rem;
+    grid-template-areas:
+      "lOrN iOrN iOrN iOrN"
+      "lOrE iOrE iOrE iOrE"
+      "lOrP iOrP iOrP iOrP"
+      "lPc iPcE iPcV iPcT"
+      "lDa iDa iDa iDa"
+      "lSt iSt lEn iEn"
+      "lHe iHe . ."
+      "lTh iTh iTh iTh"
+      "lBi iBi lAg iAg"
+      "lBiN iBiN iBiN iBiN"
+      "lSp iSp1 iSp1 ."
+      "lSp iSp2 iSp2 ."
+      ". iSp3 iSp3 ."
+      ". iSp4 iSp4 ."
+      ". iSp5 iSp5 ."
+      ". iSp6 iSp6 ."
+      ". iSp7 iSp7 ."
+      ". iSp8 iSp8 ."
+      "lNo iNo iNo iNo"
+      ". iNo iNo iNo"
+      ". iNo iNo iNo"
     ;
 
-    .label-theme {
-      grid-area: l1;
+    input[type="text"] {
+      width: 100%;
     }
-    .data-theme {
-      grid-area: d1;
+
+    .label-column {
+      text-align: right;
+    }
+
+    button {
+      background-color: utility.$dive-gray-dk;
+      color: utility.$dive-yellow;
+      cursor: pointer;
+    }
+
+    .large-input {
+      height: 3rem;
+    }
+
+    .small-input {
+      width: 3rem;
+    }
+
+    .invalid-message {
+      background-color: utility.$dive-gray-dk;
+    }
+
+    // Grid Areas
+    .label-organizer {
+      grid-area: lOrN;
+    }
+    .input-organizer {
+      grid-area: iOrN;
+    }
+    .label-phone {
+      grid-area: lOrP;
+    }
+    .input-phone {
+      grid-area: iOrP;
+    }
+    .label-email {
+      grid-area: lOrE;
+    }
+    .input-email {
+      grid-area: iOrE;
+    }
+
+    .label-contact {
+      grid-area: lPc;
+    }
+
+    .input-contact-email {
+      white-space: nowrap;
+      grid-area: iPcE;
+    }
+
+    .input-contact-voice {
+      white-space: nowrap;
+      grid-area: iPcV;
+    }
+
+    .input-contact-text {
+      white-space: nowrap;
+      grid-area: iPcT;
+    }
+
+    .label-date {
+      grid-area: lDa;
+    }
+    .input-date {
+      grid-area: iDa;
+    }
+
+    .label-start-time {
+      grid-area: lSt;
+    }
+
+    .input-start-time {
+      grid-area: iSt;
+    }
+
+    .label-end-time {
+      grid-area: lEn;
+    }
+
+    .input-end-time {
+      grid-area: iEn;
+    }
+    .label-headcount {
+      grid-area: lHe;
+    }
+    .input-headcount {
+      grid-area: iHe;
       input {
         width: 100%;
       }
     }
+    .label-theme {
+      grid-area: lTh;
+    }
+    .input-theme {
+      grid-area: iTh;
+    }
+
     .label-birthday {
-      grid-area: l2;
+      grid-area: lBi;
     }
-    .data-birthday {
-      grid-area: d2;
+
+    .input-birthday {
+      grid-area: iBi;
     }
-    .data-age {
-      grid-area: d3;
-      display: flex;
-      justify-content: flex-end;
-      white-space: nowrap;
+    .label-birthday-name {
+      grid-area: lBiN;
+    }
+    .input-birthday-name {
+      grid-area: iBiN;
+    }
 
-      .label-age {
-        margin-right: 0.5rem;
-      }
-      input {
-       width: 2rem;
-      }
+    .label-age {
+      grid-area: lAg;
+    }
 
+    .input-age {
+      grid-area: iAg;
+    }
+    .label-preferred-space {
+      grid-area: lSp;
+    }
+    .preferred-space-1 { grid-area: iSp1; }
+    .preferred-space-2 { grid-area: iSp2; }
+    .preferred-space-3 { grid-area: iSp3; }
+    .preferred-space-4 { grid-area: iSp4; }
+    .preferred-space-5 { grid-area: iSp5; }
+    .preferred-space-6 { grid-area: iSp6; }
+    .preferred-space-7 { grid-area: iSp7; }
+    .preferred-space-8 { grid-area: iSp8; }
+    .label-notes { grid-area: lNo; }
+    .input-notes { 
+      grid-area: iNo; 
+      textarea {
+        width: 100%;
+        min-height: 4rem;
+      }
     }
   }
 }

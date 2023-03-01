@@ -37,16 +37,17 @@
       <!-- <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
         <img src="assets/images/private-parties/holiday_flyer_retouch.jpg" />
       </div> -->
-      <app-reservation-form></app-reservation-form>
+      <div id="Photos" class="carousel-container">
+        <app-carousel [faceContents]="[MainRoom, Boat, NorthPatio, NorthRoom, GameRoom, SideRoom, SouthPatio]"></app-carousel>
+      </div>    
     </div>
     <!-- Waves separator -->
     <div class="waves-separator"></div>
   </div>
 
 
-  <div id="Photos" class="carousel-container">
-    <app-carousel [faceContents]="[MainRoom, Boat, NorthPatio, NorthRoom, GameRoom, SideRoom, SouthPatio]"></app-carousel>
-  </div>
+  
+  <app-reservation-form></app-reservation-form>
 
   <div class="separator">
     <!-- <img src="assets/images/private-parties/life-preserver-with-text.svg" /> -->
