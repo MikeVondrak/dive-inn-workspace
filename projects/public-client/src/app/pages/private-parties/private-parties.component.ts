@@ -1,13 +1,14 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subject, takeUntil, map } from 'rxjs';
 import { HeroBannerOrientationConfigs } from '../../models/hero-banner.model';
+import { RentalSpaces } from '../../models/rental-map.model';
 import { privatePartiesPageHeroBannerConfigs } from '../private-parties/private-parties.hero-banner.config';
 
 @Component({
   selector: 'app-private-parties',
   templateUrl: './private-parties.component.html',
-  styleUrls: ['./private-parties.component.scss']
+  styleUrls: ['./private-parties.component.scss'],
 })
 export class PrivatePartiesComponent implements OnInit {
 
@@ -20,31 +21,17 @@ export class PrivatePartiesComponent implements OnInit {
     //'Gala, Soiree, Shindig, Bash, Affair'
   ];
   public fullscreen: boolean = false;
-
-  // NOTE: whitespace matters for email body
-  public mailto_pre: string = `mailto:contact@diveinndenver.com?subject=[Reservation Request]&body=
-Organizer Name: %0D%0A
-  Phone: %0D%0A
-  Email: %0D%0A%0D%0A
-Theme: %0D%0A%0D%0A
-Birthday (yes / no): %0D%0A
-  Name: %0D%0A
-  Age: %0D%0A%0D%0A
-Date: %0D%0A
-Start Time: %0D%0A
-End Time: %0D%0A%0D%0A
-Headcount: %0D%0A%0D%0A
-Spaces (Boat, Main Room, North Patio, North Room, Game Room, South Room, South Patio): %0D%0A`;
-  public mailto_post: string = `%0D%0A%0D%0ANotes: `
-
-  public mailto: string = this.mailto_pre + this.mailto_post;
-  public mailto_boat: string = this.mailto_pre + `Boat` + this.mailto_post;
-  public mailto_mainRoom: string = this.mailto_pre + `Main Room` + this.mailto_post;
-  public mailto_sideRoom: string = this.mailto_pre + `South Room` + this.mailto_post;
-  public mailto_gameRoom: string = this.mailto_pre + `Game Room` + this.mailto_post;
-  public mailto_northRoom: string= this.mailto_pre + `North Room` + this.mailto_post;
-  public mailto_northPatio: string= this.mailto_pre + `North Patio` + this.mailto_post;
-  public mailto_southPatio: string = this.mailto_pre + `South Patio` + this.mailto_post;
+  public zooms: Map<RentalSpaces, boolean> = new Map([
+    [RentalSpaces.SPACE1, false],
+    [RentalSpaces.SPACE2, false],
+    [RentalSpaces.SPACE3, false],
+    [RentalSpaces.SPACE4, false],
+    [RentalSpaces.SPACE5, false],
+    [RentalSpaces.SPACE6, false],
+    [RentalSpaces.SPACE7, false],
+  ]);
+  public rentalSpaces = RentalSpaces;
+  public zoom1: boolean = false;
   
   private destroy$: Subject<void> = new Subject<void>();
 
@@ -63,4 +50,10 @@ Spaces (Boat, Main Room, North Patio, North Room, Game Room, South Room, South P
     this.fullscreen = !this.fullscreen;
   }
 
+  public toggleZoom(space: RentalSpaces) {
+    const zoomed = this.zooms.get(space);
+    console.log('ZOOM', zoomed);
+    this.zooms.set(space, !zoomed);
+    this.zoom1 = !this.zoom1;
+  }
 }

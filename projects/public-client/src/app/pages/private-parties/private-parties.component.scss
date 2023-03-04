@@ -156,10 +156,6 @@ $zoomAnimationTime: 0.6s;
     }
 
     .section-red {
-      display: flex;
-      justify-content: center;
-      padding: clamp(1rem, 8vw, 12rem) 0 clamp(3rem, 12vw, 15rem);
-
       $bgColor: transparent;
       $bgColor2: utility.$dive-red;
       background-color: darken($bgColor2, 17%);
@@ -196,28 +192,17 @@ $zoomAnimationTime: 0.6s;
           transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
         }
 
-        &.fullscreen {
-          position: relative;
-          width: 100vw;
-          //height: max(120vh, 120vw);
-          //top: 0;
-          //left: 0;
-          background-color: rgba(0, 0, 0, 0.85);
-
-          // padding: 5vw;
-          z-index: 11;
-
-          //overflow-y: auto;
-          // height: max(120vh, 120vw);
-          // flex-shrink: 0;
-
-          // transform: translateX(0) skew(0deg, 0deg);
-
-          img {
-            width: 90vw;
-            max-width: 90vw;
-          }
-        }
+        // &.fullscreen {
+        //   position: relative;
+        //   width: 100vw;          
+        //   background-color: rgba(0, 0, 0, 0.85);
+        //   z-index: 11;
+        
+        //   img {
+        //     width: 90vw;
+        //     max-width: 90vw;
+        //   }
+        // }
       }
     }
 
@@ -269,11 +254,17 @@ $zoomAnimationTime: 0.6s;
 
     .carousel-container {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 0 12vw 0;
       perspective: 1000px;
 
       app-carousel {
         position: relative;
-        margin-top: 8vw;
+        //margin-top: 8vw;
+
+        // NOTE: child styles are applied because the templates that are passed to the carousel are defined in this template
 
         .rental-space {
           position: absolute;
@@ -387,6 +378,12 @@ $zoomAnimationTime: 0.6s;
             right: 0;
           }
 
+          .the-oasis {
+            background-image: url('/assets/images/tour/front_patio.jpg');
+            background-size: cover;
+            background-position: 60% 42%;
+          }
+
           .main-room {
             background-image: url('/assets/images/private-parties/main_room.jpg');
             background-size: 170%;
@@ -440,6 +437,85 @@ $zoomAnimationTime: 0.6s;
         transform: translateX(-50%);
         width: 20vw;
       }
+    }
+
+    .rental-map-container {
+      display: flex;
+      justify-content: center;
+      padding: 6vw 0 10vw;
+      .rental-map {
+        $mapSize: min(80vh, 80vw);
+        position: relative;
+        width: calc(1.2427 * $mapSize); // 3840 x 3090px native size, 1.2427 aspect
+        height: $mapSize;
+        background-image: url('/assets/images/Dive_Inn_Rental_Layout.png');
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        box-shadow: 0px 0px 20px 10px #000;
+        transition: background-position 1.0s ease, background-size 1.0s ease;
+
+        &.space-1 {
+          background-size: 288%;
+          background-position-x: 0;
+          background-position-y: 22%;
+        }
+
+        > div {
+          $circleSize: clamp(2rem, max(2vw, 4vh), 4rem);
+          $fontSize: clamp(0.5rem, max(1.5vw, 3vh), 4rem);
+          $bgColor: utility.$dive-black;
+          $color: utility.$dive-yellow;
+          position: absolute;
+          border-radius: 50%;
+          width: $circleSize;
+          height: $circleSize;
+          line-height: 1.15;
+          font-size: $fontSize;
+          text-align: center;
+          border: 3px solid $color;
+          color: $color;
+          background-color: $bgColor;
+          box-shadow: 0px 10px 10px 0px #000;
+          text-shadow: 1px 1px 3px #000;
+          font-family: 'Bevan', serif;
+
+          &.space-1 {
+            left: 16.6%;
+            top: 41%;
+          }
+          &.space-2 {
+            left: 28%;
+            top: 61%;
+          }
+          &.space-3 {
+            left: 43%;
+            top: 57%;
+          }
+          &.space-4 {
+            left: 50%;
+            top: 86.5%;
+          }
+          &.space-5 {
+            left: 77%;
+            top: 83.5%;
+          }
+          &.space-6 {
+            left: 77%;
+            top: 39%;
+          }
+          &.space-7 {
+            left: 38%;
+            top: 16%;
+          }
+        }
+      }
+    }
+
+    .reservation-form-container {
+      display: flex;
+      justify-content: center;
+      padding: 6vw 0 0;
     }
   }
 

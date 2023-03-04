@@ -1,3 +1,5 @@
+<div id="Deals"></div><!-- Keep link w/ID in case other pages reference -->
+
 <div class="main" id="top">
   <div id="hero" class="hero-banner-container">
     <app-hero-banner imgSrc="url(assets/images/private-parties/private_parties_bg_retouch.jpg)"
@@ -6,48 +8,56 @@
     </app-hero-banner>
 
     <div class="reserve-container">      
-      <a class="top-cta secondary-link" title="See photos of rental spaces" appAnimateViewportOverlay="/party#Photos">
+      <!-- <a class="top-cta secondary-link" title="See photos of rental spaces" appAnimateViewportOverlay="/party#Photos">
         <div class="circle-link">
-          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
           <img src="assets/images/private-parties/photos.svg" alt="View photos!" />
         </div>
-      </a>
-      <a class="top-cta" title="Send a reservation email" [href]="mailto" target="_blank">
+      </a> -->
+      <a class="top-cta" title="Send a reservation email" [href]="'#'" target="_blank">
         <div class="circle-link message-bottle">
-          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
           <img src="assets/images/message_bottle_with_text.svg" alt="Make a reservation now!" />
         </div>
       </a>
-      <a class="top-cta secondary-link" title="See deals and specials" appAnimateViewportOverlay="/party#Deals">
+      <!-- <a class="top-cta secondary-link" title="See deals and specials" appAnimateViewportOverlay="/party#Deals">
         <div class="circle-link">
-          <!-- <ng-container *ngTemplateOutlet="BottleMessageSvg"></ng-container> -->
           <img src="assets/images/private-parties/deals.svg" alt="View deals!" />
         </div>
-      </a>
+      </a> -->
     </div>
   </div>
 
-  <!-- <div class="page-content" [class.fullscreen]="fullscreen" (click)="onClick()">
-    <p>Plan your next<br>occasion at the<br>Dive Inn</p>
-    
-  </div> -->
-
-  <div id="Deals" class="red">
+  <div id="Photos" class="red">
     <div class="section-red">
-      <!-- <div class="flyer" [class.fullscreen]="fullscreen" (click)="onClick()">
-        <img src="assets/images/private-parties/holiday_flyer_retouch.jpg" />
-      </div> -->
-      <div id="Photos" class="carousel-container">
-        <app-carousel [faceContents]="[MainRoom, Boat, NorthPatio, NorthRoom, GameRoom, SideRoom, SouthPatio]"></app-carousel>
-      </div>    
+      <div class="rental-map-container">
+        <!-- <img src="assets/images/Dive_Inn_Rental_Layout.png"> -->
+        <div class="rental-map"
+          [ngClass]="{
+            'space-1': zooms.get(rentalSpaces.SPACE1),
+            'space-2': zooms.get(rentalSpaces.SPACE2),
+            'space-3': zooms.get(rentalSpaces.SPACE3)
+          }"
+        >
+          <div *ngIf="zooms.get(rentalSpaces.SPACE1)"
+            class="space-1" (click)="toggleZoom(rentalSpaces.SPACE1)">1</div>
+          <div class="space-2">2</div>
+          <div class="space-3">3</div>
+          <div class="space-4">4</div>
+          <div class="space-5">5</div>
+          <div class="space-6">6</div>
+          <div class="space-7">7</div>
+        </div>
+      </div>
+      <!-- <div id="Photos" class="carousel-container">
+        <app-carousel [faceContents]="[Oasis, Boat, Main, SideRoom, SouthPatio, NorthRoom, NorthPatio]"></app-carousel>
+      </div>     -->
     </div>
     <!-- Waves separator -->
     <div class="waves-separator"></div>
   </div>
 
-
-  
-  <app-reservation-form></app-reservation-form>
+  <div id="Form" class="reservation-form-container">
+    <app-reservation-form></app-reservation-form>
+  </div>
 
   <div class="separator">
     <!-- <img src="assets/images/private-parties/life-preserver-with-text.svg" /> -->
@@ -59,19 +69,18 @@
 
 <!--------------------------------------------->
 
-<ng-template #MainRoom>
+<!-- <ng-template #Main>
   <div class="rental-space">
     <div class="main-room rental-space-bg"></div>
     <div class="title-container">
-      <h2>Main Room</h2>
+      <h2>Main Galley</h2>
     </div>    
     <div class="description-container">
       <p>Ample space for larger</p>
       <p>parties and events</p>
     </div>
     <div class="occupancy">
-      60
-      <!-- TODO: people image -->
+      50 - 60
     </div>
     <a class="reserve" [href]="mailto_mainRoom | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
@@ -90,8 +99,7 @@
       <p>for a few friends</p>
     </div>
     <div class="occupancy">
-      8
-      <!-- TODO: people image -->
+      8 - 13
     </div>
     <a class="reserve reverse" [href]="mailto_boat | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
@@ -103,15 +111,14 @@
   <div class="rental-space">
     <div class="side-room rental-space-bg"></div>
     <div class="title-container">
-      <h2>South Room</h2>
+      <h2>South Cabin</h2>
     </div>
     <div class="description-container">
       <p>Smaller space that suits</p>
       <p>private parties perfectly</p>
     </div>
     <div class="occupancy">
-      32
-      <!-- TODO: people image -->
+      40 - 50
     </div>
     <a class="reserve" [href]="mailto_sideRoom | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
@@ -119,19 +126,18 @@
   </div>
 </ng-template>
 
-<ng-template #GameRoom>
+<ng-template #Oasis>
   <div class="rental-space">
-    <div class="game-room rental-space-bg"></div>
+    <div class="the-oasis rental-space-bg"></div>
     <div class="title-container">
-      <h2>Game Room</h2>
+      <h2>The Oasis</h2>
     </div>
     <div class="description-container">
-      <p>Your favorites games</p>
-      <p>plus a satellite bar</p>
+      <p>Intimate outdoor seating</p>
+      <p>alit with a fire pit</p>
     </div>
     <div class="occupancy">
-      24
-      <!-- TODO: people image -->
+      18 - 24
     </div>
     <a class="reserve reverse" [href]="mailto_gameRoom | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
@@ -143,7 +149,7 @@
   <div class="rental-space">
     <div class="north-room rental-space-bg"></div>
     <div class="title-container">
-      <h2>North Room</h2>
+      <h2>Oar Room</h2>
     </div>
     <div class="description-container">
       <p>Supplementary seating</p>
@@ -151,7 +157,6 @@
     </div>
     <div class="occupancy">
       32
-      <!-- TODO: people image -->
     </div>
     <a class="reserve" [href]="mailto_northRoom | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
@@ -171,7 +176,6 @@
     </div>
     <div class="occupancy">
       42
-      <!-- TODO: people image -->
     </div>
     <a class="reserve reverse" [href]="mailto_southPatio | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
@@ -191,13 +195,12 @@
     </div>
     <div class="occupancy">
       88
-      <!-- TODO: people image -->
     </div>
     <a class="reserve" [href]="mailto_northPatio | safeHtml: 'url'" target="_blank">
       <img src="assets/images/message_bottle_with_text.svg" />
     </a>
   </div>
-</ng-template>
+</ng-template> -->
 
 <!--------------------------------------------->
 

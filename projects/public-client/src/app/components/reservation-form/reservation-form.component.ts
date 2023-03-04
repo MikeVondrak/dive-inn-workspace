@@ -11,6 +11,8 @@ import { ReservationApiService } from '../../services/reservation.api.service';
 })
 export class ReservationFormComponent implements OnInit {
 
+  contactType = ContactType;
+
   emailForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
 
