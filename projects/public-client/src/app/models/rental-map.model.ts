@@ -1,4 +1,5 @@
 export enum RentalSpaces {
+  LEGEND = "Legend",
   SPACE1 = "TheOasis",
   SPACE2 = "PartyBoat",
   SPACE3 = "MainGalley",

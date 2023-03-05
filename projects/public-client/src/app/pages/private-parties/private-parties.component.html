@@ -29,23 +29,7 @@
   <div id="Photos" class="red">
     <div class="section-red">
       <div class="rental-map-container">
-        <!-- <img src="assets/images/Dive_Inn_Rental_Layout.png"> -->
-        <div class="rental-map"
-          [ngClass]="{
-            'space-1': zooms.get(rentalSpaces.SPACE1),
-            'space-2': zooms.get(rentalSpaces.SPACE2),
-            'space-3': zooms.get(rentalSpaces.SPACE3)
-          }"
-        >
-          <div *ngIf="zooms.get(rentalSpaces.SPACE1)"
-            class="space-1" (click)="toggleZoom(rentalSpaces.SPACE1)">1</div>
-          <div class="space-2">2</div>
-          <div class="space-3">3</div>
-          <div class="space-4">4</div>
-          <div class="space-5">5</div>
-          <div class="space-6">6</div>
-          <div class="space-7">7</div>
-        </div>
+        <app-rental-map mapWidth="80vw" mapHeight="80vh"></app-rental-map>
       </div>
       <!-- <div id="Photos" class="carousel-container">
         <app-carousel [faceContents]="[Oasis, Boat, Main, SideRoom, SouthPatio, NorthRoom, NorthPatio]"></app-carousel>

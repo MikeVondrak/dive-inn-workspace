@@ -14,6 +14,7 @@ import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.co
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RentalMapComponent } from './rental-map/rental-map.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     CarouselComponent,
     CarouselPaneComponent,
     ReservationFormComponent,
+    RentalMapComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     ExpandingMenuComponent,
     CarouselComponent,
     ReservationFormComponent,
+    RentalMapComponent,
   ]
 })
 export class ComponentsModule { }

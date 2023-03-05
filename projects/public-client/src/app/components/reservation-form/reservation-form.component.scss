@@ -20,12 +20,12 @@
       "lDa iDa iDa ."
       "lSt iSt iSt ."
       "lEn iEn iEn ."
-      "lHe iHe . ."
       ". . . ."
       "lTh iTh iTh iTh"
       "lBi iBi lAg iAg"
       "lBiN iBiN iBiN iBiN"
       ". . . ."
+      "lHe iHe . ."
       "lSp iSp1 iSp1 iSp1"
       "lSp iSp2 iSp2 iSp2"
       ". iSp3 iSp3 iSp3"
@@ -180,9 +180,17 @@
       }
 
       label {
+        font-size: 0.8rem;
+        @include utility.media-breakpoint-gte(xs) {
+          font-size: 1rem;
+        }
         span {
           color: utility.$dive-gray-md;
           font-size: 0.8em;
+
+          &:first-child {
+            margin-left: 0.25rem;
+          }
         }
       }
       input {

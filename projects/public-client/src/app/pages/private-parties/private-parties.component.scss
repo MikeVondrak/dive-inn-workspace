@@ -253,263 +253,190 @@ $zoomAnimationTime: 0.6s;
     }
 
     .carousel-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 0 12vw 0;
-      perspective: 1000px;
+      // position: relative;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // padding: 0 0 12vw 0;
+      // perspective: 1000px;
 
-      app-carousel {
-        position: relative;
-        //margin-top: 8vw;
+      // app-carousel {
+      //   position: relative;
+      //   //margin-top: 8vw;
 
-        // NOTE: child styles are applied because the templates that are passed to the carousel are defined in this template
+      //   // NOTE: child styles are applied because the templates that are passed to the carousel are defined in this template
 
-        .rental-space {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 2vw;
+      //   .rental-space {
+      //     position: absolute;
+      //     top: 0;
+      //     bottom: 0;
+      //     left: 0;
+      //     right: 0;
+      //     padding: 2vw;
 
-          //background-color: utility.$dive-gray-dk3;        
-          .title-container {
-            display: inline-block;
-            margin: 2vw 0 0;
+      //     //background-color: utility.$dive-gray-dk3;        
+      //     .title-container {
+      //       display: inline-block;
+      //       margin: 2vw 0 0;
 
-            @include utility.media-breakpoint-gte(md) {
-              margin: 2vw 0 0 2vw;
-            }
+      //       @include utility.media-breakpoint-gte(md) {
+      //         margin: 2vw 0 0 2vw;
+      //       }
 
-            padding: 2vw 3vw;
-            background-color: rgba(0, 0, 0, 0.5);
-            transform: skew(-8deg, -4deg) rotate(-4deg);
+      //       padding: 2vw 3vw;
+      //       background-color: rgba(0, 0, 0, 0.5);
+      //       transform: skew(-8deg, -4deg) rotate(-4deg);
 
-            h2 {
-              margin: 0;
-              font-size: 6vw;
-              text-align: center;
-              //transform: skew(8deg, 4deg) rotate(4deg);
-              text-shadow: 0px 4px 2px #000;
+      //       h2 {
+      //         margin: 0;
+      //         font-size: 6vw;
+      //         text-align: center;
+      //         //transform: skew(8deg, 4deg) rotate(4deg);
+      //         text-shadow: 0px 4px 2px #000;
 
-              @include utility.media-breakpoint-gte(sm) {
-                font-size: 3vw;
-              }
-            }
-          }
+      //         @include utility.media-breakpoint-gte(sm) {
+      //           font-size: 3vw;
+      //         }
+      //       }
+      //     }
 
-          .description-container {
-            position: relative;
-            top: 5vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+      //     .description-container {
+      //       position: relative;
+      //       top: 5vw;
+      //       display: flex;
+      //       flex-direction: column;
+      //       align-items: center;
+      //       justify-content: flex-start;
 
-            p {
-              position: relative;
-              display: none;
-              margin: 0 0 0vw;
-              padding: 1vw 1.5vw;
+      //       p {
+      //         position: relative;
+      //         display: none;
+      //         margin: 0 0 0vw;
+      //         padding: 1vw 1.5vw;
 
-              text-align: center;
-              text-shadow: 0px 4px 2px #000;
-              transform: skew(-8deg, -4deg) rotate(-4deg);
-              font-size: 2vw;
+      //         text-align: center;
+      //         text-shadow: 0px 4px 2px #000;
+      //         transform: skew(-8deg, -4deg) rotate(-4deg);
+      //         font-size: 2vw;
 
-              @include utility.media-breakpoint-gte(md) {
-                display: inline-block;
-              }
+      //         @include utility.media-breakpoint-gte(md) {
+      //           display: inline-block;
+      //         }
 
-              &::before {
-                content: '';
-                z-index: -1;
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                background-color: rgba(0, 0, 0, 0.5);
-                transform: skew(4deg, 0deg) rotate(0deg);
-              }
+      //         &::before {
+      //           content: '';
+      //           z-index: -1;
+      //           position: absolute;
+      //           top: 0;
+      //           left: 0;
+      //           bottom: 0;
+      //           right: 0;
+      //           background-color: rgba(0, 0, 0, 0.5);
+      //           transform: skew(4deg, 0deg) rotate(0deg);
+      //         }
 
-              &:nth-of-type(2) {
-                left: 4vw;
-              }
-            }
-          }
+      //         &:nth-of-type(2) {
+      //           left: 4vw;
+      //         }
+      //       }
+      //     }
 
-          .occupancy {
-            position: absolute;
-            display: inline-block;
-            display: none;
-            top: 4vw;
-            right: 4vw;
-            margin: 0vw 0 0 0;
-            padding: 1vw;
-            font-size: 5vw;
-            font-weight: bold;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-          }
+      //     .occupancy {
+      //       position: absolute;
+      //       display: inline-block;
+      //       display: none;
+      //       top: 4vw;
+      //       right: 4vw;
+      //       margin: 0vw 0 0 0;
+      //       padding: 1vw;
+      //       font-size: 5vw;
+      //       font-weight: bold;
+      //       background: rgba(0, 0, 0, 0.5);
+      //       border-radius: 50%;
+      //     }
 
-          .reserve {
-            position: absolute;
-            z-index: 1;
-            width: 8vw;
-            height: 8vw;
-            bottom: 1vw;
-            right: 1vw;
+      //     .reserve {
+      //       position: absolute;
+      //       z-index: 1;
+      //       width: 8vw;
+      //       height: 8vw;
+      //       bottom: 1vw;
+      //       right: 1vw;
 
-            &.reverse {
-              right: unset;
-              left: 1vw;
-            }
-          }
+      //       &.reverse {
+      //         right: unset;
+      //         left: 1vw;
+      //       }
+      //     }
 
-          &-bg {
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-          }
+      //     &-bg {
+      //       z-index: -1;
+      //       position: absolute;
+      //       top: 0;
+      //       bottom: 0;
+      //       left: 0;
+      //       right: 0;
+      //     }
 
-          .the-oasis {
-            background-image: url('/assets/images/tour/front_patio.jpg');
-            background-size: cover;
-            background-position: 60% 42%;
-          }
+      //     .the-oasis {
+      //       background-image: url('/assets/images/tour/front_patio.jpg');
+      //       background-size: cover;
+      //       background-position: 60% 42%;
+      //     }
 
-          .main-room {
-            background-image: url('/assets/images/private-parties/main_room.jpg');
-            background-size: 170%;
-            background-position: 60% 42%;
-          }
+      //     .main-room {
+      //       background-image: url('/assets/images/private-parties/main_room.jpg');
+      //       background-size: 170%;
+      //       background-position: 60% 42%;
+      //     }
 
-          .boat {
-            background-image: url('/assets/images/tour/boat_diagonal2.jpg');
-            background-size: cover;
-            background-position: 50% 50%;
-            background-repeat: no-repeat;
-          }
+      //     .boat {
+      //       background-image: url('/assets/images/tour/boat_diagonal2.jpg');
+      //       background-size: cover;
+      //       background-position: 50% 50%;
+      //       background-repeat: no-repeat;
+      //     }
 
-          .side-room {
-            background-image: url('/assets/images/private-parties/side_room.jpg');
-            background-size: 170%;
-            background-position: 60% 42%;
-          }
+      //     .side-room {
+      //       background-image: url('/assets/images/private-parties/side_room.jpg');
+      //       background-size: 170%;
+      //       background-position: 60% 42%;
+      //     }
 
-          .game-room {
-            background-image: url('/assets/images/tour/game_room6.jpg');
-            background-size: 170%;
-            background-position: 60% 42%;
-          }
+      //     .game-room {
+      //       background-image: url('/assets/images/tour/game_room6.jpg');
+      //       background-size: 170%;
+      //       background-position: 60% 42%;
+      //     }
 
-          .north-room {
-            background-image: url('/assets/images/tour/north_room4.jpg');
-            background-size: cover;
-            background-position: 50% 50%;
-          }
+      //     .north-room {
+      //       background-image: url('/assets/images/tour/north_room4.jpg');
+      //       background-size: cover;
+      //       background-position: 50% 50%;
+      //     }
 
-          .south-patio {
-            background-image: url('/assets/images/tour/south_patio2.jpg');
-            background-size: cover;
-            background-position: right 42%;
-          }
+      //     .south-patio {
+      //       background-image: url('/assets/images/tour/south_patio2.jpg');
+      //       background-size: cover;
+      //       background-position: right 42%;
+      //     }
 
-          .north-patio {
-            background-image: url('/assets/images/tour/north_patio6.jpg');
-            background-size: cover;
-            background-position: 50% bottom;
-            background-repeat: no-repeat;
-          }
-        }
-      }
+      //     .north-patio {
+      //       background-image: url('/assets/images/tour/north_patio6.jpg');
+      //       background-size: cover;
+      //       background-position: 50% bottom;
+      //       background-repeat: no-repeat;
+      //     }
+      //   }
+      // }
 
-      .occupancy-meter {
-        position: absolute;
-        bottom: -10%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 20vw;
-      }
-    }
-
-    .rental-map-container {
-      display: flex;
-      justify-content: center;
-      padding: 6vw 0 10vw;
-      .rental-map {
-        $mapSize: min(80vh, 80vw);
-        position: relative;
-        width: calc(1.2427 * $mapSize); // 3840 x 3090px native size, 1.2427 aspect
-        height: $mapSize;
-        background-image: url('/assets/images/Dive_Inn_Rental_Layout.png');
-        background-position: center;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        box-shadow: 0px 0px 20px 10px #000;
-        transition: background-position 1.0s ease, background-size 1.0s ease;
-
-        &.space-1 {
-          background-size: 288%;
-          background-position-x: 0;
-          background-position-y: 22%;
-        }
-
-        > div {
-          $circleSize: clamp(2rem, max(2vw, 4vh), 4rem);
-          $fontSize: clamp(0.5rem, max(1.5vw, 3vh), 4rem);
-          $bgColor: utility.$dive-black;
-          $color: utility.$dive-yellow;
-          position: absolute;
-          border-radius: 50%;
-          width: $circleSize;
-          height: $circleSize;
-          line-height: 1.15;
-          font-size: $fontSize;
-          text-align: center;
-          border: 3px solid $color;
-          color: $color;
-          background-color: $bgColor;
-          box-shadow: 0px 10px 10px 0px #000;
-          text-shadow: 1px 1px 3px #000;
-          font-family: 'Bevan', serif;
-
-          &.space-1 {
-            left: 16.6%;
-            top: 41%;
-          }
-          &.space-2 {
-            left: 28%;
-            top: 61%;
-          }
-          &.space-3 {
-            left: 43%;
-            top: 57%;
-          }
-          &.space-4 {
-            left: 50%;
-            top: 86.5%;
-          }
-          &.space-5 {
-            left: 77%;
-            top: 83.5%;
-          }
-          &.space-6 {
-            left: 77%;
-            top: 39%;
-          }
-          &.space-7 {
-            left: 38%;
-            top: 16%;
-          }
-        }
-      }
+      // .occupancy-meter {
+      //   position: absolute;
+      //   bottom: -10%;
+      //   left: 50%;
+      //   transform: translateX(-50%);
+      //   width: 20vw;
+      // }
     }
 
     .reservation-form-container {

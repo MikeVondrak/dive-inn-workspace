@@ -21,18 +21,7 @@ export class PrivatePartiesComponent implements OnInit {
     //'Gala, Soiree, Shindig, Bash, Affair'
   ];
   public fullscreen: boolean = false;
-  public zooms: Map<RentalSpaces, boolean> = new Map([
-    [RentalSpaces.SPACE1, false],
-    [RentalSpaces.SPACE2, false],
-    [RentalSpaces.SPACE3, false],
-    [RentalSpaces.SPACE4, false],
-    [RentalSpaces.SPACE5, false],
-    [RentalSpaces.SPACE6, false],
-    [RentalSpaces.SPACE7, false],
-  ]);
-  public rentalSpaces = RentalSpaces;
-  public zoom1: boolean = false;
-  
+    
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -48,12 +37,5 @@ export class PrivatePartiesComponent implements OnInit {
 
   onClick() {
     this.fullscreen = !this.fullscreen;
-  }
-
-  public toggleZoom(space: RentalSpaces) {
-    const zoomed = this.zooms.get(space);
-    console.log('ZOOM', zoomed);
-    this.zooms.set(space, !zoomed);
-    this.zoom1 = !this.zoom1;
   }
 }
