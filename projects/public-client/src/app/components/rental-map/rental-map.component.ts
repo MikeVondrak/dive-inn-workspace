@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { AnimationEvent } from '@angular/animations';
 import { rentalMapAnimations } from '../../animations/rental-map.animations';
-import { RentalSpaces } from '../../models/rental-map.model';
+import { OpacityAnimationStates, RentalSpaces } from '../../models/rental-map.model';
 
 @Component({
   selector: 'app-rental-map',
@@ -30,6 +31,10 @@ export class RentalMapComponent implements OnInit {
   ]);
   public rentalSpaces = RentalSpaces;
 
+  public overlayAnimation: OpacityAnimationStates = OpacityAnimationStates.HIDDEN;
+  public mapAnimation: RentalSpaces = RentalSpaces.DEFAULT;
+  public mapMarkerAnimation: OpacityAnimationStates = OpacityAnimationStates.SHOWING;
+
   public zoomed: boolean = false;
 
   constructor() {}
@@ -41,13 +46,36 @@ export class RentalMapComponent implements OnInit {
     $event.preventDefault();
     if (space) {
       const zoomed = this.zooms.get(space);
-      console.log('ZOOM', zoomed);
       this.zooms.set(space, !zoomed);
+      console.log('ZOOM', zoomed);
     } else {
       this.zooms.forEach((val, key, map) => {
         map.set(key, false);
       });
     }
     this.zoomed = Array.from(this.zooms.values()).includes(true);
+    this.mapAnimation = space || RentalSpaces.DEFAULT;
+  }
+
+  public mapMarkerAnimationDone($event: AnimationEvent) {
+    console.log('mapMarkerAnimationDone', $event.toState);
+    // Check which direction animation is playing
+    if ($event.toState === OpacityAnimationStates.HIDDEN) {
+      // if hiding, set the map animation flag to change
+      this.mapAnimation = RentalSpaces.SPACE1;
+    } else {
+      // if showing, animation is done now
+    }
+  }
+  public mapAnimationDone($event: AnimationEvent) {
+    console.log('mapAnimationDone', $event.toState);
+    // Check which direction animation is playing
+    if ($event.toState === RentalSpaces.SPACE1) {
+      // if zooming in, set the overlay animation flag to change
+      this.overlayAnimation = OpacityAnimationStates.SHOWING;
+    } else {
+      // if zooming out, set the map marker animation flag
+      this.mapMarkerAnimation = OpacityAnimationStates.SHOWING;
+    }
   }
 }

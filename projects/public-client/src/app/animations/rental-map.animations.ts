@@ -12,27 +12,62 @@ import {
   sequence,
   animateChild,
 } from '@angular/animations';
+import { OpacityAnimationStates, RentalSpaces } from '../models/rental-map.model';
 
 // https://www.techiediaries.com/angular-router-animations/
 
-const hideOverlayAnimation = '0.33s linear';
-const showOverlayAnimation = '0.33s linear';
+const hideMarkerAnimation = '0.33s linear';
+const showMarkerAnimation = '0.5s linear';
 
 export const rentalMapAnimations = [ 
-  trigger('spaceMarkerTransitions', [
-    state('HIDE', style({
-      opacity: 0,
-    })),
-    state('SHOW', style({
-      opacity: 1,
-    })),
+  trigger('basicFadeTransitions', [
     transition(':enter', [
       style({ opacity: 0 }),
-      animate('0.5s 1s ease', style({ opacity: 1 }))
+      animate(showMarkerAnimation, style({ opacity: 1 }))
     ]),
     transition(':leave', [
       style({ opacity: 1 }),
-      animate('0.25s ease', style({ opacity: 0 }))
+      animate(hideMarkerAnimation, style({ opacity: 0 }))
     ]),
+  ]),
+  trigger('mapMarkerTransitions', [
+    state(OpacityAnimationStates.HIDDEN, style({ opacity: 0 })),
+    state(OpacityAnimationStates.SHOWING, style({ opacity: 1 })),
+    transition(`${OpacityAnimationStates.HIDDEN } <=> ${OpacityAnimationStates.SHOWING}`, [
+      animate(showMarkerAnimation)
+    ])
+  ]),
+  trigger('mapTransitions', [
+    state(RentalSpaces.DEFAULT, 
+      style({ 
+        backgroundSize: '100%',
+        backgroundPositionX: 'center',
+        backgroundPositionY: 'center',
+      })
+    ),
+    state(RentalSpaces.LEGEND, 
+      style({ 
+        backgroundSize: '220%',
+        backgroundPositionX: 'right',
+        backgroundPositionY: 'top',
+      })
+    ),
+    state(RentalSpaces.SPACE1, 
+      style({ 
+        backgroundSize: '288%',
+        backgroundPositionX: '0',
+        backgroundPositionY: '22%',
+      })
+    ),
+    state(RentalSpaces.SPACE2, 
+      style({ 
+        backgroundSize: '320%',
+        backgroundPositionX: '37%',
+        backgroundPositionY: '68%',
+      })
+    ),
+    transition(`* <=> *`, [
+      animate(showMarkerAnimation)
+    ])
   ])
 ];
