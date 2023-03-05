@@ -42,11 +42,12 @@ export class RentalMapComponent implements OnInit {
   ngOnInit(): void {}
 
   public toggleZoom($event: Event, space: RentalSpaces | null) {
+    console.log('toggleZoom', this.zoomed, this.mapAnimation);
     $event.stopPropagation();
     $event.preventDefault();
     if (space) {
+      this.zooms.set(space, true);
       const zoomed = this.zooms.get(space);
-      this.zooms.set(space, !zoomed);
       console.log('ZOOM', zoomed);
     } else {
       this.zooms.forEach((val, key, map) => {
@@ -55,6 +56,7 @@ export class RentalMapComponent implements OnInit {
     }
     this.zoomed = Array.from(this.zooms.values()).includes(true);
     this.mapAnimation = space || RentalSpaces.DEFAULT;
+    console.log('toggleZoom done', this.zoomed, this.mapAnimation);
   }
 
   public mapMarkerAnimationDone($event: AnimationEvent) {
