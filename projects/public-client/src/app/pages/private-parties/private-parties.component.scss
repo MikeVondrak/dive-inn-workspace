@@ -453,15 +453,15 @@ $zoomAnimationTime: 0.6s;
         background-size: 100%;
         background-repeat: no-repeat;
         box-shadow: 0px 0px 20px 10px #000;
-        transition: background-position 1.0s ease, background-size 1.0s ease;
+        //transition: background-position 1.0s ease, background-size 1.0s ease;
 
         &.space-1 {
           background-size: 288%;
           background-position-x: 0;
-          background-position-y: 22%;
+          background-position-y: 21.4%;
         }
 
-        > div {
+        .space {
           $circleSize: clamp(2rem, max(2vw, 4vh), 4rem);
           $fontSize: clamp(0.5rem, max(1.5vw, 3vh), 4rem);
           $bgColor: utility.$dive-black;
@@ -479,6 +479,7 @@ $zoomAnimationTime: 0.6s;
           box-shadow: 0px 10px 10px 0px #000;
           text-shadow: 1px 1px 3px #000;
           font-family: 'Bevan', serif;
+          user-select: none;
 
           &.space-1 {
             left: 16.6%;
@@ -505,8 +506,19 @@ $zoomAnimationTime: 0.6s;
             top: 39%;
           }
           &.space-7 {
-            left: 38%;
-            top: 16%;
+            left: 48%;
+            top: 14%;
+          }
+        }
+        .space-overlay {
+          position: absolute;
+          background: rgba(0,0,0,0.9);
+
+          &.space-1-overlay {
+            top: 0;
+            left: 0;
+            height: 59.5%;
+            width: 100%;
           }
         }
       }

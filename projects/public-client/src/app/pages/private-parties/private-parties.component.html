@@ -30,21 +30,36 @@
     <div class="section-red">
       <div class="rental-map-container">
         <!-- <img src="assets/images/Dive_Inn_Rental_Layout.png"> -->
-        <div class="rental-map"
-          [ngClass]="{
-            'space-1': zooms.get(rentalSpaces.SPACE1),
-            'space-2': zooms.get(rentalSpaces.SPACE2),
-            'space-3': zooms.get(rentalSpaces.SPACE3)
-          }"
+        <div 
+          [@mapZoom]="rentalMapAnimationState"
+          (@mapZoom.done)="rentalMapAnimationDone($event)"
+          class="rental-map" 
+          (click)="toggleZoom($event, null, true)"
         >
-          <div *ngIf="zooms.get(rentalSpaces.SPACE1)"
-            class="space-1" (click)="toggleZoom(rentalSpaces.SPACE1)">1</div>
-          <div class="space-2">2</div>
-          <div class="space-3">3</div>
-          <div class="space-4">4</div>
-          <div class="space-5">5</div>
-          <div class="space-6">6</div>
-          <div class="space-7">7</div>
+          <div *ngIf="!zoomed; else space1" 
+            class="space space-1" 
+            [@buttonFade]="buttonFadeState" 
+            (@buttonFade.done)="buttonAnimationDone($event)"
+            (click)="toggleZoom($event, rentalSpaces.SPACE1)"
+          >
+            1
+          </div>
+          <ng-template #space1>
+            <div 
+              [@lateFade]="overlayAnimationState"
+              (@lateFade.done)="overlayAnimationDone($event)"
+              class="space-overlay space-1-overlay"
+            >
+              <h2>The Oasis</h2>
+            </div>
+          </ng-template>
+
+          <div *ngIf="!zoomed" class="space-2 space">2</div>
+          <div *ngIf="!zoomed" class="space-3 space">3</div>
+          <div *ngIf="!zoomed" class="space-4 space">4</div>
+          <div *ngIf="!zoomed" class="space-5 space">5</div>
+          <div *ngIf="!zoomed" class="space-6 space">6</div>
+          <div *ngIf="!zoomed" class="space-7 space">7</div>
         </div>
       </div>
       <!-- <div id="Photos" class="carousel-container">
