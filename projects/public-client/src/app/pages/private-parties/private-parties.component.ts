@@ -4,11 +4,14 @@ import { Observable, Subject, takeUntil, map } from 'rxjs';
 import { HeroBannerOrientationConfigs } from '../../models/hero-banner.model';
 import { RentalSpaces } from '../../models/rental-map.model';
 import { privatePartiesPageHeroBannerConfigs } from '../private-parties/private-parties.hero-banner.config';
+import { rentalMapAnimations } from '../../animations/rental-map.animations';
+import { AnimationEvent } from '@angular/animations';
 
 @Component({
   selector: 'app-private-parties',
   templateUrl: './private-parties.component.html',
   styleUrls: ['./private-parties.component.scss'],
+  animations: [rentalMapAnimations]
 })
 export class PrivatePartiesComponent implements OnInit {
 
