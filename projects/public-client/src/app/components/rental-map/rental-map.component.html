@@ -10,17 +10,78 @@
     (@mapTransitions.done)="mapAnimationDone($event)"
     class="rental-map"
   >
-    <div *ngIf="overlayAnimation === rentalSpaces.SPACE1"
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.LEGEND"
       @overlayTransitions
       (@overlayTransitions.done)="overlayAnimationDone($event)"
-      class="overlay overlay-1">
-      <h2>The Oasis</h2>
+      class="overlay"
+    >
+      <div class="overlay-legend">
+        <h2>Legend</h2>
+      </div>
     </div>
-    <div *ngIf="overlayAnimation === rentalSpaces.SPACE2"
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE1"
       @overlayTransitions
       (@overlayTransitions.done)="overlayAnimationDone($event)"
-      class="overlay overlay-2">
-      <h2>The Boat</h2>
+      class="overlay"
+    >
+      <div class="overlay-1a"><h2>The Oasis</h2></div>
+      <div class="overlay-1b"><span class="occupancy">18 - 24</span></div>
+    </div>
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE2"
+      @overlayTransitions
+      (@overlayTransitions.done)="overlayAnimationDone($event)"
+      class="overlay"
+    >
+      <div class="overlay-2a"><h2>The Boat</h2></div>
+      <div class="overlay-2b"><span class="occupancy">1 - 13</span></div>
+    </div>
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE3"
+      @overlayTransitions
+      (@overlayTransitions.done)="overlayAnimationDone($event)"
+      class="overlay"
+    >
+      <div class="overlay-3a"><h2>The Galley</h2></div>
+      <div class="overlay-3b"><span class="occupancy">50 - 60</span></div>
+    </div>
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE4"
+      @overlayTransitions
+      (@overlayTransitions.done)="overlayAnimationDone($event)"
+      class="overlay"
+    >
+      <div class="overlay-4a"><h2>The Cabin</h2></div>
+      <div class="overlay-4b"><span class="occupancy">40 - 50</span></div>
+    </div>
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE5"
+      @overlayTransitions
+      (@overlayTransitions.done)="overlayAnimationDone($event)"
+      class="overlay"
+    >
+      <div class="overlay-5a"><h2>The Deck</h2></div>
+      <div class="overlay-5b"><span class="occupancy">80 - 100</span></div>
+    </div>
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE6"
+      @overlayTransitions
+      (@overlayTransitions.done)="overlayAnimationDone($event)"
+      class="overlay"
+    >
+      <div class="overlay-6a"><h2>The Saloon</h2></div>
+      <div class="overlay-6b"><span class="occupancy">40 - 70</span></div>
+    </div>
+    <div
+      *ngIf="overlayAnimation === rentalSpaces.SPACE7"
+      @overlayTransitions
+      (@overlayTransitions.done)="overlayAnimationDone($event)"
+      class="overlay"
+    >
+      <div class="overlay-7a"><h2>The Cabana</h2></div>
+      <div class="overlay-7b"><span class="occupancy">10 - 250</span></div>
     </div>
 
     <!-- Markers for spaces with number in circle -->
@@ -31,7 +92,7 @@
       (click)="toggleZoom($event, rentalSpaces.SPACE1)"
     >
       1
-    </div>    
+    </div>
     <div
       [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-2"

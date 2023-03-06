@@ -19,7 +19,7 @@ import { OpacityAnimationStates, RentalSpaces } from '../models/rental-map.model
 const markerAnimation = '0.2s linear';
 const mapZoomInAnimation = '0.75s ease-in-out';
 const mapZoomOutAnimation = '0.5s ease-out';
-const overlayAnimation = '0.5s ease-in';
+const overlayAnimation = '0.3s ease-in';
 
 export const rentalMapAnimations = [ 
   trigger('overlayTransitions', [
@@ -54,14 +54,44 @@ export const rentalMapAnimations = [
     ),
     state(RentalSpaces.SPACE1, 
       style({ 
-        backgroundSize: '288%',
-        backgroundPosition: '0 21.5%',
+        backgroundSize: '240%',
+        backgroundPosition: '0 12%',
       })
     ),
     state(RentalSpaces.SPACE2, 
       style({ 
         backgroundSize: '320%',
-        backgroundPosition: '37% 68%',
+        backgroundPosition: '37% 62.75%',
+      })
+    ),
+    state(RentalSpaces.SPACE3, 
+      style({ 
+        backgroundSize: '220%',
+        backgroundPosition: '62% 53%',
+      })
+    ),
+    state(RentalSpaces.SPACE4, 
+      style({ 
+        backgroundSize: '270%',
+        backgroundPosition: '36% 100%',
+      })
+    ),
+    state(RentalSpaces.SPACE5, 
+      style({ 
+        backgroundSize: '180%',
+        backgroundPosition: '100% 100%',
+      })
+    ),
+    state(RentalSpaces.SPACE6, 
+      style({ 
+        backgroundSize: '250%',
+        backgroundPosition: '92% 58%',
+      })
+    ),
+    state(RentalSpaces.SPACE7, 
+      style({ 
+        backgroundSize: '105%',
+        backgroundPosition: '0% 0%',
       })
     ),
     transition(`${RentalSpaces.DEFAULT} => *`, [
