@@ -31,9 +31,9 @@ export class RentalMapComponent implements OnInit {
   ]);
   public rentalSpaces = RentalSpaces;
 
-  public overlayAnimation: OpacityAnimationStates = OpacityAnimationStates.HIDDEN;
-  public mapAnimation: RentalSpaces = RentalSpaces.DEFAULT;
   public mapMarkerAnimation: OpacityAnimationStates = OpacityAnimationStates.SHOWING;
+  public mapAnimation: RentalSpaces = RentalSpaces.DEFAULT;
+  public overlayAnimation: OpacityAnimationStates = OpacityAnimationStates.HIDDEN;
 
   public zoomed: boolean = false;
 
@@ -48,7 +48,8 @@ export class RentalMapComponent implements OnInit {
     $event.stopPropagation();
     $event.preventDefault();
 
-    if (space) {
+    // check if already zoomed to allow clicking opacity 0 buttons to reset map
+    if (space && !this.zoomed) {
       // if calling with a space defined we are zooming into that space
       this.zooms.set(space, true);
       const zoomed = this.zooms.get(space);

@@ -17,14 +17,15 @@ import { OpacityAnimationStates, RentalSpaces } from '../models/rental-map.model
 // https://www.techiediaries.com/angular-router-animations/
 
 const hideMarkerAnimation = '0.2s linear';
-const showMarkerAnimation = '0.2s linear';
-const mapZoomAnimation = '1s ease-in-out';
+const markerAnimation = '0.2s linear';
+const mapZoomInAnimation = '0.75s ease-in-out';
+const mapZoomOutAnimation = '0.5s ease-out';
 
 export const rentalMapAnimations = [ 
   trigger('basicFadeTransitions', [
     transition(':enter', [
       style({ opacity: 0 }),
-      animate(showMarkerAnimation, style({ opacity: 1 }))
+      animate(markerAnimation, style({ opacity: 1 }))
     ]),
     transition(':leave', [
       style({ opacity: 1 }),
@@ -35,7 +36,7 @@ export const rentalMapAnimations = [
     state(OpacityAnimationStates.HIDDEN, style({ opacity: 0 })),
     state(OpacityAnimationStates.SHOWING, style({ opacity: 1 })),
     transition(`${OpacityAnimationStates.HIDDEN } <=> ${OpacityAnimationStates.SHOWING}`, [
-      animate(showMarkerAnimation)
+      animate(markerAnimation)
     ])
   ]),
   trigger('mapTransitions', [    
@@ -63,9 +64,13 @@ export const rentalMapAnimations = [
         backgroundPosition: '37% 68%',
       })
     ),
-    transition(`* <=> *`, [
+    transition(`${RentalSpaces.DEFAULT} => *`, [
       query('@*', [animateChild()], { optional: true }), // so e.g. buttons will fade in/out
-      animate(mapZoomAnimation),
+      animate(mapZoomInAnimation),
+    ]),
+    transition(`* => ${RentalSpaces.DEFAULT}`, [
+      query('@*', [animateChild()], { optional: true }), // so e.g. buttons will fade in/out
+      animate(mapZoomOutAnimation),
     ])
   ])
 ];
