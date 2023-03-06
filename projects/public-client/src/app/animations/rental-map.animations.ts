@@ -16,9 +16,9 @@ import { OpacityAnimationStates, RentalSpaces } from '../models/rental-map.model
 
 // https://www.techiediaries.com/angular-router-animations/
 
-const hideMarkerAnimation = '0.1s linear';
-const showMarkerAnimation = '0.5s linear';
-const mapZoomAnimation = '0.75s ease-in-out';
+const hideMarkerAnimation = '0.2s linear';
+const showMarkerAnimation = '0.2s linear';
+const mapZoomAnimation = '1s ease-in-out';
 
 export const rentalMapAnimations = [ 
   trigger('basicFadeTransitions', [
@@ -54,7 +54,7 @@ export const rentalMapAnimations = [
     state(RentalSpaces.SPACE1, 
       style({ 
         backgroundSize: '288%',
-        backgroundPosition: '0 22%',
+        backgroundPosition: '0 21.5%',
       })
     ),
     state(RentalSpaces.SPACE2, 

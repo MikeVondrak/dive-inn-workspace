@@ -1,6 +1,7 @@
 <div>Map: {{ this.mapAnimation }}</div>
 <div>Marker: {{ this.mapMarkerAnimation }}</div>
 <div>Overlay: {{ this.overlayAnimation }}</div>
+<div>Next: {{ nextSpace }}</div>
 
 <div class="rental-map-container">
   <div (click)="toggleZoom($event, null)"
@@ -8,57 +9,57 @@
     (@mapTransitions.done)="mapAnimationDone($event)"
     class="rental-map"    
   >
-    <div *ngIf="!zoomed"
-      @basicFadeTransitions
-      (@basicFadeTransitions.done)="mapMarkerAnimationDone($event)"
+    <div
+      [@mapMarkerTransitions]="mapMarkerAnimation"
+      (@mapMarkerTransitions.done)="mapMarkerAnimationDone($event)"
       class="number-circle space-1" (click)="toggleZoom($event, rentalSpaces.SPACE1)"
     >
       1
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
     [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-2" (click)="toggleZoom($event, rentalSpaces.SPACE2)"
     >
       2
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
     [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-3" (click)="toggleZoom($event, rentalSpaces.SPACE3)"
     >
       3
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
     [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-4" (click)="toggleZoom($event, rentalSpaces.SPACE4)"
     >
       4
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
     [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-5" (click)="toggleZoom($event, rentalSpaces.SPACE5)"
     >
       5
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
       [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-6" (click)="toggleZoom($event, rentalSpaces.SPACE6)"
     >
       6
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
       [@mapMarkerTransitions]="mapMarkerAnimation"
       class="number-circle space-7" (click)="toggleZoom($event, rentalSpaces.SPACE7)"
     >
       7
     </div>
 
-    <div *ngIf="!zoomed"
+    <div
       [@mapMarkerTransitions]="mapMarkerAnimation"
       class="legend-zoom" (click)="toggleZoom($event, rentalSpaces.LEGEND)">
       <img src="/assets/images/Magnifying_Glass.svg">
