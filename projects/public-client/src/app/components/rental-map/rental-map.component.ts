@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { rentalMapAnimations } from '../../animations/rental-map.animations';
 import { OpacityAnimationStates, RentalSpaces } from '../../models/rental-map.model';
@@ -33,18 +33,18 @@ export class RentalMapComponent implements OnInit {
 
   public mapMarkerAnimation: OpacityAnimationStates = OpacityAnimationStates.SHOWING;
   public mapAnimation: RentalSpaces = RentalSpaces.DEFAULT;
-  public overlayAnimation: OpacityAnimationStates = OpacityAnimationStates.HIDDEN;
+  public overlayAnimation: RentalSpaces = RentalSpaces.DEFAULT;
 
   public zoomed: boolean = false;
 
   public nextSpace: RentalSpaces = RentalSpaces.DEFAULT;
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
   public toggleZoom($event: Event, space: RentalSpaces | null) {
-    console.log('toggleZoom', this.zoomed, space, this.mapAnimation);
+    // prevent multiple triggers of a single click
     $event.stopPropagation();
     $event.preventDefault();
 
@@ -52,9 +52,7 @@ export class RentalMapComponent implements OnInit {
     if (space && !this.zoomed) {
       // if calling with a space defined we are zooming into that space
       this.zooms.set(space, true);
-      const zoomed = this.zooms.get(space);
-      this.nextSpace = space;
-      console.log('ZOOMING', this.nextSpace, this.mapMarkerAnimation);
+      this.nextSpace = space;      
       this.mapMarkerAnimation = OpacityAnimationStates.HIDDEN;
     } else {
       // if calling with null we are zooming out, reset all zooms to false
@@ -62,34 +60,51 @@ export class RentalMapComponent implements OnInit {
         map.set(key, false);
       });
       this.nextSpace = RentalSpaces.DEFAULT;
-      this.mapAnimation = this.nextSpace;
+      this.overlayAnimation = this.nextSpace; // start animation chain
     }
     this.zoomed = Array.from(this.zooms.values()).includes(true);
-    //this.mapAnimation = space || RentalSpaces.DEFAULT;    
-    console.log('toggleZoom done', this.zoomed, this.mapAnimation, this.nextSpace);
   }
 
+  /**
+   * Callback for map marker animation complete
+   * @param $event AnimationEvent
+   */
   public mapMarkerAnimationDone($event: AnimationEvent) {
-    console.log('mapMarkerAnimationDone', $event.toState);
     // Check which direction animation is playing
     if ($event.toState === OpacityAnimationStates.HIDDEN) {
       // if hiding, set the map animation flag to change
-      console.log('mapMarkerAnimationDone => HIDDEN', this.nextSpace);
       this.mapAnimation = this.nextSpace;
-      //this.nextSpace = RentalSpaces.DEFAULT;
-    } else {
-      // if showing, animation is done now
-    }
+    } 
+    // if showing the map markers, animation is finished
   }
+
+  /**
+   * Callback for map zoom animation complete
+   * @param $event AnimationEvent
+   */
   public mapAnimationDone($event: AnimationEvent) {
-    console.log('mapAnimationDone', $event.toState);
     // Check which direction animation is playing, if not returning to default then we're zooming in
     if ($event.toState !== RentalSpaces.DEFAULT) {
-      // if zooming in, set the overlay animation flag to change
-      this.overlayAnimation = OpacityAnimationStates.SHOWING;
+      // if zooming in, trigger the overlay appear animation
+      this.overlayAnimation = this.nextSpace;
     } else {
-      // if zooming out, --map marker animation is handled by :enter / :leave
+      // if zooming out, trigger the map marker appear animation
       this.mapMarkerAnimation = OpacityAnimationStates.SHOWING;
+    }
+  }
+
+  /**
+   * Callback for map zoom animation complete
+   * @param $event AnimationEvent
+   */
+  public overlayAnimationDone($event: AnimationEvent) {
+    // Check which direction animation is playing, if not returning to default then we're zooming in
+    if (this.nextSpace === RentalSpaces.DEFAULT) {
+      // if zooming out, trigger the map marker disappear animation
+      this.mapAnimation = this.nextSpace;
+      this.cdr.detectChanges(); // must detect changes here or map animation won't trigger
+    } else {
+      // if zooming in, animation is finished
     }
   }
 }
