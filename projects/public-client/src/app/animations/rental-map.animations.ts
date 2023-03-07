@@ -19,7 +19,7 @@ import { OpacityAnimationStates, RentalSpaces } from '../models/rental-map.model
 const markerAnimation = '0.2s linear';
 const mapZoomInAnimation = '0.75s ease-in-out';
 const mapZoomOutAnimation = '0.5s ease-out';
-const overlayAnimation = '0.3s ease-in';
+const overlayAnimation = '0.2s ease-in';
 
 export const rentalMapAnimations = [ 
   trigger('overlayTransitions', [

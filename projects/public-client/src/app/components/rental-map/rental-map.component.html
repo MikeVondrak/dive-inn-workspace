@@ -12,82 +12,79 @@
   >
     <app-rental-space-overlay      
       title="Legend"
-      [positionCss]="{ info: ['0%','11.05%','0%','0%'], aside: ['50%','50%','50%','50%']}"
+      [positionCss]="{ info: ['0%','11.05%','0%','0%'], aside: ['50%','50%','50%','50%'] }"
       [overlayId]="rentalSpaces.LEGEND"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
       capacity=""
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE1"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-1a">
-        <h2>The Oasis</h2>        
-      </div>
-      <div class="overlay-1b"><span class="occupancy">18 - 24</span></div>
-    </div>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE2"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-2a">
-        <h2>The Boat</h2>
-        <img src="/assets/images/tour/boat_diagonal2.jpg" alt="The Boat - Image 1">
-        <img src="/assets/images/tour/boat_front.jpg" alt="The Boat - Image 2">
-      </div>
-      <div class="overlay-2b"><span class="occupancy">1 - 13</span></div>
-    </div>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE3"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-3a"><h2>The Galley</h2></div>
-      <div class="overlay-3b"><span class="occupancy">50 - 60</span></div>
-    </div>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE4"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-4a"><h2>The Cabin</h2></div>
-      <div class="overlay-4b"><span class="occupancy">40 - 50</span></div>
-    </div>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE5"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-5a"><h2>The Deck</h2></div>
-      <div class="overlay-5b"><span class="occupancy">80 - 100</span></div>
-    </div>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE6"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-6a"><h2>The Saloon</h2></div>
-      <div class="overlay-6b"><span class="occupancy">40 - 70</span></div>
-    </div>
-    <div
-      *ngIf="overlayAnimation === rentalSpaces.SPACE7"
-      @overlayTransitions
-      (@overlayTransitions.done)="overlayAnimationDone2($event)"
-      class="overlay"
-    >
-      <div class="overlay-7a"><h2>The Cabana</h2></div>
-      <div class="overlay-7b"><span class="occupancy">10 - 250</span></div>
-    </div>
+    <app-rental-space-overlay
+      title="The Oasis"
+      [positionCss]="{ info: ['0%','0%','33.3%','0%'], aside: ['66.6%','0%','0%','83%'] }"
+      [overlayId]="rentalSpaces.SPACE1"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[]"
+      capacity="18 - 24"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
+    <app-rental-space-overlay
+      title="The Boat"
+      [positionCss]="{ info: ['0%','0%','0%','29%'], aside: ['0%','71%','73%','0%'] }"
+      [overlayId]="rentalSpaces.SPACE2"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[
+        '/assets/images/tour/boat_diagonal2.jpg',
+        '/assets/images/tour/boat_front.jpg'
+      ]"
+      capacity="1 - 13"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
+    <app-rental-space-overlay
+      title="The Galley"
+      [positionCss]="{ info: ['0%','0%','50%','0%'], aside: ['50%','0%','0%','56%'] }"
+      [overlayId]="rentalSpaces.SPACE3"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[]"
+      capacity="50 - 60"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
+    <app-rental-space-overlay
+      title="The Cabin"
+      [positionCss]="{ info: ['0%','41%','0%','0%'], aside: ['0%','0%','57.5%','59%'] }"
+      [overlayId]="rentalSpaces.SPACE4"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[]"
+      capacity="40 - 50"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
+    <app-rental-space-overlay
+      title="The Deck"
+      [positionCss]="{ info: ['0%','0%','48%','0%'], aside: ['52%','73%','0%','0%'] }"
+      [overlayId]="rentalSpaces.SPACE5"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[]"
+      capacity="80 - 100"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
+    <app-rental-space-overlay
+      title="The Saloon"
+      [positionCss]="{ info: ['35%','0%','0%','0%'], aside: ['0%','83%','65%','0%'] }"
+      [overlayId]="rentalSpaces.SPACE6"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[]"
+      capacity="40 - 70"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
+    <app-rental-space-overlay
+      title="The Cabana"
+      [positionCss]="{ info: ['37%','20%','0%','0%'], aside: ['37%','0%','0%','80%'] }"
+      [overlayId]="rentalSpaces.SPACE7"
+      [animationState]="overlayAnimation"
+      [imageUrls]="[]"
+      capacity="10 - 250"
+      (animationDone)="overlayAnimationDone($event)"
+    ></app-rental-space-overlay>
 
     <!-- Markers for spaces with number in circle -->
     <div

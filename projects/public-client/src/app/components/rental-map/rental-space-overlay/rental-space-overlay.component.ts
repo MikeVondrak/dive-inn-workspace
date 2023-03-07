@@ -44,8 +44,6 @@ export class RentalSpaceOverlayComponent implements OnInit {
     this.cssAsideRight = this.positionCss.aside[1];
     this.cssAsideBottom = this.positionCss.aside[2];
     this.cssAsideLeft = this.positionCss.aside[3];
-
-    console.log('!!!!', this.overlayId, this.animationState);
   }
 
   public onAnimationDone(event: AnimationEvent) {
