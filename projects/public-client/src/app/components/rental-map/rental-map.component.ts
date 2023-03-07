@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Inp
 import { AnimationEvent } from '@angular/animations';
 import { rentalMapAnimations } from '../../animations/rental-map.animations';
 import { OpacityAnimationStates, RentalSpaces } from '../../models/rental-map.model';
+import { RentalSpaceOverlayAnimationEvent } from '../../models/rental-map.model';
 
 @Component({
   selector: 'app-rental-map',
@@ -97,7 +98,7 @@ export class RentalMapComponent implements OnInit {
    * Callback for map zoom animation complete
    * @param $event AnimationEvent
    */
-  public overlayAnimationDone($event: AnimationEvent) {
+  public overlayAnimationDone(input: RentalSpaceOverlayAnimationEvent) {
     // Check which direction animation is playing, if not returning to default then we're zooming in
     if (this.nextSpace === RentalSpaces.DEFAULT) {
       // if zooming out, trigger the map marker disappear animation
@@ -106,5 +107,9 @@ export class RentalMapComponent implements OnInit {
     } else {
       // if zooming in, animation is finished
     }
+  }
+
+  public overlayAnimationDone2(input: AnimationEvent) {
+
   }
 }

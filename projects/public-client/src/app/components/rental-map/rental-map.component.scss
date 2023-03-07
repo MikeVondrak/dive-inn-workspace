@@ -104,13 +104,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        //background-color: rgba(100, 0, 0, 0.5);
       }
 
       h2 {
         font-size: 6vw;
         margin: 0;
-        padding: 0;
+        padding: 1vw;
         line-height: 1;
+      }
+      img {
+        width: 100%;
       }
 
       .overlay-legend {

@@ -1,0 +1,17 @@
+<div *ngIf="animationState === overlayId"
+  @overlayTransitions
+  (@overlayTransitions.done)="onAnimationDone($event)"
+>
+  <div class="overlay info-container">
+    <div class="info-content">
+      <h2>{{ title }}</h2>
+      <div class="info-album-container">
+        <!-- <img *ngFor="url of imageUrls; let i = index" [src]="imageUrls[i]" /> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay aside-container">
+    {{ capacity }}
+  </div>
+</div> 

@@ -15,6 +15,8 @@ import { ReservationFormComponent } from './reservation-form/reservation-form.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RentalMapComponent } from './rental-map/rental-map.component';
+import { RentalSpaceOverlayComponent } from './rental-map/rental-space-overlay/rental-space-overlay.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { RentalMapComponent } from './rental-map/rental-map.component';
     CarouselPaneComponent,
     ReservationFormComponent,
     RentalMapComponent,
+    RentalSpaceOverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { RentalMapComponent } from './rental-map/rental-map.component';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    //BrowserAnimationsModule,
   ],
   exports: [
     MouseTrackerComponent,
@@ -48,6 +52,7 @@ import { RentalMapComponent } from './rental-map/rental-map.component';
     CarouselComponent,
     ReservationFormComponent,
     RentalMapComponent,
+    RentalSpaceOverlayComponent,
   ]
 })
 export class ComponentsModule { }
