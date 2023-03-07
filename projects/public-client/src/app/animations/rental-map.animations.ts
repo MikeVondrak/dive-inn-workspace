@@ -48,7 +48,7 @@ export const rentalMapAnimations = [
     ),
     state(RentalSpaces.LEGEND, 
       style({ 
-        backgroundSize: '220%',
+        backgroundSize: '210%',
         backgroundPosition: 'right top',
       })
     ),
