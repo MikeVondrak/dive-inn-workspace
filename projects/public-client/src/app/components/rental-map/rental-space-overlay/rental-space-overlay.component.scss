@@ -4,7 +4,7 @@
   .overlay {
     z-index: 0;
     position: absolute;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,1.9);
     
     h2 {
       font-size: 6vw;
@@ -22,6 +22,19 @@
       right: var(--infoRight);
       bottom: var(--infoBottom);
       left: var(--infoLeft);
+
+      .info-album-container {
+        position: relative;
+        
+        img {
+          position: relative;
+        }
+        .image-frame {
+          position: absolute;
+          top: 0; right: 0; bottom: 0; left: 0;
+          box-shadow: 0px 0px 6vw 6vw #000 inset;
+        }
+      }
     }
   
     &.aside-container {
@@ -35,12 +48,21 @@
       justify-content: center;
       align-items: center;
   
-      font-size: 4vw;
-      font-weight: bold;
+      .capacity-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-      span {
-        padding: 2vw;
-        text-align: center;
+        font-size: clamp(0.5rem, 2vw, 3rem);
+        font-weight: bold;
+
+        .number {
+          font-size: clamp(1rem, 3vw, 4rem);
+        }
+      }
+      .person {
+        width: 3.7vw;
+        margin-left: 1vw;
       }
     }
   }

@@ -16,7 +16,7 @@
       [overlayId]="rentalSpaces.LEGEND"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity=""
+      [capacity]="null"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
@@ -25,7 +25,7 @@
       [overlayId]="rentalSpaces.SPACE1"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity="18 - 24"
+      [capacity]="[18,24]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
@@ -34,19 +34,19 @@
       [overlayId]="rentalSpaces.SPACE2"
       [animationState]="overlayAnimation"
       [imageUrls]="[
-        '/assets/images/tour/boat_diagonal2.jpg',
-        '/assets/images/tour/boat_front.jpg'
+        '/assets/images/tour/boat_diagonal2.jpg',        
       ]"
-      capacity="1 - 13"
+      [capacity]="[1,13]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
+    <!-- '/assets/images/tour/boat_front.jpg' -->
     <app-rental-space-overlay
       title="The Galley"
       [positionCss]="{ info: ['0%','0%','50%','0%'], aside: ['50%','0%','0%','56%'] }"
       [overlayId]="rentalSpaces.SPACE3"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity="50 - 60"
+      [capacity]="[50,60]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
@@ -55,7 +55,7 @@
       [overlayId]="rentalSpaces.SPACE4"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity="40 - 50"
+      [capacity]="[40,50]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
@@ -64,7 +64,7 @@
       [overlayId]="rentalSpaces.SPACE5"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity="80 - 100"
+      [capacity]="[80,100]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
@@ -73,7 +73,7 @@
       [overlayId]="rentalSpaces.SPACE6"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity="40 - 70"
+      [capacity]="[40,70]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
@@ -82,7 +82,7 @@
       [overlayId]="rentalSpaces.SPACE7"
       [animationState]="overlayAnimation"
       [imageUrls]="[]"
-      capacity="10 - 250"
+      [capacity]="[10,250]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
 

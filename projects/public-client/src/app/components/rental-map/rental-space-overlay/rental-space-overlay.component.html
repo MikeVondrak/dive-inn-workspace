@@ -6,12 +6,18 @@
     <div class="info-content">
       <h2>{{ title }}</h2>
       <div class="info-album-container">
-        <!-- <img *ngFor="url of imageUrls; let i = index" [src]="imageUrls[i]" /> -->
+        <img *ngFor="let url of imageUrls; let i = index" [src]="imageUrls[i]" />
+        <div class="image-frame"></div>
       </div>
     </div>
   </div>
 
   <div class="overlay aside-container">
-    <span>{{ capacity }}</span>
+    <div *ngIf="!!capacity" class="capacity-container">
+      <div class="number">{{ capacity[0] }}</div>
+      <div>to</div>
+      <div class="number">{{ capacity[1] }}</div>
+    </div>
+    <img class="person" src="/assets/images/person.svg" />
   </div>
 </div> 

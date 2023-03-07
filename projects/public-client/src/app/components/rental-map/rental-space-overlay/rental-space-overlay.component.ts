@@ -17,7 +17,7 @@ export class RentalSpaceOverlayComponent implements OnInit {
   @Input() overlayId: RentalSpaces = RentalSpaces.DEFAULT;
   @Input() animationState: RentalSpaces = RentalSpaces.DEFAULT;
   @Input() imageUrls: string[] = [];
-  @Input() capacity: string = '';
+  @Input() capacity: [number, number] | null = [0,0];
 
   @Output() animationDone: EventEmitter<RentalSpaceOverlayAnimationEvent> 
     = new EventEmitter<RentalSpaceOverlayAnimationEvent>();
