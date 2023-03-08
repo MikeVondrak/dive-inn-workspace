@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RentalMapComponent } from './rental-map/rental-map.component';
 import { RentalSpaceOverlayComponent } from './rental-map/rental-space-overlay/rental-space-overlay.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlbumDisplayComponent } from './album-display/album-display.component';
+import { ImageDisplayComponent } from './image-display/image-display.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReservationFormComponent,
     RentalMapComponent,
     RentalSpaceOverlayComponent,
+    AlbumDisplayComponent,
+    ImageDisplayComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +57,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReservationFormComponent,
     RentalMapComponent,
     RentalSpaceOverlayComponent,
+    AlbumDisplayComponent,
+    ImageDisplayComponent,
   ]
 })
 export class ComponentsModule { }

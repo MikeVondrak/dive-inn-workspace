@@ -109,7 +109,4 @@ export class RentalMapComponent implements OnInit {
     }
   }
 
-  public overlayAnimationDone2(input: AnimationEvent) {
-
-  }
 }

@@ -2,13 +2,19 @@
   @overlayTransitions
   (@overlayTransitions.done)="onAnimationDone($event)"
 >
-  <div class="overlay info-container">
+  <div #InfoContainer class="overlay info-container">
     <div class="info-content">
-      <h2>{{ title }}</h2>
       <div class="info-album-container">
-        <img *ngFor="let url of imageUrls; let i = index" [src]="imageUrls[i]" />
-        <div class="image-frame"></div>
+        <!-- <img *ngFor="let url of imageUrls; let i = index" [src]="imageUrls[i]" />
+        <div class="image-frame"></div> -->
+        <app-album-display
+          [showInfo]="false"
+          title="Title"
+          description="Description"
+          [imageUrls]="imageUrls"
+        ></app-album-display>
       </div>
+      <h2>{{ title }}</h2>
     </div>
   </div>
 
