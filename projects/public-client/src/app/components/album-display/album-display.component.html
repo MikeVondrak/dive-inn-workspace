@@ -1,0 +1,27 @@
+<div class="album-display" (click)="stopEvent($event)">
+
+  <div class="album-display-images" (click)="onImageClick($event)">
+    <app-image-display *ngFor="let url of imageUrls; index as idx"
+      [class.top]="idx % 4 === 0 && idx % 5 !== activeImage"
+      [class.right]="idx % 4 === 1 && idx % 5 !== activeImage"
+      [class.bottom]="idx % 4 === 2 && idx % 5 !== activeImage"
+      [class.left]="idx % 4 === 3 && idx % 5 !== activeImage"
+      [imageUrl]="url"
+    ></app-image-display>
+  </div>
+
+  <button (click)="prevClicked($event)" class="album-display-nav prev">&lt;</button>
+  <button (click)="nextClicked($event)" class="album-display-nav next">&gt;</button>
+
+  <div class="album-display-pill-box">
+    <button *ngFor="let url of imageUrls; index as idx"
+      [class.activePill]="idx === activeImage"
+      (click)="pillClicked($event, idx)"
+    ></button>
+  </div>
+  
+  <div *ngIf="showInfo" class="album-display-info">
+    <div>{{ title }}</div>
+    <div>{{ description }}</div>
+  </div>
+</div>

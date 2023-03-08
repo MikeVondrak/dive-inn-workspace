@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, ViewChildren, QueryList } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { RentalSpaceOverlayAnimationEvent, RentalSpaceOverlayPositionCss, RentalSpaces } from '../../../models/rental-map.model';
 import { rentalMapAnimations } from '../../../animations/rental-map.animations';
@@ -32,8 +32,11 @@ export class RentalSpaceOverlayComponent implements OnInit {
   @HostBinding('style.--asideBottom') cssAsideBottom: string = '';
   @HostBinding('style.--asideLeft') cssAsideLeft: string = '';
 
+  // @ViewChildren('InfoContainer') 
+  // private infoContainers!: QueryList<ElementRef>;
+  
   constructor() { }
-
+  
   ngOnInit(): void {
     // TODO: improve this
     this.cssInfoTop = this.positionCss.info[0];
@@ -45,9 +48,12 @@ export class RentalSpaceOverlayComponent implements OnInit {
     this.cssAsideBottom = this.positionCss.aside[2];
     this.cssAsideLeft = this.positionCss.aside[3];
   }
-
+  
+  ngAfterViewInit() {
+  }
+  
   public onAnimationDone(event: AnimationEvent) {
     this.animationDone.emit({ event, overlayId: this.overlayId });
   }
-
+  
 }
