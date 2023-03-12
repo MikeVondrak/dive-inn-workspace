@@ -5,14 +5,14 @@
   width: 100%;
   height: 100%;
   
-  background: blue;
+  background: transparent; // blue;
   
   .album-display {
     position: relative;
     overflow: hidden;
     height: 100%;
 
-    background: utility.$dive-gray-dk;
+    background: transparent; // utility.$dive-gray-dk;
 
     &-images {
       position: relative;
@@ -20,7 +20,7 @@
       //display: flex;
       //flex-direction: row;
       //flex-wrap: nowrap;
-      background: magenta;
+      background: transparent; // magenta;
 
       app-image-display {
         position: absolute;
