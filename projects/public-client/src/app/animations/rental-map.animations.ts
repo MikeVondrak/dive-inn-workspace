@@ -66,8 +66,8 @@ export const rentalMapAnimations = [
     ),
     state(RentalSpaces.SPACE3, 
       style({ 
-        backgroundSize: '220%',
-        backgroundPosition: '62% 53%',
+        backgroundSize: '160%',
+        backgroundPosition: '91% 31.5%',
       })
     ),
     state(RentalSpaces.SPACE4, 
@@ -84,8 +84,8 @@ export const rentalMapAnimations = [
     ),
     state(RentalSpaces.SPACE6, 
       style({ 
-        backgroundSize: '250%',
-        backgroundPosition: '92% 58%',
+        backgroundSize: '230%',
+        backgroundPosition: '91% 61.5%',
       })
     ),
     state(RentalSpaces.SPACE7, 
