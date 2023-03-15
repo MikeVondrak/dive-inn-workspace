@@ -66,28 +66,36 @@
     &.aside-container {
       position: absolute;
       top: var(--asideTop);
-      right: var(--asideRight);
-      bottom: var(--asideBottom);
+      //right: var(--asideRight);
+      //bottom: var(--asideBottom);
       left: var(--asideLeft);
+      //width: 10vw;
+      //height: 10vw;
   
+      $circleW: 3.2;
+      $circleH: 2.8;
+      padding: clamp(1.0rem, min(2.6vw, 2.6vh), 3rem) clamp(1.25rem, min(3.0vw, 3.0vh), 3.5rem);
+
       display: flex;
       justify-content: center;
       align-items: center;
+
+      border-radius: 50%;
   
       .capacity-container {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        font-size: clamp(0.5rem, 2vw, 3rem);
+        font-size: clamp(0.5rem, min(2vw, 2vh), 3rem);
         font-weight: bold;
 
         .number {
-          font-size: clamp(1rem, 3vw, 4rem);
+          font-size: clamp(1rem, min(3vw, 3vh), 4rem);
         }
       }
       .person {
-        width: 3.7vw;
+        width: min(3.7vw, 3.7vh);
         margin-left: 1vw;
       }
     }

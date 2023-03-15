@@ -48,26 +48,30 @@ export const rentalMapAnimations = [
     ),
     state(RentalSpaces.LEGEND, 
       style({ 
-        backgroundSize: '210%',
+        //backgroundSize: '210%',
         backgroundPosition: 'right top',
+        //transform: 'scale(1.25)'
       })
     ),
     state(RentalSpaces.SPACE1, 
       style({ 
-        backgroundSize: '240%',
+        //backgroundSize: '240%',
         backgroundPosition: '0 12%',
+        //transform: 'scale(1.25)'
       })
     ),
     state(RentalSpaces.SPACE2, 
       style({ 
-        backgroundSize: '320%',
+        //backgroundSize: '320%',
         backgroundPosition: '37% 62.75%',
+        //transform: 'scale(1.25)'
       })
     ),
     state(RentalSpaces.SPACE3, 
       style({ 
-        backgroundSize: '160%',
+        //backgroundSize: '160%',
         backgroundPosition: '91% 31.5%',
+        //transform: 'scale(1.25)'
       })
     ),
     state(RentalSpaces.SPACE4, 
