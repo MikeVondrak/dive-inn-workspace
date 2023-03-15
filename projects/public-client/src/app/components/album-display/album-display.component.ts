@@ -25,28 +25,12 @@ export class AlbumDisplayComponent implements OnInit {
   private pauseTimer$: Observable<number> = timer(this.imgTransitionTime, this.imgTransitionTime);
   private killImgTimer$ = new Subject<void>();
   private timerSub: Subscription = new Subscription;
-
-  /**
-   * Instead of using the image position array and getting into ElementRef and nativeElement
-   * use css classes for each position and remove the class to transition it into the frame
-   */
-  private positions: AlbumDisplayImagePosition[] = [
-    { x: 800, y: 0 },
-    { x: -800, y: 0 },
-    { x: 0, y: 600 },
-    { x: 0, y: -600 },
-  ];
-
+ 
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // TODO set up unsubscribe
     this.timerSub = this.subscribeToImageTimer();
-  }
-
-  public getImagePosition(index: number): AlbumDisplayImagePosition {
-    const imgPosIdx = index % this.positions.length;
-    return this.positions[imgPosIdx];
   }
 
   public stopEvent($event: Event) {
@@ -90,7 +74,6 @@ export class AlbumDisplayComponent implements OnInit {
   }
 
   private incrementActiveImage() {
-    console.log('!!!!!!!!!!', this.activeImage, this.imageUrls.length);
     if (this.activeImage < this.imageUrls.length - 1) {
       this.activeImage++;
     } else {
@@ -109,13 +92,11 @@ export class AlbumDisplayComponent implements OnInit {
 
   private subscribeToImageTimer(): Subscription {
     return this.imgTimer$.pipe(takeUntil(this.killImgTimer$)).subscribe(tick => {
-      console.log('tick')
       this.incrementActiveImage();
     })
   }
 
   ngOnDestroy() {
-    console.log('ngondestroy')
     if (!!this.timerSub){
       this.timerSub.unsubscribe();
     }

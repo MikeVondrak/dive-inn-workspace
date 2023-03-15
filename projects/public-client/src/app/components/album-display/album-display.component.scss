@@ -28,16 +28,16 @@
         transform: translate(0, 0);
         transition: transform 0.75s ease;
         &.top {
-          transform: translate(0, -600px);
+          transform: translate(0, -100%);
         }
         &.bottom {
-          transform: translate(0, 600px);
+          transform: translate(0, 100%);
         }
         &.left {
-          transform: translate(-800px, 0);
+          transform: translate(-100%, 0);
         }
         &.right {
-          transform: translate(800px, 0);
+          transform: translate(100%, 0);
         }
       }
 

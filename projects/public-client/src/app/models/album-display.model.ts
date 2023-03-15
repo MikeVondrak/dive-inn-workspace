@@ -1,4 +1,4 @@
 export interface AlbumDisplayImagePosition {
-  x: number,
-  y: number,
+  x: string,
+  y: string,
 }
