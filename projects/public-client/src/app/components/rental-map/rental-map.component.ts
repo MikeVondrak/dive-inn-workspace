@@ -75,6 +75,7 @@ export class RentalMapComponent implements OnInit {
     if ($event.toState === OpacityAnimationStates.HIDDEN) {
       // if hiding, set the map animation flag to change
       this.mapAnimation = this.nextSpace;
+      this.cdr.detectChanges();
     } 
     // if showing the map markers, animation is finished
   }
