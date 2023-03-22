@@ -95,7 +95,7 @@
         '/assets/images/tour/north_room.jpg',
         '/assets/images/tour/north_room3.jpg',
         '/assets/images/tour/north_room5.jpg',
-        '/assets/images/tour/north_room6.jpg'
+        '/assets/images/tour/north_room6.jpg',
       ]"
       [capacity]="[40,70]"
       (animationDone)="overlayAnimationDone($event)"
@@ -111,11 +111,12 @@
         '/assets/images/tour/north_patio3.jpg',
         '/assets/images/tour/north_patio4.jpg',
         '/assets/images/tour/north_patio5.jpg',
-        '/assets/images/tour/north_patio6.jpg'
       ]"
       [capacity]="[10,250]"
       (animationDone)="overlayAnimationDone($event)"
-    ></app-rental-space-overlay>
+    >
+    <!-- TODO - Why do 6+ images not display? '/assets/images/tour/north_patio6.jpg' -->
+    </app-rental-space-overlay>
 
     <!-- Markers for spaces with number in circle -->
     <!-- [@mapMarkerTransitions]="mapMarkerAnimation"
@@ -124,13 +125,23 @@
       [@mapMarkerTransitions]="mapMarkerAnimation"
       (@mapMarkerTransitions.done)="mapMarkerAnimationDone($event)"
     >
-      <div *ngFor="let space of rentalSpaceList; let i = index"      
+      <button *ngFor="let space of rentalSpaceList; let i = index"      
         class="number-circle space-{{i + 1}}"
         (click)="toggleZoom($event, space)"
+        [disabled]="markersDisabled"
       >
         {{ i + 1 }}
-      </div>
+      </button>
+      <button *ngIf="mapMarkerAnimation === OpacityAnimationStates.SHOWING"
+        class="legend-zoom"
+        (click)="toggleZoom($event, RentalSpaces.LEGEND)"
+        [disabled]="markersDisabled"
+      >
+        <img src="/assets/images/Magnifying_Glass.svg" />
+      </button>
     </div>
+    
+    <!-- <div *ngFor="let s of rentalSpaceList">{{s}}</div> -->
 
 
     <!-- <div
@@ -182,13 +193,6 @@
       (click)="toggleZoom($event, rentalSpaces.SPACE7)"
     >
       7
-    </div>
-    <div
-      [@mapMarkerTransitions]="mapMarkerAnimation"
-      class="legend-zoom"
-      (click)="toggleZoom($event, rentalSpaces.LEGEND)"
-    >
-      <img src="/assets/images/Magnifying_Glass.svg" />
     </div> -->
   </div>
 </div>

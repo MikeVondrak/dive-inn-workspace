@@ -20,9 +20,9 @@ import {
 // https://www.techiediaries.com/angular-router-animations/
 
 const markerAnimation = '0.15s linear';
-const mapZoomInAnimation = '0.25s ease-out';
-const mapZoomOutAnimation = '0.25s ease-out';
-const overlayAnimation = '0.75s ease-in';
+const mapZoomInAnimation = '0.25s ease-in';
+const mapZoomOutAnimation = '0.25s ease-in';
+const overlayAnimation = '0.75s ease-in-out';
 
 export const rentalMapAnimations = [
   trigger('overlayTransitions', [
@@ -37,38 +37,32 @@ export const rentalMapAnimations = [
   ]),
   trigger('mapMarkerTransitions', [
     transition('* => *', [
-      group([
-        query(
-          ':leave',
-          [
-            group([
-              style({ transform: 'translateX(-50% scale(1)' }),
-              stagger(50, [
-                //animateChild(),
-                animate(
-                  '0.5s cubic-bezier(0,0.15,0.5,-1)',
-                  style({ transform: 'translateX(-50%) scale(0)' })
-                ),
-              ]),
-            ]),
-          ],
-          { optional: true }
-        ),
-        query(
-          ':enter',
-          [
-            //animateChild(),
-            style({ transform: 'translateX(-50% scale(0)' }),
-            stagger(10, [
-              animate(
-                '0.15s cubic-bezier(0,0.15,0.5,-1)',
-                style({ transform: 'translateX(-50%) scale(1)' })
-              ),
-            ]),
-          ],
-          { optional: true }
-        ),
-      ]),
+      query(
+        ':leave',
+        [
+          style({ transform: 'translateX(-50%) scale(1)' }),
+          stagger(50, [
+            animate(
+              '0.5s cubic-bezier(0,0.15,0.5,-1)',
+              style({ transform: 'translateX(-50%) scale(0)' })
+            ),
+          ]),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          style({ transform: 'translateX(-50%) scale(0)' }),
+          stagger(20, [
+            animate(
+              '0.5s cubic-bezier(.15,.96,.59,1.51)',
+              style({ transform: 'translateX(-50%) scale(1)' })
+            ),
+          ]),
+        ],
+        { optional: true }
+      ),
     ]),
     // state(OpacityAnimationStates.HIDDEN, style({ transform: 'translateX(-50%) scale(0)', opacity: 0 })),
     // state(OpacityAnimationStates.SHOWING, style({ transform: 'translateX(-50%) scale(1)', opacity: 1 })),
@@ -78,15 +72,22 @@ export const rentalMapAnimations = [
     // ])
   ]),
   trigger('mapTransitions', [
-    transition(`* <=> *`, [
-      // query(':leave', [
-      //   style({ transform: 'translateX(-50%) scale(1)' }),
-      //   stagger(500, [animate('1.5s ease-in', style({ transform: 'translateX(-50%) scale(0)' }))])
-      // ], { optional: true }),
-      // query('@*', [
-      //   stagger(500, [animateChild()]),
-      // ])
-    ]),
+    state(RentalSpaces.LEGEND,
+      style({
+        backgroundSize: '210%',
+        backgroundPosition: 'right top',
+        // transform: 'scale(1.25)'
+      })
+    ),
+    // transition(`* <=> *`, [
+    // query(':leave', [
+    //   style({ transform: 'translateX(-50%) scale(1)' }),
+    //   stagger(500, [animate('1.5s ease-in', style({ transform: 'translateX(-50%) scale(0)' }))])
+    // ], { optional: true }),
+    // query('@*', [
+    //   stagger(500, [animateChild()]),
+    // ])
+    // ]),
     // transition(`* => ${RentalSpaces.DEFAULT}`, [
     //   query('@*', [animateChild()], { optional: true }), // so e.g. buttons will fade in/out
     // ])
