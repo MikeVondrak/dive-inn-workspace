@@ -30,7 +30,18 @@ export class RentalMapComponent implements OnInit {
     [RentalSpaces.SPACE6, false],
     [RentalSpaces.SPACE7, false],
   ]);
-  public rentalSpaces = RentalSpaces;
+  public RentalSpaces = RentalSpaces;
+  public OpacityAnimationStates = OpacityAnimationStates;
+
+  public rentalSpaceList: RentalSpaces[] = [
+    RentalSpaces.SPACE1,
+    RentalSpaces.SPACE2,
+    RentalSpaces.SPACE3,
+    RentalSpaces.SPACE4,
+    RentalSpaces.SPACE5,
+    RentalSpaces.SPACE6,
+    RentalSpaces.SPACE7,
+  ];
 
   public mapMarkerAnimation: OpacityAnimationStates = OpacityAnimationStates.SHOWING;
   public mapAnimation: RentalSpaces = RentalSpaces.DEFAULT;
@@ -55,7 +66,7 @@ export class RentalMapComponent implements OnInit {
       this.zooms.set(space, true);
       this.nextSpace = space;      
       this.mapMarkerAnimation = OpacityAnimationStates.HIDDEN;
-    } else {
+    } else if (!space && this.zoomed) {
       // if calling with null we are zooming out, reset all zooms to false
       this.zooms.forEach((val, key, map) => {
         map.set(key, false);
@@ -64,6 +75,10 @@ export class RentalMapComponent implements OnInit {
       this.overlayAnimation = this.nextSpace; // start animation chain
     }
     this.zoomed = Array.from(this.zooms.values()).includes(true);
+  }
+
+  public toggleRentalMapState() {
+
   }
 
   /**
