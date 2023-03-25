@@ -99,5 +99,28 @@
         margin-left: 1vw;
       }
     }
+
+    &.close-button {
+      position: absolute;
+      top: 2rem;
+      right: 1rem;
+      transform: translateY(-50%);
+      width: 2rem;
+      height: 2rem;
+      margin: 0;
+      padding: 0 .05rem .35rem 0;
+      border: 2px solid utility.$dive-red;
+      border-radius: 50%;
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 0;
+      color: utility.$dive-red;
+      background-color: transparent;
+      box-shadow: 0px 0px 6px 0px #fff;
+      text-shadow: 0px 0px 4px #000;
+      &:hover {
+        background-color: rgba(255,255,255,0.5);
+      }
+    }
   }
 }

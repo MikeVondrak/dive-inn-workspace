@@ -100,8 +100,6 @@ export class RentalMapComponent implements OnInit {
    * @param $event AnimationEvent
    */
   public mapMarkerAnimationDone($event: AnimationEvent) {
-
-    console.log('MARKERS', $event);
     this.markersDisabled = false;
 
     // Check which direction animation is playing

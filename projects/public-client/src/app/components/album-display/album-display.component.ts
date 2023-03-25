@@ -61,6 +61,7 @@ export class AlbumDisplayComponent implements OnInit {
   }
 
   public onImageClick($event: Event) {
+    this.userInteracted();
     // $event.stopPropagation();
     // $event.preventDefault();
   }

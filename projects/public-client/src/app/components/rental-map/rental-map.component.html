@@ -16,11 +16,13 @@
     <div [@mapOverlayTransitions]="mapAnimation" class="rental-map-overlay"></div>
 
     <app-rental-space-overlay      
-      title="Legend"
-      [positionCss]="{ info: ['0%','11.05%','0%','0%'], aside: ['50%','50%','50%','50%'] }"
+      title=""
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['50%','50%','50%','50%'] }"
       [overlayId]="RentalSpaces.LEGEND"
       [animationState]="overlayAnimation"
-      [imageUrls]="[]"
+      [imageUrls]="[
+        '/assets/images/private-parties/Rental_Map_Legend.svg'
+      ]"
       [capacity]="null"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
@@ -30,7 +32,7 @@
       [overlayId]="RentalSpaces.SPACE1"
       [animationState]="overlayAnimation"
       [imageUrls]="[
-        '/assets/images/tour/front_patio.jpg',
+        '/assets/images/private-parties/Rental_Map_No_Images.svg',
       ]"
       [capacity]="[18,24]"
       (animationDone)="overlayAnimationDone($event)"

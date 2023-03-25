@@ -72,13 +72,13 @@ export const rentalMapAnimations = [
     // ])
   ]),
   trigger('mapTransitions', [
-    state(RentalSpaces.LEGEND,
-      style({
-        backgroundSize: '210%',
-        backgroundPosition: 'right top',
-        // transform: 'scale(1.25)'
-      })
-    ),
+    // state(RentalSpaces.LEGEND,
+    //   style({
+    //     backgroundSize: '210%',
+    //     backgroundPosition: 'right top',
+    //     // transform: 'scale(1.25)'
+    //   })
+    // ),
     // transition(`* <=> *`, [
     // query(':leave', [
     //   style({ transform: 'translateX(-50%) scale(1)' }),
