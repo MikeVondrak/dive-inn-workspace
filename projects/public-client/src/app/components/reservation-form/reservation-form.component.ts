@@ -18,6 +18,9 @@ export class ReservationFormComponent implements OnInit {
 
   constructor(private reservationService: ReservationApiService, private fb: FormBuilder) { }
 
+  get organizer() { return this.emailForm.get('organizer'); }
+  get email() { return this.emailForm.get('email'); }
+
   ngOnInit(): void {
     this.createForm();
     this.subscribeToCheckbox();
@@ -29,17 +32,18 @@ export class ReservationFormComponent implements OnInit {
       birthday: [false],
       birthdayName: [{value: '', disabled: true}],
       birthdayAge: [{value: null, disabled: true}],
-      organizer: [''],
+      // organizer: [''],
       partyDate: [''],
       startTime: [''],
       endTime: [''],
-      // organizer: ['', [Validators.required]],
+      organizer: ['', [Validators.required]],
       // partyDate: ['', [Validators.required]],
       // startTime: ['', [Validators.required]],
       // endTime: ['', [Validators.required]],
       phone: [''],
-      email: [''],
-      //email: ['', [Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
+      // email: [''],
+      // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
+      email: ['', [Validators.required, Validators.email]],
       contactMethod: [null],
       preferredSpaceNone: [false],
       preferredSpaceMainRoom: [false],
@@ -54,7 +58,21 @@ export class ReservationFormComponent implements OnInit {
     })
   }
 
-  subscribeToCheckbox() {
+  public errorCheck(field: AbstractControl<any, any> | null, pattern?: boolean) {
+    if (!field) {
+      return false;
+    }
+    console.log('field errors: ', field.errors);
+    if (field.touched) {
+      if (pattern && field.hasError('email')) {
+        return true;
+      }
+      return field.hasError('required');
+    }
+    return false;
+  }
+
+  public subscribeToCheckbox() {
     this.emailForm.get('birthday')?.valueChanges.subscribe(value => {
       if (value) {
         this.emailForm.get('birthdayName')?.enable();
@@ -68,7 +86,7 @@ export class ReservationFormComponent implements OnInit {
     })
   }
 
-  sendEmail() {
+  public sendEmail() {
     console.log('SEND EMAIL', this.emailForm.valid);
 
     this.submitted = true;

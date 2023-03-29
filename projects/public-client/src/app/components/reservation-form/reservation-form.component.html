@@ -5,7 +5,8 @@
   </div>
   <div class="input-organizer">
     <input type="text" id="organizer" formControlName="organizer">
-      <small class="invalid-message" *ngIf="submitted && emailForm.get('organizer')?.hasError('required')">
+      <!-- <small class="invalid-message" *ngIf="organizer?.invalid && (organizer?.dirty || organizer?.touched) && organizer?.hasError('required')"> -->
+      <small class="invalid-message" *ngIf="errorCheck(organizer)">
         * required
       </small>
   </div>
@@ -21,13 +22,11 @@
     <label for="email">Email</label>
   </div>
   <div class="input-email">
-    <input type="text" id="email" formControlName="email">
-    <small class="invalid-message" *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.hasError('pattern')">
-      * Please provide a valid email address
-    </small>
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('email')?.hasError('required')">
-      * required
-    </small>
+    <input type="text" id="email" formControlName="email" required>
+    <!-- <small class="invalid-message" *ngIf="email?.touched && email?.hasError('pattern')"> -->
+    <small class="invalid-message" *ngIf="errorCheck(email, true)">
+      * required 
+    </small>{{ email?.touched }}, {{ errorCheck(email, true) }}
   </div>
   
   <div class="label-column label-contact">
@@ -75,16 +74,6 @@
     </small>
   </div>
 
-  <div class="label-column label-headcount">
-    <label for="headcount">Headcount</label>
-  </div>
-  <div class="input-headcount">
-    <input type="number" id="headcount" formControlName="headcount">
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('headcount')?.hasError('required')">
-      * required, numbers only
-    </small>
-  </div>
-
   <div class="label-column label-theme">
     <label for="party-theme">Theme</label>
   </div>
@@ -111,6 +100,16 @@
   </div>
   <div class="input-birthday-name">
     <input type="text" id="birthday-name" formControlName="birthdayName">
+  </div>
+
+  <div class="label-column label-headcount">
+    <label for="headcount">Headcount</label>
+  </div>
+  <div class="input-headcount">
+    <input type="number" id="headcount" formControlName="headcount">
+    <small class="invalid-message" *ngIf="submitted && emailForm.get('headcount')?.hasError('required')">
+      * required, numbers only
+    </small>
   </div>
 
   <div class="checkboxes label-column label-preferred-space">
