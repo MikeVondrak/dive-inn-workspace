@@ -1,36 +1,28 @@
-<form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+<form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
     
-  <div class="label-column label-organizer">
-    <label for="organizer">Organizer</label>
+  <div class="label-column label-organizer required">
+    <label for="organizer">Organizer<span>*</span></label>
   </div>
   <div class="input-organizer">
-    <input type="text" id="organizer" formControlName="organizer">
-      <!-- <small class="invalid-message" *ngIf="organizer?.invalid && (organizer?.dirty || organizer?.touched) && organizer?.hasError('required')"> -->
-      <small class="invalid-message" *ngIf="errorCheck(organizer)">
-        * required
-      </small>
+    <input type="text" id="organizer" [ngClass]="hasErrors(organizer) ? 'has-error' : ''" formControlName="organizer">
   </div>
       
-  <div class="label-column label-phone">
-    <label for="phone">Phone</label>
+  <div class="label-column label-phone required">
+    <label for="phone">Phone<span>*</span></label>
   </div>
   <div class="input-phone">
-    <input type="text" id="phone" formControlName="phone">
+    <input type="text" id="phone" [ngClass]="hasErrors(formGet('phone')) ? 'has-error' : ''" formControlName="phone">
   </div>
   
-  <div class="label-column label-email">
-    <label for="email">Email</label>
+  <div class="label-column label-email required">
+    <label for="email">Email<span>*</span></label>
   </div>
   <div class="input-email">
-    <input type="text" id="email" formControlName="email" required>
-    <!-- <small class="invalid-message" *ngIf="email?.touched && email?.hasError('pattern')"> -->
-    <small class="invalid-message" *ngIf="errorCheck(email, true)">
-      * required 
-    </small>{{ email?.touched }}, {{ errorCheck(email, true) }}
+    <input type="text" id="email" [ngClass]="hasErrors(formGet('email')) ? 'has-error' : ''" formControlName="email" required>
   </div>
   
-  <div class="label-column label-contact">
-    <label>Preferred</label>
+  <div class="label-column label-contact required">
+    <label>Preferred<span>*</span></label>
   </div>
   <div class="input-contact-email">
     <input type="radio" id="preferred-contact-email" [value]="contactType.EMAIL" formControlName="contactMethod">
@@ -45,33 +37,24 @@
     <label for="preferred-contact-text">Text</label>
   </div>
 
-  <div class="label-column label-date">
-    <label for="date">Date</label>
+  <div class="label-column label-date required">
+    <label for="date">Date<span>*</span></label>
   </div>
   <div class="input-date">
-    <input type="date" id="date" formControlName="partyDate">
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('partyDate')?.hasError('required')">
-      * required
-    </small>
+    <input type="date" id="date" [ngClass]="hasErrors(formGet('partyDate')) ? 'has-error' : ''" formControlName="partyDate">
   </div>
   
-  <div class="label-column label-start-time">
-    <label for="start-time">Start</label>
+  <div class="label-column label-start-time required">
+    <label for="start-time">Start<span>*</span></label>
   </div>
   <div class="input-start-time">
-    <input type="time" id="start-time" formControlName="startTime">
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('startTime')?.hasError('required')">
-      * required
-    </small>
+    <input type="time" id="start-time" [ngClass]="hasErrors(formGet('startTime')) ? 'has-error' : ''" formControlName="startTime">
   </div>
-  <div class="label-column label-end-time">
+  <div class="label-column label-end-time required">
     <label for="end-time">End</label>
   </div>
   <div class="input-end-time">
     <input type="time" id="end-time" formControlName="endTime">
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('endTime')?.hasError('required')">
-      * required
-    </small>
   </div>
 
   <div class="label-column label-theme">
@@ -102,14 +85,11 @@
     <input type="text" id="birthday-name" formControlName="birthdayName">
   </div>
 
-  <div class="label-column label-headcount">
-    <label for="headcount">Headcount</label>
+  <div class="label-column label-headcount required">
+    <label for="headcount">Headcount<span>*</span></label>
   </div>
   <div class="input-headcount">
-    <input type="number" id="headcount" formControlName="headcount">
-    <small class="invalid-message" *ngIf="submitted && emailForm.get('headcount')?.hasError('required')">
-      * required, numbers only
-    </small>
+    <input type="number" id="headcount" min="1" [ngClass]="hasErrors(formGet('headcount')) ? 'has-error' : ''" formControlName="headcount">
   </div>
 
   <div class="checkboxes label-column label-preferred-space">
@@ -145,7 +125,7 @@
   </div>
   <div class="preferred-space-8">
     <input type="checkbox" id="space-none" formControlName="preferredSpaceNone">
-    <label for="space-none">No Preference</label>
+    <label for="space-none"><span>-. </span>No Preference</label>
   </div>
   
   <div class="label-column label-notes">
@@ -157,5 +137,6 @@
 
   <div class="input-submit">
     <button type="submit">Submit</button>
+    <small *ngIf="ngForm.submitted && ngForm.invalid"> * Errors </small>
   </div>
 </form>

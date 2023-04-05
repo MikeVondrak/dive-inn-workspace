@@ -20,11 +20,16 @@ export class ReservationFormComponent implements OnInit {
 
   get organizer() { return this.emailForm.get('organizer'); }
   get email() { return this.emailForm.get('email'); }
-
+  // get email() { return this.emailForm.get('email'); }
+  // get email() { return this.emailForm.get('email'); }
+  // get email() { return this.emailForm.get('email'); }
+  
   ngOnInit(): void {
     this.createForm();
     this.subscribeToCheckbox();
   }
+  
+  formGet(field: string) { return this.emailForm.get(field); }
 
   createForm() {
     this.emailForm = this.fb.group({
@@ -33,18 +38,18 @@ export class ReservationFormComponent implements OnInit {
       birthdayName: [{value: '', disabled: true}],
       birthdayAge: [{value: null, disabled: true}],
       // organizer: [''],
-      partyDate: [''],
-      startTime: [''],
+      // partyDate: [''],
+      // startTime: [''],
       endTime: [''],
       organizer: ['', [Validators.required]],
-      // partyDate: ['', [Validators.required]],
-      // startTime: ['', [Validators.required]],
+      partyDate: ['', [Validators.required]],
+      startTime: ['', [Validators.required]],
       // endTime: ['', [Validators.required]],
-      phone: [''],
+      phone: ['', [Validators.required]],
       // email: [''],
       // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
       email: ['', [Validators.required, Validators.email]],
-      contactMethod: [null],
+      contactMethod: [this.contactType.EMAIL],
       preferredSpaceNone: [false],
       preferredSpaceMainRoom: [false],
       preferredSpacePartyBoat: [false],
@@ -58,11 +63,23 @@ export class ReservationFormComponent implements OnInit {
     })
   }
 
+  hasErrors(field: AbstractControl<any, any> | null) {
+    if (!field) {
+      return false;
+    }
+    if (field.touched || this.submitted) {
+      if (field.hasError('email')) {
+        return true;
+      }
+      return field.hasError('required');
+    }
+    return false;
+  }
+
   public errorCheck(field: AbstractControl<any, any> | null, pattern?: boolean) {
     if (!field) {
       return false;
     }
-    console.log('field errors: ', field.errors);
     if (field.touched) {
       if (pattern && field.hasError('email')) {
         return true;
