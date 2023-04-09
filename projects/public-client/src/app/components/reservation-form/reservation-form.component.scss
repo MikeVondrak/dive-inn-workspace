@@ -1,17 +1,41 @@
 @use "../../scss/utility";
 
 :host {
+
+  align-items: center;
+  width: 300px;
+
+  .status-card {
+    // height: 60vh;
+    background-color: utility.$dive-white;
+    text-align: center;
+    color: utility.$dive-black;
+    padding: .5rem;
+    border-radius: 2%;
+    
+    .status-message {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 100%;
+
+      button {
+        margin: 1rem;
+      }
+    }
+  }
+
   form {
     $emptyLine: 0.25fr;
 
     // border: solid 2px utility.$dive-gray-dk;
     // padding: 2rem;
-    width: 300px; //clamp(380px, 85%, 500px);
+    // width: 300px; //clamp(380px, 85%, 500px);
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr;
     grid-template-rows: repeat(4, 1fr) $emptyLine repeat(3, 1fr) $emptyLine repeat(3, 1fr) $emptyLine 1fr $emptyLine repeat(8, 0.75fr) $emptyLine repeat(2, 1fr) 2.5fr;
     //grid-auto-rows: 1.75rem;
-    align-items: center;
+    // align-items: center;
 
     gap: 0.75rem;
     grid-template-areas:
@@ -195,9 +219,13 @@
       label {
         margin-right: 0.25rem;
         font-size: 0.8rem;
-        @include utility.media-breakpoint-gte(xs) {
+        @include utility.media-breakpoint-gte(sm) {
           font-size: 1rem;
         }
+        &.nowrap {
+          white-space: nowrap;
+        }
+
         span {
           color: utility.$dive-gray-md;
           font-size: 0.8em;

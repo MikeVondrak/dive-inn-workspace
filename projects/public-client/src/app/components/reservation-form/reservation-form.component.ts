@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
-import { take } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, take } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
+
+enum ReservationFormState {
+  ENTRY,
+  SUBMITING,
+  SUCCESS,
+  ERROR,
+}
 
 @Component({
   selector: 'app-reservation-form',
@@ -15,11 +22,15 @@ export class ReservationFormComponent implements OnInit {
 
   emailForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
+  statusMessage: string = '';
+
+  public formState$: BehaviorSubject<ReservationFormState> = new BehaviorSubject<ReservationFormState>(ReservationFormState.ENTRY);
+  public reservationFormState = ReservationFormState;
 
   constructor(private reservationService: ReservationApiService, private fb: FormBuilder) { }
 
-  get organizer() { return this.emailForm.get('organizer'); }
-  get email() { return this.emailForm.get('email'); }
+  // get organizer() { return this.emailForm.get('organizer'); }
+  // get email() { return this.emailForm.get('email'); }
   // get email() { return this.emailForm.get('email'); }
   // get email() { return this.emailForm.get('email'); }
   // get email() { return this.emailForm.get('email'); }
@@ -37,16 +48,17 @@ export class ReservationFormComponent implements OnInit {
       birthday: [false],
       birthdayName: [{value: '', disabled: true}],
       birthdayAge: [{value: null, disabled: true}],
-      // organizer: [''],
-      // partyDate: [''],
-      // startTime: [''],
+      // organizer: ['test name'],
+      // partyDate: ['10/10/2010'],
+      // startTime: ['10am'],
       endTime: [''],
       organizer: ['', [Validators.required]],
       partyDate: ['', [Validators.required]],
       startTime: ['', [Validators.required]],
       // endTime: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      // email: [''],
+      // phone: ['234-234-2343'],
+      // email: ['adsf@asfd.com'],
       // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
       email: ['', [Validators.required, Validators.email]],
       contactMethod: [this.contactType.EMAIL],
@@ -155,14 +167,26 @@ export class ReservationFormComponent implements OnInit {
 
     if (this.emailForm.valid) {
       console.log('SENDING EMAIL', formModel);
-      this.reservationService.submitReservation(formModel).pipe(take(1)).subscribe(response => {
-        if (response.success) {
-          this.emailForm.reset();
-        } else {
-          console.error('Error sending reservation request');
-        }
-        this.submitted = false;      
+      this.formState$.next(ReservationFormState.SUBMITING)
+      this.statusMessage = 'Submitting';
+      this.reservationService.submitReservation(formModel).pipe(take(1)).subscribe(
+        response => {
+          if (response.success) {
+            this.formState$.next(ReservationFormState.SUCCESS);
+            this.statusMessage = 'Successfully submitted';
+            this.emailForm.reset();
+          } 
+          this.submitted = false;      
+        },
+        error => {
+          this.formState$.next(ReservationFormState.ERROR);
+          this.statusMessage = '';
+          console.error('Error sending reservation request', error.status);
       });
     }
+  }
+
+  scrollTo(element: HTMLElement) {
+    element.scrollIntoView({behavior: 'smooth'});
   }
 }

@@ -52,7 +52,6 @@ export class ScrollService implements OnDestroy {
     // on every navigation end get the fragment
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      //withLatestFrom(this.route.fragment)
     ).pipe(
       takeUntil(this.destroy$)
     )
