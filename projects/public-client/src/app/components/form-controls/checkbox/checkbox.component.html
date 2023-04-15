@@ -1,0 +1,8 @@
+<label *ngIf="!!title" [for]="checkboxId">{{ title }}</label>
+<input
+    type="checkbox"
+    [id]="checkboxId"
+    [disabled]="disabled"
+    [(ngModel)]="checkedValue"
+    (ngModelChange)="onNgModelChange($event)"
+>

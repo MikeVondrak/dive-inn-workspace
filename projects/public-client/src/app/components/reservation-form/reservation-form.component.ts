@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators  } fro
 import { Observable, BehaviorSubject, Subject, take } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
+import { animations } from '../../animations/reservation-form.animations';
 
 enum ReservationFormState {
   ENTRY,
@@ -14,7 +15,8 @@ enum ReservationFormState {
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
-  styleUrls: ['./reservation-form.component.scss']
+  styleUrls: ['./reservation-form.component.scss'],
+  animations: [animations],
 })
 export class ReservationFormComponent implements OnInit {
 
@@ -43,6 +45,39 @@ export class ReservationFormComponent implements OnInit {
   formGet(field: string) { return this.emailForm.get(field); }
 
   createForm() {
+    // BELOW IS ACTUAL FORM
+    // this.emailForm = this.fb.group({
+    //   partyTheme: [''],
+    //   birthday: [false],
+    //   birthdayName: [{value: '', disabled: true}],
+    //   birthdayAge: [{value: null, disabled: true}],
+    //   // organizer: ['test name'],
+    //   // partyDate: ['10/10/2010'],
+    //   // startTime: ['10am'],
+    //   endTime: [''],
+    //   organizer: ['', [Validators.required]],
+    //   partyDate: ['', [Validators.required]],
+    //   startTime: ['', [Validators.required]],
+    //   // endTime: ['', [Validators.required]],
+    //   phone: ['', [Validators.required]],
+    //   // phone: ['234-234-2343'],
+    //   // email: ['adsf@asfd.com'],
+    //   // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
+    //   email: ['', [Validators.required, Validators.email]],
+    //   contactMethod: [this.contactType.EMAIL],
+    //   preferredSpaceNone: [false],
+    //   preferredSpaceMainRoom: [false],
+    //   preferredSpacePartyBoat: [false],
+    //   preferredSpaceNorthPatio: [false],
+    //   preferredSpaceNorthRoom: [false],
+    //   preferredSpaceGameRoom: [false],
+    //   preferredSpaceSouthRoom: [false],
+    //   preferredSpaceSouthPatio: [false],
+    //   headcount: [null, [Validators.required]],//, Validators.pattern("^[0-9*]*$")]],
+    //   comments: [''],
+    // });
+
+    // BELOW IS FOR TESTING
     this.emailForm = this.fb.group({
       partyTheme: [''],
       birthday: [false],
@@ -52,11 +87,11 @@ export class ReservationFormComponent implements OnInit {
       // partyDate: ['10/10/2010'],
       // startTime: ['10am'],
       endTime: [''],
-      organizer: ['', [Validators.required]],
-      partyDate: ['', [Validators.required]],
-      startTime: ['', [Validators.required]],
+      organizer: ['', []],
+      partyDate: ['', []],
+      startTime: ['', []],
       // endTime: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      phone: ['', []],
       // phone: ['234-234-2343'],
       // email: ['adsf@asfd.com'],
       // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
@@ -70,7 +105,7 @@ export class ReservationFormComponent implements OnInit {
       preferredSpaceGameRoom: [false],
       preferredSpaceSouthRoom: [false],
       preferredSpaceSouthPatio: [false],
-      headcount: [null, [Validators.required]],//, Validators.pattern("^[0-9*]*$")]],
+      headcount: [null, []],//, Validators.pattern("^[0-9*]*$")]],
       comments: [''],
     })
   }
