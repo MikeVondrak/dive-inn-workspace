@@ -23,7 +23,7 @@ import {
 const markerAnimation = '0.15s linear';
 const mapZoomInAnimation = '0.25s ease-in';
 const mapZoomOutAnimation = '0.25s ease-in';
-const overlayAnimation = '0.5s ease-in-out';
+const overlayAnimation = '0.5s 0.5s ease-in-out';
 
 const horizontalFlipKeyframes = [
   style({

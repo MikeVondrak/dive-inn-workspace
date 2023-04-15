@@ -1,14 +1,16 @@
-<div [@fadeScaletransitionsParent]="(formState$ | async)" [ngSwitch]="(formState$ | async)" class="reservation-form-container">
+<div #Top></div>
+<div [@fadeScaletransitionsParent]="(formState$ | async)" (@fadeScaletransitionsParent.done)="animationDone($event)" [ngSwitch]="(formState$ | async)" class="reservation-form-container">
   <div class="active" *ngSwitchCase="reservationFormState.ENTRY"><ng-container *ngTemplateOutlet="Form"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.SUBMITING"><ng-container *ngTemplateOutlet="Loading"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.SUCCESS"><ng-container *ngTemplateOutlet="Success"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.ERROR"><ng-container *ngTemplateOutlet="Error"></ng-container></div>
+  <!-- <div *ngSwitchDefault>DEFAULT</div> -->
 </div>
 
 <ng-template #Form>
   <form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
       
-    <div class="label-column label-organizer required" #Top>
+    <div class="label-column label-organizer required">
       <label for="organizer" class="nowrap">Organizer<span>*</span></label>
     </div>
     <div class="input-organizer">
@@ -147,8 +149,8 @@
     </div>
 
     <div class="input-submit">
-      <button type="submit" (click)="scrollTo(Top)">Submit</button>
-      <small *ngIf="ngForm.submitted && ngForm.invalid"> * Errors </small>
+      <button type="submit" (click)="clickEmpty($event)">Submit</button>
+      <small *ngIf="ngForm.submitted && ngForm.invalid" class="form-errors">Please correct<br>errors above</small>
     </div>
   </form>
 </ng-template>
@@ -157,7 +159,7 @@
   <div class="status-card">
     <div class="status-message">
       <h2>Submitting</h2>
-      <p>Pending...</p>
+      <p>Please wait...</p>
     </div>
   </div>
 </ng-template>
@@ -165,9 +167,10 @@
 <ng-template #Success>
   <div class="status-card">
     <div class="status-message">
-      <h2>Email Successfully Sent</h2>
+      <h2>Reservation Submitted</h2>
       <p>You should receive a confirmation email shortly.</p>
-      <p>If you do not receive an email within an hour, please call in to confirm your reservation details.</p>
+      <button (click)="errorCancelClick()">Return to Form</button>
+      <p>If you do not receive an email within an hour, please call to confirm your reservation details:<br/><a href="tel:7202426157">720-242-6157</a></p>
     </div>
   </div>
 </ng-template>
@@ -177,12 +180,15 @@
     <div class="status-message error">
       <h2>Error Submitting Request!</h2>
       <p>Something went wrong submitting your reservation, and we may not have received your request.</p>
-      <p>You can Cancel to edit your reservation, or Retry to send it again.</p>
+      <!-- <div class="split-text">
+        <p>Click Cancel to edit your reservation</p>
+        <p>Click Retry to send it again</p>
+      </div> -->
       <div class="buttons">
-        <button (click)="this.formState$.next(reservationFormState.ENTRY);">Cancel</button>
-        <button (click)="sendEmail()">Retry</button>
+        <button (click)="errorCancelClick()">Edit Reservation</button>
+        <button (click)="sendEmail()">Resend Request</button>
       </div>
-      <p>If you are stil unable to send your reservation, please call us at <a href="tel:7202426157">720-242-6157</a></p>
+      <p>If you are still unable to send your reservation, please call us at: <br><a href="tel:7202426157">720-242-6157</a></p>
     </div>
   </div>
 </ng-template>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
+import { AnimationEvent } from '@angular/animations';
 import { Observable, BehaviorSubject, Subject, take } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
@@ -20,6 +21,8 @@ enum ReservationFormState {
 })
 export class ReservationFormComponent implements OnInit {
 
+  @ViewChild('Top') Top?: ElementRef<HTMLElement>;
+
   contactType = ContactType;
 
   emailForm: FormGroup = new FormGroup({});
@@ -30,12 +33,6 @@ export class ReservationFormComponent implements OnInit {
   public reservationFormState = ReservationFormState;
 
   constructor(private reservationService: ReservationApiService, private fb: FormBuilder) { }
-
-  // get organizer() { return this.emailForm.get('organizer'); }
-  // get email() { return this.emailForm.get('email'); }
-  // get email() { return this.emailForm.get('email'); }
-  // get email() { return this.emailForm.get('email'); }
-  // get email() { return this.emailForm.get('email'); }
   
   ngOnInit(): void {
     this.createForm();
@@ -46,38 +43,6 @@ export class ReservationFormComponent implements OnInit {
 
   createForm() {
     // BELOW IS ACTUAL FORM
-    // this.emailForm = this.fb.group({
-    //   partyTheme: [''],
-    //   birthday: [false],
-    //   birthdayName: [{value: '', disabled: true}],
-    //   birthdayAge: [{value: null, disabled: true}],
-    //   // organizer: ['test name'],
-    //   // partyDate: ['10/10/2010'],
-    //   // startTime: ['10am'],
-    //   endTime: [''],
-    //   organizer: ['', [Validators.required]],
-    //   partyDate: ['', [Validators.required]],
-    //   startTime: ['', [Validators.required]],
-    //   // endTime: ['', [Validators.required]],
-    //   phone: ['', [Validators.required]],
-    //   // phone: ['234-234-2343'],
-    //   // email: ['adsf@asfd.com'],
-    //   // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
-    //   email: ['', [Validators.required, Validators.email]],
-    //   contactMethod: [this.contactType.EMAIL],
-    //   preferredSpaceNone: [false],
-    //   preferredSpaceMainRoom: [false],
-    //   preferredSpacePartyBoat: [false],
-    //   preferredSpaceNorthPatio: [false],
-    //   preferredSpaceNorthRoom: [false],
-    //   preferredSpaceGameRoom: [false],
-    //   preferredSpaceSouthRoom: [false],
-    //   preferredSpaceSouthPatio: [false],
-    //   headcount: [null, [Validators.required]],//, Validators.pattern("^[0-9*]*$")]],
-    //   comments: [''],
-    // });
-
-    // BELOW IS FOR TESTING
     this.emailForm = this.fb.group({
       partyTheme: [''],
       birthday: [false],
@@ -87,11 +52,11 @@ export class ReservationFormComponent implements OnInit {
       // partyDate: ['10/10/2010'],
       // startTime: ['10am'],
       endTime: [''],
-      organizer: ['', []],
-      partyDate: ['', []],
-      startTime: ['', []],
+      organizer: ['', [Validators.required]],
+      partyDate: ['', [Validators.required]],
+      startTime: ['', [Validators.required]],
       // endTime: ['', [Validators.required]],
-      phone: ['', []],
+      phone: ['', [Validators.required]],
       // phone: ['234-234-2343'],
       // email: ['adsf@asfd.com'],
       // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
@@ -105,9 +70,41 @@ export class ReservationFormComponent implements OnInit {
       preferredSpaceGameRoom: [false],
       preferredSpaceSouthRoom: [false],
       preferredSpaceSouthPatio: [false],
-      headcount: [null, []],//, Validators.pattern("^[0-9*]*$")]],
+      headcount: [null, [Validators.required]],//, Validators.pattern("^[0-9*]*$")]],
       comments: [''],
-    })
+    });
+
+  //   // BELOW IS FOR TESTING
+  //   this.emailForm = this.fb.group({
+  //     partyTheme: [''],
+  //     birthday: [false],
+  //     birthdayName: [{value: '', disabled: true}],
+  //     birthdayAge: [{value: null, disabled: true}],
+  //     // organizer: ['test name'],
+  //     // partyDate: ['10/10/2010'],
+  //     // startTime: ['10am'],
+  //     endTime: [''],
+  //     organizer: ['', []],
+  //     partyDate: ['', []],
+  //     startTime: ['', []],
+  //     // endTime: ['', [Validators.required]],
+  //     phone: ['', []],
+  //     // phone: ['234-234-2343'],
+  //     email: ['adsf@asfd.com'],
+  //     // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
+  //     // email: ['', [Validators.required, Validators.email]],
+  //     contactMethod: [this.contactType.EMAIL],
+  //     preferredSpaceNone: [false],
+  //     preferredSpaceMainRoom: [false],
+  //     preferredSpacePartyBoat: [false],
+  //     preferredSpaceNorthPatio: [false],
+  //     preferredSpaceNorthRoom: [false],
+  //     preferredSpaceGameRoom: [false],
+  //     preferredSpaceSouthRoom: [false],
+  //     preferredSpaceSouthPatio: [false],
+  //     headcount: [null, []],//, Validators.pattern("^[0-9*]*$")]],
+  //     comments: [''],
+  //   })
   }
 
   hasErrors(field: AbstractControl<any, any> | null) {
@@ -151,7 +148,6 @@ export class ReservationFormComponent implements OnInit {
   }
 
   public sendEmail() {
-    console.log('SEND EMAIL', this.emailForm.valid);
 
     this.submitted = true;
     let spaces: RentalSpaces[] = [];
@@ -201,7 +197,6 @@ export class ReservationFormComponent implements OnInit {
     };
 
     if (this.emailForm.valid) {
-      console.log('SENDING EMAIL', formModel);
       this.formState$.next(ReservationFormState.SUBMITING)
       this.statusMessage = 'Submitting';
       this.reservationService.submitReservation(formModel).pipe(take(1)).subscribe(
@@ -217,11 +212,33 @@ export class ReservationFormComponent implements OnInit {
           this.formState$.next(ReservationFormState.ERROR);
           this.statusMessage = '';
           console.error('Error sending reservation request', error.status);
+          setTimeout(() => {
+            if (this.Top?.nativeElement) {
+              this.scrollTo(this.Top?.nativeElement);
+            }
+          }, 2000); // wait for animations to finish and then scroll the error content to the top of the window
       });
     }
   }
 
   scrollTo(element: HTMLElement) {
-    element.scrollIntoView({behavior: 'smooth'});
+    element.scrollIntoView({behavior: 'smooth', block: 'start' });
+  }
+
+  public errorCancelClick() {
+    setTimeout(() => {
+      if (this.Top?.nativeElement) {
+        this.scrollTo(this.Top?.nativeElement);
+      }
+      this.formState$.next(ReservationFormState.ENTRY);
+    }, 0);
+  }
+
+  public clickEmpty(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
+  public animationDone(event: AnimationEvent) {
+
   }
 }
