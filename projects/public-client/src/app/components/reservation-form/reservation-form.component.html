@@ -1,10 +1,14 @@
-<div #Top></div>
+<div class="construction">
+<h2 #Top>Under Construction</h2>
+<p>We're working on the functionality to submit your reservation online. For now, please call:<br><a href="tel:7202426157">720-242-6157</a></p>
+</div>
+
+<!-- <div #Top></div>
 <div [@fadeScaletransitionsParent]="(formState$ | async)" (@fadeScaletransitionsParent.done)="animationDone($event)" [ngSwitch]="(formState$ | async)" class="reservation-form-container">
   <div class="active" *ngSwitchCase="reservationFormState.ENTRY"><ng-container *ngTemplateOutlet="Form"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.SUBMITING"><ng-container *ngTemplateOutlet="Loading"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.SUCCESS"><ng-container *ngTemplateOutlet="Success"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.ERROR"><ng-container *ngTemplateOutlet="Error"></ng-container></div>
-  <!-- <div *ngSwitchDefault>DEFAULT</div> -->
 </div>
 
 <ng-template #Form>
@@ -72,7 +76,6 @@
     </div>
     <div class="input-theme">
       <input type="text" id="party-theme" formControlName="partyTheme">
-      <!-- <label>(Example: A-1 Scuba Holiday Party or Jacques Is Diving Into “50”)</label> -->
     </div>
     
     <div class="label-column label-birthday">
@@ -180,10 +183,6 @@
     <div class="status-message error">
       <h2>Error Submitting Request!</h2>
       <p>Something went wrong submitting your reservation, and we may not have received your request.</p>
-      <!-- <div class="split-text">
-        <p>Click Cancel to edit your reservation</p>
-        <p>Click Retry to send it again</p>
-      </div> -->
       <div class="buttons">
         <button (click)="errorCancelClick()">Edit Reservation</button>
         <button (click)="sendEmail()">Resend Request</button>
@@ -191,4 +190,4 @@
       <p>If you are still unable to send your reservation, please call us at: <br><a href="tel:7202426157">720-242-6157</a></p>
     </div>
   </div>
-</ng-template>
+</ng-template> -->

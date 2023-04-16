@@ -440,8 +440,11 @@ $zoomAnimationTime: 0.6s;
     }
 
     .reservation-form-container {
-      display: flex;
-      justify-content: center;
+      // TODO: uncomment for final implementation
+      //display: flex;
+      //justify-content: center;
+
+      padding: 2vw 5vw;
     }
   }
 
