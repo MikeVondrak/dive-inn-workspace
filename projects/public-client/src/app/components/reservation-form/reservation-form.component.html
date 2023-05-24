@@ -1,9 +1,9 @@
-<div class="construction">
+<!-- <div class="construction">
 <h2 #Top>Under Construction</h2>
 <p>We're working on the functionality to submit your reservation online. For now, please call:<br><a href="tel:7202426157">720-242-6157</a></p>
-</div>
+</div> -->
 
-<!-- <div #Top></div>
+<div #Top></div>
 <div [@fadeScaletransitionsParent]="(formState$ | async)" (@fadeScaletransitionsParent.done)="animationDone($event)" [ngSwitch]="(formState$ | async)" class="reservation-form-container">
   <div class="active" *ngSwitchCase="reservationFormState.ENTRY"><ng-container *ngTemplateOutlet="Form"></ng-container></div>
   <div class="active" *ngSwitchCase="reservationFormState.SUBMITING"><ng-container *ngTemplateOutlet="Loading"></ng-container></div>
@@ -190,4 +190,4 @@
       <p>If you are still unable to send your reservation, please call us at: <br><a href="tel:7202426157">720-242-6157</a></p>
     </div>
   </div>
-</ng-template> -->
+</ng-template>

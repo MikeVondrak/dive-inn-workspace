@@ -6,26 +6,7 @@ import express, { Application, RequestHandler, Router } from 'express';
 
 export class ServerApp {
   private app: Application;
-  //private pool: Pool;
-  // private readonly dbConfig: Pool = new Pool({
-  //   host: 'localhost',
-  //   port: 5432,
-  //   user: 'postgres',
-  //   password: 'D1v31nnD4t4!?',
-  //   database: 'postgres',
-  // });
-  // private readonly herokuDbConfig: Pool = new Pool({
-  //   host: 'ec2-34-195-115-225.compute-1.amazonaws.com',
-  //   port: 5432,
-  //   user: 'gjdceezcnugnyv',
-  //   password: '01830a0a446a61701aee908b0c6443262b943703339bd17bc7a6823f70cddc11',
-  //   database: 'd125dfl39tajfu',
-  //   //ssl: true,
-  //   ssl: {
-  //     rejectUnauthorized: false
-  //   },
-  //   connectionString: process.env.DATABASE_URL
-  // });
+
   constructor(
     private angularAppLocation: string = '',
     private port: string = '5432',
@@ -40,13 +21,10 @@ export class ServerApp {
     
 
     if (process.env.NODE_ENV === 'production') {
-      console.log('DB connection:\t\tHEROKU');
-      //this.pool = this.herokuDbConfig;
-      //this.pool = this.createPool(this.herokuDbConfig);
+      console.log('Server App:\t\tProduction:', port);
     } else {
-      console.log('DB connection:\t\tLOCAL');
-      //this.pool = this.dbConfig;
-      //this.pool = this.createPool(this.dbConfig);
+      process.env.NODE_ENV = 'development';
+      console.log('Server App:\t\tDevelopment:', port);
     }
     
 
