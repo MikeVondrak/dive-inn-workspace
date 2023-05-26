@@ -11,7 +11,7 @@ const PORT: string = process.env.PORT || '3000'; // process.env.PORT set by serv
 process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'; 
 
 const ANGULAR_APP_LOCATION_DEV = '../../../../dist/public-client'; // output from ng build --prod
-const ANGULAR_APP_LOCATION_PROD = '../../client'; // AWS relative path
+const ANGULAR_APP_LOCATION_PROD = '../../public-client'; // AWS relative path
 // running server app from ./server/app or ./server/dist (for prod)
 let ANGULAR_APP_LOCATION = ANGULAR_APP_LOCATION_DEV; // output from ng build --prod
 if (process.env.NODE_ENV === 'production') {
