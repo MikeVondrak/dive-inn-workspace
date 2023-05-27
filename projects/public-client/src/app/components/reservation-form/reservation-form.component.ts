@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators  } from '@angular/forms';
 import { AnimationEvent } from '@angular/animations';
-import { Observable, BehaviorSubject, Subject, take } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
 import { animations } from '../../animations/reservation-form.animations';
@@ -19,7 +19,7 @@ enum ReservationFormState {
   styleUrls: ['./reservation-form.component.scss'],
   animations: [animations],
 })
-export class ReservationFormComponent implements OnInit {
+export class ReservationFormComponent implements OnInit, OnDestroy {
 
   @ViewChild('Top') Top?: ElementRef<HTMLElement>;
 
@@ -34,12 +34,18 @@ export class ReservationFormComponent implements OnInit {
 
   private lastPhoneValue: string = '';
 
+  private destroy$ = new Subject<void>();
+
   constructor(private reservationService: ReservationApiService, private fb: FormBuilder) { }
   
   ngOnInit(): void {
     this.createForm();
     this.autoFormatPhoneNumber();
     this.subscribeToCheckbox();
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
   
   formGet(field: string) { return this.emailForm.get(field); }
@@ -90,76 +96,30 @@ export class ReservationFormComponent implements OnInit {
       return;
     }
 
-    input.valueChanges.subscribe((value: string) => {
-      if (value === '') {
+    input.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value: string) => {
+      if (!value || value === '') {
         this.lastPhoneValue = '';
         return;
-      }      
-      const deleting = value.length < this.lastPhoneValue.length;
-      console.log('-----', {value}, this.lastPhoneValue, {deleting});
-      
-      // Remove all non-digit characters from the input
-      let cleanValue = value.replace(/\D/g, '');
-      // if (cleanValue.length < 1) {
-      //   return;
-      // }
-      
-      if (deleting) {
-        let lastChar = value[value.length - 1];
-        while ((lastChar === '(' || lastChar === ')' || lastChar === '-' || lastChar === ' ') && value.length > 0) {
-          value = value.slice(0, value.length - 1);
-          lastChar = value[value.length - 1];
-        }
-        if (value.length > 0) {
-          value = value.slice(0, value.length - 1);
-        }
-        console.log('deleting', {value}, this.lastPhoneValue);
-        this.lastPhoneValue = value;
-        return;
       }
-
-      let idx = Math.min(cleanValue.length, 3);
-      const area = cleanValue.slice(0, idx);
-      let first3 = '';
-      let last4 = '';
-      console.log({cleanValue}, {value}, {idx});
-      if (cleanValue.length > 3) {
-        first3 = cleanValue.slice(3, Math.min(cleanValue.length, 6));        
+      let backspace = value.length < this.lastPhoneValue.length;
+      let newVal = value.replace(/\D/g, '');
+      if (backspace && newVal.length <= 6) {
+        newVal = newVal.substring(0, newVal.length - 1);
       }
-      if (cleanValue.length > 6) {
-        last4 = cleanValue.slice(6, cleanValue.length);
+      if (newVal.length === 0) {
+        newVal = '';
+      } else if (newVal.length <= 3) {
+        newVal = newVal.replace(/^(\d{0,3})/, '($1)');
+      } else if (newVal.length <= 6) {
+        newVal = newVal.replace(/^(\d{0,3})(\d{0,3})/, '($1) $2');
+      } else if (newVal.length <= 10) {
+        newVal = newVal.replace(/^(\d{0,3})(\d{0,3})(\d{0,4})/, '($1) $2-$3');
+      } else {
+        newVal = newVal.substring(0, 10);
+        newVal = newVal.replace(/^(\d{0,3})(\d{0,3})(\d{0,4})/, '($1) $2-$3');
       }
-      const formattedValue = `(${area}) ${first3}-${last4}`;
-      input.setValue(formattedValue, { emitEvent: false });
-      
-    //   if (cleanValue.length > 0) {
-    //     formattedValue += '(' + cleanValue[0];
-    //   }
-    //   if (cleanValue.length > 1) {
-    //     formattedValue += cleanValue.slice(0, Math.min(cleanValue.length - 1, 2));
-    //   }
-    //   if (cleanValue.length < 3) {
-    //     input.setValue(formattedValue, { emitEvent: false });
-        
-    //     console.log('1', {formattedValue});
-        
-    //     return;
-    //   }
-    //   formattedValue += ') ';
-    //   formattedValue += cleanValue.slice(3, Math.min(cleanValue.length - 1, 3));
-    //   if (cleanValue.length < 6) {
-    //     input.setValue(formattedValue, { emitEvent: false });
-        
-    //     console.log('2', {formattedValue});
-
-    //     return;
-    //   }
-    //   formattedValue += ' - ';
-    //   formattedValue += cleanValue.slice(6);
-      
-    //   console.log('3', {formattedValue});
-      
-    //   input.setValue(formattedValue, { emitEvent: false });
+      input.setValue(newVal, { emitEvent: false });
+      this.lastPhoneValue = newVal;
     });
   }
 

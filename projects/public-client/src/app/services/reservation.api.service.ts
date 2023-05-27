@@ -15,7 +15,7 @@ export class ReservationApiService {
     const postResponse = this.http.post<ReservationResponse>(
       routes.api._root + routes.api.reservation._root, reservationDetails
     );
-
+      console.log(reservationDetails)
     return postResponse;
   }
 }
