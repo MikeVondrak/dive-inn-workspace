@@ -118,13 +118,13 @@ ${doNots}
 
 ${this.customerEmail.detailsHeader}
 Theme: ${reservation.theme || 'None'}
-Birthday: ${!!reservation.birthday}
+Birthday: ${!!reservation.birthday?.name || !!reservation.birthday?.age}
 - Name: ${reservation.birthday?.name || 'N/A'}
 - Age: ${reservation.birthday?.age || 'N/A'}
 Organizer: 
 - Name: ${reservation.organizer.name}
 - Email: ${reservation.organizer.email || 'N/A'}
-- Phone: ${reservation.organizer.phone || 'N/A'}
+- Phone: ${reservation.organizer.phoneNumber || 'N/A'}
 - Preferred Contact: ${reservation.organizer.preferredContact}
 Date: ${reservation.date}
 - Start Time: ${reservation.startTime}
@@ -148,7 +148,7 @@ ${reservation.notes}`,
 `Organizer: 
 - Name: ${reservation.organizer.name}
 - Email: ${reservation.organizer.email || 'N/A'}
-- Phone: ${reservation.organizer.phone || 'N/A'}
+- Phone: ${reservation.organizer.phoneNumber || 'N/A'}
 - Preferred Contact: ${reservation.organizer.preferredContact}
 
 Date: ${reservation.date}

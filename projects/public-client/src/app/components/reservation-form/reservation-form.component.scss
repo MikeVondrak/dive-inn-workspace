@@ -1,10 +1,6 @@
 @use "../../scss/utility";
 
 :host {
-
-  align-items: center;
-  width: 300px;
-
   .construction {
     text-align: center;
   }
@@ -158,6 +154,19 @@
       flex-direction: row;
       align-items: center;
       white-space: nowrap;
+
+      input {
+        // &.ng-touched {
+        //   background-color: yellow;
+        // }
+        // &.ng-dirty {
+        //   background-color: orange;
+        // }
+        &.ng-invalid.ng-touched {
+          border: 2px solid utility.$dive-red;
+          background-color: #ffdddd;
+        }
+      }
       
       &.label-organizer {
         grid-area: lOrN;

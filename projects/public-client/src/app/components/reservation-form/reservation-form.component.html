@@ -18,21 +18,21 @@
       <label for="organizer" class="nowrap">Organizer<span>*</span></label>
     </div>
     <div class="input-organizer">
-      <input type="text" id="organizer" [ngClass]="hasErrors(formGet('organizer')) ? 'has-error' : ''" formControlName="organizer">
+      <input type="text" id="organizer" formControlName="organizer">
     </div>
         
     <div class="label-column label-phone required">
       <label for="phone" class="nowrap">Phone<span>*</span></label>
     </div>
     <div class="input-phone">
-      <input type="text" id="phone" [ngClass]="hasErrors(formGet('phone')) ? 'has-error' : ''" formControlName="phone">
+      <input type="text" id="phone" formControlName="phone">
     </div>
     
     <div class="label-column label-email required">
       <label for="email" class="nowrap">Email<span>*</span></label>
     </div>
     <div class="input-email">
-      <input type="text" id="email" [ngClass]="hasErrors(formGet('email')) ? 'has-error' : ''" formControlName="email">
+      <input type="text" id="email" formControlName="email">
     </div>
     
     <div class="label-column label-contact required">
@@ -55,14 +55,14 @@
       <label for="date" class="nowrap">Date<span>*</span></label>
     </div>
     <div class="input-date">
-      <input type="date" id="date" [ngClass]="hasErrors(formGet('partyDate')) ? 'has-error' : ''" formControlName="partyDate">
+      <input type="date" id="date" formControlName="partyDate">
     </div>
     
     <div class="label-column label-start-time required">
       <label for="start-time" class="nowrap">Start<span>*</span></label>
     </div>
     <div class="input-start-time">
-      <input type="time" id="start-time" [ngClass]="hasErrors(formGet('startTime')) ? 'has-error' : ''" formControlName="startTime">
+      <input type="time" id="start-time" formControlName="startTime">
     </div>
     <div class="label-column label-end-time required">
       <label for="end-time">End</label>
@@ -102,7 +102,7 @@
       <label for="headcount" class="nowrap">Headcount<span>*</span></label>
     </div>
     <div class="input-headcount">
-      <input type="number" id="headcount" min="1" [ngClass]="hasErrors(formGet('headcount')) ? 'has-error' : ''" formControlName="headcount">
+      <input type="number" id="headcount" min="1" formControlName="headcount">
     </div>
 
     <div class="checkboxes label-column label-preferred-space">

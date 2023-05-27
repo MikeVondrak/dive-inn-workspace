@@ -25,8 +25,7 @@ export interface Reservation {
   },
   organizer: {
     name: string,
-    voice?: number,
-    text?: number,
+    phoneNumber?: number,
     email?: string,
     preferredContact: ContactType,
   },

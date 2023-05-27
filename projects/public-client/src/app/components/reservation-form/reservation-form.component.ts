@@ -32,10 +32,13 @@ export class ReservationFormComponent implements OnInit {
   public formState$: BehaviorSubject<ReservationFormState> = new BehaviorSubject<ReservationFormState>(ReservationFormState.ENTRY);
   public reservationFormState = ReservationFormState;
 
+  private lastPhoneValue: string = '';
+
   constructor(private reservationService: ReservationApiService, private fb: FormBuilder) { }
   
   ngOnInit(): void {
     this.createForm();
+    this.autoFormatPhoneNumber();
     this.subscribeToCheckbox();
   }
   
@@ -48,18 +51,12 @@ export class ReservationFormComponent implements OnInit {
       birthday: [false],
       birthdayName: [{value: '', disabled: true}],
       birthdayAge: [{value: null, disabled: true}],
-      // organizer: ['test name'],
-      // partyDate: ['10/10/2010'],
-      // startTime: ['10am'],
       endTime: [''],
       organizer: ['', [Validators.required]],
       partyDate: ['', [Validators.required]],
       startTime: ['', [Validators.required]],
       // endTime: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      // phone: ['234-234-2343'],
-      // email: ['adsf@asfd.com'],
-      // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9\(\) -]{14}$')]],
       email: ['', [Validators.required, Validators.email]],
       contactMethod: [this.contactType.EMAIL],
       preferredSpaceNone: [false],
@@ -70,67 +67,100 @@ export class ReservationFormComponent implements OnInit {
       preferredSpaceGameRoom: [false],
       preferredSpaceSouthRoom: [false],
       preferredSpaceSouthPatio: [false],
-      headcount: [null, [Validators.required]],//, Validators.pattern("^[0-9*]*$")]],
+      headcount: [null, [Validators.required, Validators.pattern("^[0-9*]*$")]],
       comments: [''],
     });
 
-  //   // BELOW IS FOR TESTING
-  //   this.emailForm = this.fb.group({
-  //     partyTheme: [''],
-  //     birthday: [false],
-  //     birthdayName: [{value: '', disabled: true}],
-  //     birthdayAge: [{value: null, disabled: true}],
-  //     // organizer: ['test name'],
-  //     // partyDate: ['10/10/2010'],
-  //     // startTime: ['10am'],
-  //     endTime: [''],
-  //     organizer: ['', []],
-  //     partyDate: ['', []],
-  //     startTime: ['', []],
-  //     // endTime: ['', [Validators.required]],
-  //     phone: ['', []],
-  //     // phone: ['234-234-2343'],
-  //     email: ['adsf@asfd.com'],
-  //     // email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$')]],
-  //     // email: ['', [Validators.required, Validators.email]],
-  //     contactMethod: [this.contactType.EMAIL],
-  //     preferredSpaceNone: [false],
-  //     preferredSpaceMainRoom: [false],
-  //     preferredSpacePartyBoat: [false],
-  //     preferredSpaceNorthPatio: [false],
-  //     preferredSpaceNorthRoom: [false],
-  //     preferredSpaceGameRoom: [false],
-  //     preferredSpaceSouthRoom: [false],
-  //     preferredSpaceSouthPatio: [false],
-  //     headcount: [null, []],//, Validators.pattern("^[0-9*]*$")]],
-  //     comments: [''],
-  //   })
   }
 
-  hasErrors(field: AbstractControl<any, any> | null) {
+  public hasErrors(field: AbstractControl<any, any> | null) {
     if (!field) {
       return false;
     }
     if (field.touched || this.submitted) {
-      if (field.hasError('email')) {
-        return true;
-      }
-      return field.hasError('required');
+      const hasError = field.hasError('email') || field.hasError('required') || field.hasError('pattern');
+      return hasError;
     }
     return false;
   }
 
-  public errorCheck(field: AbstractControl<any, any> | null, pattern?: boolean) {
-    if (!field) {
-      return false;
+  public autoFormatPhoneNumber() {
+    const input = this.emailForm.get('phone');
+    if (!input) {
+      return;
     }
-    if (field.touched) {
-      if (pattern && field.hasError('email')) {
-        return true;
+
+    input.valueChanges.subscribe((value: string) => {
+      if (value === '') {
+        this.lastPhoneValue = '';
+        return;
+      }      
+      const deleting = value.length < this.lastPhoneValue.length;
+      console.log('-----', {value}, this.lastPhoneValue, {deleting});
+      
+      // Remove all non-digit characters from the input
+      let cleanValue = value.replace(/\D/g, '');
+      // if (cleanValue.length < 1) {
+      //   return;
+      // }
+      
+      if (deleting) {
+        let lastChar = value[value.length - 1];
+        while ((lastChar === '(' || lastChar === ')' || lastChar === '-' || lastChar === ' ') && value.length > 0) {
+          value = value.slice(0, value.length - 1);
+          lastChar = value[value.length - 1];
+        }
+        if (value.length > 0) {
+          value = value.slice(0, value.length - 1);
+        }
+        console.log('deleting', {value}, this.lastPhoneValue);
+        this.lastPhoneValue = value;
+        return;
       }
-      return field.hasError('required');
-    }
-    return false;
+
+      let idx = Math.min(cleanValue.length, 3);
+      const area = cleanValue.slice(0, idx);
+      let first3 = '';
+      let last4 = '';
+      console.log({cleanValue}, {value}, {idx});
+      if (cleanValue.length > 3) {
+        first3 = cleanValue.slice(3, Math.min(cleanValue.length, 6));        
+      }
+      if (cleanValue.length > 6) {
+        last4 = cleanValue.slice(6, cleanValue.length);
+      }
+      const formattedValue = `(${area}) ${first3}-${last4}`;
+      input.setValue(formattedValue, { emitEvent: false });
+      
+    //   if (cleanValue.length > 0) {
+    //     formattedValue += '(' + cleanValue[0];
+    //   }
+    //   if (cleanValue.length > 1) {
+    //     formattedValue += cleanValue.slice(0, Math.min(cleanValue.length - 1, 2));
+    //   }
+    //   if (cleanValue.length < 3) {
+    //     input.setValue(formattedValue, { emitEvent: false });
+        
+    //     console.log('1', {formattedValue});
+        
+    //     return;
+    //   }
+    //   formattedValue += ') ';
+    //   formattedValue += cleanValue.slice(3, Math.min(cleanValue.length - 1, 3));
+    //   if (cleanValue.length < 6) {
+    //     input.setValue(formattedValue, { emitEvent: false });
+        
+    //     console.log('2', {formattedValue});
+
+    //     return;
+    //   }
+    //   formattedValue += ' - ';
+    //   formattedValue += cleanValue.slice(6);
+      
+    //   console.log('3', {formattedValue});
+      
+    //   input.setValue(formattedValue, { emitEvent: false });
+    });
   }
 
   public subscribeToCheckbox() {
@@ -186,7 +216,7 @@ export class ReservationFormComponent implements OnInit {
         name: this.emailForm.get('organizer')?.value,
         preferredContact: this.emailForm.get('contactMethod')?.value,
         email: this.emailForm.get('email')?.value,
-        voice: this.emailForm.get('phone')?.value
+        phoneNumber: this.emailForm.get('phone')?.value
       },
       date: this.emailForm.get('partyDate')?.value,
       startTime: this.emailForm.get('startTime')?.value,
