@@ -17,12 +17,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js and Yarn
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
           cache: 'yarn'
 
       - name: Install dependencies
@@ -31,9 +31,7 @@ jobs:
       - name: Copy environment files
         run: |
           touch ./projects/public-client/src/environments/environment.prod.ts
-          touch ./projects/dive-inn-lib/src/environments/environment.prod.ts
           echo "${{ secrets.ENV_FILE_PUBLIC_CLIENT }}" > ./projects/public-client/src/environments/environment.prod.ts
-          echo "${{ secrets.ENV_FILE_DIVE_INN_LIB }}" > ./projects/dive-inn-lib/src/environments/environment.prod.ts
 
       - name: Build Frontend
         run: yarn build-fe
