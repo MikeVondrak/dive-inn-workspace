@@ -30,7 +30,6 @@ jobs:
 
       - name: Copy environment files
         run: |
-          mkdir ./projects/public-client/src/environments
           mkdir ./projects/public-server/src/environments
           mkdir ./projects/dive-inn-lib/src/environments
           echo "Folders created"          
