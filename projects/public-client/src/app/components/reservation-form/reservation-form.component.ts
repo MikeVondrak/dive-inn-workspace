@@ -165,6 +165,10 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
     if (this.emailForm.get('preferredSpaceSouthPatio')?.value) { 
       spaces.push(RentalSpaces.SOUTH_PATIO) 
     };
+
+
+    const startTime = this.formatTime(this.emailForm.get('startTime')?.value);
+    const endTime = this.formatTime(this.emailForm.get('endTime')?.value);
     let formModel: Reservation = {
       headcount: this.emailForm.get('headcount')?.value,
       theme: this.emailForm.get('partyTheme')?.value,
@@ -179,8 +183,8 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
         phoneNumber: this.emailForm.get('phone')?.value
       },
       date: this.emailForm.get('partyDate')?.value,
-      startTime: this.emailForm.get('startTime')?.value,
-      endTime: this.emailForm.get('endTime')?.value,
+      startTime: startTime,
+      endTime: endTime,
       rentalSpaces: spaces,
       notes: this.emailForm.get('comments')?.value,
       
@@ -229,6 +233,16 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
   }
 
   public animationDone(event: AnimationEvent) {
+  }
 
+  public formatTime(timeString: string | null): string {
+    if (!timeString) {
+      return '';
+    }
+    const timeStrings = timeString?.split(':');
+    const date = new Date();
+    date.setHours(+timeStrings?.[0] || 0);
+    date.setMinutes(+timeStrings?.[1] || 0);
+    return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true, timeZone: 'America/Denver' }) || '';
   }
 }

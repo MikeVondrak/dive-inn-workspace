@@ -118,7 +118,7 @@ ${doNots}
 
 ${this.customerEmail.detailsHeader}
 Theme: ${reservation.theme || 'None'}
-Birthday: ${!!reservation.birthday?.name || !!reservation.birthday?.age}
+Birthday: ${reservation.birthday}
 - Name: ${reservation.birthday?.name || 'N/A'}
 - Age: ${reservation.birthday?.age || 'N/A'}
 Organizer: 
