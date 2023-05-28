@@ -9,8 +9,8 @@
         <div class="image-frame"></div> -->
         <app-album-display
           [showInfo]="false"
-          title="Title"
-          description="Description"
+          title=""
+          description=""
           [imageUrls]="imageUrls"
         ></app-album-display>
       </div>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="overlay obscure-bg aside-container">
+  <div *ngIf="!!capacity" class="overlay obscure-bg aside-container">
     <div *ngIf="!!capacity" class="capacity-container">
       <div class="number">{{ capacity[0] }}</div>
       <div>to</div>
@@ -26,4 +26,6 @@
     </div>
     <img class="person" src="/assets/images/person.svg" />
   </div>
+
+  <button class="overlay close-button">x</button>
 </div> 

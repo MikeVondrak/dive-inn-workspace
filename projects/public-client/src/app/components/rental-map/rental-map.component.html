@@ -3,37 +3,44 @@
 <div>Overlay: {{ this.overlayAnimation }}</div>
 <div>Next: {{ nextSpace }}</div> -->
 
+
+<!-- [@mapTransitions]="mapAnimation"
+    (@mapTransitions.done)="mapAnimationDone($event)" -->
 <div class="rental-map-container">
   <div
-    (click)="toggleZoom($event, null)"
-    [@mapTransitions]="mapAnimation"
-    (@mapTransitions.done)="mapAnimationDone($event)"
+    (click)="toggleZoom($event, null)"    
     class="rental-map"
+    [@mapTransitions]="mapAnimation"
+    (@mapTransitions.done)="mapAnimationDone($event)" 
   >
+    <div [@mapOverlayTransitions]="mapAnimation" class="rental-map-overlay"></div>
+
     <app-rental-space-overlay      
-      title="Legend"
-      [positionCss]="{ info: ['0%','11.05%','0%','0%'], aside: ['50%','50%','50%','50%'] }"
-      [overlayId]="rentalSpaces.LEGEND"
+      title=""
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['50%','50%','50%','50%'] }"
+      [overlayId]="RentalSpaces.LEGEND"
       [animationState]="overlayAnimation"
-      [imageUrls]="[]"
+      [imageUrls]="[
+        '/assets/images/private-parties/Rental_Map_Legend.svg'
+      ]"
       [capacity]="null"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Oasis"
-      [positionCss]="{ info: ['0%','0%','33.3%','0%'], aside: ['66.6%','0%','0%','83%'] }"
-      [overlayId]="rentalSpaces.SPACE1"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE1"
       [animationState]="overlayAnimation"
       [imageUrls]="[
-        '/assets/images/tour/front_patio.jpg',
+        '/assets/images/private-parties/Rental_Map_No_Images.svg',
       ]"
       [capacity]="[18,24]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Boat"
-      [positionCss]="{ info: ['0%','0%','0%','29%'], aside: ['0%','71%','73%','0%'] }"
-      [overlayId]="rentalSpaces.SPACE2"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE2"
       [animationState]="overlayAnimation"
       [imageUrls]="[
         '/assets/images/tour/boat_diagonal2.jpg',
@@ -44,8 +51,8 @@
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Galley"
-      [positionCss]="{ info: ['0%','0%','37%','0%'], aside: ['63%','0%','0%','55%'] }"
-      [overlayId]="rentalSpaces.SPACE3"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE3"
       [animationState]="overlayAnimation"
       [imageUrls]="[
         '/assets/images/tour/main_room2.jpg',
@@ -56,8 +63,8 @@
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Cabin"
-      [positionCss]="{ info: ['0%','33%','0%','0%'], aside: ['0%','0%','46.5%','67%'] }"
-      [overlayId]="rentalSpaces.SPACE4"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE4"
       [animationState]="overlayAnimation"
       [imageUrls]="[
         '/assets/images/tour/side_room.jpg',
@@ -68,8 +75,8 @@
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Deck"
-      [positionCss]="{ info: ['0%','0%','48%','0%'], aside: ['52%','73%','0%','0%'] }"
-      [overlayId]="rentalSpaces.SPACE5"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE5"
       [animationState]="overlayAnimation"
       [imageUrls]="[
         '/assets/images/tour/south_patio.jpg',
@@ -83,22 +90,22 @@
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Saloon"
-      [positionCss]="{ info: ['32.5%','0%','0%','0%'], aside: ['0%','76%','67.5%','0%'] }"
-      [overlayId]="rentalSpaces.SPACE6"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE6"
       [animationState]="overlayAnimation"
       [imageUrls]="[
         '/assets/images/tour/north_room.jpg',
         '/assets/images/tour/north_room3.jpg',
         '/assets/images/tour/north_room5.jpg',
-        '/assets/images/tour/north_room6.jpg'
+        '/assets/images/tour/north_room6.jpg',
       ]"
       [capacity]="[40,70]"
       (animationDone)="overlayAnimationDone($event)"
     ></app-rental-space-overlay>
     <app-rental-space-overlay
       title="The Cabana"
-      [positionCss]="{ info: ['37%','20%','0%','0%'], aside: ['37%','0%','0%','80%'] }"
-      [overlayId]="rentalSpaces.SPACE7"
+      [positionCss]="{ info: ['0%','0%','0%','0%'], aside: ['76%','0%','0%','81%'] }"
+      [overlayId]="RentalSpaces.SPACE7"
       [animationState]="overlayAnimation"
       [imageUrls]="[
         '/assets/images/tour/north_patio.jpg',
@@ -106,14 +113,40 @@
         '/assets/images/tour/north_patio3.jpg',
         '/assets/images/tour/north_patio4.jpg',
         '/assets/images/tour/north_patio5.jpg',
-        '/assets/images/tour/north_patio6.jpg'
       ]"
       [capacity]="[10,250]"
       (animationDone)="overlayAnimationDone($event)"
-    ></app-rental-space-overlay>
+    >
+    <!-- TODO - Why do 6+ images not display? '/assets/images/tour/north_patio6.jpg' -->
+    </app-rental-space-overlay>
 
     <!-- Markers for spaces with number in circle -->
-    <div
+    <!-- [@mapMarkerTransitions]="mapMarkerAnimation"
+      (@mapMarkerTransitions.done)="mapMarkerAnimationDone($event)" -->
+    <div *ngIf="mapMarkerAnimation === OpacityAnimationStates.SHOWING"
+      [@mapMarkerTransitions]="mapMarkerAnimation"
+      (@mapMarkerTransitions.done)="mapMarkerAnimationDone($event)"
+    >
+      <button *ngFor="let space of rentalSpaceList; let i = index"      
+        class="number-circle space-{{i + 1}}"
+        (click)="toggleZoom($event, space)"
+        [disabled]="markersDisabled"
+      >
+        {{ i + 1 }}
+      </button>
+      <button *ngIf="mapMarkerAnimation === OpacityAnimationStates.SHOWING"
+        class="legend-zoom"
+        (click)="toggleZoom($event, RentalSpaces.LEGEND)"
+        [disabled]="markersDisabled"
+      >
+        <img src="/assets/images/Magnifying_Glass.svg" />
+      </button>
+    </div>
+    
+    <!-- <div *ngFor="let s of rentalSpaceList">{{s}}</div> -->
+
+
+    <!-- <div
       [@mapMarkerTransitions]="mapMarkerAnimation"
       (@mapMarkerTransitions.done)="mapMarkerAnimationDone($event)"
       class="number-circle space-1"
@@ -162,13 +195,6 @@
       (click)="toggleZoom($event, rentalSpaces.SPACE7)"
     >
       7
-    </div>
-    <div
-      [@mapMarkerTransitions]="mapMarkerAnimation"
-      class="legend-zoom"
-      (click)="toggleZoom($event, rentalSpaces.LEGEND)"
-    >
-      <img src="/assets/images/Magnifying_Glass.svg" />
-    </div>
+    </div> -->
   </div>
 </div>

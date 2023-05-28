@@ -20,13 +20,12 @@ export enum RentalSpaces {
 export interface Reservation {
   theme?: string,
   birthday?: {
-    name: string,
-    age: number,
+    name?: string,
+    age?: number,
   },
   organizer: {
     name: string,
-    voice?: number,
-    text?: number,
+    phoneNumber?: number,
     email?: string,
     preferredContact: ContactType,
   },

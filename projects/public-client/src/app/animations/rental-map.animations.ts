@@ -12,95 +12,96 @@ import {
   sequence,
   animateChild,
 } from '@angular/animations';
-import { OpacityAnimationStates, RentalSpaces } from '../models/rental-map.model';
+import {
+  OpacityAnimationStates,
+  RentalSpaces,
+} from '../models/rental-map.model';
 
 // https://www.techiediaries.com/angular-router-animations/
 
-const markerAnimation = '0.2s linear';
-const mapZoomInAnimation = '0.75s ease-in-out';
-const mapZoomOutAnimation = '0.75s ease-in-out';
-const overlayAnimation = '0.2s ease-in';
+const markerAnimation = '0.15s linear';
+const mapZoomInAnimation = '0.25s ease-in';
+const mapZoomOutAnimation = '0.25s ease-in';
+const overlayAnimation = '0.75s ease-in-out';
 
-export const rentalMapAnimations = [ 
+export const rentalMapAnimations = [
   trigger('overlayTransitions', [
     transition(':enter', [
       style({ opacity: 0 }),
-      animate(overlayAnimation, style({ opacity: 1 }))
+      animate(overlayAnimation, style({ opacity: 1 })),
     ]),
     transition(':leave', [
       style({ opacity: 1 }),
-      animate(overlayAnimation, style({ opacity: 0 }))
+      animate(overlayAnimation, style({ opacity: 0 })),
     ]),
   ]),
   trigger('mapMarkerTransitions', [
-    state(OpacityAnimationStates.HIDDEN, style({ opacity: 0 })),
-    state(OpacityAnimationStates.SHOWING, style({ opacity: 1 })),
-    transition(`${OpacityAnimationStates.HIDDEN } <=> ${OpacityAnimationStates.SHOWING}`, [
-      animate(markerAnimation)
-    ])
+    transition('* => *', [
+      query(
+        ':leave',
+        [
+          style({ transform: 'translateX(-50%) scale(1)' }),
+          stagger(50, [
+            animate(
+              '0.5s cubic-bezier(0,0.15,0.5,-1)',
+              style({ transform: 'translateX(-50%) scale(0)' })
+            ),
+          ]),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          style({ transform: 'translateX(-50%) scale(0)' }),
+          stagger(20, [
+            animate(
+              '0.5s cubic-bezier(.15,.96,.59,1.51)',
+              style({ transform: 'translateX(-50%) scale(1)' })
+            ),
+          ]),
+        ],
+        { optional: true }
+      ),
+    ]),
+    // state(OpacityAnimationStates.HIDDEN, style({ transform: 'translateX(-50%) scale(0)', opacity: 0 })),
+    // state(OpacityAnimationStates.SHOWING, style({ transform: 'translateX(-50%) scale(1)', opacity: 1 })),
+    // state('void', style({ transform: 'scale(0)', opacity: 0 })),
+    // transition(`${OpacityAnimationStates.HIDDEN } <=> ${OpacityAnimationStates.SHOWING}`, [
+    //   animate(markerAnimation)
+    // ])
   ]),
-  trigger('mapTransitions', [    
-    state(RentalSpaces.DEFAULT, 
-      style({ 
-        backgroundSize: '100%',
-        backgroundPosition: 'center',
-      })
-    ),
-    state(RentalSpaces.LEGEND, 
-      style({ 
-        backgroundSize: '210%',
-        backgroundPosition: 'right top',
-      })
-    ),
-    state(RentalSpaces.SPACE1, 
-      style({ 
-        backgroundSize: '240%',
-        backgroundPosition: '0 12%',
-      })
-    ),
-    state(RentalSpaces.SPACE2, 
-      style({ 
-        backgroundSize: '320%',
-        backgroundPosition: '37% 62.75%',
-      })
-    ),
-    state(RentalSpaces.SPACE3, 
-      style({ 
-        backgroundSize: '160%',
-        backgroundPosition: '91% 31.5%',
-      })
-    ),
-    state(RentalSpaces.SPACE4, 
-      style({ 
-        backgroundSize: '220%',
-        backgroundPosition: '26% 100%',
-      })
-    ),
-    state(RentalSpaces.SPACE5, 
-      style({ 
-        backgroundSize: '180%',
-        backgroundPosition: '100% 100%',
-      })
-    ),
-    state(RentalSpaces.SPACE6, 
-      style({ 
-        backgroundSize: '230%',
-        backgroundPosition: '91% 61.5%',
-      })
-    ),
-    state(RentalSpaces.SPACE7, 
-      style({ 
-        backgroundSize: '105%',
-        backgroundPosition: '0% 0%',
-      })
-    ),
+  trigger('mapTransitions', [
+    // state(RentalSpaces.LEGEND,
+    //   style({
+    //     backgroundSize: '210%',
+    //     backgroundPosition: 'right top',
+    //     // transform: 'scale(1.25)'
+    //   })
+    // ),
+    // transition(`* <=> *`, [
+    // query(':leave', [
+    //   style({ transform: 'translateX(-50%) scale(1)' }),
+    //   stagger(500, [animate('1.5s ease-in', style({ transform: 'translateX(-50%) scale(0)' }))])
+    // ], { optional: true }),
+    // query('@*', [
+    //   stagger(500, [animateChild()]),
+    // ])
+    // ]),
+    // transition(`* => ${RentalSpaces.DEFAULT}`, [
+    //   query('@*', [animateChild()], { optional: true }), // so e.g. buttons will fade in/out
+    // ])
+  ]),
+  trigger('mapOverlayTransitions', [
+    state(RentalSpaces.DEFAULT, style({ opacity: 0 })),
+    state(RentalSpaces.LEGEND, style({ opacity: 1 })),
     transition(`${RentalSpaces.DEFAULT} => *`, [
-      query('@*', [animateChild()], { optional: true }), // so e.g. buttons will fade in/out
-      animate(mapZoomInAnimation),
+      style({ opacity: 0 }),
+      animate(mapZoomInAnimation, style({ opacity: 1 })),
     ]),
     transition(`* => ${RentalSpaces.DEFAULT}`, [
-      query('@*', [animateChild()], { optional: true }), // so e.g. buttons will fade in/out
-      animate(mapZoomOutAnimation),
-    ])
-  ])
+      style({ opacity: 1 }),
+      animate(mapZoomOutAnimation, style({ opacity: 0 })),
+    ]),
+  ]),
 ];

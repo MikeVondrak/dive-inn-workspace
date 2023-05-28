@@ -64,6 +64,9 @@ export class ReservationsRouter extends BaseRouter {
   }
 
   private sendMail(transporter: Transporter, options: MailOptions, res: Response) {
+    
+    console.log('SENDING MAIL', options);
+
     transporter.sendMail(options, (error, info) => {
       if (!!error) {
         res.status(500).send(error);
@@ -115,13 +118,13 @@ ${doNots}
 
 ${this.customerEmail.detailsHeader}
 Theme: ${reservation.theme || 'None'}
-Birthday: ${!!reservation.birthday}
+Birthday: ${reservation.birthday}
 - Name: ${reservation.birthday?.name || 'N/A'}
 - Age: ${reservation.birthday?.age || 'N/A'}
 Organizer: 
 - Name: ${reservation.organizer.name}
 - Email: ${reservation.organizer.email || 'N/A'}
-- Phone: ${reservation.organizer.phone || 'N/A'}
+- Phone: ${reservation.organizer.phoneNumber || 'N/A'}
 - Preferred Contact: ${reservation.organizer.preferredContact}
 Date: ${reservation.date}
 - Start Time: ${reservation.startTime}
@@ -145,7 +148,7 @@ ${reservation.notes}`,
 `Organizer: 
 - Name: ${reservation.organizer.name}
 - Email: ${reservation.organizer.email || 'N/A'}
-- Phone: ${reservation.organizer.phone || 'N/A'}
+- Phone: ${reservation.organizer.phoneNumber || 'N/A'}
 - Preferred Contact: ${reservation.organizer.preferredContact}
 
 Date: ${reservation.date}

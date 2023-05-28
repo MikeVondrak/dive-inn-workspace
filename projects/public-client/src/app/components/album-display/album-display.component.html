@@ -10,14 +10,16 @@
     ></app-image-display>
   </div>
 
-  <button (click)="prevClicked($event)" class="album-display-nav prev">&lt;</button>
-  <button (click)="nextClicked($event)" class="album-display-nav next">&gt;</button>
-
-  <div class="album-display-pill-box">
-    <button *ngFor="let url of imageUrls; index as idx"
-      [class.activePill]="idx === activeImage"
-      (click)="pillClicked($event, idx)"
-    ></button>
+  <div *ngIf="imageUrls.length > 1">
+    <button (click)="prevClicked($event)" class="album-display-nav prev">&lt;</button>
+    <button (click)="nextClicked($event)" class="album-display-nav next">&gt;</button>
+  
+    <div class="album-display-pill-box">
+      <button *ngFor="let url of imageUrls; index as idx"
+        [class.activePill]="idx === activeImage"
+        (click)="pillClicked($event, idx)"
+      ></button>
+    </div>
   </div>
   
   <div *ngIf="showInfo" class="album-display-info">

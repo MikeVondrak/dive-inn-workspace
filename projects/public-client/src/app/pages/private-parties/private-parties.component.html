@@ -13,7 +13,8 @@
           <img src="assets/images/private-parties/photos.svg" alt="View photos!" />
         </div>
       </a> -->
-      <a class="top-cta" title="Send a reservation email" [href]="'#'" target="_blank">
+      <a class="top-cta" title="Send a reservation" routerLink="/party" fragment="Form">
+        
         <div class="circle-link message-bottle">
           <img src="assets/images/message_bottle_with_text.svg" alt="Make a reservation now!" />
         </div>
@@ -39,7 +40,7 @@
     <div class="waves-separator"></div>
   </div>
 
-  <div id="Form" class="reservation-form-container">
+  <div id="Form" class="reservation-form-container">    
     <app-reservation-form></app-reservation-form>
   </div>
 
