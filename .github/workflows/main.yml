@@ -50,6 +50,8 @@ jobs:
       
       - name: Fetch EC2 instance host key
         run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
           ssh-keyscan -p ${{ secrets.EC2_PORT }} -t rsa ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       - name: Connect to EC2 instance and copy files
