@@ -32,6 +32,9 @@ jobs:
         run: |
           touch ./projects/public-client/src/environments/environment.prod.ts
           echo "${{ secrets.ENV_FILE_PUBLIC_CLIENT }}" > ./projects/public-client/src/environments/environment.prod.ts
+          mkdir ./projects/dive-inn-lib/src/environments
+          touch ./projects/dive-inn-lib/src/environments/environment.prod.ts
+          echo "${{ secrets.ENV_FILE_DIVE_INN_LIB }}" > ./projects/dive-inn-lib/src/environments/environment.prod.ts
 
       - name: Build Frontend
         run: yarn build-fe
