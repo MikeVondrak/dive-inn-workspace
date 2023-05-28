@@ -16,9 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug
-        run: echo "Host ${{ secrets.EC2_HOST }}, User ${{ secrets.EC2_USERNAME }}, Key ${{ secrets.EC2_PRIVATE_KEY }}"
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
