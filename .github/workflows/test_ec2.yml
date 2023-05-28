@@ -16,6 +16,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      
+      - name: Fetch EC2 instance host key
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          ssh-keyscan -p ${{ secrets.EC2_PORT }} -t rsa ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
+
+      - name: Connect to EC2 instance and copy files
+        uses: appleboy/ssh-action@master
+        with:
+          host: "${{ secrets.EC2_HOST }}"
+          port: "${{ secrets.EC2_PORT }}"
+          username: "${{ secrets.EC2_USERNAME }}"
+          key: ${{ secrets.EC2_SSH_PEM }}
+          script: |
+            mkdir -p /var/www/html/diveinndenver.com
+            scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
+            scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
+
+
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -42,27 +65,9 @@ jobs:
           echo "${{ secrets.ENV_FILE_PUBLIC_SERVER }}" > ./projects/public-server/src/environments/environment.ts
           echo "${{ secrets.ENV_FILE_DIVE_INN_LIB }}" > ./projects/dive-inn-lib/src/environments/environment.prod.ts
 
-      - name: Build Frontend
-        run: yarn build-fe_public
+      # - name: Build Frontend
+      #   run: yarn build-fe_public
 
-      - name: Build Backend
-        run: yarn build-be_public_linux
+      # - name: Build Backend
+      #   run: yarn build-be_public_linux
       
-      - name: Fetch EC2 instance host key
-        run: |
-          mkdir -p ~/.ssh
-          touch ~/.ssh/known_hosts
-          ssh-keyscan -p ${{ secrets.EC2_PORT }} -t rsa ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
-          cat ~/.ssh/known_hosts
-
-      - name: Connect to EC2 instance and copy files
-        uses: appleboy/ssh-action@master
-        with:
-          host: "${{ secrets.EC2_HOST }}"
-          port: "${{ secrets.EC2_PORT }}"
-          username: "${{ secrets.EC2_USERNAME }}"
-          key: ${{ secrets.EC2_SSH_PEM }}
-          script: |
-            mkdir -p /var/www/html/diveinndenver.com
-            scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
-            scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
