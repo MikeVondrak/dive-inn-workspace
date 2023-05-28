@@ -1,0 +1,46 @@
+# Steps:
+# - Checkout repo
+# - Prod build of Angular App
+# - Prod build of Node App
+# - Connect to EC2 instance
+# - Copy files
+name: Yarn Workspace Prod Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js and Yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build Frontend
+        run: yarn build-fe
+
+      - name: Build Backend
+        run: yarn build-be_linux
+
+      - name: Connect to EC2 instance and copy files
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            mkdir -p /path/to/destination
+            scp -r ./angular-app/dist/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/path/to/destination/angular
+            scp -r ./node-app/build/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/path/to/destination/node
