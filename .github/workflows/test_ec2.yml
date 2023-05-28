@@ -28,20 +28,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PEM }}
           REMOTE_HOST: ${{ secrets.EC2_HOST }}
           REMOTE_USER: ${{ secrets.EC2_USERNAME }}
-          TARGET: /var/www/html/diveinndenver.com
-
-      - name: Connect to EC2 instance and copy files
-        uses: appleboy/ssh-action@master
-        with:
-          host: "${{ secrets.EC2_HOST }}"
-          port: "${{ secrets.EC2_PORT }}"
-          username: "${{ secrets.EC2_USERNAME }}"
-          key: ${{ secrets.EC2_SSH_PEM }}
-          script: |
-            mkdir -p /var/www/html/diveinndenver.com
-
-            scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
-            scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
+          TARGET: /var/www/html/diveinndenver.com      
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -69,8 +56,14 @@ jobs:
           echo "${{ secrets.ENV_FILE_PUBLIC_SERVER }}" > ./projects/public-server/src/environments/environment.ts
           echo "${{ secrets.ENV_FILE_DIVE_INN_LIB }}" > ./projects/dive-inn-lib/src/environments/environment.prod.ts
 
-      # - name: Build Frontend
-      #   run: yarn build-fe_public
+      - name: Build Frontend
+        run: yarn build-fe_public
 
-      # - name: Build Backend
-      #   run: yarn build-be_public_linux
+      - name: Build Backend
+        run: yarn build-be_public_linux
+
+      - name: Copy files to EC2
+        run: |
+          mkdir -p /var/www/html/diveinndenver.com
+          scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
+          scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
