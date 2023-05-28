@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { DirectivesModule } from './directives/directives.module';
-import { GraphQLModule } from './graphql/graphql.module';
 
 
 @NgModule({
@@ -8,11 +7,9 @@ import { GraphQLModule } from './graphql/graphql.module';
   ],
   imports: [
     DirectivesModule,
-    GraphQLModule,
   ],
   exports: [
     DirectivesModule,
-    GraphQLModule,
   ]
 })
 export class DiveInnLibModule { }
