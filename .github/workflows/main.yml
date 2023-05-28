@@ -47,6 +47,10 @@ jobs:
 
       - name: Build Backend
         run: yarn build-be_public_linux
+      
+      - name: Fetch EC2 instance host key
+        run: |
+          ssh-keyscan -p ${{ secrets.EC2_PORT }} -t rsa ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       - name: Connect to EC2 instance and copy files
         uses: appleboy/ssh-action@master
