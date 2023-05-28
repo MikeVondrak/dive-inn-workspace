@@ -54,7 +54,7 @@ jobs:
           host: "${{ secrets.EC2_HOST }}"
           port: "${{ secrets.EC2_PORT }}"
           username: "${{ secrets.EC2_USERNAME }}"
-          key: ${{ secrets.EC2_SSH_ED25519 }}
+          key: ${{ secrets.EC2_SSH_PEM }}
           script: |
             mkdir -p /var/www/html/diveinndenver.com
             scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
