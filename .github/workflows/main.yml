@@ -38,7 +38,7 @@ jobs:
           echo "${{ secrets.ENV_FILE_DIVE_INN_LIB }}" > ./projects/dive-inn-lib/src/environments/environment.prod.ts
 
       - name: Build Frontend
-        run: yarn build-fe-public
+        run: yarn build-fe_public
 
       - name: Build Backend
         run: yarn build-be_linux
