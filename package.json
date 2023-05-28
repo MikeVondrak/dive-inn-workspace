@@ -11,7 +11,7 @@
     "build-fe": "yarn build-fe-public && yarn build-fe-admin",    
     "build-be_windows": "cd projects/public-server && yarn build_windows",
     "build-be_linux": "cd projects/public-server && yarn build_linux",
-    "build-all": "yarn build-fe && yarn build-be_windows",
+    "build-windows": "yarn build-fe && yarn build-be_windows",
     "define-env": "set NODE_ENV=development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
