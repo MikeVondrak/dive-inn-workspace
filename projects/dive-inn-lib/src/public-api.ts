@@ -3,7 +3,6 @@
  */
 
 export * from './lib/dive-inn-lib.module';
-export * from './lib/graphql/graphql.module';
 
 // Directives
 export * from './lib/directives/directives.module';
