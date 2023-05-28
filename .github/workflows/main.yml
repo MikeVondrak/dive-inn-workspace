@@ -29,7 +29,10 @@ jobs:
         run: yarn install
 
       - name: Build Frontend
-        run: yarn build-fe
+        run: |
+          echo "${{ secrets.ENV_FILE_PUBLIC_CLIENT }}" > ./projects/public-client/src/environments/environment.prod.ts
+          echo "${{ secrets.ENV_FILE_DIVE_INN_LIB }}" > ./projects/dive-inn-lib/src/environments/environment.prod.ts
+          yarn build-fe
 
       - name: Build Backend
         run: yarn build-be_linux
