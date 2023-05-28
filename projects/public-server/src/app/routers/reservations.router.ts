@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import nodemailer, { Transport, Transporter, TransportOptions } from 'nodemailer';
+import nodemailer, { Transporter } from 'nodemailer';
 
 import { BaseRouter } from './base.router';
 import { GenericResponse, RouterCallback } from '../models/router.model';
 import { routes } from '../routes';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { MailOptions } from 'nodemailer/lib/json-transport';
 import { Reservation, ReservationResponse } from '../models/reservation.model';
 
