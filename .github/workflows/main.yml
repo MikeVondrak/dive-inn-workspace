@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug
+        run: echo "Host ${{ secrets.EC2_HOST }}, User ${{ secrets.EC2_USERNAME }}, Key ${{ secrets.EC2_PRIVATE_KEY }}"
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -46,10 +49,7 @@ jobs:
         run: yarn build-fe_public
 
       - name: Build Backend
-        run: yarn build-be_public_linux
-
-      - name: Debug
-        run: echo "Host ${{ secrets.EC2_HOST }}, User ${{ secrets.EC2_USERNAME }}, Key ${{ secrets.EC2_PRIVATE_KEY }}"
+        run: yarn build-be_public_linux      
 
       - name: Connect to EC2 instance and copy files
         uses: appleboy/ssh-action@master
