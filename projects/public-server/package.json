@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "windows_copy-package-json": "copy package.json ..\\..\\dist\\public-server\\",
     "windwos_copy-node-modules": "copy node_modules ..\\..\\dist\\public-server",
-    "linux_copy-package-json": "cp package.json ../../dist/public-server/ && cp node_modules ../../dist/public-server/",
+    "linux_copy-package-json": "cp package.json ../../dist/public-server/",
     "build_windows": "tsc && yarn windows_copy-package-json",
     "build_linux": "tsc && yarn linux_copy-package-json"
   },
