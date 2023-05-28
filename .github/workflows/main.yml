@@ -51,9 +51,10 @@ jobs:
       - name: Connect to EC2 instance and copy files
         uses: appleboy/ssh-action@master
         with:
-          host: "${{ secrets.EC2_HOST }}:${{ secrets.EC2_PORT }}"
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_RSA }}
+          host: "${{ secrets.EC2_HOST }}"
+          port: "${{ secrets.EC2_PORT }}"
+          username: "${{ secrets.EC2_USERNAME }}"
+          key: ${{ secrets.EC2_SSH_ED25519 }}
           script: |
             mkdir -p /var/www/html/diveinndenver.com
             scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
