@@ -64,5 +64,5 @@ jobs:
 
       - name: Copy files to EC2
         run: |
-          scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
-          scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
+          scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/diveinndenver/code/public-client
+          scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/diveinndenver/code/public-server
