@@ -30,9 +30,12 @@ jobs:
 
       - name: Copy environment files
         run: |
+          mkdir ./projects/public-client/src/environments
+          mkdir ./projects/public-server/src/environments
+          mkdir ./projects/dive-inn-lib/src/environments
+          echo "Folders created"          
           touch ./projects/public-client/src/environments/environment.prod.ts
           touch ./projects/public-server/src/environments/environment.prod.ts
-          mkdir ./projects/dive-inn-lib/src/environments
           touch ./projects/dive-inn-lib/src/environments/environment.prod.ts
           echo "Files touched"
           echo "${{ secrets.ENV_FILE_PUBLIC_CLIENT }}" > ./projects/public-client/src/environments/environment.prod.ts
