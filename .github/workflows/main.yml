@@ -55,6 +55,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
+            echo Host: ${{ secrets.EC2_HOST }}, User: ${{ secrets.EC2_USERNAME }}, Key: ${{ secrets.EC2_PRIVATE_KEY }}
             mkdir -p /var/www/html/diveinndenver.com
             scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
             scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
