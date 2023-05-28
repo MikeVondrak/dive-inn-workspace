@@ -55,7 +55,7 @@ export class SiteFooterComponent implements OnInit {
   private _links2 = [
     {
       uiLabel: 'Private Parties',
-      linkUrl: '/private-parties',
+      linkUrl: '/party',
       fragment: 'top',
     },
     {

@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
 
   public footerAddress: string[] = ['1380 S Broadway', 'Denver 80210'];
   public footerPhone: string = '720-242-6157';
-  public contactHours: string[] = ['Open EVERY Day', '11AM - 2AM'];
+  //public contactHours: string[] = ['Open EVERY Day', '11:30AM - 2AM', 'Sat & Sun Opens at 11AM'];
+  public contactHours: string[] = ['Mon - Fri   11:30AM - 2AM', 'Sat & Sun   11AM - 2AM'];
   public contactSectionConfig: IconCardConfig[] = [
     {
       iconCardImage: IconCardImages.MAP_MARKER,
@@ -46,7 +47,7 @@ export class HomeComponent implements OnInit {
         },
         {
           uiLabel: this.contactHours[1], 
-          size: IconCardTextSizes.LARGE,
+          size: IconCardTextSizes.SMALL,
         },
       ]
     },

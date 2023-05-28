@@ -13,7 +13,6 @@
         [viewMode]="carouselPaneExpanded[i]"
         [faceDirection]="faceDirections[i]" 
         [faceTemplate]="(templates$[i] | async)"
-        (click)="onClick($event)"
         (tap)="onTap($event)"
         (swipe)="onSwipe($event)"
       ></app-carousel-pane>
@@ -23,3 +22,4 @@
     <button class="rotate left" (click)="rotateLeft()">&lt;</button>
     <button class="rotate right" (click)="rotateRight()">&gt;</button>
   </div>
+</div>

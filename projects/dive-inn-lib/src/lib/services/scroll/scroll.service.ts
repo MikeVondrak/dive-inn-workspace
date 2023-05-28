@@ -10,7 +10,7 @@ import { UtilityService } from '../utility/utility.service';
 export class ScrollService implements OnDestroy {
 
   private userScrolled$: Subject<Event> = new Subject<Event>();
-  public getUserScrolled$: Observable<Event> = this.userScrolled$.asObservable().pipe(tap(a => console.log('SCROLL', a)));
+  public getUserScrolled$: Observable<Event> = this.userScrolled$.asObservable(); //.pipe(tap(a => console.log('SCROLL', a)));
 
   private renderer: Renderer2;
   private destroy$: Subject<void> = new Subject();
@@ -34,13 +34,10 @@ export class ScrollService implements OnDestroy {
    * 
    */
   private watchScrollEvent() {
-    console.log('WATCH SCROLL');
-
     fromEvent(window, 'scroll').pipe(
       takeUntil(merge(this.destroy$, this.getUserScrolled$)),
       //debounceTime(50)
     ).subscribe((scrollEvent: Event) => {
-      console.log('SCROLLED');
       const route = this.utility.getRouteRootAndFragment(this.lastUrl);
       this.location.replaceState(route.root);
       this.userScrolled$.next(scrollEvent);
@@ -55,16 +52,14 @@ export class ScrollService implements OnDestroy {
     // on every navigation end get the fragment
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      //withLatestFrom(this.route.fragment)
     ).pipe(
       takeUntil(this.destroy$)
     )
       .subscribe((navEnd: NavigationEnd) => {
         const url = navEnd.url;
         const route = this.utility.getRouteRootAndFragment(url);
-        
-        console.log(`scroll service - router event: ${this.lastUrl}, ${route.root} | ${route.fragment}`);
-        if (!!route.fragment) {
+
+        if (!!route?.fragment) {
           this.scrollToElement(route.fragment);
         }
         this.lastUrl = url;

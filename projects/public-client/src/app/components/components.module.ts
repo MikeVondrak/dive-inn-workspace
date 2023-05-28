@@ -11,6 +11,14 @@ import { ExpandingMenuComponent } from './expanding-menu/expanding-menu.componen
 import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RentalMapComponent } from './rental-map/rental-map.component';
+import { RentalSpaceOverlayComponent } from './rental-map/rental-space-overlay/rental-space-overlay.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlbumDisplayComponent } from './album-display/album-display.component';
+import { ImageDisplayComponent } from './image-display/image-display.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +31,19 @@ import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.co
     ExpandingMenuComponent,
     CarouselComponent,
     CarouselPaneComponent,
+    ReservationFormComponent,
+    RentalMapComponent,
+    RentalSpaceOverlayComponent,
+    AlbumDisplayComponent,
+    ImageDisplayComponent,
   ],
   imports: [
     CommonModule,
     DirectivesModule,
     RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    //BrowserAnimationsModule,
   ],
   exports: [
     MouseTrackerComponent,
@@ -38,6 +54,11 @@ import { CarouselPaneComponent } from './carousel/carousel-pane/carousel-pane.co
     TextBlurbComponent,
     ExpandingMenuComponent,
     CarouselComponent,
+    ReservationFormComponent,
+    RentalMapComponent,
+    RentalSpaceOverlayComponent,
+    AlbumDisplayComponent,
+    ImageDisplayComponent,
   ]
 })
 export class ComponentsModule { }

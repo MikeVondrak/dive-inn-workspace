@@ -41,12 +41,10 @@ export class AnimateViewportOverlayService {
     // @TODO: set up flag to clear on user scroll and allow re-scrolling using the button after they've moved the screen
     if (this.route !== newRoute) {
       const newRouteParts = this.utility.getRouteRootAndFragment(newRoute);
-      const oldRouteParts = this.utility.getRouteRootAndFragment(this.route);      
-      
-      console.log(`ani viewport - prep route:\n${newRoute}\n`, oldRouteParts, newRouteParts);
+      const oldRouteParts = this.utility.getRouteRootAndFragment(this.route);
       
       this.route = newRoute;
-      if (oldRouteParts.root !== newRouteParts.root) {
+      if ((oldRouteParts.root !== newRouteParts.root) && (oldRouteParts?.root !== null)) {
         // if this is a different route, hide the screen with the viewport overlay before navigating
         this.viewportOverlayState$.next(ViewportOverlayState.SHOW);
       } else if (oldRouteParts.fragment !== newRouteParts.fragment) {

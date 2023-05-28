@@ -1,0 +1,349 @@
+@use "../../scss/utility";
+
+:host {
+  .construction {
+    text-align: center;
+  }
+
+  .reservation-form-container {
+    position: relative;
+    min-height: 200px;
+    padding-top: 6vw;
+    //padding-top: 100vw;
+    > div {
+      //opacity: 0;
+
+      &.active {
+        //opacity: 1;
+      }
+    }
+  }
+
+
+  .status-card {
+    // height: 60vh;
+    background-color: utility.$dive-white;
+    text-align: center;
+    color: utility.$dive-black;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    
+    .status-message {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 1rem;
+      height: 100%;
+
+      font-size: 1.25rem;
+
+      h2 {
+        margin-bottom: 0;
+        font-size: 2rem;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      button {          
+        flex-basis: 50%;
+        flex-grow: 0;
+        background-color: utility.$dive-gray-dk;
+        color: utility.$dive-yellow;
+        box-shadow: 2px 2px 6px 0px #000;
+      }        
+      p {
+        margin: 0.5rem 0;
+      }
+      a {
+        display: inline-block;
+        margin: 1rem 0;
+        padding: 0.25rem 0.75rem;        
+        font-size: 1.5rem;
+        background-color: utility.$dive-gray-dk;
+        border: 2px solid;        
+        border-radius: 1rem;
+        box-shadow: 2px 2px 6px 0px #000;
+      }
+    }
+
+    .split-text {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      > p {
+        flex: 1;
+      }
+    }
+  }
+
+  form {
+    $emptyLine: 0.25fr;
+
+    // border: solid 2px utility.$dive-gray-dk;
+    // padding: 2rem;
+    // width: 300px; //clamp(380px, 85%, 500px);
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 3fr;
+    grid-template-rows: repeat(4, 1fr) $emptyLine repeat(3, 1fr) $emptyLine repeat(3, 1fr) $emptyLine 1fr $emptyLine repeat(8, 0.75fr) $emptyLine repeat(2, 1fr) 2.5fr;
+    //grid-auto-rows: 1.75rem;
+    align-items: center;
+
+    gap: 0.5rem;
+    grid-template-areas:
+      "lOrN iOrN iOrN iOrN"      
+      "lOrP iOrP iOrP iOrP"
+      "lOrE iOrE iOrE iOrE"
+      "lPc iPcE iPcV iPcT"
+      ". . . ."
+      "lDa iDa iDa ."
+      "lSt iSt iSt ."
+      "lEn iEn iEn ."
+      ". . . ."
+      "lTh iTh iTh iTh"
+      "lBi iBi lAg iAg"
+      "lBiN iBiN iBiN iBiN"
+      ". . . ."
+      "lHe iHe . ."
+      ". . . ."
+      "lSp iSp1 iSp1 iSp1"
+      "lSp iSp2 iSp2 iSp2"
+      ". iSp3 iSp3 iSp3"
+      ". iSp4 iSp4 iSp4"
+      ". iSp5 iSp5 iSp5"
+      ". iSp6 iSp6 iSp6"
+      ". iSp7 iSp7 iSp7"
+      ". iSp8 iSp8 iSp8"
+      ". . . ."
+      "lNo iNo iNo iNo"
+      ". iNo iNo iNo"
+      ". iSu iSu ."
+      ;
+
+    .label-column {
+      justify-content: flex-end;
+      text-align: right;
+      white-space: normal;      
+      
+      &.required {
+        position: relative;
+        span {
+          position: absolute;
+          right: -0.2rem;
+          font-size: 1em;
+          color: utility.$dive-red;
+        }
+      }
+    }
+
+    button {
+      background-color: utility.$dive-gray-dk;
+      color: utility.$dive-yellow;
+      cursor: pointer;
+    }
+
+    .invalid-message {
+      background-color: utility.$dive-gray-dk;
+    }
+
+    // Grid Areas
+    > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      white-space: nowrap;
+
+      input {
+        // &.ng-touched {
+        //   background-color: yellow;
+        // }
+        // &.ng-dirty {
+        //   background-color: orange;
+        // }
+        &.ng-invalid.ng-touched {
+          border: 2px solid utility.$dive-red;
+          background-color: #ffdddd;
+        }
+      }
+      
+      &.label-organizer {
+        grid-area: lOrN;
+      }
+      &.input-organizer {
+        grid-area: iOrN;
+      }
+      &.label-phone {
+        grid-area: lOrP;
+      }
+      &.input-phone {
+        grid-area: iOrP;
+      }
+      &.label-email {
+        grid-area: lOrE;
+      }
+      &.input-email {
+        grid-area: iOrE;
+      }
+      &.label-contact {
+        grid-area: lPc;
+      }
+      &.input-contact-email {
+        grid-area: iPcE;
+      }
+      &.input-contact-voice {
+        grid-area: iPcV;
+      }
+      &.input-contact-text {
+        grid-area: iPcT;
+      }
+      &.label-date {
+        grid-area: lDa;
+      }
+      &.input-date {
+        grid-area: iDa;
+      }  
+      &.label-start-time {
+        grid-area: lSt;
+      }
+      &.input-start-time {
+        grid-area: iSt;
+      }  
+      &.label-end-time {
+        grid-area: lEn;
+      }
+      &.input-end-time {
+        grid-area: iEn;
+      }
+      &.label-headcount {
+        grid-area: lHe;
+      }
+      &.input-headcount {
+        grid-area: iHe;
+      }
+      &.label-theme {
+        grid-area: lTh;
+      }
+      &.input-theme {
+        grid-area: iTh;
+      }
+      &.label-birthday {
+        grid-area: lBi;
+      }
+      &.input-birthday {
+        grid-area: iBi;
+      }
+      &.label-birthday-name {
+        grid-area: lBiN;
+      }
+      &.input-birthday-name {
+        grid-area: iBiN;
+      }
+      &.label-age {
+        grid-area: lAg;
+      }
+      &.input-age {
+        grid-area: iAg;
+      }
+      &.label-preferred-space {
+        grid-area: lSp;
+      }
+      &.preferred-space-1 {
+        grid-area: iSp1;
+      }
+      &.preferred-space-2 {
+        grid-area: iSp2;
+      }
+      &.preferred-space-3 {
+        grid-area: iSp3;
+      }
+      &.preferred-space-4 {
+        grid-area: iSp4;
+      }
+      &.preferred-space-5 {
+        grid-area: iSp5;
+      }
+      &.preferred-space-6 {
+        grid-area: iSp6;
+      }
+      &.preferred-space-7 {
+        grid-area: iSp7;
+      }
+      &.preferred-space-8 {
+        grid-area: iSp8;
+      }
+      &.label-notes {
+        grid-area: lNo;
+      }
+      &.input-notes {
+        grid-area: iNo;
+        textarea {
+          width: 100%;
+          min-height: 4rem;
+        }
+      }
+      &.input-submit {
+        grid-area: iSu;
+      }
+      .form-errors {
+        margin: 0 0 0 0rem;
+        padding: 0.5rem 1rem;
+        color: utility.$dive-red;
+      }
+
+      label {
+        // display: flex;
+        // flex-direction: row;
+        // align-items: center;
+        // flex-wrap: nowrap;
+        margin-right: 0.25rem;
+        font-size: 0.8rem;
+        @include utility.media-breakpoint-gte(sm) {
+          font-size: 1rem;
+        }
+        &.nowrap {
+          white-space: nowrap;
+        }
+
+        span {
+          color: utility.$dive-gray-md;
+          font-size: 0.8em;
+
+          &:first-child {
+            margin-left: 0.25rem;
+          }
+        }
+      }
+      .sun-icon {
+        width: 1rem;
+      }
+      input, textarea {        
+        width: 100%;
+        padding: 0.2rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+
+        &:focus {
+          outline: 2px dashed utility.$dive-yellow;
+          outline-offset: 0.2rem;
+        }
+
+        &[type="checkbox"], &[type="radio"] {
+          width: unset;
+        }
+        &[type="text"] {
+          border: none;
+        }
+        // &.ng-invalid.ng-touched {
+        //   border: 2px solid utility.$dive-red;
+        //   background-color: #ffdddd;
+        // }
+        &.has-error {
+          border: 2px solid utility.$dive-red;
+          background-color: #ffdddd;
+        }
+      }
+    }
+  }
+}

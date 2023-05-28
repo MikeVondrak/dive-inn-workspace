@@ -7,6 +7,12 @@
   }
 }
 
+@mixin is-portrait() {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
 @mixin text-double-outline($text, $colorText: colors.$dive-black, $colorOutline1: colors.$dive-red, $colorOutline2: colors.$dive-white) {
   position: relative;
   z-index: 0;

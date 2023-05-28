@@ -1,0 +1,106 @@
+@use "../../scss/utility";
+
+@mixin is-landscape-aspect() {
+  @media (min-aspect-ratio: 1.243) {
+    @content;
+  }
+}
+
+.rental-map-container {
+  display: flex;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 100rem) 0 clamp(5rem, 10vw, 100rem);
+
+  .rental-map {
+    // $mapWidth: 100%;//min(80vh, 80vw);
+    position: relative;
+    // bg image is 3840 x 3090px native size, 1.243 / 0.804 aspect ratios
+    width: var(--mapWidth); // if the orientation is less than the aspect ratio (portrait), width is defined by maxWidth input
+    height: calc(0.803 * var(--mapWidth)); // (0.804 * width) is guaranteed to fit in viewport, maintain aspect
+    @include is-landscape-aspect() {
+      width: calc(1.244 * var(--mapHeight)); // (1.243 * height) guararnteed to fix due to aspect media query
+      height: var(--mapHeight); // if the orientation is landscape, limit the size of the map by the viewport height
+    }
+
+    background-color: utility.$dive-black;
+    background-image: url('/assets/images/Dive_Inn_Rental_Layout.svg');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 20px 10px #000;
+    user-select: none;
+
+    .rental-map-overlay {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      opacity: 1;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .number-circle {
+      $circleSize: min(6vw, 6vh);
+      $fontSize: min(4vw, 4vh);
+      $bgColor: rgba(0,0,0,0.7);
+      $color: utility.$dive-yellow;
+      position: absolute;
+      border-radius: 50%;
+      width: $circleSize;
+      height: $circleSize;
+      padding: 0;
+      line-height: min(3.5vw, 4.5vh);
+      transform: translateX(-50%);
+      font-size: $fontSize;// * 0.7;
+      @include utility.media-breakpoint-gte(xs) {
+        font-size: $fontSize;
+      }
+      text-align: center;
+      border: clamp(0.15rem, min(0.3vw, 0.3vh), 0.33rem) solid $color;
+      color: $color;
+      background-color: $bgColor;
+      box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.7);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      font-family: 'Bevan', serif;
+
+      &.space-1 {
+        left: 18.4%;
+        top: 38%;
+      }
+      &.space-2 {
+        left: 30%;
+        top: 59%;
+      }
+      &.space-3 {
+        left: 44.85%;
+        top: 55.5%;
+      }
+      &.space-4 {
+        left: 51.75%;
+        top: 84.5%;
+      }
+      &.space-5 {
+        left: 80%;
+        top: 82.5%;
+      }
+      &.space-6 {
+        left: 80%;
+        top: 38%;
+      }
+      &.space-7 {
+        left: 48%;
+        top: 14%;
+      }
+    }
+
+    .legend-zoom {
+      position: absolute;      
+      right: 0%;
+      top: 50%;
+      padding: 0;
+      transform: translateX(-50%);
+      background-color: transparent;
+      img {
+        width: min(2.5vw, 2.5vh);
+      }
+    }    
+  }
+}

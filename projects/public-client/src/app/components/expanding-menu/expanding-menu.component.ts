@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { BreakpointsEnum } from '@dive-inn-lib';
-import { ViewportService } from 'projects/dive-inn-lib/src/lib/services/viewport/viewport.service';
+import { BreakpointsEnum, ViewportService } from '@dive-inn-lib';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 

@@ -71,6 +71,7 @@ export class CarouselComponent implements OnInit {
   }
 
   public onSwipe($event: any, loc?: string) {
+    
     if ($event.direction === 2) {
       this.rotateLeft();
     } else if ($event.direction === 4) {
@@ -79,13 +80,13 @@ export class CarouselComponent implements OnInit {
   }
 
   public onClick($event: MouseEvent) {
-    console.log('CLICK', $event);
-    this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
-    this.cdr.detectChanges();
+    // this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
+    // this.cdr.detectChanges();
   }
 
   public onTap($event: any) {
-    console.log('TAP', $event);
+    // this.carouselPaneExpanded[this.currentPosition] = this.carouselPaneExpanded[this.currentPosition] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
+    this.cdr.detectChanges();
   }
 
   public rotateLeft() {
@@ -93,14 +94,13 @@ export class CarouselComponent implements OnInit {
     this.currentPosition = ++this.currentPosition >= this.numberOfPositions ? 0 : this.currentPosition;
     this.currentFace = ++this.currentFace < numberOfFaces ? this.currentFace : 0;
     this.currentRotation = this.currentRotation -= 45;
-    //this.currentRotation = this.currentRotation < -90 ? -90 : this.currentRotation; // prevent rotation past
     this.updateRotation();    
   }
 
   public rotateRight() {
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = --this.currentPosition < 0 ? this.numberOfPositions - 1 : this.currentPosition;
-    this.currentFace = --this.currentFace < 0 ? numberOfFaces - 1 : this.currentFace;
+    this.currentFace = --this.currentFace < 0 ? numberOfFaces - 1: this.currentFace;
     this.currentRotation += 45;
     this.updateRotation();
   }
