@@ -47,7 +47,7 @@ jobs:
 
       - name: Build Backend
         run: yarn build-be_public_linux
-##
+
       - name: Connect to EC2 instance and copy files
         uses: appleboy/ssh-action@master
         with:
