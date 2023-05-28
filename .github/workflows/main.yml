@@ -25,8 +25,8 @@ jobs:
       - name: Setup Node.js and Yarn
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'yarn'
+          node-version: "16"
+          cache: "yarn"
 
       - name: Install dependencies
         run: yarn install
@@ -49,7 +49,7 @@ jobs:
         run: yarn build-fe_public
 
       - name: Build Backend
-        run: yarn build-be_public_linux      
+        run: yarn build-be_public_linux
 
       - name: Connect to EC2 instance and copy files
         uses: appleboy/ssh-action@master
@@ -57,7 +57,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-          script: |            
+          script: |
             mkdir -p /var/www/html/diveinndenver.com
             scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-client
             scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/var/www/html/diveinndenver.com/public-server
