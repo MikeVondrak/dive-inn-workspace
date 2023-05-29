@@ -22,14 +22,6 @@ jobs:
           touch ~/.ssh/known_hosts
           ssh-keyscan -p ${{ secrets.EC2_PORT }} -t rsa ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Connect to EC2
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PEM }}
-          REMOTE_HOST: ${{ secrets.EC2_HOST }}
-          REMOTE_USER: ${{ secrets.EC2_USERNAME }}
-          TARGET: /var/www/html/diveinndenver.com      
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -62,7 +54,11 @@ jobs:
       - name: Build Backend
         run: yarn build-be_public_linux
 
-      - name: Copy files to EC2
-        run: |
-          scp -r ./dist/public-client/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/diveinndenver/code/public-client
-          scp -r ./dist/public-server/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/diveinndenver/code/public-server
+      - name: Copy to EC2
+        uses: easingthemes/ssh-deploy@v2
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PEM }}
+          REMOTE_HOST: ${{ secrets.EC2_HOST }}
+          REMOTE_USER: ${{ secrets.EC2_USERNAME }}
+          SOURCE: "dist/"
+          TARGET: "/var/www/html/diveinndenver.com/"
