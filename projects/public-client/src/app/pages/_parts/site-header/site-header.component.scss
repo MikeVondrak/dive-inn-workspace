@@ -89,6 +89,7 @@ $verticalGap: 0.75rem;
       }
 
       a {
+        display: block;
         &::after {
           content: none;
         }
