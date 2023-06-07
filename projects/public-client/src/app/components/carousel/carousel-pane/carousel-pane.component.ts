@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Input, OnInit, Output, TemplateRef, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes } from '../../../models/carousel.model';
 
@@ -18,6 +18,9 @@ export class CarouselPaneComponent implements OnInit {
   @Input() faceDirection: CarouselPaneFaceDirections = CarouselPaneFaceDirections.S;
   @Input() faceLabel: string = '';
   @Input() faceTemplate: TemplateRef<any> | null = null;
+  //@Input() backgroundImage: string = '';
+
+  @Input() @HostBinding('style.--backgroundImage') backgroundImage: string = '';
 
   public carouselPaneGradientTypes = CarouselPaneGradientTypes;
   public carouselPaneFaceDirections = CarouselPaneFaceDirections;
@@ -28,6 +31,7 @@ export class CarouselPaneComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //this.cssBackgroundImage = this.backgroundImage;
   }
 
   public handleOnSwipe(event: any) {

@@ -8,7 +8,13 @@
       <button class="content specials" [class.fullscreen]="fullscreenSpecials"
         (click)="onClick(MenuContentItemsEnum.SPECIALS)">
         <h1 class="scroll-offset" id="specials">Specials</h1>
-        <img src="assets/images/specials/TakiTakosTNT.jpg" />
+        <img *ngIf="!this.fullscreenSpecials" src="assets/images/specials/TakiTakosTNT.jpg" />
+        <div class="carousel-container">
+          <app-carousel *ngIf="this.fullscreenSpecials"
+            [carouselData]="carouselData"
+          ></app-carousel>
+        </div>
+        <p *ngIf="!this.fullscreenSpecials">Click to view all Specials</p>
       </button>
     </div>
     <div class="gradient-container">
@@ -58,6 +64,146 @@
     <img src="assets/images/Chicken.svg" />
   </div>
 </div>
+
+<ng-template #MainRoom>
+  <div class="rental-space">
+    <div class="main-room rental-space-bg"></div>
+    <!-- <div class="title-container">
+      <h2>Main Room</h2>
+    </div>    
+    <div class="description-container">
+      <p>Ample space for larger</p>
+      <p>parties and events</p>
+    </div>
+    <div class="occupancy">
+      60 -->
+      <!-- TODO: people image -->
+    <!-- </div> -->
+    <!-- <a class="reserve" [href]="mailto_mainRoom | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
+
+<ng-template #Boat>
+  <div class="rental-space">
+    <div class="boat rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Party Boat</h2>
+    </div>
+    <div class="description-container">
+      <p>Exciting excursions</p>
+      <p>for a few friends</p>
+    </div>
+    <div class="occupancy">
+      8
+      <!-- TODO: people image -->
+    </div>
+    <!-- <a class="reserve reverse" [href]="mailto_boat | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
+
+<ng-template #SideRoom>
+  <div class="rental-space">
+    <div class="side-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>South Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Smaller space that suits</p>
+      <p>private parties perfectly</p>
+    </div>
+    <div class="occupancy">
+      32
+      <!-- TODO: people image -->
+    </div>
+    <!-- <a class="reserve" [href]="mailto_sideRoom | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
+
+<ng-template #GameRoom>
+  <div class="rental-space">
+    <div class="game-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>Game Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Your favorites games</p>
+      <p>plus a satellite bar</p>
+    </div>
+    <div class="occupancy">
+      24
+      <!-- TODO: people image -->
+    </div>
+    <!-- <a class="reserve reverse" [href]="mailto_gameRoom | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
+
+<ng-template #NorthRoom>
+  <div class="rental-space">
+    <div class="north-room rental-space-bg"></div>
+    <div class="title-container">
+      <h2>North Room</h2>
+    </div>
+    <div class="description-container">
+      <p>Supplementary seating</p>
+      <p>in a convertible space</p>
+    </div>
+    <div class="occupancy">
+      32
+      <!-- TODO: people image -->
+    </div>
+    <!-- <a class="reserve" [href]="mailto_northRoom | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
+
+<ng-template #SouthPatio>
+  <div class="rental-space">
+    <div class="south-patio rental-space-bg"></div>
+    <div class="title-container">
+      <h2>South Patio</h2>
+    </div>
+    <div class="description-container">
+      <p>Medium sized area to</p>
+      <p>enjoy the outdoors</p>
+    </div>
+    <div class="occupancy">
+      42
+      <!-- TODO: people image -->
+    </div>
+    <!-- <a class="reserve reverse" [href]="mailto_southPatio | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
+
+<ng-template #NorthPatio>
+  <div class="rental-space">
+    <div class="north-patio rental-space-bg"></div>
+    <div class="title-container">
+      <h2>North Patio</h2>
+    </div>
+    <div class="description-container">
+      <p>Large outdoor area</p>
+      <p>great for big crowds</p>
+    </div>
+    <div class="occupancy">
+      88
+      <!-- TODO: people image -->
+    </div>
+    <!-- <a class="reserve" [href]="mailto_northPatio | safeHtml: 'url'" target="_blank"> -->
+      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
+    <!-- </a> -->
+  </div>
+</ng-template>
 
 <!--------------------------------------------------------------->
 

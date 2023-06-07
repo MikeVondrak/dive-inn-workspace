@@ -1,35 +1,38 @@
 @use 'sass:math';
 @use '../../scss/utility';
 
-$debugging: false;
+$debugging: true;
 
 $carouselRotationAnimation: all 1s ease;
 $cubeSize: 40vw;
 $cubeSizeLg: 40vw;
-$offset: 1.207 * $cubeSize; //math.div($cubeSize, 2) + 0.707 * $cubeSize;
+$offset: 1.207 * $cubeSize; // 0.5 + sin(45)
 //$offsetZ: $cubeSize * 1.35;
 $rotateX: 0deg;
 $pixelBleedScaleFix: 1.001;
 
 :host {
   --cubeSize: 40vw;
-  @include utility.media-breakpoint-gte(lg) {
-    --cubeSize: 40vw;
-  }  
+  // @include utility.media-breakpoint-gte(lg) {
+  //   --cubeSize: 40vw;
+  // }  
   display: block;
   perspective: 80vw;
+  width: 100%;
   
   .carousel {
     transform: translateZ(-$offset);
     transform-style: preserve-3d;
+    position: relative;
     
     &-container {
       transform-style: preserve-3d;
+      //transform-origin: 0% 0%;
       position: relative;
       height: var(--cubeSize);
-      @include utility.media-breakpoint-gte(lg) {
-        height: $cubeSizeLg;
-      }
+      // @include utility.media-breakpoint-gte(lg) {
+      //   height: $cubeSizeLg;
+      // }
       transform: rotateX($rotateX) var(--rotation);
       transition: $carouselRotationAnimation;
 
@@ -44,6 +47,7 @@ $pixelBleedScaleFix: 1.001;
     }
 
     .rotaters {
+      //background-color: yellow;
       position: absolute;
       top: 0;
       width: 100%;
@@ -52,14 +56,15 @@ $pixelBleedScaleFix: 1.001;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transform: translateZ(var(--cubeSize));
+      transform: translateZ(0);//translateZ(var(--cubeSize));
       .rotate {
         position: relative;
         background-color: rgba(0,0,0,0.15);
+        background-color: red;
         height: calc(0.85 * var(--cubeSize));
         font-size: clamp(1rem, 2vw, 3rem);
         &.left {
-          left: -1rem;
+          left: 0;//calc(-1.207 * var(--cubeSize));
 
           &::after {
             z-index: -1;
@@ -74,7 +79,7 @@ $pixelBleedScaleFix: 1.001;
           }
         }
         &.right {
-          right: -1rem;
+          right: 0;//calc(-1.207 * var(--cubeSize));
 
           &::after {
             z-index: -1;
@@ -88,22 +93,22 @@ $pixelBleedScaleFix: 1.001;
             pointer-events: none;
           }
         }
-        @include utility.media-breakpoint-gte(lg) {
-          &.left {
-            left: 7vw;
-          }
-          &.right {
-            right: 7vw;
-          }
-        }
-        @include utility.media-breakpoint-gte(ws) {
-          &.left {
-            left: 9vw;
-          }
-          &.right {
-            right: 9vw;
-          }
-        }
+        // @include utility.media-breakpoint-gte(lg) {
+        //   &.left {
+        //     left: -45vw;
+        //   }
+        //   &.right {
+        //     right: -40vw;
+        //   }
+        // }
+        // @include utility.media-breakpoint-gte(ws) {
+        //   &.left {
+        //     left: 9vw;
+        //   }
+        //   &.right {
+        //     right: 9vw;
+        //   }
+        // }
       }
     }
   }

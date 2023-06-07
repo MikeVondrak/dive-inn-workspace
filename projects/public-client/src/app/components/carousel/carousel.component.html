@@ -6,6 +6,7 @@
         [faceLabel]="(face | async) || ''"
         (click)="onClick($event)"
         (swipe)="onSwipe($event)"
+        [backgroundImage]="'url(' + (carouselData[i]?.backgroundImage || '' + ')')"
       ></app-carousel-pane>
     </ng-container>
     <ng-template #faceContents>
