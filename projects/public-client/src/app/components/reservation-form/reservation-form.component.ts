@@ -70,7 +70,7 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
       preferredSpacePartyBoat: [false],
       preferredSpaceNorthPatio: [false],
       preferredSpaceNorthRoom: [false],
-      preferredSpaceGameRoom: [false],
+      preferredSpacesFrontPatio: [false],
       preferredSpaceSouthRoom: [false],
       preferredSpaceSouthPatio: [false],
       headcount: [null, [Validators.required, Validators.pattern("^[0-9*]*$")]],
@@ -138,14 +138,16 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
   }
 
   public sendEmail() {
+    const orgName = this.emailForm.get('organizer')?.value;
+    const forceFail = orgName === 'TestTheFormFailingOrganizer';
 
     this.submitted = true;
     let spaces: RentalSpaces[] = [];
     if (this.emailForm.get('preferredSpaceNone')?.value) {
       spaces.push(RentalSpaces.NO_PREFERENCE);
     };
-    if (this.emailForm.get('preferredSpaceGameRoom')?.value) {
-      spaces.push(RentalSpaces.GAME_ROOM); 
+    if (this.emailForm.get('preferredSpacesFrontPatio')?.value) {
+      spaces.push(RentalSpaces.FRONT_PATIO); 
     }
     if (this.emailForm.get('preferredSpaceMainRoom')?.value) {
       spaces.push(RentalSpaces.MAIN_ROOM);
@@ -195,6 +197,9 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
       this.statusMessage = 'Submitting';
       this.reservationService.submitReservation(formModel).pipe(take(1)).subscribe(
         response => {
+          if (forceFail) {
+            throw new Error('Subit failure forced');
+          }
           if (response.success) {
             this.formState$.next(ReservationFormState.SUCCESS);
             this.statusMessage = 'Successfully submitted';

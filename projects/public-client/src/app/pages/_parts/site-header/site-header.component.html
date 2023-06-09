@@ -1,12 +1,15 @@
 <header>
   <div class="logo-container" [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded">
 
-    <div *ngIf="isMobileTabletSize$ | async" class="d-logo-container">
+    <a *ngIf="isMobileTabletSize$ | async" 
+      appAnimateViewportOverlay="/home"
+      class="d-logo-container"
+    >
       <img [class.show-logo]="showLogo" [class.nav-expanded]="isNavExpanded" src="../../../../assets/images/d_logo_outline.svg">
-    </div>
+    </a>
 
     <a *ngIf="!(isMobileTabletSize$ | async)" 
-      appAnimateViewportOverlay="/events#qb"
+      appAnimateViewportOverlay="/home"
       class="full-logo-container"
     >
       <!-- Dive Inn text -->
