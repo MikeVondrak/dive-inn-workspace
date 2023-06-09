@@ -8,13 +8,13 @@ export enum ContactType {
 
 export enum RentalSpaces {
   NO_PREFERENCE = 'No Preference',
-  MAIN_ROOM = 'Main Room',
-  PARTY_BOAT = 'Party Boat',
-  NORTH_PATIO = 'North Patio',
-  NORTH_ROOM = 'North Room',
-  GAME_ROOM = 'Game Room',
-  SOUTH_ROOM = 'South Room',
-  SOUTH_PATIO = 'South Patio',
+  MAIN_ROOM = 'The Galley',
+  PARTY_BOAT = 'The Boat',
+  NORTH_PATIO = 'The Cabana',
+  NORTH_ROOM = 'The Saloon',
+  FRONT_PATIO = 'The Oasis',
+  SOUTH_ROOM = 'The Cabin',
+  SOUTH_PATIO = 'The Deck',
 }
 
 export interface Reservation {
