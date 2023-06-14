@@ -18,7 +18,6 @@ export class CarouselPaneComponent implements OnInit {
   @Input() faceDirection: CarouselPaneFaceDirections = CarouselPaneFaceDirections.S;
   @Input() faceLabel: string = '';
   @Input() faceTemplate: TemplateRef<any> | null = null;
-  //@Input() backgroundImage: string = '';
 
   @Input() @HostBinding('style.--backgroundImage') backgroundImage: string = '';
 
@@ -31,10 +30,10 @@ export class CarouselPaneComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //this.cssBackgroundImage = this.backgroundImage;
   }
 
   public handleOnSwipe(event: any) {
-    this.onSwipe.emit(event);
+    console.log('SWIPE IN PANE');
+    // this.onSwipe.emit(event);
   }
 }

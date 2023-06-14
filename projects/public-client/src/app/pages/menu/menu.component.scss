@@ -73,21 +73,25 @@ $zoomAnimationTime: 0.6s;
           @include utility.media-breakpoint-gte(sm) {
             position: absolute;
             width: 36vw;
-            height: 36vw;
+            height: 39vw;
             left: 14vw;
             top: 33vw;
           }
           @include utility.media-breakpoint-gte(md) {
             width: 24vw;
-            height: 24vw;
+            height: 27vw;
             left: 40vw;
             top: 18vw;
           }
           @include utility.media-breakpoint-gte(xl) {
+            height: 25vw;
             top: 20vw;
           }
           @include utility.media-breakpoint-gte(ws) {
             top: 13.333vw;
+          }
+          @include utility.media-breakpoint-gte(hd) {
+            height: 22vw;
           }
           padding: 2vw;
           background-color: rgba(0, 0, 0, 0.5);
@@ -160,14 +164,20 @@ $zoomAnimationTime: 0.6s;
           height: 50vw;
           transform: $skew translateY(122%);
           @include utility.media-breakpoint-gte(xs) {
-            height: 44vw;
+            height: 55vw;
           }
           @include utility.media-breakpoint-gte(sm) {
-            height: 36vw;
+            height: 39vw;
             transform: $skew; // translateX(-51%);
           }
           @include utility.media-breakpoint-gte(md) {
-            height: 24vw;
+            height: 27vw;
+          }
+          @include utility.media-breakpoint-gte(xl) {
+            height: 25vw;
+          }
+          @include utility.media-breakpoint-gte(hd) {
+            height: 22vw;
           }
 
           h1 {

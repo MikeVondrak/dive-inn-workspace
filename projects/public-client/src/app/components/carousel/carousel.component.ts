@@ -2,6 +2,7 @@ import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeD
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes, CarouselData } from '../../models/carousel.model';
 
+
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -73,16 +74,22 @@ export class CarouselComponent implements OnInit {
     }
   }
 
-  public onSwipe($event: any, loc?: string) {
-    console.log('swipe', $event.direction)
-    if ($event.direction === 2) {
+  public onSwipe($event: Event, direction?: string) {
+    
+    console.log('swipe', {$event}, {direction});
+    $event.preventDefault();
+    
+
+    if (direction === 'L') {
       this.rotateLeft();
-    } else if ($event.direction === 4) {
+    } else if (direction === 'R') {
       this.rotateRight();
     }
   }
 
   public onClick($event: MouseEvent) {
+    console.log('CLICK', {$event});
+    // $event.preventDefault();
     $event.stopPropagation();
     // this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
     // this.cdr.detectChanges();
