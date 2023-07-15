@@ -1,7 +1,7 @@
 @use 'sass:math';
 @use '../../../scss/utility';
 
-$debugging: false;
+$debugging: true;
 
 $cubeSize: 40vw;
 $cubeSizeLg: 40vw;
@@ -26,7 +26,8 @@ $pixelBleedScaleFix: 1.001;
     backface-visibility: hidden;
     background-size: 200%;
     background-position: 50% 0%;
-    background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%);
+    background-image: linear-gradient(90deg, utility.$dive-black 0%, transparent 25%, transparent 75%, utility.$dive-black 100%),
+      var(--backgroundImage);
     transition: all 1s ease;
 
     background-color: utility.$dive-black;

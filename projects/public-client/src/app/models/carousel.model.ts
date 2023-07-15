@@ -20,3 +20,10 @@ export enum CarouselPaneFaceDirections {
   W = 'w',
   SW = 'sw',
 }
+
+export interface CarouselData {
+  backgroundImage?: string,
+  title?: string,
+  description?: string,
+  icon?: string,
+}
