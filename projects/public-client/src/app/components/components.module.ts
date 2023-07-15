@@ -19,6 +19,7 @@ import { RentalSpaceOverlayComponent } from './rental-map/rental-space-overlay/r
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlbumDisplayComponent } from './album-display/album-display.component';
 import { ImageDisplayComponent } from './image-display/image-display.component';
+import { ImageFlipComponent } from './image-flip/image-flip.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ImageDisplayComponent } from './image-display/image-display.component';
     RentalSpaceOverlayComponent,
     AlbumDisplayComponent,
     ImageDisplayComponent,
+    ImageFlipComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { ImageDisplayComponent } from './image-display/image-display.component';
     RentalSpaceOverlayComponent,
     AlbumDisplayComponent,
     ImageDisplayComponent,
+    ImageFlipComponent,
   ]
 })
 export class ComponentsModule { }
