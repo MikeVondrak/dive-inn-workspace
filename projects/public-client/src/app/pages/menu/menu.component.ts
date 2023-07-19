@@ -26,6 +26,7 @@ export class MenuComponent implements OnInit {
   public fullscreenMenu: boolean = false;
   public fullscreenSpecials: boolean = false;
   public carouselData: CarouselData[] = [];
+  public specialsImages: string[] = [];
 
   constructor() { }
 
@@ -34,6 +35,7 @@ export class MenuComponent implements OnInit {
       {backgroundImage: '/assets/images/specials/TakiTakosTNT.jpg'},
       {backgroundImage: '/assets/images/tour/boat_diagonal2.jpg'}
     ]
+    this.getSpecialsImages();
   }
 
   public onClick(contentEnum: MenuContentItems) {
@@ -43,5 +45,13 @@ export class MenuComponent implements OnInit {
       case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
       // case MenuContentItems.SPECIALS: this.fullscreenSpecials = true; break;
     }
+  }
+
+  getSpecialsImages() {
+    this.specialsImages = [
+      'assets/images/specials/TakiTakosTNT.jpg',
+      'assets/images/home/dive-inn-exterior.jpg',
+      'assets/images/events/qb_challenge.jpg',
+    ]
   }
 }

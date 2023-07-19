@@ -166,20 +166,20 @@ $zoomAnimationTime: 0.6s;
         }
 
         .specials {
-          // height: 20vw;
+          height: 70vw;
           transform: $skew; // translateY(122%);
           @include utility.media-breakpoint-gte(min) {
-            height: 55vw;
+            // height: 55vw;
           }
           @include utility.media-breakpoint-gte(sm) {
-            height: 20vw;
+            height: 45vw;
             transform: $skew; // translateX(-51%);
           }
           @include utility.media-breakpoint-gte(md) {
-            // height: 27vw;
+            // height: 30vw;
           }
           @include utility.media-breakpoint-gte(xl) {
-            // height: 25vw;
+            height: 40vw;
           }
           @include utility.media-breakpoint-gte(hd) {
             // height: 22vw;
@@ -193,6 +193,10 @@ $zoomAnimationTime: 0.6s;
             width: 100%;
             //width: clamp(100px, 26vw, 420px);
             box-shadow: 2px 2px 16px 0px #000;
+          }
+
+          .image-flip-container {
+            width: 100%;
           }
         }
       }

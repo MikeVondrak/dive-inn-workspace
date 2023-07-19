@@ -9,7 +9,9 @@
         <h1 class="scroll-offset" id="specials">Specials</h1>
         <!-- <img *ngIf="!this.fullscreenSpecials" src="assets/images/specials/TakiTakosTNT.jpg" /> -->
         <div class="image-flip-container">
-          <app-image-flip></app-image-flip>
+          <app-image-flip
+            [images]="specialsImages"  
+          ></app-image-flip>
         </div>
         <!-- <p *ngIf="!this.fullscreenSpecials">View all Specials</p> -->
       </button>
