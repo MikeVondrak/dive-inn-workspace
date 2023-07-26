@@ -2,15 +2,30 @@
 
 :host {
 
+  .image-flip-container  {
+    overflow: hidden;
+  }
+
   .images-container {
     // width: 80vw;
     // width: 90%;
-    overflow: hidden;
     //height: 45vw;
     // border: solid 1px red;
     display: flex;
     gap: 3vw;
     padding: 1vw;
+    // transform: translate(0, 0);
+    transition: transform 0.75s ease;
+
+    &.right {
+      transform: translate(calc(var(--imageOffset) + var(--centeredImage) * var(--offsetTweak)), 0);
+      // transform: translate(-125%, 0);
+      // transform: translate(-80% + -80%, 0);
+
+      @include utility.media-breakpoint-gte(sm) {
+        transform: translate(var(--imageOffset), 0);
+      }
+    }
 
     @include utility.media-breakpoint-gte(md) {
       // width: 30vw;
@@ -18,29 +33,39 @@
     }
 
     img {
-      // width: 90vw;
+      width: 71vw;
       height: 45vw;
       // object-fit: contain;
       // border: solid 1px yellow;
       box-shadow: 0px 0px 5px white;
   
-      @include utility.media-breakpoint-gte(md) {
-        // width: 30vw;
+      @include utility.media-breakpoint-gte(sm) {
+        width: 35.5vw;
         height: 20vw;
       }
     }
 
-    .images-pills {
-      display: flex;
-      position: absolute;
-      right: 37%;
-      top: 83%;
-      gap: 2vw;
-      
-      .pill {
+  }
+  
+  .images-pills {
+    display: flex;
+    position: absolute;
+    right: 37%;
+    // top: 96%;
+    gap: 2vw;
+    
+    .pill {
+      width: 1rem;
+      height: .2rem;
+      background-color: lightgray;
+
+      @include utility.media-breakpoint-gte(md) {
         width: 2rem;
-        height: .3rem;
-        background-color: lightgray;
+      height: .3rem;
+      }
+
+      &.active {
+        background-color: utility.$dive-red;
       }
     }
   }

@@ -1,12 +1,12 @@
-<div class="image-flip-container">
-  <div class="images-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
-    <div class="image" *ngFor="let imageFilename of images; index as i">
+<div class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
+  <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
+    <div class="image" *ngFor="let imageFilename of images; index as i" >
       <img [src]="imageFilename" draggable="false">
     </div>
-    <div class="images-pills">
-      <div class="pill" *ngFor="let indicator of images">
-        
-      </div>
+  </div>
+  <div class="images-pills">
+    <div class="pill" *ngFor="let indicator of images; index as i" [ngClass]="{active: i === centeredImage}">
+      
     </div>
   </div>
 </div>

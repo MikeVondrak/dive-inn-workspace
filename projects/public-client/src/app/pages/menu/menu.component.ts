@@ -52,6 +52,7 @@ export class MenuComponent implements OnInit {
       'assets/images/specials/TakiTakosTNT.jpg',
       'assets/images/home/dive-inn-exterior.jpg',
       'assets/images/events/qb_challenge.jpg',
+      // 'assets/images/tour/animals.jpg',
     ]
   }
 }
