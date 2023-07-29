@@ -1,7 +1,9 @@
 <div class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
   <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
     <div class="image" *ngFor="let imageFilename of images; index as i" >
-      <img [src]="imageFilename" draggable="false">
+      <div (tap)="onClick($event, i)">
+        <img [src]="imageFilename" draggable="false">
+      </div>
     </div>
   </div>
   <div class="images-pills">

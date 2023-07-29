@@ -50,8 +50,23 @@ export class MenuComponent implements OnInit {
   getSpecialsImages() {
     this.specialsImages = [
       'assets/images/specials/TakiTakosTNT.jpg',
-      'assets/images/home/dive-inn-exterior.jpg',
-      'assets/images/events/qb_challenge.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/specials/TakiTakosTNT.jpg',
+      // 'assets/images/home/dive-inn-exterior.jpg',
+      // 'assets/images/events/qb_challenge.jpg',
+      // 'assets/images/tour/animals.jpg',
+      // 'assets/images/tour/animals.jpg',
+      // 'assets/images/tour/animals.jpg',
+      // 'assets/images/tour/animals.jpg',
+      // 'assets/images/tour/animals.jpg',
       // 'assets/images/tour/animals.jpg',
     ]
   }

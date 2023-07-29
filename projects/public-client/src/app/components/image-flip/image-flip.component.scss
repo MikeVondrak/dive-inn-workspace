@@ -7,51 +7,39 @@
   }
 
   .images-container {
-    // width: 80vw;
-    // width: 90%;
-    //height: 45vw;
-    // border: solid 1px red;
     display: flex;
     gap: 3vw;
     padding: 1vw;
-    // transform: translate(0, 0);
     transition: transform 0.75s ease;
 
     &.right {
-      transform: translate(calc(var(--imageOffset) + var(--centeredImage) * var(--offsetTweak)), 0);
-      // transform: translate(-125%, 0);
-      // transform: translate(-80% + -80%, 0);
+      transform: translate(var(--imageOffsetSmall), 0);
 
       @include utility.media-breakpoint-gte(sm) {
-        transform: translate(var(--imageOffset), 0);
+        transform: translate(var(--imageOffsetLarge), 0);
       }
     }
 
     @include utility.media-breakpoint-gte(md) {
-      // width: 30vw;
       height: 23vw;
     }
 
     img {
       width: 71vw;
       height: 45vw;
-      // object-fit: contain;
-      // border: solid 1px yellow;
-      box-shadow: 0px 0px 5px white;
+      object-fit: contain;
   
       @include utility.media-breakpoint-gte(sm) {
         width: 35.5vw;
         height: 20vw;
       }
     }
-
   }
   
   .images-pills {
     display: flex;
-    position: absolute;
-    right: 37%;
-    // top: 96%;
+    position: relative;
+    justify-content: center;
     gap: 2vw;
     
     .pill {
@@ -61,7 +49,7 @@
 
       @include utility.media-breakpoint-gte(md) {
         width: 2rem;
-      height: .3rem;
+        height: .3rem;
       }
 
       &.active {
