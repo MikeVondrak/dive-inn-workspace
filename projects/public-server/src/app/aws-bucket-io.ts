@@ -6,8 +6,8 @@ export class AwsBucketIo {
 
   private config: S3ClientConfig = {
     credentials: {
-      accessKeyId: 'environment.dive_inn_aws_access_key',
-      secretAccessKey: 'environment.dive_inn_aws_secret_key',
+      accessKeyId: environment.dive_inn_aws_access_key,
+      secretAccessKey: environment.dive_inn_aws_secret_key,
     },
     region: 'us-east-1',
   };
@@ -19,7 +19,7 @@ export class AwsBucketIo {
   constructor() {
     this.command = new GetObjectCommand({
       Bucket: 'diveinndenvers3',
-      Key: 'Breakfast_Menu.jpg'
+      Key: 'Public/Specials/Breakfast_Menu.jpg'
     });
 
     this.client = new S3Client(this.config);
@@ -38,7 +38,7 @@ export class AwsBucketIo {
       }
       
       const str = await response.Body?.transformToString();
-      console.log('RESPONSE:' + str);
+      console.log('RESPONSE success');
     } catch (err) {
       console.error('ERROR:' + err);
     }
