@@ -39,6 +39,7 @@ export class AwsBucketIo {
       
       const str = await response.Body?.transformToString();
       console.log('RESPONSE success');
+      return str;
     } catch (err) {
       console.error('ERROR:' + err);
     }

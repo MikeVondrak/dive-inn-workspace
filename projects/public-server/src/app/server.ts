@@ -6,6 +6,7 @@ import path from 'path';
 // our backend
 import { ServerApp } from './server-app-postgres';
 import { ReservationsRouter } from './routers/reservations.router';
+import { SpecialsRouter } from './routers/specials.router';
 
 const PORT: string = process.env.PORT || '3000'; // process.env.PORT set by server (e.g. Heroku) when hosted, or use 3000 for local testing
 process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'; 
@@ -47,6 +48,10 @@ function makePoolQuery<ReturnType>(route: string, res: Response, values?: Return
 // define routers for routes
 const routers: Router[] = [];
 const reservationsRouter = new ReservationsRouter(makePoolQuery);
+const specialsRouter = new SpecialsRouter(awsOperation);
+routers.push(specialsRouter.router); // specialsRouter.router is a Router object with routes added to it
+
+
 routers.push(reservationsRouter.router);
 
 // Angular app is served as static file
@@ -68,3 +73,8 @@ function debugFileAndDir() {
   console.log('Angular App Path:\t' + ANGULAR_APP_LOCATION + '\nResolved:\t\t' + tmp);
 }
 
+function awsOperation<ReturnType>(route: string, res: Response, values?: ReturnType[]): void {
+  console.log('AWS OP');
+
+  res.send(['Moo']);
+}

@@ -1,7 +1,7 @@
       // https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
 
-import express, { Application, RequestHandler, Router } from 'express';
-import { Observable, Observer } from 'rxjs';
+import express, { Application, RequestHandler, Router, Response } from 'express';
+import { Observable, Observer, of } from 'rxjs';
 import { Client, Pool, Query, QueryConfig, QueryResult } from 'pg';
 import { AwsBucketIo } from './aws-bucket-io';
 
@@ -57,9 +57,6 @@ export class ServerApp {
     this.useMiddleware(this.middleWareList);
     this.useControllers(this.controllerList);
     this.setCatchAllRoutes();
-
-    const bucket: AwsBucketIo = new AwsBucketIo();
-    bucket.getBucketFile('');
   }
 
   /**
@@ -150,5 +147,4 @@ export class ServerApp {
 
     return new Observable<T[]>(queryResult$);
   }
-  
 }
