@@ -8,7 +8,7 @@
     "start-ng-proxy": "ng serve --watch --proxy-config proxy.config.json public-client",
     "build-fe_public": "ng build public-client",
     "build-fe_admin": "ng build admin-client",
-    "build-fe": "yarn build-fe-public && yarn build-fe-admin",
+    "build-fe": "yarn build-fe_public && yarn build-fe_admin",
     "build-be_public_windows": "cd projects/public-server && yarn build_windows",
     "build-be_public_linux": "cd projects/public-server && yarn build_linux",
     "build_windows": "yarn build-fe && yarn build-be_public_windows",

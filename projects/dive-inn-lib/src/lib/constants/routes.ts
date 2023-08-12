@@ -4,6 +4,9 @@ export const routes = {
     _root: '/api',
     reservation: {
       _root: '/reservation'
+    },
+    specials10: {
+      _root: '/specials10'
     }
   }
 }
