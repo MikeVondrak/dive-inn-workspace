@@ -12,7 +12,7 @@ export class SpecialsApiService {
   constructor(private http: HttpClient) { }
 
   public getSpecials10$(): Observable<string[]> {
-    const specials10: Observable<string[]> = this.http.get<string[]>(routes.api._root + routes.api.specials10._root);
+    const specials10: Observable<string[]> = this.http.get<string[]>(routes.api._root + routes.api.specials._root);
     return specials10;
   }
 }

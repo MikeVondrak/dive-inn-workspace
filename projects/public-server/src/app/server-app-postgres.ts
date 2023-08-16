@@ -3,7 +3,6 @@
 import express, { Application, RequestHandler, Router } from 'express';
 import { Observable, Observer } from 'rxjs';
 import { Client, Pool, Query, QueryConfig, QueryResult } from 'pg';
-import { AwsBucketIo } from './aws-bucket-io';
 
 export class ServerApp {
   private app: Application;
@@ -57,9 +56,6 @@ export class ServerApp {
     this.useMiddleware(this.middleWareList);
     this.useControllers(this.controllerList);
     this.setCatchAllRoutes();
-
-    const bucket: AwsBucketIo = new AwsBucketIo();
-    bucket.getBucketFile('');
   }
 
   /**

@@ -5,8 +5,8 @@ export const routes = {
     reservation: {
       _root: '/reservation'
     },
-    specials10: {
-      _root: '/specials10'
+    specials: {
+      _root: '/specials'
     }
   }
 }

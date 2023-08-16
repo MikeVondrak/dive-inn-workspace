@@ -27,9 +27,9 @@ export class AwsBucketIo {
     console.log('CREDS: ' + environment.dive_inn_aws_secret_key);
   }
 
-  private async getObject(): Promise<any> {
+  private async getObject(): Promise<string> {
     if (!this.client) {
-      return null;
+      return 'No client';
     }
     try {
       const response = await this.client.send(this.command);
@@ -39,12 +39,15 @@ export class AwsBucketIo {
       
       const str = await response.Body?.transformToString();
       console.log('RESPONSE success');
+      return str || 'No response';
+
     } catch (err) {
       console.error('ERROR:' + err);
+      return 'ERROR:' + err;
     }
   }
 
-  public async getBucketFile(filename: string) {
+  public async getBucketFile(filename: string): Promise<string> {
     console.log('AWS BUCKET IO');
     return await this.getObject();
   }

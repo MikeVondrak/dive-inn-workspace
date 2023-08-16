@@ -6,6 +6,7 @@ import path from 'path';
 // our backend
 import { ServerApp } from './server-app-postgres';
 import { ReservationsRouter } from './routers/reservations.router';
+import { SpecialsRouter } from './routers/specials.router';
 
 const PORT: string = process.env.PORT || '3000'; // process.env.PORT set by server (e.g. Heroku) when hosted, or use 3000 for local testing
 process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'; 
@@ -41,13 +42,14 @@ const middleWare: RequestHandler[] = [
  * @param res Response object from Express Router
  */
 function makePoolQuery<ReturnType>(route: string, res: Response, values?: ReturnType[]): void {
-  console.log('***** makePoolQuery: route= ' + route + '\n\tthese were passed values= ' + (values ? JSON.stringify(values,null,4) : 'none') + '\n\n');
+  console.log('***** makePoolQuery: route= ' + route + '\n\tpassed values= ' + (values ? JSON.stringify(values,null,4) : 'none') + '\n\n');
 }
 
 // define routers for routes
 const routers: Router[] = [];
 const reservationsRouter = new ReservationsRouter(makePoolQuery);
-routers.push(reservationsRouter.router);
+const specialsRouter = new SpecialsRouter(makePoolQuery);
+routers.push(reservationsRouter.router, specialsRouter.router);
 
 // Angular app is served as static file
 // All other routes are for API
