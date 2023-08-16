@@ -70,3 +70,8 @@ function debugFileAndDir() {
   console.log('Angular App Path:\t' + ANGULAR_APP_LOCATION + '\nResolved:\t\t' + tmp);
 }
 
+function awsOperation<ReturnType>(route: string, res: Response, values?: ReturnType[]): void {
+  console.log('AWS OP');
+
+  res.send(['Moo']);
+}
