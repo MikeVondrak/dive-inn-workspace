@@ -31,8 +31,7 @@ export class SpecialsRouter extends BaseRouter {
 
   private encodeDataStream(data: string): string {
     const mime = 'data:image/jpeg;base64,';
-    const buffer = Buffer.from(data, 'base64');
-    const dataBase64 = buffer.toString('base64');
-    return mime + dataBase64;
+    //const dataBase64 = buffer.toString('base64');
+    return mime + data;
   }
 }

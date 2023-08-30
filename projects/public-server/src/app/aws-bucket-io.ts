@@ -23,8 +23,6 @@ export class AwsBucketIo {
     });
 
     this.client = new S3Client(this.config);
-
-    console.log('CREDS: ' + environment.dive_inn_aws_secret_key);
   }
 
   private async getObject(): Promise<string> {
@@ -37,7 +35,7 @@ export class AwsBucketIo {
         throw new Error('No response');
       }
       
-      const str = await response.Body?.transformToString();
+      const str = await response.Body?.transformToString('base64');
       console.log('RESPONSE success');
       return str || 'No response';
 
@@ -49,7 +47,8 @@ export class AwsBucketIo {
 
   public async getBucketFile(filename: string): Promise<string> {
     console.log('AWS BUCKET IO');
-    return await this.getObject();
+    const objPromise = this.getObject();
+    return objPromise;
   }
 
 }

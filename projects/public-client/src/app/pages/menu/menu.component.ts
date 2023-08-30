@@ -4,7 +4,7 @@ import { cluckHeroBannerConfigs } from './cluck.hero-banner.config';
 import { foodpageHeroBannerConfigs } from './menu.hero-banner.config';
 import { CarouselData } from '../../models/carousel.model';
 import { SpecialsApiService } from '../../services/specials.api.service';
-import { take } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
 
 enum MenuContentItems {
   MENU = 'Menu',
@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
   public fullscreenMenu: boolean = false;
   public fullscreenSpecials: boolean = false;
   public carouselData: CarouselData[] = [];
-  public specialsImages: string[] = [];
+  public specialsImages$: Observable<string[]> = of([]);
 
   constructor(private specialService: SpecialsApiService) { }
 
@@ -51,10 +51,11 @@ export class MenuComponent implements OnInit {
   }
 
   getSpecialsImages() {
-    this.specialService.getSpecials10$().pipe(take(1)).subscribe((dataArray) => {
-      console.log('specials images', dataArray);
-      this.specialsImages = dataArray;
-    })
+    this.specialsImages$ = this.specialService.getSpecials10$();
+    // this.specialService.getSpecials10$().pipe(take(1)).subscribe((dataArray) => {
+    //   console.log('specials images', dataArray);
+    //   this.specialsImages = dataArray;
+    // })
     // this.specialsImages = [
     //   'assets/images/specials/TakiTakosTNT.jpg',
     //   // 'assets/images/specials/TakiTakosTNT.jpg',

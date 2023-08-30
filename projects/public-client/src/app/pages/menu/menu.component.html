@@ -10,7 +10,7 @@
         <!-- <img *ngIf="!this.fullscreenSpecials" src="assets/images/specials/TakiTakosTNT.jpg" /> -->
         <div class="image-flip-container">
           <app-image-flip
-            [images]="specialsImages"  
+            [images$]="specialsImages$"  
           ></app-image-flip>
         </div>
         <!-- <p *ngIf="!this.fullscreenSpecials">View all Specials</p> -->
