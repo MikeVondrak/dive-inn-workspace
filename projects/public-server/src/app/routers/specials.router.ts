@@ -19,11 +19,13 @@ export class SpecialsRouter extends BaseRouter {
         return;
       }
 
-      awsBucketIo.getBucketFile('').then(
-        (data: string) => {
-          console.log('Specials: ', data.length);
-          const imgSrc = this.encodeDataStream(data);
-          res.status(200).send([imgSrc]);
+      awsBucketIo.getBucketContents().then(
+        (data: any[]) => {
+
+          const imgSrc = data.map((item: any) => { this.encodeDataStream(item) });
+          
+          console.log('Specials: ', imgSrc.length);
+          res.status(200).send(imgSrc);
         }
       )
     });
