@@ -1,3 +1,11 @@
+<div *ngIf="loading; else Loaded">
+  Loading...
+</div>
+<ng-template #Loaded>
+  <div *ngIf="imageCount === 0">
+    No Specials Today
+  </div>
+
 <div *ngIf="images$ | async; let images" class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
   <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
     <div class="image" *ngFor="let imageFilename of images; index as i" >
@@ -12,3 +20,5 @@
     </div>
   </div>
 </div>
+
+</ng-template>

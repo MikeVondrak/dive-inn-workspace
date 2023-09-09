@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
   public fullscreenMenu: boolean = false;
   public fullscreenSpecials: boolean = false;
   public carouselData: CarouselData[] = [];
-  public specialsImages$: Observable<string[]> = of([]);
+  public specialsImages$: Observable<string[] | null> = of(null);
 
   constructor(private specialService: SpecialsApiService) { }
 

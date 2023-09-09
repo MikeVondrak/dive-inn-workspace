@@ -22,8 +22,9 @@ export class SpecialsRouter extends BaseRouter {
       awsBucketIo.getBucketContents().then(
         (data: any[]) => {
 
-          const imgSrc = data.map((item: any) => { this.encodeDataStream(item) });
-          
+          console.log('DATA: ', data[0].length);
+          const imgSrc = data.map((item: any) => this.encodeDataStream(item));
+          console.log('IMGSRC: ', imgSrc[0].length);
           console.log('Specials: ', imgSrc.length);
           res.status(200).send(imgSrc);
         }
