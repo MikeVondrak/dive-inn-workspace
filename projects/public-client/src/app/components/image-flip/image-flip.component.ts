@@ -49,28 +49,32 @@ export class ImageFlipComponent implements OnInit, OnChanges {
     
     if (direction === 'L' && this.centeredImage < (this.imageCount - 1)) {
       this.centeredImage++;
-      if (this.centeredImage === 1) {
-        this.imageOffsetLarge = '-63%';
-        this.imageOffsetSmall = '-81%';
-      } else if (this.centeredImage === this.imageCount - 1) {
-        this.imageOffsetLarge =  '-' + String((this.centeredImage - 2) * offsetLarge + 126) + '%';
-        this.imageOffsetSmall =  '-' + String((this.centeredImage - 2) * offsetSmall + 162) + '%';
-      } else {
-        this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
-        this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
-      }
+      this.imageOffsetLarge = '-' + String(this.centeredImage * 100) + '%';
+      this.imageOffsetSmall = '-' + String(this.centeredImage * 100) + '%';
+      // if (this.centeredImage === 1) {
+      //   // this.imageOffsetLarge = '-63%';
+      //   // this.imageOffsetSmall = '-81%';
+      // } else if (this.centeredImage === this.imageCount - 1) {
+      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 2) * offsetLarge + 126) + '%';
+      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 2) * offsetSmall + 162) + '%';
+      // } else {
+      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
+      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
+      // }
     } else if (direction === 'R' && this.centeredImage > 0) {
       this.centeredImage--;
-      if (this.centeredImage === this.imageCount - 2) {
-        this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
-        this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
-      } else if (this.centeredImage === 0) {
-        this.imageOffsetLarge = '-0%';
-        this.imageOffsetSmall = '-0%';
-      } else {
-        this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
-        this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
-      }
+      this.imageOffsetLarge = '-' + String(this.centeredImage * 100) + '%';
+      this.imageOffsetSmall = '-' + String(this.centeredImage * 100) + '%';
+      // if (this.centeredImage === this.imageCount - 2) {
+      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
+      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
+      // } else if (this.centeredImage === 0) {
+      //   this.imageOffsetLarge = '-0%';
+      //   this.imageOffsetSmall = '-0%';
+      // } else {
+      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
+      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
+      // }
     }
   }
 

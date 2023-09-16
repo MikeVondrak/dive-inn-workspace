@@ -6,19 +6,26 @@
     No Specials Today
   </div>
 
-<div *ngIf="images$ | async; let images" class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
-  <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
-    <div class="image" *ngFor="let imageFilename of images; index as i" >
-      <div (tap)="onClick($event, i)">
-        <img [src]="imageFilename" draggable="false">
+  <div *ngIf="images$ | async; let images" class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')"
+    (swipeRight)="onSwipe($event, 'R')">
+    <div class="arrow arrow-left">
+      <img src="assets/images/Arrow_Left.svg" (click)="onSwipe($event, 'R')">
+    </div>
+    <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
+      <div class="image" *ngFor="let imageFilename of images; index as i">
+        <div (tap)="onClick($event, i)">
+          <img [src]="imageFilename" draggable="false">
+        </div>
+      </div>
+    </div>
+    <div class="arrow arrow-right">
+      <img src="assets/images/Arrow_Right.svg" (click)="onSwipe($event, 'L')">
+    </div>
+    <div class="images-pills">
+      <div class="pill" *ngFor="let indicator of images; index as i" [ngClass]="{active: i === centeredImage}">
+
       </div>
     </div>
   </div>
-  <div class="images-pills">
-    <div class="pill" *ngFor="let indicator of images; index as i" [ngClass]="{active: i === centeredImage}">
-      
-    </div>
-  </div>
-</div>
 
 </ng-template>
