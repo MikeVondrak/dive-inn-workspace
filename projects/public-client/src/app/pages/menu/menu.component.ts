@@ -37,17 +37,17 @@ export class MenuComponent implements OnInit {
     //   {backgroundImage: '/assets/images/specials/TakiTakosTNT.jpg'},
     //   {backgroundImage: '/assets/images/tour/boat_diagonal2.jpg'}
     // ]
-    console.log('INIT!!!!!!!!!!!!!');
+    // console.log('INIT!!!!!!!!!!!!!');
     this.getSpecialsImages();
   }
 
   public onClick(contentEnum: MenuContentItems) {
-    console.log('menu click')
     switch(contentEnum) {
       case MenuContentItems.MENU: this.fullscreenMenu = !this.fullscreenMenu; break;
       case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
       // case MenuContentItems.SPECIALS: this.fullscreenSpecials = true; break;
     }
+    console.log('click', 'fullscreenspecials ' + this.fullscreenSpecials)
   }
 
   getSpecialsImages() {

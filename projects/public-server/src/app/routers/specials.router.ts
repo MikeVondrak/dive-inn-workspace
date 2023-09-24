@@ -4,7 +4,7 @@ import { BaseRouter } from './base.router';
 import { GenericResponse, RouterCallback } from '../models/router.model';
 import { routes } from '../routes';
 import { Special, SpecialsResponse } from '../models/specials.model';
-import { AwsBucketIo } from '../aws-bucket-io';
+import { AwsBucketIo, AwsBucketResult } from '../aws-bucket-io';
 
 export class SpecialsRouter extends BaseRouter {
   constructor(routerCallback: RouterCallback<GenericResponse>) {
@@ -20,21 +20,20 @@ export class SpecialsRouter extends BaseRouter {
       }
 
       awsBucketIo.getBucketContents().then(
-        (data: any[]) => {
+        (result: AwsBucketResult[]) => {
+          const imgSrc = result.map((item: any) => this.encodeDataStream(item.extension, item.data));
 
-          console.log('DATA: ', data[0].length);
-          const imgSrc = data.map((item: any) => this.encodeDataStream(item));
-          console.log('IMGSRC: ', imgSrc[0].length);
-          console.log('Specials: ', imgSrc.length);
           res.status(200).send(imgSrc);
         }
       )
     });
   }
 
-  private encodeDataStream(data: string): string {
-    const mime = 'data:image/jpeg;base64,';
-    //const dataBase64 = buffer.toString('base64');
+  private encodeDataStream(extension: string, data: string): string {
+    if (extension === 'svg') {
+      extension += '+xml';
+    }
+    let mime = 'data:image/' + extension + ';base64,';
     return mime + data;
   }
 }

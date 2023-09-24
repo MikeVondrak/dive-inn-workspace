@@ -2,6 +2,9 @@ import { GetObjectCommand, ListBucketsCommand, ListBucketsCommandInput, ListObje
 import { Observable } from "rxjs";
 import { environment } from "../environments/environment";
 
+
+export type AwsBucketResult = { key: string, extension: string, data: Promise<any> };
+
 export class AwsBucketIo {
 
   private config: S3ClientConfig = {
@@ -71,27 +74,43 @@ export class AwsBucketIo {
   //   return objPromise;
   // }
 
+
   public async getBucketContents(): Promise<any[]> {
     const bucketPath = 'Public/Specials/';
     const bucketContents = await this.listBucketObjects(bucketPath);
-    let bucketResults: Promise<any>[] = [];
+    let bucketResults: AwsBucketResult[] = [];
     let bucketObjects: any[] = [];
 
-    await bucketContents.forEach(async (x, idx) =>
-      {
-        console.log(x.Key);
+    await bucketContents.forEach(async (x, idx) => {
+        const extension = x.Key.substr(x.Key.length - 3, 3);
+        console.log('Bucket: ', {extension});
         const command = new GetObjectCommand({
           Bucket: 'diveinndenvers3',
           Key: x.Key
         });
-        const result = this.getObject(command);
+        const data = this.getObject(command);
+        const result: AwsBucketResult = {
+          key: x.Key,
+          data,
+          extension
+        }
         bucketResults.push(result);
-      });
+      } 
+    );
 
-      bucketObjects = await Promise.all([ ...bucketResults]);
-      console.log(bucketObjects.length);
+    const bucketData = bucketResults.map(br => br.data);
 
-    return bucketObjects;
+    bucketObjects = (await Promise.all([ ...bucketData]));
+    console.log(bucketObjects.length);
+
+    return bucketObjects.map((bo, idx) => {
+      const result: AwsBucketResult = { 
+        key: bucketResults[idx].key,
+        extension: bucketResults[idx].extension,
+        data: bo
+      }
+      return result;
+    });
   }
 
 }

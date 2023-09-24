@@ -8,17 +8,17 @@
 
   <div *ngIf="images$ | async; let images" class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')"
     (swipeRight)="onSwipe($event, 'R')">
-    <div class="arrow arrow-left">
+    <div *ngIf="centeredImage != 0" class="arrow arrow-left">
       <img src="assets/images/Arrow_Left.svg" (click)="onSwipe($event, 'R')">
     </div>
     <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
-      <div class="image" *ngFor="let imageFilename of images; index as i">
-        <div (tap)="onClick($event, i)">
-          <img [src]="imageFilename" draggable="false">
+      <div class="image" *ngFor="let imageFileData of images; index as i">
+        <div>
+          <img [src]="imageFileData" draggable="false" (tap)="onClick($event, i)">
         </div>
       </div>
     </div>
-    <div class="arrow arrow-right">
+    <div *ngIf="centeredImage != (images.length - 1)" class="arrow arrow-right">
       <img src="assets/images/Arrow_Right.svg" (click)="onSwipe($event, 'L')">
     </div>
     <div class="images-pills">
@@ -26,6 +26,10 @@
 
       </div>
     </div>
+  </div>
+
+  <div *ngIf="this.fullscreen" class="fullscreen-image"  (tap)="onClick($event)">
+    <img [src]="this.fullscreenImage" draggable="false">
   </div>
 
 </ng-template>

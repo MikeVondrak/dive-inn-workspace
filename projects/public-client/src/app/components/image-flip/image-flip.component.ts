@@ -14,8 +14,10 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   public centeredImage: number = 0;
   public loading: boolean = false;
   public loaded: boolean = false;
+  public fullscreen: boolean = false;
+  public fullscreenImage: string = '';
   
-  @HostBinding('style.--imageOffsetSmall') imageOffsetSmall: string = '0%';
+  @HostBinding('style.--imageOffsetSmall') imageOffsetSmall: string = '10%';
   @HostBinding('style.--imageOffsetLarge') imageOffsetLarge: string = '0%';
 
   constructor(private cdr: ChangeDetectorRef) { }
@@ -41,50 +43,19 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   }
 
   public onSwipe($event: Event, direction?: string) {
-
-    console.log('Swipe', direction, this.imageCount);
-
-    const offsetLarge: number = 75;
-    const offsetSmall: number = 88.25;
-    
     if (direction === 'L' && this.centeredImage < (this.imageCount - 1)) {
       this.centeredImage++;
-      this.imageOffsetLarge = '-' + String(this.centeredImage * 100) + '%';
-      this.imageOffsetSmall = '-' + String(this.centeredImage * 100) + '%';
-      // if (this.centeredImage === 1) {
-      //   // this.imageOffsetLarge = '-63%';
-      //   // this.imageOffsetSmall = '-81%';
-      // } else if (this.centeredImage === this.imageCount - 1) {
-      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 2) * offsetLarge + 126) + '%';
-      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 2) * offsetSmall + 162) + '%';
-      // } else {
-      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
-      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
-      // }
+      this.imageOffsetLarge = '-' + String(this.centeredImage * 102) + '%';
+      this.imageOffsetSmall = '-' + String(this.centeredImage * 95.8) + '%';
     } else if (direction === 'R' && this.centeredImage > 0) {
       this.centeredImage--;
-      this.imageOffsetLarge = '-' + String(this.centeredImage * 100) + '%';
-      this.imageOffsetSmall = '-' + String(this.centeredImage * 100) + '%';
-      // if (this.centeredImage === this.imageCount - 2) {
-      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
-      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
-      // } else if (this.centeredImage === 0) {
-      //   this.imageOffsetLarge = '-0%';
-      //   this.imageOffsetSmall = '-0%';
-      // } else {
-      //   // this.imageOffsetLarge =  '-' + String((this.centeredImage - 1) * offsetLarge + 63) + '%';
-      //   // this.imageOffsetSmall =  '-' + String((this.centeredImage - 1) * offsetSmall + 81) + '%';
-      // }
+      this.imageOffsetLarge = '-' + String(this.centeredImage * 102) + '%';
+      this.imageOffsetSmall = '-' + String(this.centeredImage * 95.8) + '%';
     }
   }
 
-  onClick($event: Event, index: number) {
-    if (index > this.centeredImage) {
-      this.onSwipe($event, 'L');
-    } else if (index < this.centeredImage) {
-      this.onSwipe($event, 'R');
-    } else {
-      console.log('click');
-    }
+  onClick($event: any, index?: number) {
+    this.fullscreen = !this.fullscreen;
+    this.fullscreenImage = $event.target.src;
   }
 }
