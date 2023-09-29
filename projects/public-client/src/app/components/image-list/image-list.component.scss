@@ -1,0 +1,22 @@
+:host {
+  display: block;
+
+  .image-list-overlay {
+    z-index: 10; // TODO: why 10 necessary here?
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgba(0,0,0,0.5);
+
+    h2 {
+      color: white;
+    }
+  }
+}

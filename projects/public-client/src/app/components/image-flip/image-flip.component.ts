@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { ImageListService } from '../../services/image-list.service';
 
 @Component({
   selector: 'app-image-flip',
@@ -16,11 +17,12 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   public loaded: boolean = false;
   public fullscreen: boolean = false;
   public fullscreenImage: string = '';
+  public imagesStored: string[] = [];
   
   @HostBinding('style.--imageOffsetSmall') imageOffsetSmall: string = '10%';
   @HostBinding('style.--imageOffsetLarge') imageOffsetLarge: string = '0%';
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private imageListService: ImageListService) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -29,6 +31,7 @@ export class ImageFlipComponent implements OnInit, OnChanges {
         this.loading = false;
         this.loaded = true;
         this.imageCount = images.length;
+        this.imagesStored = images;
       };
       this.cdr.detectChanges();
     });
@@ -55,7 +58,8 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   }
 
   onClick($event: any, index?: number) {
-    this.fullscreen = !this.fullscreen;
-    this.fullscreenImage = $event.target.src;
+    // this.fullscreen = !this.fullscreen;
+    // this.fullscreenImage = $event.target.src;
+    this.imageListService.displayImageList(this.imagesStored);
   }
 }

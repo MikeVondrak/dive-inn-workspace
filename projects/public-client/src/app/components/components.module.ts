@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlbumDisplayComponent } from './album-display/album-display.component';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 import { ImageFlipComponent } from './image-flip/image-flip.component';
+import { ImageListComponent } from './image-list/image-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ImageFlipComponent } from './image-flip/image-flip.component';
     AlbumDisplayComponent,
     ImageDisplayComponent,
     ImageFlipComponent,
+    ImageListComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,7 @@ import { ImageFlipComponent } from './image-flip/image-flip.component';
     AlbumDisplayComponent,
     ImageDisplayComponent,
     ImageFlipComponent,
+    ImageListComponent,
   ]
 })
 export class ComponentsModule { }

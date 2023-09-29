@@ -46,7 +46,6 @@
 
     img {
       width: 78vw;
-      // width: 100%;
       height: 45vw;
       object-fit: contain;
       padding-right: 1.5vw;
@@ -54,15 +53,9 @@
   
       @include utility.media-breakpoint-gte(sm) {
         width: 50vw;
-        // width: 100%;
-        //height: 20vw;
         max-height: 20vw;
         padding: 0;
       }
-
-      // &.fullscreen {
-      //   width: 90vw;
-      // }
     }
   }
   
@@ -90,11 +83,11 @@
 
   .fullscreen-image {
     position: absolute;
-    top: -80vw;
-    left: -5vw;
-    // background-color: utility.$dive-gray-dk3;
+    top: 0vw;
+    left: 0vw;
+    bottom: 0vw;
+    right: 0vw;
     padding: 50vw 5vw;
-    // padding-top: 50vw;
     background-color: rgba(0, 0, 0, 0.85);
     transform: translateX(0) skew(4deg, 2deg) rotate(4deg);
     z-index: 11;
@@ -107,7 +100,8 @@
     }
 
     img {
-      width: 90%;
+      max-height: 94vh;
+      max-width: 100%;
     }
   }
 }
