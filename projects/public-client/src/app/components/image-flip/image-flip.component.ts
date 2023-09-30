@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, OnChanges, SimpleChanges, ChangeDetectorRef, ViewChild, ElementRef, Inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ImageListService } from '../../services/image-list.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-image-flip',
@@ -9,6 +10,8 @@ import { ImageListService } from '../../services/image-list.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageFlipComponent implements OnInit, OnChanges {
+  @ViewChild('ImageFlipContainer') imageFlipContainer!: ElementRef;
+  
   @Input() images$: Observable<string[] | null> = of([]);
 
   public imageCount: number = 0;
@@ -58,8 +61,8 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   }
 
   onClick($event: any, index?: number) {
-    // this.fullscreen = !this.fullscreen;
-    // this.fullscreenImage = $event.target.src;
+    //const natEl = this.imageFlipContainer.nativeElement;
+
     this.imageListService.displayImageList(this.imagesStored);
   }
 }

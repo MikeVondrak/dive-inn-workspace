@@ -12,11 +12,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     
     background-color: rgba(0,0,0,0.5);
 
     h2 {
       color: white;
+    }
+  }
+
+  .images-container {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    // overflow: hidden;
+    transform: translate(var(--imageOffset), 0);
+    // user-select: none;
+
+    .image {
+      // overflow: hidden;
+    }
+
+    img {
+      object-fit: contain;
     }
   }
 }

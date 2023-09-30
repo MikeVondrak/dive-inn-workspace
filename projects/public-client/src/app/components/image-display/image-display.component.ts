@@ -6,7 +6,6 @@ import { Component, ElementRef, AfterViewInit, OnInit, ViewChild, Input } from '
   styleUrls: ['./image-display.component.scss']
 })
 export class ImageDisplayComponent implements OnInit, AfterViewInit {
-  @ViewChild('image') imageRef!: ElementRef;
 
   @Input() imageUrl: string = '';
 
@@ -24,11 +23,6 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.width = this.imageRef.nativeElement.clientWidth;
-      this.height = this.imageRef.nativeElement.clientHeight;
-      this.isPortrait = (this.width / this.height) > this.aspectRatio;
-    }, 0);
   }
 
   testPan() {

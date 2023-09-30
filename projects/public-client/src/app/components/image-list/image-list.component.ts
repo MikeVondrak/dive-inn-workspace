@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, Inject, HostBinding } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ImageListService } from '../../services/image-list.service';
 
@@ -9,22 +9,44 @@ import { ImageListService } from '../../services/image-list.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // animations: ['./image-list.component.animations.ts']
 })
-export class ImageListComponent implements OnInit {
- 
-  public show: boolean = false;
+export class ImageListComponent implements AfterViewInit {
+  @ViewChild('ImgList') imgListElement!: ElementRef;
 
-  constructor(private imageListService: ImageListService, private cdr: ChangeDetectorRef) { 
+  public show: boolean = false;
+  public images: string[] = [];
+  public imageCount: number = 0;
+  public centeredImage: number = 0;
+
+  @HostBinding('style.--imageOffset') imageOffset: string = '0%';
+
+  constructor(private cdr: ChangeDetectorRef, private imageListService: ImageListService) { 
   }
   
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.imageListService.images$.asObservable().subscribe(imageList => {
+      this.images = imageList;
       this.show = true;
-      // console.log('list', this.show);
       this.cdr.detectChanges();
     });
   }
 
   public onOverlayClick() {
     this.show = false;
+    this.imageListService.scrollToLastPosition();
+  }
+
+  public onSwipe($event: Event, direction: string) {
+    console.log('swipe');
+    if (direction === 'L' && this.centeredImage < (this.imageCount - 1)) {
+      this.centeredImage++;
+      this.imageOffset = '-' + String(this.centeredImage * 100) + '%';
+      // this.imageOffsetLarge = '-' + String(this.centeredImage * 102) + '%';
+      // this.imageOffsetSmall = '-' + String(this.centeredImage * 95.8) + '%';
+    } else if (direction === 'R' && this.centeredImage > 0) {
+      this.centeredImage--;
+      this.imageOffset = '-' + String(this.centeredImage * 100) + '%';
+      // this.imageOffsetLarge = '-' + String(this.centeredImage * 102) + '%';
+      // this.imageOffsetSmall = '-' + String(this.centeredImage * 95.8) + '%';
+    }
   }
 }

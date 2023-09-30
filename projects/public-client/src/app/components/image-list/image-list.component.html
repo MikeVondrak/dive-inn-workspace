@@ -1,3 +1,18 @@
-<div *ngIf="show" (click)="onOverlayClick()" class="image-list-overlay">
-  <h2>Image List goes here</h2>
+<div *ngIf="show" (tap)="onOverlayClick()" class="image-list-overlay">
+  <div class="main">
+    <div class="title">
+      <h2>Image List goes here</h2>
+    </div>
+    <div class="images-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
+      <div *ngFor="let image of images" class="image">
+        <img [src]="image" draggable="false">
+      </div>
+    </div>
+    <div class="arrows">
+
+    </div>
+    <div class="pills">
+
+    </div>
+  </div>
 </div>

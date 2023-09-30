@@ -1,6 +1,10 @@
-<div *ngIf="loading; else Loaded">
-  Loading...
+<div #ImageFlipContainer>
+  <div *ngIf="loading; else Loaded">
+    Loading...
+  </div>
 </div>
+
+
 <ng-template #Loaded>
   <div *ngIf="imageCount === 0">
     No Specials Today
