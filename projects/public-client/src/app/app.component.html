@@ -2,6 +2,8 @@
   
   <app-site-header>Header</app-site-header>
 
+  <app-image-list></app-image-list>
+
   <main>
     <div id="Viewport-Overlay" 
       [@viewportAnimation]="viewportOverlayAnimationState$ | async" 
@@ -12,7 +14,5 @@
   </main>
 
   <app-site-footer (expandingMenuState)="onFooterMenuStateChange($event)">Footer</app-site-footer>
-
-  <app-image-list></app-image-list>
 
 </div>

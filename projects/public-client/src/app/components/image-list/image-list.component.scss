@@ -2,7 +2,7 @@
   display: block;
 
   .image-list-overlay {
-    z-index: 10; // TODO: why 10 necessary here?
+    z-index: 11; // TODO: why 10 necessary here?
     position: absolute;
     top: 0;
     bottom: 0;
@@ -11,30 +11,57 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 5vw;
     text-align: center;
-    
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.85);
 
     h2 {
       color: white;
     }
-  }
-
-  .images-container {
-    width: 90vw;
-    height: 90vh;
-    display: flex;
-    // overflow: hidden;
-    transform: translate(var(--imageOffset), 0);
-    // user-select: none;
-
-    .image {
-      // overflow: hidden;
+    
+    .window {
+      overflow: hidden;
     }
 
-    img {
-      object-fit: contain;
+    .images-container {
+      width: 90vw;
+      height: 90vh;
+      display: flex;
+      // overflow: hidden;
+      transition: transform 0.75s ease;
+      transform: translate(var(--imageOffset), 0);
+      // user-select: none;
+      
+      .image {
+        width: 100%;
+        object-fit: contain;
+        // overflow: hidden;
+        
+        img {
+          width: 90vw;
+          height: 90vh;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .arrow {
+      position: absolute;
+      width: 7vw;
+      top: 17%;
+      left: 2vw;
+      // user-select: none;
+      z-index: 1;
+
+      &.arrow-right {
+        left: unset;
+        right: 3%;
+      }
+
+      // @include utility.media-breakpoint-gte(sm) {
+      //   width: 2vw;
+      // }
     }
   }
 }

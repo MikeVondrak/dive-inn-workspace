@@ -17,6 +17,9 @@ export class ImageListService {
     this.window = this.document?.defaultView;
   }
 
+  public scrollToPosition(position: number) {
+    this.window?.scrollTo({ top: position, behavior: 'smooth' });
+  }
   public scrollToLastPosition() {
     console.log('SCROLL', this.scrollPositionOnOpen);
     if (this.scrollPositionOnOpen >= 0) {

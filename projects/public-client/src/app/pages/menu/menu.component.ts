@@ -5,6 +5,7 @@ import { foodpageHeroBannerConfigs } from './menu.hero-banner.config';
 import { CarouselData } from '../../models/carousel.model';
 import { SpecialsApiService } from '../../services/specials.api.service';
 import { Observable, of, take } from 'rxjs';
+import { ImageListService } from '../../services/image-list.service';
 
 enum MenuContentItems {
   MENU = 'Menu',
@@ -30,7 +31,7 @@ export class MenuComponent implements OnInit {
   public carouselData: CarouselData[] = [];
   public specialsImages$: Observable<string[] | null> = of(null);
 
-  constructor(private specialService: SpecialsApiService) { }
+  constructor(private specialService: SpecialsApiService, private imageListService: ImageListService) { }
 
   ngOnInit(): void {
     // this.carouselData = [
@@ -47,7 +48,8 @@ export class MenuComponent implements OnInit {
       case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
       // case MenuContentItems.SPECIALS: this.fullscreenSpecials = true; break;
     }
-    console.log('click', 'fullscreenspecials ' + this.fullscreenSpecials)
+    this.imageListService.displayImageList(["assets/images/menu/Dive_Inn_Menu.jpg"]);
+    // console.log('click', 'fullscreenspecials ' + this.fullscreenSpecials)
   }
 
   getSpecialsImages() {
