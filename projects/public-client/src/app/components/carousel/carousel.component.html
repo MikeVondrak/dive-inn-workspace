@@ -5,7 +5,7 @@
         [faceDirection]="faceDirections[i]" 
         [faceLabel]="(face | async) || ''"
         (tap)="onTap($event)"
-        [backgroundImage]="'url(' + (carouselData[i]?.backgroundImage || '' + ')')"
+        [backgroundImage]="'url(' + (carouselData[i].backgroundImage || '' + ')')"
         (swipeLeft)="onSwipe($event, 'L')"
         (swipeRight)="onSwipe($event, 'R')"
         ></app-carousel-pane>

@@ -1,0 +1,19 @@
+<div *ngIf="show" class="image-list-overlay" @imageListShowHide>
+  <div  (tap)="onOverlayClick($event)">
+    <div class="window">
+      <div class="images-container" (swipeLeft)="onSwipe($event, 'L')" (swipeRight)="onSwipe($event, 'R')">
+        <div *ngFor="let image of images" class="image">
+          <img [src]="image" draggable="false">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="arrows">
+    <div  *ngIf="centeredImage > 0" class="arrow arrow-left">
+      <img src="assets/images/Arrow_Left.svg" (tap)="onSwipe($event, 'R')" draggable="false">
+    </div>
+    <div *ngIf="centeredImage != (images.length - 1)" class="arrow arrow-right">
+      <img class="arrow-svg" src="assets/images/Arrow_Right.svg" (tap)="onSwipe($event, 'L')" draggable="false">
+    </div>
+  </div>
+</div>

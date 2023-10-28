@@ -1,0 +1,107 @@
+@use '../../scss/utility';
+
+:host {
+
+  .image-flip-container  {
+    overflow: hidden;
+
+    .arrow {
+      position: absolute;
+      width: 3vw;
+      top: 40%;
+      user-select: none;z-index: 1;
+
+      &.arrow-right {
+        right: 3%;
+      }
+
+      @include utility.media-breakpoint-gte(sm) {
+        width: 2vw;
+      }
+    }
+    
+  }
+
+  .images-container {
+    display: flex;
+    gap: 3vw;
+    padding: 1vw;
+    transition: transform 0.75s ease;
+
+    &.right {
+      transform: translate(var(--imageOffsetSmall), 0);
+
+      @include utility.media-breakpoint-gte(sm) {
+        transform: translate(var(--imageOffsetLarge), 0);
+      }
+    }
+
+    @include utility.media-breakpoint-gte(md) {
+      height: 23vw;
+    }
+
+    .image {
+      width: 100%;
+    }
+
+    img {
+      width: 78vw;
+      height: 45vw;
+      object-fit: contain;
+      padding-right: 1.5vw;
+      padding-left: 1.5vw;
+  
+      @include utility.media-breakpoint-gte(sm) {
+        width: 50vw;
+        max-height: 20vw;
+        padding: 0;
+      }
+    }
+  }
+  
+  .images-pills {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    gap: 2vw;
+    
+    .pill {
+      width: 1rem;
+      height: .2rem;
+      background-color: lightgray;
+
+      @include utility.media-breakpoint-gte(md) {
+        width: 2rem;
+        height: .3rem;
+      }
+
+      &.active {
+        background-color: utility.$dive-red;
+      }
+    }
+  }
+
+  .fullscreen-image {
+    position: absolute;
+    top: 0vw;
+    left: 0vw;
+    bottom: 0vw;
+    right: 0vw;
+    padding: 50vw 5vw;
+    background-color: rgba(0, 0, 0, 0.85);
+    transform: translateX(0) skew(4deg, 2deg) rotate(4deg);
+    z-index: 11;
+    width: 100vw;
+
+    @include utility.media-breakpoint-gte(sm) {
+      top: -40vw;
+      left: -35vw;
+      padding-top: 20vw;
+    }
+
+    img {
+      max-height: 94vh;
+      max-width: 100%;
+    }
+  }
+}

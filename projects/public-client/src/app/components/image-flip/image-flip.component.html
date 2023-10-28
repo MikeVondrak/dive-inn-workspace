@@ -1,0 +1,39 @@
+<div #ImageFlipContainer>
+  <div *ngIf="loading; else Loaded">
+    Loading...
+  </div>
+</div>
+
+
+<ng-template #Loaded>
+  <div *ngIf="imageCount === 0">
+    No Specials Today
+  </div>
+
+  <div *ngIf="images$ | async; let images" class="image-flip-container" (swipeLeft)="onSwipe($event, 'L')"
+    (swipeRight)="onSwipe($event, 'R')">
+    <div *ngIf="centeredImage != 0" class="arrow arrow-left">
+      <img src="assets/images/Arrow_Left.svg" (click)="onSwipe($event, 'R')">
+    </div>
+    <div class="images-container" [ngClass]="centeredImage ===  0 ? 'left' : 'right'">
+      <div class="image" *ngFor="let imageFileData of images; index as i">
+        <div>
+          <img [src]="imageFileData" draggable="false" (tap)="onClick($event, i)">
+        </div>
+      </div>
+    </div>
+    <div *ngIf="centeredImage != (images.length - 1)" class="arrow arrow-right">
+      <img src="assets/images/Arrow_Right.svg" (click)="onSwipe($event, 'L')">
+    </div>
+    <div class="images-pills">
+      <div class="pill" *ngFor="let indicator of images; index as i" [ngClass]="{active: i === centeredImage}">
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.fullscreen" class="fullscreen-image"  (tap)="onClick($event)">
+    <img [src]="this.fullscreenImage" draggable="false">
+  </div>
+
+</ng-template>

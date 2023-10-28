@@ -1,20 +1,20 @@
 <div id="top" class="main">
   <div id="taki" class="taki-tacos">
     <div class="content-container">
-      <button class="content menu" [class.fullscreen]="fullscreenMenu" (click)="onClick(MenuContentItemsEnum.MENU)">
+      <!-- <button class="content menu" [class.fullscreen]="fullscreenMenu" (click)="onClick(MenuContentItemsEnum.MENU)"> -->
+      <button class="content menu" (click)="onClick(MenuContentItemsEnum.MENU)">
         <h1 class="scroll-offset" id="menu">Menu</h1>
         <img src="assets/images/menu/Dive_Inn_Menu.jpg" />
       </button>
-      <button class="content specials" [class.fullscreen]="fullscreenSpecials"
-        (click)="onClick(MenuContentItemsEnum.SPECIALS)">
+      <button class="content specials" [class.fullscreen]="fullscreenSpecials">
         <h1 class="scroll-offset" id="specials">Specials</h1>
-        <img *ngIf="!this.fullscreenSpecials" src="assets/images/specials/TakiTakosTNT.jpg" />
-        <div class="carousel-container">
-          <app-carousel *ngIf="this.fullscreenSpecials"
-            [carouselData]="carouselData"
-          ></app-carousel>
+        <!-- <img *ngIf="!this.fullscreenSpecials" src="assets/images/specials/TakiTakosTNT.jpg" /> -->
+        <div class="image-flip-container">
+          <app-image-flip
+            [images$]="specialsImages$"  
+          ></app-image-flip>
         </div>
-        <p *ngIf="!this.fullscreenSpecials">View all Specials</p>
+        <!-- <p *ngIf="!this.fullscreenSpecials">View all Specials</p> -->
       </button>
     </div>
     <div class="gradient-container">
