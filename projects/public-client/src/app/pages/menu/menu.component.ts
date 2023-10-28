@@ -48,7 +48,7 @@ export class MenuComponent implements OnInit {
       case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
       // case MenuContentItems.SPECIALS: this.fullscreenSpecials = true; break;
     }
-    this.imageListService.displayImageList(["assets/images/menu/Dive_Inn_Menu.jpg"]);
+    this.imageListService.displayImageList(["assets/images/menu/Dive_Inn_Menu.jpg"], 0);
     // console.log('click', 'fullscreenspecials ' + this.fullscreenSpecials)
   }
 

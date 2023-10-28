@@ -1,3 +1,5 @@
+@use '../../scss/utility';
+
 :host {
   display: block;
 
@@ -28,15 +30,12 @@
       width: 90vw;
       height: 90vh;
       display: flex;
-      // overflow: hidden;
       transition: transform 0.75s ease;
       transform: translate(var(--imageOffset), 0);
-      // user-select: none;
       
       .image {
         width: 100%;
         object-fit: contain;
-        // overflow: hidden;
         
         img {
           width: 90vw;
@@ -46,22 +45,28 @@
       }
     }
 
-    .arrow {
+    .arrows {
+      top: 50vh;
+      transform: translateY(-5vh);
       position: absolute;
-      width: 7vw;
-      top: 17%;
-      left: 2vw;
-      // user-select: none;
-      z-index: 1;
-
-      &.arrow-right {
-        left: unset;
-        right: 3%;
+      
+      .arrow {
+        position: absolute;
+        width: 7vw;
+        left: -48vw;
+        z-index: 1;
+  
+        &.arrow-right {
+          left: unset;
+          right: -48vw;
+        }
+  
       }
 
-      // @include utility.media-breakpoint-gte(sm) {
-      //   width: 2vw;
-      // }
+      @include utility.media-breakpoint-gte(sm) {
+        transform: translateY(-10vh);
+      }
     }
+    
   }
 }

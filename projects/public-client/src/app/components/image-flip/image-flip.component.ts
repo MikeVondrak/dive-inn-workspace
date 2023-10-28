@@ -61,8 +61,6 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   }
 
   onClick($event: any, index?: number) {
-    //const natEl = this.imageFlipContainer.nativeElement;
-
-    this.imageListService.displayImageList(this.imagesStored);
+    this.imageListService.displayImageList(this.imagesStored, this.centeredImage);
   }
 }

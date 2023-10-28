@@ -170,20 +170,21 @@ $zoomAnimationTime: 0.6s;
         }
 
         .specials {
-          height: 70vw;
+          //height: 70vw;
+          height: auto;
           transform: $skew; // translateY(122%);
           @include utility.media-breakpoint-gte(min) {
             // height: 55vw;
           }
           @include utility.media-breakpoint-gte(sm) {
-            height: 45vw;
+            //height: 45vw;
             transform: $skew; // translateX(-51%);
           }
           @include utility.media-breakpoint-gte(md) {
             // height: 30vw;
           }
           @include utility.media-breakpoint-gte(xl) {
-            height: 40vw;
+            //height: 40vw;
           }
           @include utility.media-breakpoint-gte(hd) {
             // height: 22vw;

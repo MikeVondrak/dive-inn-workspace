@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, Inject, HostBinding } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, Inject, HostBinding, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ImageListService } from '../../services/image-list.service';
 import { imageListAnimations } from './image-list.component.animations';
@@ -28,17 +28,14 @@ export class ImageListComponent implements AfterViewInit {
       this.images = imageList;
       this.show = true;
       this.imageCount = imageList.length;
-      this.cdr.detectChanges();
       this.imageListService.scrollToPosition(0);
+      this.centeredImage = this.imageListService.imageStart;
+      this.imageOffset = '-' + String(this.centeredImage * 100) + '%';
+      this.cdr.detectChanges();
     });
   }
 
   public onOverlayClick($event: any) {
-    console.log('overlay', $event.target.attributes)
-    let v = $event.target;
-    if (v.attributes.class.includes('arrow-svg')){
-      console.log('includes')
-    }
     this.centeredImage = 0;
     this.show = false;
     this.imageOffset = '0%';
@@ -46,8 +43,6 @@ export class ImageListComponent implements AfterViewInit {
   }
 
   public onSwipe($event: Event, direction: string) {
-    // $event.stopPropagation();
-    console.log('swipe', $event);
     if (direction === 'L' && this.centeredImage < (this.imageCount - 1)) {
       this.centeredImage++;
       this.imageOffset = '-' + String(this.centeredImage * 100) + '%';
