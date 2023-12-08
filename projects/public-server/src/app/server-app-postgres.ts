@@ -1,11 +1,31 @@
-// https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
+      // https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
 
-import express, { Application, RequestHandler, Router } from 'express';
-//import { SQL } from 'sql';
-
+import express, { Application, RequestHandler, Router, Response } from 'express';
+import { Observable, Observer, of } from 'rxjs';
+import { Client, Pool, Query, QueryConfig, QueryResult } from 'pg';
 
 export class ServerApp {
   private app: Application;
+  private pool: Pool;
+  private readonly dbConfig: Pool = new Pool({
+    host: 'dive-inn-denver-db.c8rriu0todv3.us-east-1.rds.amazonaws.com',
+    port: 5432,
+    user: 'dive_inn_www',
+    password: '',
+    database: 'dive-inn-denver-db',
+  });
+  private readonly testDbConfig: Pool = new Pool({
+    host: 'localhost',
+    port: 5432,
+    user: '',
+    password: '',
+    database: '',
+    //ssl: true,
+    ssl: {
+      rejectUnauthorized: false
+    },
+    connectionString: process.env.DATABASE_URL
+  });
 
   constructor(
     private angularAppLocation: string = '',
@@ -21,9 +41,11 @@ export class ServerApp {
     
 
     if (process.env.NODE_ENV === 'production') {
+      this.pool = this.dbConfig;
       console.log('Server App:\t\tProduction:', port);
     } else {
       process.env.NODE_ENV = 'development';
+      this.pool = this.testDbConfig;
       console.log('Server App:\t\tDevelopment:', port);
     }
     
@@ -101,28 +123,27 @@ export class ServerApp {
    * @param sqlQuery SQL query string
    * @returns Observable of array of provided type, containing query results
    */
-  // public poolQuery<T>(sqlQuery: string, values?: any): Observable<T[]> {
+  public poolQuery<T>(query: string, values?: any): Observable<T[]> {
 
-  //   const queryResult$ = (observer: Observer<T[]>) => {
+    const queryResult$ = (observer: Observer<T[]>) => {
       
-  //     const queryConfig: QueryConfig = {
-  //       text: sqlQuery,
-  //       values: values
-  //     };
+      const queryConfig: QueryConfig = {
+        text: query,
+        values: values
+      };
 
-  //     const responseCallback = (err: Error, result: QueryResult) => {
-  //       if (err) {
-  //         observer.error(err);
-  //       }
-  //       const typedResult: T[] = result?.rows;
-  //       observer.next(typedResult);
-  //       observer.complete();
-  //     };
+      const responseCallback = (err: Error, result: QueryResult) => {
+        if (err) {
+          observer.error(err);
+        }
+        const typedResult: T[] = result?.rows;
+        observer.next(typedResult);
+        observer.complete();
+      };
       
-  //     this.pool.query(queryConfig, responseCallback);      
-  //   };
+      this.pool.query(queryConfig, responseCallback);      
+    };
 
-  //   return new Observable<T[]>(queryResult$);
-  // }
-  
+    return new Observable<T[]>(queryResult$);
+  }
 }

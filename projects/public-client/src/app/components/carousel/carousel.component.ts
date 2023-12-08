@@ -1,6 +1,7 @@
 import { Component, Input, HostBinding, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes } from '../../models/carousel.model';
+import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneViewModes, CarouselData } from '../../models/carousel.model';
+
 
 @Component({
   selector: 'app-carousel',
@@ -9,9 +10,10 @@ import { CarouselPaneGradientTypes, CarouselPaneFaceDirections, CarouselPaneView
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselComponent implements OnInit {
-  @Input() cubeSizeVw: number = 30;
+  @Input() cubeSizeVw: number = 100;
   @Input() faceLabels: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
   @Input() faceContents: TemplateRef<any>[] = []; // <any> is for template context class
+  @Input() carouselData: CarouselData[] = [];
 
   @HostBinding('style.--rotation') rotation: string = 'rotateY(0deg)';
   //@HostBinding('style.--transformW') transformW: string = `translate3d(${-1.207 * this.cubeSizeVw + 'vw'}, 0, 0) rotateY(-90deg)`;
@@ -36,7 +38,7 @@ export class CarouselComponent implements OnInit {
   
   public carouselPaneExpanded: CarouselPaneViewModes[] = []; //CarouselPaneViewModes.NORMAL;
 
-  public debugging = false;
+  public debugging = true;
   
   private numberOfPositions = this.positions.length;
   private numberOfFaceLabels = 0;
@@ -45,8 +47,10 @@ export class CarouselComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.numberOfFaceContents = this.faceContents.length;
-    this.numberOfFaceLabels = this.faceLabels.length;
+    // this.numberOfFaceContents = this.faceContents.length;
+    // this.numberOfFaceLabels = this.faceLabels.length;
+    this.numberOfFaceContents = this.carouselData.length;
+    this.numberOfFaceLabels = this.carouselData.length;
 
     // create a subject for each face of the octagon to be able to change content when rotated
     this.faces$ = this.positions.map(() => new Subject<string>());
@@ -70,16 +74,23 @@ export class CarouselComponent implements OnInit {
     }
   }
 
-  public onSwipe($event: any, loc?: string) {
+  public onSwipe($event: Event, direction?: string) {
     
-    if ($event.direction === 2) {
+    console.log('swipe', {$event}, {direction});
+    $event.preventDefault();
+    
+
+    if (direction === 'L') {
       this.rotateLeft();
-    } else if ($event.direction === 4) {
+    } else if (direction === 'R') {
       this.rotateRight();
     }
   }
 
   public onClick($event: MouseEvent) {
+    console.log('CLICK', {$event});
+    // $event.preventDefault();
+    $event.stopPropagation();
     // this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
     // this.cdr.detectChanges();
   }
@@ -90,6 +101,7 @@ export class CarouselComponent implements OnInit {
   }
 
   public rotateLeft() {
+    console.log('rotateleft')
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = ++this.currentPosition >= this.numberOfPositions ? 0 : this.currentPosition;
     this.currentFace = ++this.currentFace < numberOfFaces ? this.currentFace : 0;
@@ -98,6 +110,7 @@ export class CarouselComponent implements OnInit {
   }
 
   public rotateRight() {
+    console.log('rotateright')
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = --this.currentPosition < 0 ? this.numberOfPositions - 1 : this.currentPosition;
     this.currentFace = --this.currentFace < 0 ? numberOfFaces - 1: this.currentFace;

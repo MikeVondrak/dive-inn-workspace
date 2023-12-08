@@ -1,0 +1,72 @@
+@use '../../scss/utility';
+
+:host {
+  display: block;
+
+  .image-list-overlay {
+    z-index: 11; // TODO: why 10 necessary here?
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5vw;
+    text-align: center;
+    background-color: rgba(0,0,0,0.85);
+
+    h2 {
+      color: white;
+    }
+    
+    .window {
+      overflow: hidden;
+    }
+
+    .images-container {
+      width: 90vw;
+      height: 90vh;
+      display: flex;
+      transition: transform 0.75s ease;
+      transform: translate(var(--imageOffset), 0);
+      
+      .image {
+        width: 100%;
+        object-fit: contain;
+        
+        img {
+          width: 90vw;
+          height: 90vh;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .arrows {
+      top: 50vh;
+      transform: translateY(-5vh);
+      position: absolute;
+      
+      .arrow {
+        position: absolute;
+        width: 7vw;
+        left: -48vw;
+        z-index: 1;
+  
+        &.arrow-right {
+          left: unset;
+          right: -48vw;
+        }
+  
+      }
+
+      @include utility.media-breakpoint-gte(sm) {
+        transform: translateY(-10vh);
+      }
+    }
+    
+  }
+}

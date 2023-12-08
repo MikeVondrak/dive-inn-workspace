@@ -18,15 +18,9 @@ export class SpecialsRouter extends BaseRouter {
         res.status(500).send('Unable to get Bucket IO');
         return;
       }
-
-      console.log('******* Getting Bucket Contents');
-
       awsBucketIo.getBucketContents().then(
         (result: AwsBucketResult[]) => {
           const imgSrc = result.map((item: any) => this.encodeDataStream(item.extension, item.data));
-,
-          console.log('*******', {imgSrc});
-
           res.status(200).send(imgSrc);
         }
       )
