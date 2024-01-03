@@ -14,7 +14,7 @@ export class ReservationsRouter extends BaseRouter {
     subject: 'Ahoy Mate! Your reservation request has been received.',
     intro: 'Thank you for choosing the Dive Inn to host your event, we\'re excited to help you throw an epic party!',
     body1: 'We have received your request, and you will receive another email confirming your reservation, usually within 24-48 hours (please reach out if you do not hear from us).',
-    body2: 'Your dedicated space for the event will depend on your group size and the weather. We will try to reserve your preferred selection but we cannot guarantee a particular space.',
+    body2: 'Your dedicated space for the event will depend on your group size and the weather.',
     cateringHeader: 'Catering:',
     catering: [
       'Taki Takos (http://www.takitakos.com) and Cluck Chicken (http://cluckchickenden.com) are available to cater your event!',
@@ -93,7 +93,7 @@ export class ReservationsRouter extends BaseRouter {
     var cater = this.reduceToStr(this.customerEmail.catering);
     var features = this.reduceToStr(this.customerEmail.features);
     var doNots = this.reduceToStr(this.customerEmail.doNots);
-    var spaces = this.reduceToStr(reservation.rentalSpaces);
+    // var spaces = this.reduceToStr(reservation.rentalSpaces);
     return {
       to,
       from: 'Dive Inn Denver Reservations<reservations@diveinndenver.com>',
@@ -130,8 +130,6 @@ Date: ${reservation.date}
 - Start Time: ${reservation.startTime}
 - End Time: ${reservation.endTime}
 Headcount: ${reservation.headcount}
-Preferred Spaces:
-${spaces}
 Notes:
 ${reservation.notes}`,
     };
@@ -139,7 +137,7 @@ ${reservation.notes}`,
   
   private createAppEmailOptions(reservation: Reservation): MailOptions {
     const organizerName = reservation.organizer.name;
-    var spaces = this.reduceToStr(reservation.rentalSpaces);
+    // var spaces = this.reduceToStr(reservation.rentalSpaces);
     return {
       to: 'reservations@diveinndenver.com',
       from: 'Website Reservation<reservations@diveinndenver.com>',
@@ -162,9 +160,6 @@ Theme: ${reservation.theme || 'None'}
 Birthday: ${!!reservation.birthday}
 - Name: ${reservation.birthday?.name || 'N/A'}
 - Age: ${reservation.birthday?.age || 'N/A'}
-
-Preferred Spaces:
-${spaces}
 
 Notes:
 ${reservation.notes}`

@@ -20,6 +20,6 @@ export interface ReservationRequest {
   startTime: Date,
   endTime: Date,
   headcount: number,
-  spaces: ReservationSpaces[],
+  // spaces: ReservationSpaces[],
   notes: string,
 }

@@ -12,6 +12,7 @@
 </div>
 
 <ng-template #Form>
+  <h2 class="form-title">Reservation Form</h2>
   <form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
       
     <div class="label-column label-organizer required">
@@ -105,7 +106,7 @@
       <input type="number" id="headcount" min="1" formControlName="headcount">
     </div>
 
-    <div class="checkboxes label-column label-preferred-space">
+    <!-- <div class="checkboxes label-column label-preferred-space">
       <label>Preferred Space</label>
     </div>
     <div class="preferred-space-1">
@@ -142,7 +143,7 @@
     <div class="preferred-space-8">
       <input type="checkbox" id="space-none" formControlName="preferredSpaceNone">
       <label for="space-none"><span>-. </span>No Preference</label>
-    </div>
+    </div> -->
     
     <div class="label-column label-notes">
       <label for="comments">Notes</label>
