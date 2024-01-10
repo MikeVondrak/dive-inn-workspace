@@ -24,6 +24,7 @@
     "nodemailer": "^6.9.1",
     "pg": "^8.8.0",
     "pg-promise": "^11.0.2",
+    "rxjs": "^7.8.1",
     "typescript": "^4.9.4"
   },
   "devDependencies": {

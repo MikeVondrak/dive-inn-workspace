@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'tour',
-    component: TourComponent,
+    component: ConstructionComponent,
     data: { 
       pageTitle: 'Tour',
     }
