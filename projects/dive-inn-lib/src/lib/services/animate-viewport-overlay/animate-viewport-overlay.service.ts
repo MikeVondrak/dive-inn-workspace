@@ -29,10 +29,8 @@ export class AnimateViewportOverlayService {
       filter((event): event is NavigationStart => event instanceof NavigationStart)
     ).subscribe((eventNavStart: NavigationStart) => {
       const navTrigger = eventNavStart.navigationTrigger;
-      // console.log('********* NAV START', {navTrigger}); 
       // if browser foward/back button pressed
       if (navTrigger === 'popstate') {
-        // event?.preventDefault();
         this.prepareForRouteChange(eventNavStart.url, this.router.routerState.snapshot.url);
       }
     });
@@ -47,24 +45,21 @@ export class AnimateViewportOverlayService {
   /**
    * Check if a route is new and needs to trigger the viewport overlay or scrolling
    * @param newRoute new url to route to
+   * TODO: the browser forward/back buttons do not trigger the route change animation
    */
   public prepareForRouteChange(newRoute: string, oldRoute?: string) {
-    // if the routes are identical don't scroll
+    // if the routes are identical just scroll
     // @TODO: set up flag to clear on user scroll and allow re-scrolling using the button after they've moved the screen
-    // console.log('route', this.route, newRoute, oldRoute);
     
     if (this.route !== newRoute) {
       const newRouteParts = this.utility.getRouteRootAndFragment(newRoute);
       const oldRouteParts = this.utility.getRouteRootAndFragment(this.route);
-      // console.log('parts', newRouteParts, oldRouteParts)
-      // console.log(this.router.routerState.snapshot.url)
-      // debugger;
+
       this.route = newRoute.split('#')[0];
-      // if ((oldRouteParts.root !== newRouteParts.root)) { // && (oldRouteParts?.root !== null)) {
-      if ((this.router.routerState.snapshot.url !== newRouteParts.root)) { // && (oldRouteParts?.root !== null)) {
+      if ((this.router.routerState.snapshot.url !== newRouteParts.root)) {
         // if this is a different route, hide the screen with the viewport overlay before navigating
         this.viewportOverlayState$.next(ViewportOverlayState.SHOW);
-      } else { //if (oldRouteParts.fragment !== newRouteParts.fragment) {
+      } else {
         // if route root is the same but fragment is different, scroll to element
         this.scroll.scrollToElement(newRouteParts.fragment);
       }
