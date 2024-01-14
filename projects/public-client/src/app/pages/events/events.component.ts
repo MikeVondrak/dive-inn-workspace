@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { HeroBannerOrientationConfigs  } from '../../models/hero-banner.model';
 
 import { eventsPageHeroBannerConfigs } from './events.hero-banner.config';
+import { ImageListService } from '../../services/image-list.service';
+import { BehaviorSubject, Observable, observable } from 'rxjs';
+import { EventsApiService } from '../../services/events.api.service';
 
 @Component({
   selector: 'app-events',
@@ -30,11 +33,19 @@ export class EventsComponent implements OnInit {
     //'Giveaways',
     //'Challenges',
   ];
+  public eventImages$: BehaviorSubject<string[]> = new BehaviorSubject(['assets/images/events/qb_challenge.jpg']);
   public fullscreen: boolean = false;
 
-  constructor() { }
+  constructor(private eventsService: EventsApiService) { }
 
   ngOnInit(): void {
+    this.getEventImages();
+    // this.eventImages$ = this.eventsService.getEvents10$();
+  }
+
+  getEventImages() {
+    // this.eventImages = ["assets/images/events/qb_challenge.jpg"];
+    // this.eventImages$.next(['assets/images/events/qb_challenge.jpg']);
   }
 
   onClick() {

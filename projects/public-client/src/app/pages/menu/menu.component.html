@@ -1,36 +1,33 @@
 <div id="top" class="main">
   <div id="taki" class="taki-tacos">
     <div class="content-container">
-      <!-- <button class="content menu" [class.fullscreen]="fullscreenMenu" (click)="onClick(MenuContentItemsEnum.MENU)"> -->
-      <button class="content menu" (click)="onClick(MenuContentItemsEnum.MENU)">
+      
+      <!-- <button class="content menu" (click)="onClick(MenuContentItemsEnum.MENU)">
         <h1 class="scroll-offset" id="menu">Menu</h1>
         <img src="assets/images/menu/Dive_Inn_Menu.jpg" />
-      </button>
-      <button class="content specials" [class.fullscreen]="fullscreenSpecials">
+      </button> -->
+      <button class="content specials">
         <h1 class="scroll-offset" id="specials">Specials</h1>
-        <!-- <img *ngIf="!this.fullscreenSpecials" src="assets/images/specials/TakiTakosTNT.jpg" /> -->
         <div class="image-flip-container">
           <app-image-flip
-            [images$]="specialsImages$"  
+            [images$]="specialsImages$"
           ></app-image-flip>
         </div>
-        <!-- <p *ngIf="!this.fullscreenSpecials">View all Specials</p> -->
       </button>
     </div>
     <div class="gradient-container">
-      <app-hero-banner imgSrc="url(assets/images/menu/tacos_stock_img.jpg)" [textLines]="heroBannerTitleLinesTaco"
+      <app-hero-banner imgSrc="url(assets/images/menu/taps.jpg)" [textLines]="heroBannerTitleLinesTaco"
         [orientationConfigs]="heroBannerConfigsTaco">
       </app-hero-banner>
       <div class="gradient-overlay"></div>
     </div>
-    <a class="logo-container" href="https://www.takitakos.com" target="_blank">
+    <!-- <a class="logo-container" href="https://www.takitakos.com" target="_blank">
       <img class="logo" src="assets/images/Taki Takos Logo Transparent Shadow Girl.png" />
       <p class="hours">Open until 9pm</p>
-    </a>
+    </a> -->
   </div>
 
   <div class="separator">
-    <!-- <ng-container *ngTemplateOutlet="AnchorSvg"></ng-container> -->
     <img src="assets/images/taco.svg" />
   </div>
 
@@ -46,44 +43,17 @@
     <div class="cluck">
       <a class="cluck-logo-bg" href="http://cluckchickenden.com/" target="_blank">
         <img id="cluck" src="assets/images/menu/Cluck/Cluck_logo_glow.png" />
-        <!-- <img class="click" src="assets/images/click_hand.svg" /> -->
       </a>
     </div>
     <div class="tagline-container">
       <p>Taste some of Denver's best fried chicken at our friends next door!</p>
     </div>
-    <!-- <div class="qr-code-container">
-      <h2>Order now</h2>
-      <a href="https://www.toasttab.com/cluck/order-and-pay?t=Dive%20Inn" target="_blank">
-        <img class="qr-code" src="assets/images/menu/Cluck/Dive Inn_opt_qrcode.svg" />
-      </a>
-    </div> -->
   </div>
 
   <div class="separator">
     <img src="assets/images/Chicken.svg" />
   </div>
 </div>
-
-<ng-template #MainRoom>
-  <div class="rental-space">
-    <div class="main-room rental-space-bg"></div>
-    <!-- <div class="title-container">
-      <h2>Main Room</h2>
-    </div>    
-    <div class="description-container">
-      <p>Ample space for larger</p>
-      <p>parties and events</p>
-    </div>
-    <div class="occupancy">
-      60 -->
-      <!-- TODO: people image -->
-    <!-- </div> -->
-    <!-- <a class="reserve" [href]="mailto_mainRoom | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
-  </div>
-</ng-template>
 
 <ng-template #Boat>
   <div class="rental-space">
@@ -97,11 +67,7 @@
     </div>
     <div class="occupancy">
       8
-      <!-- TODO: people image -->
     </div>
-    <!-- <a class="reserve reverse" [href]="mailto_boat | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
   </div>
 </ng-template>
 
@@ -117,11 +83,7 @@
     </div>
     <div class="occupancy">
       32
-      <!-- TODO: people image -->
     </div>
-    <!-- <a class="reserve" [href]="mailto_sideRoom | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
   </div>
 </ng-template>
 
@@ -137,11 +99,7 @@
     </div>
     <div class="occupancy">
       24
-      <!-- TODO: people image -->
     </div>
-    <!-- <a class="reserve reverse" [href]="mailto_gameRoom | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
   </div>
 </ng-template>
 
@@ -157,11 +115,7 @@
     </div>
     <div class="occupancy">
       32
-      <!-- TODO: people image -->
     </div>
-    <!-- <a class="reserve" [href]="mailto_northRoom | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
   </div>
 </ng-template>
 
@@ -177,11 +131,7 @@
     </div>
     <div class="occupancy">
       42
-      <!-- TODO: people image -->
     </div>
-    <!-- <a class="reserve reverse" [href]="mailto_southPatio | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
   </div>
 </ng-template>
 
@@ -197,11 +147,7 @@
     </div>
     <div class="occupancy">
       88
-      <!-- TODO: people image -->
     </div>
-    <!-- <a class="reserve" [href]="mailto_northPatio | safeHtml: 'url'" target="_blank"> -->
-      <!-- <img src="assets/images/message_bottle_with_text.svg" /> -->
-    <!-- </a> -->
   </div>
 </ng-template>
 
