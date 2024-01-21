@@ -33,19 +33,19 @@ export class EventsComponent implements OnInit {
     //'Giveaways',
     //'Challenges',
   ];
-  public eventImages$: BehaviorSubject<string[]> = new BehaviorSubject(['assets/images/events/qb_challenge.jpg']);
+  public eventsImages$: BehaviorSubject<string[]> = new BehaviorSubject(['assets/images/events/qb_challenge.jpg']);
   public fullscreen: boolean = false;
 
   constructor(private eventsService: EventsApiService) { }
 
   ngOnInit(): void {
-    this.getEventImages();
-    // this.eventImages$ = this.eventsService.getEvents10$();
+    this.getEventsImages();
+    // this.eventsImages$ = this.eventsService.getEvents10$();
   }
 
-  getEventImages() {
-    // this.eventImages = ["assets/images/events/qb_challenge.jpg"];
-    // this.eventImages$.next(['assets/images/events/qb_challenge.jpg']);
+  getEventsImages() {
+    // this.eventsImages = ["assets/images/events/qb_challenge.jpg"];
+    // this.eventsImages$.next(['assets/images/events/qb_challenge.jpg']);
   }
 
   onClick() {
