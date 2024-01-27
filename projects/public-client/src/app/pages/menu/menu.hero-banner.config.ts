@@ -3,7 +3,7 @@ import { HeroBannerConfig } from "../../models/hero-banner.model";
 
 const heroBannerConfig_landscape_zero: HeroBannerConfig = {
   bgPosition: '80% 25%',
-  bgSize: '150%',
+  bgSize: '100%',
   textLeft: '0rem',
   textAlign: 'right',
   textContainerTransform: '',
@@ -17,7 +17,7 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = { // 840
   //height: '',
   //width: '',
   bgPosition: 'right 40%',
-  bgSize: '120%',
+  bgSize: '100%',
   textTop: '-15vw',
   textLeft: '56vw',
   textAlign: 'left',
@@ -25,11 +25,11 @@ const heroBannerConfig_landscape_md: HeroBannerConfig = { // 840
   textPaddingBottom: '30vw'
 };
 const heroBannerConfig_landscape_lg: HeroBannerConfig = { // 1024
-  bgSize: '120%',
+  bgSize: '100%',
   //bgPosition: 'right 40%',
 }
 const heroBannerConfig_landscape_xl: HeroBannerConfig = { // 1280
-  bgSize: '120%',
+  bgSize: '100%',
   //textPaddingBottom: '20vw'
 }
 
