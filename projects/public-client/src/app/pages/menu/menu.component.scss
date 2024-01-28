@@ -6,46 +6,21 @@ $zoomAnimationTime: 0.6s;
 :host {
   .main {
     // pointer-events: none;
-    // position: relative;
 
-    .taki-tacos {
-      // position: relative;
-
-      .content-container {      
-        position: absolute;  
+      .content-container {  
         display: flex;
-        flex-direction: column;
-        gap: 1vw;
+        position: absolute;
         top: 10vw;
-        left: 35vw;
-        @include utility.media-breakpoint-gte(xs) {
-          // flex-direction: row;
-          // top: 12vw;
-        }
-        // @include utility.media-breakpoint-gte(sm) {
-        //   position: unset;
-        // }
-        @include utility.media-breakpoint-gte(md) {
-          // top: clamp(100px, 12vw, 240px);
-          // left: 50vw;
-        }
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
         @media (orientation: portrait) {
           flex-direction: column;
           top: clamp(150px, 56vw, 160px);
-          left: 5vw;
-          // top: 35vw;
           @include utility.media-breakpoint-gte(min) {            
-            // top: 35vw;
-            left: 5vw;
           }
           @include utility.media-breakpoint-gte(sm) {
-            // flex-direction: row;
             top: 10vw;
-            left: 34vw;
-          }
-          @include utility.media-breakpoint-gte(md) {
-            // top: clamp(100px, 12vw, 240px);
-            // left: 50vw;
           }
         }
 
@@ -55,7 +30,6 @@ $zoomAnimationTime: 0.6s;
 
         .content {          
           z-index: 1;
-          // position: absolute;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -64,37 +38,15 @@ $zoomAnimationTime: 0.6s;
           height: 45vw;
           cursor: pointer;
 
-          // left: 20vw;
           top: clamp(160px, 42vw, 200px);
           @include utility.media-breakpoint-gte(min) {
             width: 88vw;
-            // height: 50vw;
-            // left: 25vw;
-            // top: 37vw;
           }
           @include utility.media-breakpoint-gte(sm) {
-            // position: absolute;
             width: 55vw;
             height: 28vw;
-            // left: 14vw;
-            // top: 33vw;
           }
-          @include utility.media-breakpoint-gte(md) {
-            // width: 24vw;
-            // height: 27vw;
-            // left: 40vw;
-            // top: 18vw;
-          }
-          @include utility.media-breakpoint-gte(xl) {
-            // height: 25vw;
-            // top: 20vw;
-          }
-          @include utility.media-breakpoint-gte(ws) {
-            // top: 13.333vw;
-          }
-          @include utility.media-breakpoint-gte(hd) {
-            // height: 22vw;
-          }
+
           padding: 2vw;
           background-color: rgba(0, 0, 0, 0.5);
           text-align: center;
@@ -116,34 +68,11 @@ $zoomAnimationTime: 0.6s;
           img {
             transition: all $zoomAnimationTime ease-in-out, box-shadow 0.2s linear;
           }
-
-          &.fullscreen {
-            z-index: 11;
-            position: absolute;
-            overflow-y: auto;
-            width: 100vw;
-            height: auto;
-            top: -32vw;
-            left: -5vw;
-            background-color: rgba(0, 0, 0, 0.85);
-            
-            transform: translateX(0) skew(0deg, 0deg) rotate(0.01deg);
-
-            @include utility.media-breakpoint-gte(sm) {
-              top: -10vw;
-              left: -35vw;
-            }
-
-            img {
-              width: 80%;
-            }
-          }
         }
 
         $skew: skew(-4deg, -2deg) rotate(-4deg);
         .menu {
           transform: $skew;
-          // height: 47vw;
 
           @include utility.media-breakpoint-gte(sm) {
             transform: $skew; // translateX(102%);
@@ -156,38 +85,15 @@ $zoomAnimationTime: 0.6s;
 
           img {
             width: 20%;
-            // @include utility.media-breakpoint-gte(xs) {
-            //   width: 28vw;
-            // }
-            // @include utility.media-breakpoint-gte(sm) {
-            //   width: 20vw;
-            // }
-            // @include utility.media-breakpoint-gte(md) {
-            //   width: 8vw;
-            // }
             box-shadow: 2px 2px 16px 0px #000;            
           }
         }
 
         .specials {
-          //height: 70vw;
           height: auto;
           transform: $skew; // translateY(122%);
-          @include utility.media-breakpoint-gte(min) {
-            // height: 55vw;
-          }
           @include utility.media-breakpoint-gte(sm) {
-            //height: 45vw;
             transform: $skew; // translateX(-51%);
-          }
-          @include utility.media-breakpoint-gte(md) {
-            // height: 30vw;
-          }
-          @include utility.media-breakpoint-gte(xl) {
-            //height: 40vw;
-          }
-          @include utility.media-breakpoint-gte(hd) {
-            // height: 22vw;
           }
 
           h1 {
@@ -196,7 +102,6 @@ $zoomAnimationTime: 0.6s;
 
           img {
             width: 100%;
-            //width: clamp(100px, 26vw, 420px);
             box-shadow: 2px 2px 16px 0px #000;
           }
 
@@ -208,20 +113,6 @@ $zoomAnimationTime: 0.6s;
 
       .gradient-container {
         position: relative;
-        app-hero-banner {
-          // display: inline-block;
-          //min-height: 600px;
-          // ::ng-deep {
-          //   .title-container {
-          //     .title {
-          //       > div {
-          //         background-color: rgba(0,0,0,0.5);
-          //         width: 330px;
-          //       }
-          //     }
-          //   }
-          // }
-        }
 
         .gradient-overlay {
           position: absolute;
@@ -231,54 +122,6 @@ $zoomAnimationTime: 0.6s;
           right: 0;
           background-image: linear-gradient(105deg, utility.$dive-black 0%, transparent 50%, transparent 70%, utility.$dive-black 100%);
           pointer-events: none;
-        }
-      }
-
-      .logo-container {
-        z-index: 2;
-        position: absolute;
-        top: clamp(2rem, 5vw, 3.5rem);
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        @media (orientation: portrait) {
-          @include utility.media-breakpoint-gte(md) {
-            top: clamp(4.5rem, 7vw, 7.5rem);
-          }
-        }
-        left: 2vw;
-
-        img {
-          &.logo {
-            width: clamp(120px, 28vw, 440px);
-            margin: 0 auto;
-
-            @media (orientation: portrait) {
-              //width: 42vw;
-            }
-          }
-        }
-
-        .hours {
-          z-index: -1;
-          position: relative;
-          top: clamp(-90px, -5.5vw, 0px);
-          margin: 0;
-          padding: clamp(0px, 5vw, 128px) 2vw 3vw;
-          @include utility.media-breakpoint-gte(sm) {
-            top: clamp(-90px, -5.5vw, 0px);
-            padding: clamp(0px, 5vw, 80px) 1vw 1vw;
-          }
-          color: utility.$dive-red;
-          background: rgba(0, 0, 0, 0.5);
-          text-shadow: 2px 2px 6px utility.$dive-black;
-          border-radius: 50%;
-          text-align: center;
-          font-size: clamp(1rem, 2.5vw, 2.25rem);
-          font-weight: bold;
-          white-space: nowrap;
         }
       }
     }
@@ -303,11 +146,6 @@ $zoomAnimationTime: 0.6s;
 
     .cluck-container {
       position: relative;
-      // width: 100%;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      //margin-bottom: 6vw;
 
       .cluck {
         position: absolute;
@@ -317,23 +155,19 @@ $zoomAnimationTime: 0.6s;
         @include utility.media-breakpoint-gte(sm) {
           width: 50vw;
           left: 25vw;
-          //top: 2vw;
         }
         @include utility.media-breakpoint-gte(md) {
           width: 40vw;
           left: 30vw;
-          //top: 2vw;
         }
         @include utility.media-breakpoint-gte(xl) {
           width: 36vw;
           left: 32vw;
-          //top: 1.5vw;
         }
         @media (orientation: portrait) {
           @include utility.media-breakpoint-gte(md) {
             width: 40vw;
             left: 30vw;
-            // top: 1vw;
           }
         }
         text-align: center;
@@ -348,23 +182,10 @@ $zoomAnimationTime: 0.6s;
 
           &.cluck-logo-bg {
             display: block;            
-            // padding: 5vw;
-            // background-color: rgba(0, 0, 0, 0.5);
-            // box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.5);
             transition: all 0.2s ease;
-            // &:hover {
-            //   box-shadow: 0px 0px 3vw 1vw utility.$dive-yellow;
-            // }
-            //@include utility.media-breakpoint-gte(md) {
-              //padding: 3vw;
-            //}
-            //border-radius: 50%;
-            //border: 2px solid utility.$dive-yellow;
             img {
               position: relative;
               width: 100%;
-              // left: 1vw;
-              // top: 1vw;
               display: block;
             }
 
@@ -391,14 +212,10 @@ $zoomAnimationTime: 0.6s;
           right: 25vw;
         }
         @include utility.media-breakpoint-gte(md) {
-          //width: 50vw;
           top: 44vw;
-          //right: 25vw;
         }
         @include utility.media-breakpoint-gte(lg) {
-          //width: 46vw;
           top: 40vw;
-          //right: 27vw;
         }        
         transform: skew(-$skew * 2, -$skew) rotate(-$skew * 2);
         p {
@@ -407,187 +224,9 @@ $zoomAnimationTime: 0.6s;
           font-size: clamp(0.75rem, 3.5vw, 4.5rem);
           font-weight: bold;
           background-color: rgba(0, 0, 0, 0.5);
-          
           text-align: center;
         }
       }
-      .qr-code-container {
-        position: absolute;
-        right: 2vw;
-        bottom: 2vw;
-        //transform: skew($skew * 2, $skew) rotate($skew * 2);          
-        //margin: 14vw 0 0 3vw;
-
-        h2 {
-          top: -5vw;
-          //left: 1.8vw;
-          text-align: center;
-          @include utility.text-double-outline('Order now');
-          font-size: 2vw;
-          position: absolute;
-        }
-        
-        .qr-code {
-          display: block;
-          height: 11.9vw;
-          padding: 0.5vw;
-          background-color: rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 0px 4px 2px utility.$dive-yellow;
-        }
-      }
-    }
-
-    .carousel-container {
-      position: relative;
-      perspective: 1000px;
-      width: 100%;
-      app-carousel {
-        position: relative;
-        margin-top: 8vw;
-
-        .rental-space {
-          position: absolute;
-          top: 0; bottom: 0; left: 0; right: 0;
-          padding: 2vw;
-          //background-color: utility.$dive-gray-dk3;        
-          .title-container {
-            display: inline-block;
-            margin: 2vw 0 0;
-            @include utility.media-breakpoint-gte(md) {
-              margin: 2vw 0 0 2vw;
-            }
-            padding: 2vw 3vw;
-            background-color: rgba(0, 0, 0, 0.5);
-            transform: skew(-8deg, -4deg) rotate(-4deg);
-            h2 {
-              margin: 0;
-              font-size: 6vw;
-              text-align: center;
-              //transform: skew(8deg, 4deg) rotate(4deg);
-              text-shadow: 0px 4px 2px #000;
-              @include utility.media-breakpoint-gte(sm) {
-                font-size: 3vw;
-              }
-            }
-          }
-          .description-container {
-            position: relative;
-            top: 5vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            p {
-              position: relative;
-              display: none;
-              margin: 0 0 0vw;
-              padding: 1vw 1.5vw;
-              
-              text-align: center;
-              text-shadow: 0px 4px 2px #000;
-              transform: skew(-8deg, -4deg) rotate(-4deg);
-              font-size: 2vw;
-              
-              @include utility.media-breakpoint-gte(md) {
-                display: inline-block;
-              }
-              
-              &::before {
-                content: '';
-                z-index: -1;
-                position: absolute;
-                top: 0; left: 0; bottom: 0; right: 0;
-                background-color: rgba(0, 0, 0, 0.5);
-                transform: skew(4deg, 0deg) rotate(0deg);
-              }
-
-              &:nth-of-type(2) {              
-                left: 4vw;
-              }
-            }
-          }
-          .occupancy {
-            position: absolute;
-            display: inline-block;
-            display: none;
-            top: 4vw;
-            right: 4vw;
-            margin: 0vw 0 0 0;
-            padding: 1vw;
-            font-size: 5vw;
-            font-weight: bold;
-            background:rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-          }
-          .reserve {
-            position: absolute;
-            z-index: 1;
-            width: 8vw;
-            height: 8vw;
-            bottom: 1vw;
-            right: 1vw;
-            &.reverse {
-              right: unset;
-              left: 1vw;
-            }
-          }
-
-          &-bg {
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-          }
-          .main-room {          
-            background-image: url('/assets/images/specials/TakiTakosTNT.jpg');
-            background-size: 90%;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-          }
-          .boat {
-            background-image: url('/assets/images/tour/boat_diagonal2.jpg');
-            background-size: cover;
-            background-position: 50% 50%;
-            background-repeat: no-repeat;
-          }
-          .side-room {          
-            background-image: url('/assets/images/private-parties/side_room.jpg');
-            background-size: 170%;
-            background-position: 60% 42%;
-          }
-          .game-room {          
-            background-image: url('/assets/images/tour/game_room6.jpg');
-            background-size: 170%;
-            background-position: 60% 42%;
-          }
-          .north-room {
-            background-image: url('/assets/images/tour/north_room4.jpg');
-            background-size: cover;
-            background-position: 50% 50%;
-          }
-          .south-patio {
-            background-image: url('/assets/images/tour/south_patio2.jpg');
-            background-size: cover;
-            background-position: right 42%;
-          }
-          .north-patio {
-            background-image: url('/assets/images/tour/north_patio6.jpg');
-            background-size: cover;
-            background-position: 50% bottom;
-            background-repeat: no-repeat;
-          }
-        }
-      }
-
-      .occupancy-meter {
-        position: absolute;
-        bottom: -10%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 20vw;
-      }
+      
     }
   }
-}
