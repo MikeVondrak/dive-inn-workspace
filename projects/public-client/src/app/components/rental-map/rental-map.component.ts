@@ -15,6 +15,7 @@ export class RentalMapComponent implements OnInit {
   @Input()
   @HostBinding('style.--mapWidth')
   mapWidth: string = '100%';
+  rentalSpaceNames: string[] = ['The Oasis','The Boat','The Galley','The Cabin','The Deck','The Saloon','The Cabana'];
   
   @Input()
   @HostBinding('style.--mapHeight')

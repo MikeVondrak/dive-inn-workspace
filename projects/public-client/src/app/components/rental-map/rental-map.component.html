@@ -129,6 +129,7 @@
     >
       <button *ngFor="let space of rentalSpaceList; let i = index"      
         class="number-circle space-{{i + 1}}"
+        [title]="rentalSpaceNames[i]"
         (click)="toggleZoom($event, space)"
         [disabled]="markersDisabled"
       >
