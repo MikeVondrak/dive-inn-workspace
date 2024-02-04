@@ -46,6 +46,14 @@ $zoomAnimationTime: 0.6s;
             width: 55vw;
             height: 28vw;
           }
+          // @include utility.media-breakpoint-gte(md) {
+          //   width: 60vw;
+          //   height: auto;
+          // }
+          // @include utility.media-breakpoint-gte(ws) {
+          //   width: 50vw;
+          //   height: auto;
+          // }
 
           padding: 2vw;
           background-color: rgba(0, 0, 0, 0.5);
@@ -62,7 +70,7 @@ $zoomAnimationTime: 0.6s;
             margin: 0 0 clamp(0px, 2vw, 24px);
             font-size: clamp(1rem, 7vw, 3.5rem);
             @include utility.media-breakpoint-gte(sm) {
-              font-size: clamp(1.5rem, 3vw, 3.5rem);
+              font-size: clamp(2rem, 4vw, 7.5rem);
             }
           }
           img {
