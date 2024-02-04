@@ -32,7 +32,7 @@ $verticalGap: 0.75rem;
     font-size: 1.25vw;
   }
   @include utility.media-breakpoint-gte(hd) {
-    font-size: clamp(1.5rem, 1vw, 1.5rem);
+    font-size: clamp(1.5rem, 1vw, 2.5rem);
   }
 
   ul {

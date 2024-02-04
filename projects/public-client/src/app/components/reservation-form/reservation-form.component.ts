@@ -65,14 +65,14 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
       phone: ['', [Validators.required, Validators.pattern('^[0-9\(\) -]{14}$')]],
       email: ['', [Validators.required, Validators.email]],
       contactMethod: [this.contactType.EMAIL],
-      preferredSpaceNone: [false],
-      preferredSpaceMainRoom: [false],
-      preferredSpacePartyBoat: [false],
-      preferredSpaceNorthPatio: [false],
-      preferredSpaceNorthRoom: [false],
-      preferredSpacesFrontPatio: [false],
-      preferredSpaceSouthRoom: [false],
-      preferredSpaceSouthPatio: [false],
+      // preferredSpaceNone: [false],
+      // preferredSpaceMainRoom: [false],
+      // preferredSpacePartyBoat: [false],
+      // preferredSpaceNorthPatio: [false],
+      // preferredSpaceNorthRoom: [false],
+      // preferredSpacesFrontPatio: [false],
+      // preferredSpaceSouthRoom: [false],
+      // preferredSpaceSouthPatio: [false],
       headcount: [null, [Validators.required, Validators.pattern("^[0-9*]*$")]],
       comments: [''],
     });
@@ -142,31 +142,31 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
     const forceFail = orgName === 'TestTheFormFailingOrganizer';
 
     this.submitted = true;
-    let spaces: RentalSpaces[] = [];
-    if (this.emailForm.get('preferredSpaceNone')?.value) {
-      spaces.push(RentalSpaces.NO_PREFERENCE);
-    };
-    if (this.emailForm.get('preferredSpacesFrontPatio')?.value) {
-      spaces.push(RentalSpaces.FRONT_PATIO); 
-    }
-    if (this.emailForm.get('preferredSpaceMainRoom')?.value) {
-      spaces.push(RentalSpaces.MAIN_ROOM);
-    }
-    if (this.emailForm.get('preferredSpaceNorthPatio')?.value) {
-      spaces.push(RentalSpaces.NORTH_PATIO);
-    }
-    if (this.emailForm.get('preferredSpaceNorthRoom')?.value) {
-      spaces.push(RentalSpaces.NORTH_ROOM);
-    }
-    if (this.emailForm.get('preferredSpacePartyBoat')?.value) {
-      spaces.push(RentalSpaces.PARTY_BOAT);
-    }
-    if (this.emailForm.get('preferredSpaceSouthRoom')?.value) { 
-      spaces.push(RentalSpaces.SOUTH_ROOM);
-    }
-    if (this.emailForm.get('preferredSpaceSouthPatio')?.value) { 
-      spaces.push(RentalSpaces.SOUTH_PATIO) 
-    };
+    // let spaces: RentalSpaces[] = [];
+    // if (this.emailForm.get('preferredSpaceNone')?.value) {
+    //   spaces.push(RentalSpaces.NO_PREFERENCE);
+    // };
+    // if (this.emailForm.get('preferredSpacesFrontPatio')?.value) {
+    //   spaces.push(RentalSpaces.FRONT_PATIO); 
+    // }
+    // if (this.emailForm.get('preferredSpaceMainRoom')?.value) {
+    //   spaces.push(RentalSpaces.MAIN_ROOM);
+    // }
+    // if (this.emailForm.get('preferredSpaceNorthPatio')?.value) {
+    //   spaces.push(RentalSpaces.NORTH_PATIO);
+    // }
+    // if (this.emailForm.get('preferredSpaceNorthRoom')?.value) {
+    //   spaces.push(RentalSpaces.NORTH_ROOM);
+    // }
+    // if (this.emailForm.get('preferredSpacePartyBoat')?.value) {
+    //   spaces.push(RentalSpaces.PARTY_BOAT);
+    // }
+    // if (this.emailForm.get('preferredSpaceSouthRoom')?.value) { 
+    //   spaces.push(RentalSpaces.SOUTH_ROOM);
+    // }
+    // if (this.emailForm.get('preferredSpaceSouthPatio')?.value) { 
+    //   spaces.push(RentalSpaces.SOUTH_PATIO) 
+    // };
 
 
     const startTime = this.formatTime(this.emailForm.get('startTime')?.value);
@@ -187,7 +187,7 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
       date: this.emailForm.get('partyDate')?.value,
       startTime: startTime,
       endTime: endTime,
-      rentalSpaces: spaces,
+      // rentalSpaces: spaces,
       notes: this.emailForm.get('comments')?.value,
       
     };

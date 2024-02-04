@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'tour',
-    component: TourComponent,
+    component: ConstructionComponent,
     data: { 
       pageTitle: 'Tour',
     }
@@ -140,8 +140,9 @@ const routes: Routes = [
     routes,
     {
       scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
-      scrollOffset: [0, 64], // x, y px 
+      //anchorScrolling: 'enabled', // WARNING: this can break smooth scrolling
+      scrollOffset: [0, 64], // x, y px
+      onSameUrlNavigation: 'reload', // scroll to url fragment on repeat clicks
     }
   )],
   exports: [RouterModule]

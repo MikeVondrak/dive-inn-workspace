@@ -13,13 +13,12 @@ export class ImageFlipComponent implements OnInit, OnChanges {
   @ViewChild('ImageFlipContainer') imageFlipContainer!: ElementRef;
   
   @Input() images$: Observable<string[] | null> = of([]);
+  @Input() title: string = "";
 
   public imageCount: number = 0;
   public centeredImage: number = 0;
   public loading: boolean = false;
   public loaded: boolean = false;
-  public fullscreen: boolean = false;
-  public fullscreenImage: string = '';
   public imagesStored: string[] = [];
   
   @HostBinding('style.--imageOffsetSmall') imageOffsetSmall: string = '10%';

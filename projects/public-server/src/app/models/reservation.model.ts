@@ -32,7 +32,7 @@ export interface Reservation {
   date: string,
   startTime: string,
   endTime: string,
-  rentalSpaces: RentalSpaces[],
+  // rentalSpaces: RentalSpaces[],
   headcount: number,
   notes: string,
 }
