@@ -4,12 +4,13 @@
 
   <app-image-list></app-image-list>
 
-  <main>
-    <div id="Viewport-Overlay" 
-      [@viewportAnimation]="viewportOverlayAnimationState$ | async" 
-      (@viewportAnimation.done)="viewportOverlayAnimationDone($event)">
-    </div>
-    
+  <!-- NOTE: overlay is NOT inside main so @.disabled doesn't affect it -->
+  <div id="Viewport-Overlay" 
+    [@viewportAnimation]="viewportOverlayAnimationState$ | async" 
+    (@viewportAnimation.done)="viewportOverlayAnimationDone($event)">
+  </div>
+  <!-- Disable all animations on page if changing pages -->
+  <main [@.disabled]="(viewportOverlayAnimationState$ | async) === 'SHOW'">  
     <router-outlet #routerOutlet="outlet"></router-outlet>
   </main>
 

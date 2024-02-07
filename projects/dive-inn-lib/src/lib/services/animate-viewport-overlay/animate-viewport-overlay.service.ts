@@ -18,7 +18,6 @@ export class AnimateViewportOverlayService {
 
   constructor(private router: Router, private scroll: ScrollService, private utility: UtilityService) {
     this.watchRoute();
-    //this.prepareForRouteChange();
   }
 
   /**
@@ -51,14 +50,20 @@ export class AnimateViewportOverlayService {
     // if the routes are identical just scroll
     // @TODO: set up flag to clear on user scroll and allow re-scrolling using the button after they've moved the screen
     
+    console.log('----- PREP', newRoute, this.route, oldRoute);
+
     if (this.route !== newRoute) {
       const newRouteParts = this.utility.getRouteRootAndFragment(newRoute);
       const oldRouteParts = this.utility.getRouteRootAndFragment(this.route);
 
+      // Strip the fragment to handle scrolling manually to sync w/animations
       this.route = newRoute.split('#')[0];
       if ((this.router.routerState.snapshot.url !== newRouteParts.root)) {
         // if this is a different route, hide the screen with the viewport overlay before navigating
         this.viewportOverlayState$.next(ViewportOverlayState.SHOW);
+        if (newRouteParts.fragment) {
+          this.scroll.scrollToElement(newRouteParts.fragment);
+        }
       } else {
         // if route root is the same but fragment is different, scroll to element
         this.scroll.scrollToElement(newRouteParts.fragment);
