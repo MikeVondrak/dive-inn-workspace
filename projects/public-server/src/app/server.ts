@@ -6,7 +6,8 @@ import path from 'path';
 // our backend
 import { ServerApp } from './server-app-postgres';
 import { ReservationsRouter } from './routers/reservations.router';
-import { SpecialsRouter } from './routers/specials.router';
+import { AwsBucketRouter } from './routers/aws-bucket.router';
+import { routes } from './routes';
 
 const PORT: string = process.env.PORT || '3000'; // process.env.PORT set by server (e.g. Heroku) when hosted, or use 3000 for local testing
 process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'; 
@@ -35,6 +36,7 @@ const middleWare: RequestHandler[] = [
   express.json(), // parse JSON in body of request
 ];
 
+
 /**
  * Makes a typed request to poolQuery and returns array of results via Express Response
  * @param route API route to handle
@@ -48,8 +50,9 @@ function makePoolQuery<ReturnType>(route: string, res: Response, values?: Return
 // define routers for routes
 const routers: Router[] = [];
 const reservationsRouter = new ReservationsRouter(makePoolQuery);
-const specialsRouter = new SpecialsRouter(makePoolQuery);
-routers.push(reservationsRouter.router, specialsRouter.router);
+const specialsRouter = new AwsBucketRouter(makePoolQuery, 'diveinndenvers3', 'Public/Specials/', routes.api.specials._root);
+const eventsRouter = new AwsBucketRouter(makePoolQuery, 'diveinndenvers3', 'Public/Events/', routes.api.events._root);
+routers.push(reservationsRouter.router, specialsRouter.router, eventsRouter.router);
 
 // Angular app is served as static file
 // All other routes are for API

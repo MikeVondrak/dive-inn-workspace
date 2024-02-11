@@ -1,5 +1,5 @@
-import { Injectable, OnDestroy, Renderer2, RendererFactory2 } from '@angular/core';
-import { Location } from '@angular/common';
+import { Inject, Injectable, OnDestroy, Renderer2, RendererFactory2 } from '@angular/core';
+import { DOCUMENT, Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { debounceTime, filter, fromEvent, merge, Observable, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
 import { UtilityService } from '../utility/utility.service';
@@ -16,7 +16,7 @@ export class ScrollService implements OnDestroy {
   private destroy$: Subject<void> = new Subject();
   private lastUrl: string = '';
 
-  constructor(rendererFactory: RendererFactory2, private router: Router, private location: Location, private utility: UtilityService) {
+  constructor(@Inject(DOCUMENT) private document: Document, rendererFactory: RendererFactory2, private router: Router, private location: Location, private utility: UtilityService) {
     this.renderer = rendererFactory.createRenderer(null, null);
     this.watchRouterEvents();
     //this.watchScrollEvent();
@@ -31,7 +31,7 @@ export class ScrollService implements OnDestroy {
   }
 
   /**
-   * 
+   * Watch for user to scroll to clear the route fragment to allow re-scrolling to the same element
    */
   private watchScrollEvent() {
     fromEvent(window, 'scroll').pipe(
@@ -58,28 +58,32 @@ export class ScrollService implements OnDestroy {
       .subscribe((navEnd: NavigationEnd) => {
         const url = navEnd.url;
         const route = this.utility.getRouteRootAndFragment(url);
-
         if (!!route?.fragment) {
-          this.scrollToElement(route.fragment);
+            this.scrollToElement(route.fragment);
         }
         this.lastUrl = url;
       });
   }
 
+  /**
+   * Waits some time (for page load) and then scrolls to the element with elementId
+   */
   public scrollToElement(elementId: string | null) {
     if (!!elementId) {
-      // TODO: need a setTimeout to wait 1 cycle here, why?
+      // wait 100ms to scroll for smoother transitions
       setTimeout(() => {
         // try to scroll element into view if id exists
-        const selector = `#${elementId}`;
+        const selector = `#${elementId}`;        
         try {
-          const el = this.renderer.selectRootElement(selector, true); // preserve contents when selecting
+          const el = this.document.getElementById(elementId);
+          if (!!el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
           this.watchScrollEvent();
+          }
         } catch (err) {
           console.warn(err);
         }
-      }, 100); // wait 100ms to scroll for smoother transitions
+      }, 100);
     }
   }
 }

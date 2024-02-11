@@ -21,11 +21,11 @@ export class AwsBucketIo {
   private readonly client: S3Client;
 
   //
-  constructor() {
+  constructor(private bucketId: string, private bucketPrefix: string) {
 
     this.listBucketContentsCommandInput = {
-      Bucket: 'diveinndenvers3',
-      Prefix: 'Public/Specials/'
+      Bucket: bucketId,
+      Prefix: bucketPrefix
     };
     
     this.listBucketContentsCommand = new ListObjectsCommand(this.listBucketContentsCommandInput);
@@ -60,32 +60,25 @@ export class AwsBucketIo {
     try {
       let response = await this.client.send(this.listBucketContentsCommand);
       response.Contents = response?.Contents?.filter(x => x.Key !== bucketPath);
-      console.log('listBucketObjects', response.Contents?.length);
+console.log('listBucketObjects', response.Contents?.length);
       return response.Contents || [];
     }
     catch (err) {
     }
     return [];
   }
-  
-  // public async getBucketFile(filename: string): Promise<string> {
-  //   console.log('AWS BUCKET IO');
-  //   const objPromise = this.getObject();
-  //   return objPromise;
-  // }
-
 
   public async getBucketContents(): Promise<any[]> {
-    const bucketPath = 'Public/Specials/';
+    const bucketPath = this.bucketPrefix;
+    console.log('@@@@', this.bucketId + this.bucketPrefix);
     const bucketContents = await this.listBucketObjects(bucketPath);
     let bucketResults: AwsBucketResult[] = [];
     let bucketObjects: any[] = [];
 
     await bucketContents.forEach(async (x, idx) => {
         const extension = x.Key.substr(x.Key.length - 3, 3);
-        console.log('Bucket: ', {extension});
         const command = new GetObjectCommand({
-          Bucket: 'diveinndenvers3',
+          Bucket: this.bucketId,
           Key: x.Key
         });
         const data = this.getObject(command);
@@ -94,15 +87,13 @@ export class AwsBucketIo {
           data,
           extension
         }
+        console.log('Bucket: ', {extension});
         bucketResults.push(result);
       } 
     );
 
     const bucketData = bucketResults.map(br => br.data);
-
     bucketObjects = (await Promise.all([ ...bucketData]));
-    console.log(bucketObjects.length);
-
     return bucketObjects.map((bo, idx) => {
       const result: AwsBucketResult = { 
         key: bucketResults[idx].key,

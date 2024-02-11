@@ -7,6 +7,9 @@ export const routes = {
     },
     specials: {
       _root: '/specials'
+    },
+    events: {
+      _root: '/events'
     }
   }
 }

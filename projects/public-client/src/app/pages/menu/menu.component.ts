@@ -34,11 +34,6 @@ export class MenuComponent implements OnInit {
   constructor(private specialService: SpecialsApiService, private imageListService: ImageListService) { }
 
   ngOnInit(): void {
-    // this.carouselData = [
-    //   {backgroundImage: '/assets/images/specials/TakiTakosTNT.jpg'},
-    //   {backgroundImage: '/assets/images/tour/boat_diagonal2.jpg'}
-    // ]
-    // console.log('INIT!!!!!!!!!!!!!');
     this.getSpecialsImages();
   }
 
