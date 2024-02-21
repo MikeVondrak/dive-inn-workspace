@@ -16,6 +16,7 @@ export class AwsBucketRouter extends BaseRouter {
 
     this.router.get(route, (req: Request, res: Response) => {
       if (!awsBucketIo) {
+        console.log('bkt');
         res.status(500).send('Unable to get Bucket IO');
         return;
       }
@@ -23,6 +24,7 @@ export class AwsBucketRouter extends BaseRouter {
       awsBucketIo.getBucketContents().then(
         (result: AwsBucketResult[]) => {
           const imgSrc = result.map((item: any) => this.encodeDataStream(item.extension, item.data));
+          console.log('------ img ' + !!imgSrc)
           res.status(200).send(imgSrc);
         }
       )
@@ -33,7 +35,8 @@ export class AwsBucketRouter extends BaseRouter {
     if (extension === 'svg') {
       extension += '+xml';
     }
-    let mime = 'data:image/' + extension + ';base64,';
+    let mime = 'data:json/' + extension + ';base64,';
+    //console.log('encoding: ' + mime);
     return mime + data;
   }
 }

@@ -12,7 +12,8 @@
 </div>
 
 <ng-template #Form>
-  <h2 class="form-title">Reservation Form</h2>
+  <h2 class="form-title">Reservation Request</h2>
+  <p class="form-intro"><span>Room rental is free of charge</span><button><img src="/assets/images/Info.svg"/></button></p>
   <form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
       
     <div class="label-column label-organizer required">

@@ -10,11 +10,13 @@
       <!-- <button id="qb" class="content menu" [class.fullscreen]="fullscreen" (click)="onClick()">
         <img src="assets/images/events/qb_challenge.jpg" />
       </button> -->
-      <div class="image-flip-container">
-        <app-image-flip>
-          [images$]="eventsImages$"
-        </app-image-flip>
-      </div>
+      <button class="content">
+        <div class="image-flip-container">
+          <app-image-flip
+            [images$]="eventsImages$">
+          </app-image-flip>
+        </div>
+      </button>
     </div>
     <img class="logo" src="assets/images/logo_events2.svg" />    
   </div> 

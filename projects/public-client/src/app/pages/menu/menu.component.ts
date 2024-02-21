@@ -37,15 +37,15 @@ export class MenuComponent implements OnInit {
     this.getSpecialsImages();
   }
 
-  public onClick(contentEnum: MenuContentItems) {
-    switch(contentEnum) {
-      case MenuContentItems.MENU: this.fullscreenMenu = !this.fullscreenMenu; break;
-      case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
-      // case MenuContentItems.SPECIALS: this.fullscreenSpecials = true; break;
-    }
-    this.imageListService.displayImageList(["assets/images/menu/Dive_Inn_Menu.jpg"], 0);
-    // console.log('click', 'fullscreenspecials ' + this.fullscreenSpecials)
-  }
+  // public onClick(contentEnum: MenuContentItems) {
+  //   switch(contentEnum) {
+  //     case MenuContentItems.MENU: this.fullscreenMenu = !this.fullscreenMenu; break;
+  //     case MenuContentItems.SPECIALS: this.fullscreenSpecials = !this.fullscreenSpecials; break;
+  //     // case MenuContentItems.SPECIALS: this.fullscreenSpecials = true; break;
+  //   }
+  //   this.imageListService.displayImageList(["assets/images/menu/Dive_Inn_Menu.jpg"], 0);
+  //   // console.log('click', 'fullscreenspecials ' + this.fullscreenSpecials)
+  // }
 
   getSpecialsImages() {
     this.specialsImages$ = this.specialService.getSpecials10$();

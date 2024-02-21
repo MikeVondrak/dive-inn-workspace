@@ -7,8 +7,9 @@ export class BaseRouter {
   public router: Router = express.Router();
 
   constructor(public baseRoute: string, routerCallback?: RouterCallback<any>) {
+
     // this.router.get(baseRoute, (req: Request, res: Response) => {
-    //   console.log('----> baseRouter GET: ' + baseRoute);
+       console.log('----> baseRouter GET: ' + baseRoute);
 
     //   res.send('Base GET Response, callback: ' + baseRoute + ' routerCallback: ' + !!routerCallback);
     //   if (!!routerCallback) {
