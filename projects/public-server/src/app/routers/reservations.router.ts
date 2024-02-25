@@ -8,35 +8,34 @@ import { environment } from '../../environments/environment';
 import { MailOptions } from 'nodemailer/lib/json-transport';
 import { Reservation, ReservationResponse } from '../models/reservation.model';
 
-import * as dive from '../../../../dive-inn-lib/src/public-api';
+import copy from '../../../../../utility/copy/dive-inn-copy.module';
 
 export class ReservationsRouter extends BaseRouter {
-
   private customerEmail = {
-    subject: dive.copy.reservations.email.subject,
-    intro: dive.copy.reservations.email.intro,
-    body1: dive.copy.reservations.email.requestReceived,
-    body2: dive.copy.reservations.email.weatherGroupSize,
+    subject: copy().reservations.email.subject,
+    intro: copy().reservations.email.intro,
+    body1: copy().reservations.email.requestReceived,
+    body2: copy().reservations.email.weatherGroupSize,
     //cateringHeader: 'Catering:',
     // catering: [
     //   '',
     //   '',
     // ],
-    featuresHeader: dive.copy.reservations.email.features.header,
+    featuresHeader: copy().reservations.email.features.header,
     features: [
-      dive.copy.reservations.email.features.noCharge,
-      dive.copy.reservations.email.features.noDrinkMin,
-      dive.copy.reservations.email.features.under21til6,
-      dive.copy.reservations.email.features.boatGroup13,
+      copy().reservations.email.features.noCharge,
+      copy().reservations.email.features.noDrinkMin,
+      copy().reservations.email.features.under21til6,
+      copy().reservations.email.features.boatGroup13,
     ],
-    reviewRequest: dive.copy.reservations.email.reviewRequest,
-    doNotsHeader: dive.copy.reservations.email.doNots.header,
+    reviewRequest: copy().reservations.email.reviewRequest,
+    doNotsHeader: copy().reservations.email.doNots.header,
     doNots: [
-      dive.copy.reservations.email.doNots.noMovingTables,
-      dive.copy.reservations.email.doNots.noReserveGames,
-      dive.copy.reservations.email.doNots.noOutsideFood,
+      copy().reservations.email.doNots.noMovingTables,
+      copy().reservations.email.doNots.noReserveGames,
+      copy().reservations.email.doNots.noOutsideFood,
     ],
-    detailsHeader: dive.copy.reservations.email.detailsHeader,
+    detailsHeader: copy().reservations.email.detailsHeader,
   };
 
   constructor(routerCallback: RouterCallback<GenericResponse>) {

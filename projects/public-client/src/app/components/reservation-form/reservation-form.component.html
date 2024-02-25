@@ -11,15 +11,15 @@
   <p class="form-intro"><span>Room rental is free of charge</span>
     <button (click)="infoClicked('open')"><img src="/assets/images/Info.svg"/></button></p>
     <div *ngIf="showInfo" class="info-container">
-      {{ copyEmail.reservations.email.features.header }} <br>
-      - {{ copyEmail.reservations.email.features.noCharge }} <br>
-      - {{ copyEmail.reservations.email.features.noDrinkMin }} <br>
-      - {{ copyEmail.reservations.email.features.boatGroup13 }} <br>
-      - {{ copyEmail.reservations.email.features.under21til6 }} <br> <br>
-      {{ copyEmail.reservations.email.doNots.header }} <br>
-      - {{ copyEmail.reservations.email.doNots.noMovingTables }} <br>
-      - {{ copyEmail.reservations.email.doNots.noOutsideFood }} <br>
-      - {{ copyEmail.reservations.email.doNots.noReserveGames }} <br> <br>
+      {{ copyEmail().reservations.email.features.header }} <br>
+      - {{ copyEmail().reservations.email.features.noCharge }} <br>
+      - {{ copyEmail().reservations.email.features.noDrinkMin }} <br>
+      - {{ copyEmail().reservations.email.features.boatGroup13 }} <br>
+      - {{ copyEmail().reservations.email.features.under21til6 }} <br> <br>
+      {{ copyEmail().reservations.email.doNots.header }} <br>
+      - {{ copyEmail().reservations.email.doNots.noMovingTables }} <br>
+      - {{ copyEmail().reservations.email.doNots.noOutsideFood }} <br>
+      - {{ copyEmail().reservations.email.doNots.noReserveGames }} <br> <br>
     </div>
   <form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
       
@@ -72,12 +72,6 @@
     </div>
     <div class="input-start-time">
       <input type="time" id="start-time" formControlName="startTime">
-    </div>
-    <div class="label-column label-end-time required">
-      <label for="end-time">End</label>
-    </div>
-    <div class="input-end-time">
-      <input type="time" id="end-time" formControlName="endTime">
     </div>
 
     <div class="label-column label-theme">

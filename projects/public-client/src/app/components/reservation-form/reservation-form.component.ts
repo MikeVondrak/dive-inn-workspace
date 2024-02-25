@@ -5,7 +5,7 @@ import { Observable, BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
 import { animations } from '../../animations/reservation-form.animations';
-import { copy } from 'dive-inn-lib/src/lib/constants/copy';
+import copy from '../../../../../../utility/copy/dive-inn-copy.module';
 
 enum ReservationFormState {
   ENTRY,
