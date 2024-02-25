@@ -16,3 +16,6 @@ export * from './lib/services/scroll/scroll.service';
 // Models
 export * from './lib/models/viewport.model';
 export * from './lib/models/viewport-overlay.model';
+
+// Constants
+export * from './lib/constants';

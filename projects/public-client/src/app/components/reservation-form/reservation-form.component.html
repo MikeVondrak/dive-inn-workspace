@@ -1,8 +1,3 @@
-<!-- <div class="construction">
-<h2 #Top>Under Construction</h2>
-<p>We're working on the functionality to submit your reservation online. For now, please call:<br><a href="tel:7202426157">720-242-6157</a></p>
-</div> -->
-
 <div #Top></div>
 <div [@fadeScaletransitionsParent]="(formState$ | async)" (@fadeScaletransitionsParent.done)="animationDone($event)" [ngSwitch]="(formState$ | async)" class="reservation-form-container">
   <div class="active" *ngSwitchCase="reservationFormState.ENTRY"><ng-container *ngTemplateOutlet="Form"></ng-container></div>
@@ -13,7 +8,19 @@
 
 <ng-template #Form>
   <h2 class="form-title">Reservation Request</h2>
-  <p class="form-intro"><span>Room rental is free of charge</span><button><img src="/assets/images/Info.svg"/></button></p>
+  <p class="form-intro"><span>Room rental is free of charge</span>
+    <button (click)="infoClicked('open')"><img src="/assets/images/Info.svg"/></button></p>
+    <div *ngIf="showInfo" class="info-container">
+      {{ copyEmail.reservations.email.features.header }} <br>
+      - {{ copyEmail.reservations.email.features.noCharge }} <br>
+      - {{ copyEmail.reservations.email.features.noDrinkMin }} <br>
+      - {{ copyEmail.reservations.email.features.boatGroup13 }} <br>
+      - {{ copyEmail.reservations.email.features.under21til6 }} <br> <br>
+      {{ copyEmail.reservations.email.doNots.header }} <br>
+      - {{ copyEmail.reservations.email.doNots.noMovingTables }} <br>
+      - {{ copyEmail.reservations.email.doNots.noOutsideFood }} <br>
+      - {{ copyEmail.reservations.email.doNots.noReserveGames }} <br> <br>
+    </div>
   <form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
       
     <div class="label-column label-organizer required">
@@ -106,45 +113,6 @@
     <div class="input-headcount">
       <input type="number" id="headcount" min="1" formControlName="headcount">
     </div>
-
-    <!-- <div class="checkboxes label-column label-preferred-space">
-      <label>Preferred Space</label>
-    </div>
-    <div class="preferred-space-1">
-      <input type="checkbox" id="space-main-room" formControlName="preferredSpaceMainRoom">
-      <label for="space-main-room"><span>1.</span> The Oasis <span>(18-24)</span></label>
-      <img class="sun-icon" src="/assets/images/sun_icon.svg" title="Outdoors" alt="Outdoors" />
-    </div>
-    <div class="preferred-space-2">
-      <input type="checkbox" id="space-party-boat" formControlName="preferredSpacePartyBoat">
-      <label for="space-party-boat"><span>2.</span> The Boat <span>(1-13)</span></label>
-    </div>
-    <div class="preferred-space-3">
-      <input type="checkbox" id="space-north-patio" formControlName="preferredSpaceNorthPatio">
-      <label for="space-north-patio"><span>3.</span> The Galley <span>(50-60)</span></label>
-    </div>
-    <div class="preferred-space-4">
-      <input type="checkbox" id="space-north-room" formControlName="preferredSpaceNorthRoom">
-      <label for="space-north-room"><span>4.</span> The Cabin <span>(40-50)</span></label>
-    </div>
-    <div class="preferred-space-5">
-      <input type="checkbox" id="space-game-room" formControlName="preferredSpacesFrontPatio">
-      <label for="space-south-room"><span>5.</span> The Deck <span>(80-100)</span></label>
-      <img class="sun-icon" src="/assets/images/sun_icon.svg" title="Outdoors" alt="Outdoors" />
-    </div>
-    <div class="preferred-space-6">
-      <input type="checkbox" id="space-south-room" formControlName="preferredSpaceSouthRoom">
-      <label for="space-south-room"><span>6.</span> The Saloon <span>(40-70)</span></label>
-    </div>
-    <div class="preferred-space-7">
-      <input type="checkbox" id="space-south-patio" formControlName="preferredSpaceSouthPatio">
-      <label for="space-south-patio"><span>7.</span> The Cabana <span>(10-250)</span></label>
-      <img class="sun-icon" src="/assets/images/sun_icon.svg" title="Outdoors" alt="Outdoors" />
-    </div>
-    <div class="preferred-space-8">
-      <input type="checkbox" id="space-none" formControlName="preferredSpaceNone">
-      <label for="space-none"><span>-. </span>No Preference</label>
-    </div> -->
     
     <div class="label-column label-notes">
       <label for="comments">Notes</label>
@@ -172,7 +140,9 @@
 <ng-template #Success>
   <div class="status-card">
     <div class="status-message">
-      <h2>Reservation Submitted</h2>
+      <h2>Reservation Submitted!</h2>
+      <p>We received your request to celebrate on:</p>
+      <p>{{ emailForm.get('partyDate')?.value }}</p>
       <p>You should receive a confirmation email shortly.</p>
       <button (click)="errorCancelClick()">Return to Form</button>
       <p>If you do not receive an email within an hour, please call to confirm your reservation details:<br/><a href="tel:7202426157">720-242-6157</a></p>

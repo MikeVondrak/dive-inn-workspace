@@ -8,34 +8,35 @@ import { environment } from '../../environments/environment';
 import { MailOptions } from 'nodemailer/lib/json-transport';
 import { Reservation, ReservationResponse } from '../models/reservation.model';
 
+import * as dive from '../../../../dive-inn-lib/src/public-api';
+
 export class ReservationsRouter extends BaseRouter {
 
   private customerEmail = {
-    subject: 'Ahoy Mate! Your reservation request has been received.',
-    intro: 'Thank you for choosing the Dive Inn to host your event, we\'re excited to help you throw an epic party!',
-    body1: 'We have received your request, and you will receive another email confirming your reservation, usually within 24-48 hours (please reach out if you do not hear from us).',
-    body2: 'Your dedicated space for the event will depend on your group size and the weather.',
+    subject: dive.copy.reservations.email.subject,
+    intro: dive.copy.reservations.email.intro,
+    body1: dive.copy.reservations.email.requestReceived,
+    body2: dive.copy.reservations.email.weatherGroupSize,
     //cateringHeader: 'Catering:',
     // catering: [
-    //   'Taki Takos (http://www.takitakos.com) and Cluck Chicken (http://cluckchickenden.com) are available to cater your event!',
-    //   'Contact Mario (mario.takitakos@gmail.com) or Rachael (cluckchickenden@gmail.com) for details.',
+    //   '',
+    //   '',
     // ],
-    featuresHeader: 'Features:',
+    featuresHeader: dive.copy.reservations.email.features.header,
     features: [
-      'NO charge to rent the space!',
-      'NO drink minimums!',
-      'Under 21 allowed until 6:00 PM',
-      //'We can provide wristbands / drink tickets for a group tab',
-      'Groups up to 13 people in the Boat, and larger spaces for parties of 15-250+'    
+      dive.copy.reservations.email.features.noCharge,
+      dive.copy.reservations.email.features.noDrinkMin,
+      dive.copy.reservations.email.features.under21til6,
+      dive.copy.reservations.email.features.boatGroup13,
     ],
-    reviewRequest: 'All we ask in return is for you to kindly ask your guests to leave us a 5-star review on their favorite social media site (Facebook, Google, Yelp, TripAdvisor... we\'re not picky!)',
-    doNotsHeader: 'IMPORTANT:',
+    reviewRequest: dive.copy.reservations.email.reviewRequest,
+    doNotsHeader: dive.copy.reservations.email.doNots.header,
     doNots: [
-      'Absolutely NO moving chairs or tables',
-      'No reserving games (pool, ping pong, cornhole) - first come, first serve!',
-      'No outside food',
+      dive.copy.reservations.email.doNots.noMovingTables,
+      dive.copy.reservations.email.doNots.noReserveGames,
+      dive.copy.reservations.email.doNots.noOutsideFood,
     ],
-    detailsHeader: 'Your Reservation Request:',
+    detailsHeader: dive.copy.reservations.email.detailsHeader,
   };
 
   constructor(routerCallback: RouterCallback<GenericResponse>) {

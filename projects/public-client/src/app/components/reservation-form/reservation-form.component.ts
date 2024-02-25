@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { RentalSpaces, Reservation, ContactType } from '../../models/api/reservations.api.model';
 import { ReservationApiService } from '../../services/reservation.api.service';
 import { animations } from '../../animations/reservation-form.animations';
+import { copy } from 'dive-inn-lib/src/lib/constants/copy';
 
 enum ReservationFormState {
   ENTRY,
@@ -28,6 +29,9 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
   emailForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
   statusMessage: string = '';
+  showInfo: boolean = false;
+
+  public copyEmail = copy;
 
   public formState$: BehaviorSubject<ReservationFormState> = new BehaviorSubject<ReservationFormState>(ReservationFormState.ENTRY);
   public reservationFormState = ReservationFormState;
@@ -61,18 +65,9 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
       organizer: ['', [Validators.required]],
       partyDate: ['', [Validators.required]],
       startTime: ['', [Validators.required]],
-      // endTime: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9\(\) -]{14}$')]],
       email: ['', [Validators.required, Validators.email]],
       contactMethod: [this.contactType.EMAIL],
-      // preferredSpaceNone: [false],
-      // preferredSpaceMainRoom: [false],
-      // preferredSpacePartyBoat: [false],
-      // preferredSpaceNorthPatio: [false],
-      // preferredSpaceNorthRoom: [false],
-      // preferredSpacesFrontPatio: [false],
-      // preferredSpaceSouthRoom: [false],
-      // preferredSpaceSouthPatio: [false],
       headcount: [null, [Validators.required, Validators.pattern("^[0-9*]*$")]],
       comments: [''],
     });
@@ -142,32 +137,6 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
     const forceFail = orgName === 'TestTheFormFailingOrganizer';
 
     this.submitted = true;
-    // let spaces: RentalSpaces[] = [];
-    // if (this.emailForm.get('preferredSpaceNone')?.value) {
-    //   spaces.push(RentalSpaces.NO_PREFERENCE);
-    // };
-    // if (this.emailForm.get('preferredSpacesFrontPatio')?.value) {
-    //   spaces.push(RentalSpaces.FRONT_PATIO); 
-    // }
-    // if (this.emailForm.get('preferredSpaceMainRoom')?.value) {
-    //   spaces.push(RentalSpaces.MAIN_ROOM);
-    // }
-    // if (this.emailForm.get('preferredSpaceNorthPatio')?.value) {
-    //   spaces.push(RentalSpaces.NORTH_PATIO);
-    // }
-    // if (this.emailForm.get('preferredSpaceNorthRoom')?.value) {
-    //   spaces.push(RentalSpaces.NORTH_ROOM);
-    // }
-    // if (this.emailForm.get('preferredSpacePartyBoat')?.value) {
-    //   spaces.push(RentalSpaces.PARTY_BOAT);
-    // }
-    // if (this.emailForm.get('preferredSpaceSouthRoom')?.value) { 
-    //   spaces.push(RentalSpaces.SOUTH_ROOM);
-    // }
-    // if (this.emailForm.get('preferredSpaceSouthPatio')?.value) { 
-    //   spaces.push(RentalSpaces.SOUTH_PATIO) 
-    // };
-
 
     const startTime = this.formatTime(this.emailForm.get('startTime')?.value);
     const endTime = this.formatTime(this.emailForm.get('endTime')?.value);
@@ -187,7 +156,6 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
       date: this.emailForm.get('partyDate')?.value,
       startTime: startTime,
       endTime: endTime,
-      // rentalSpaces: spaces,
       notes: this.emailForm.get('comments')?.value,
       
     };
@@ -235,6 +203,20 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
 
   public clickEmpty(event: MouseEvent) {
     event.stopPropagation();
+  }
+
+  public infoClicked(action: string) {
+    // if (action === 'open') {
+    //   this.formState$.next(this.reservationFormState.INFO);
+    // } else if (action === 'close') {
+    //   this.formState$.next(this.reservationFormState.ENTRY);
+    // }
+    // setTimeout(() => {
+    //   if (this.Top?.nativeElement) {
+    //     this.scrollTo(this.Top?.nativeElement);
+    //   }
+    // }, 2000); // wait for animations to finish and then scroll the error content to the top of the window
+    this.showInfo = !this.showInfo;
   }
 
   public animationDone(event: AnimationEvent) {
