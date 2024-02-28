@@ -75,8 +75,6 @@ export class CarouselComponent implements OnInit {
   }
 
   public onSwipe($event: Event, direction?: string) {
-    
-    console.log('swipe', {$event}, {direction});
     $event.preventDefault();
     
 
@@ -88,7 +86,6 @@ export class CarouselComponent implements OnInit {
   }
 
   public onClick($event: MouseEvent) {
-    console.log('CLICK', {$event});
     // $event.preventDefault();
     $event.stopPropagation();
     // this.carouselPaneExpanded[this.currentFace] = this.carouselPaneExpanded[this.currentFace] === CarouselPaneViewModes.NORMAL ? CarouselPaneViewModes.FULL_SCREEN : CarouselPaneViewModes.NORMAL;
@@ -101,7 +98,6 @@ export class CarouselComponent implements OnInit {
   }
 
   public rotateLeft() {
-    console.log('rotateleft')
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = ++this.currentPosition >= this.numberOfPositions ? 0 : this.currentPosition;
     this.currentFace = ++this.currentFace < numberOfFaces ? this.currentFace : 0;
@@ -110,7 +106,6 @@ export class CarouselComponent implements OnInit {
   }
 
   public rotateRight() {
-    console.log('rotateright')
     const numberOfFaces = this.debugging ? this.numberOfFaceLabels : this.numberOfFaceContents;
     this.currentPosition = --this.currentPosition < 0 ? this.numberOfPositions - 1 : this.currentPosition;
     this.currentFace = --this.currentFace < 0 ? numberOfFaces - 1: this.currentFace;

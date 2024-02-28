@@ -41,6 +41,33 @@
       &.active {
         //opacity: 1;
       }
+
+      .info-container {
+        margin-left: 1rem;
+        ul {
+          padding-left: 1.5rem;
+          li {
+            padding: 0 0 0.5rem 0.5rem;
+          }
+        }
+        ul.checkmark {
+          li {
+            &::marker {
+              content: '\2713';
+              color: utility.$dive-green;
+            }
+          }
+        }
+        ul.no-sign {
+          padding-bottom: 1rem;
+          li {
+            &::marker {
+              content: '\2298';
+              color: utility.$dive-red;
+            }
+          }
+        }
+      }
     }
   }
 

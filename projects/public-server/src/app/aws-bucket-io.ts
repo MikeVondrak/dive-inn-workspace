@@ -44,7 +44,6 @@ export class AwsBucketIo {
       }
       
       const str = await response.Body?.transformToString('base64');
-      console.log('RESPONSE success', str?.length);
       return str || 'No response';
 
     } catch (err) {
@@ -60,7 +59,7 @@ export class AwsBucketIo {
     try {
       let response = await this.client.send(this.listBucketContentsCommand);
       response.Contents = response?.Contents?.filter(x => x.Key !== bucketPath);
-console.log('listBucketObjects', response.Contents?.length);
+
       return response.Contents || [];
     }
     catch (err) {
@@ -70,7 +69,6 @@ console.log('listBucketObjects', response.Contents?.length);
 
   public async getBucketContents(): Promise<any[]> {
     const bucketPath = this.bucketPrefix;
-    console.log('@@@@', this.bucketId + this.bucketPrefix);
     const bucketContents = await this.listBucketObjects(bucketPath);
     let bucketResults: AwsBucketResult[] = [];
     let bucketObjects: any[] = [];
@@ -87,7 +85,6 @@ console.log('listBucketObjects', response.Contents?.length);
           data,
           extension
         }
-        console.log('Bucket: ', {extension});
         bucketResults.push(result);
       } 
     );

@@ -9,18 +9,22 @@
 <ng-template #Form>
   <h2 class="form-title">Reservation Request</h2>
   <p class="form-intro"><span>Room rental is free of charge</span>
-    <button (click)="infoClicked('open')"><img src="/assets/images/Info.svg"/></button></p>
-    <div *ngIf="showInfo" class="info-container">
-      {{ copyEmail().reservations.email.features.header }} <br>
-      - {{ copyEmail().reservations.email.features.noCharge }} <br>
-      - {{ copyEmail().reservations.email.features.noDrinkMin }} <br>
-      - {{ copyEmail().reservations.email.features.boatGroup13 }} <br>
-      - {{ copyEmail().reservations.email.features.under21til6 }} <br> <br>
-      {{ copyEmail().reservations.email.doNots.header }} <br>
-      - {{ copyEmail().reservations.email.doNots.noMovingTables }} <br>
-      - {{ copyEmail().reservations.email.doNots.noOutsideFood }} <br>
-      - {{ copyEmail().reservations.email.doNots.noReserveGames }} <br> <br>
-    </div>
+    <button (click)="showInfo = !showInfo"><img src="/assets/images/Info.svg"/></button></p>
+  <div *ngIf="showInfo" class="info-container" [@fadeScaletransitions]>
+    <div class="info-header">{{ copyEmail().reservations.email.features.header }}</div>
+    <ul class="checkmark">
+      <li>{{ copyEmail().reservations.email.features.noCharge }}</li>
+      <li>{{ copyEmail().reservations.email.features.noDrinkMin }}</li>
+      <li>{{ copyEmail().reservations.email.features.boatGroup13 }}</li>
+      <li>{{ copyEmail().reservations.email.features.under21til6 }}</li>
+    </ul>
+    <div class="info-header">{{ copyEmail().reservations.email.doNots.header }}</div>
+    <ul class="no-sign">
+      <li>{{ copyEmail().reservations.email.doNots.noMovingTables }}</li>
+      <li>{{ copyEmail().reservations.email.doNots.noOutsideFood }}</li>
+      <li>{{ copyEmail().reservations.email.doNots.noReserveGames }}</li>
+    </ul>
+  </div>
   <form [formGroup]="emailForm" #ngForm="ngForm" (ngSubmit)="sendEmail()">
       
     <div class="label-column label-organizer required">
