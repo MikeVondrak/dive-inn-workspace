@@ -10,8 +10,7 @@ import { UtilityService } from '../utility/utility.service';
 export class ScrollService implements OnDestroy {
 
   private userScrolled$: Subject<Event> = new Subject<Event>();
-  public getUserScrolled$: Observable<Event> = this.userScrolled$.asObservable(); //.pipe(tap(a => console.log('SCROLL', a)));
-
+  public getUserScrolled$: Observable<Event> = this.userScrolled$.asObservable();
   private renderer: Renderer2;
   private destroy$: Subject<void> = new Subject();
   private lastUrl: string = '';

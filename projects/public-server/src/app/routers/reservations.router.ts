@@ -64,8 +64,6 @@ export class ReservationsRouter extends BaseRouter {
   }
 
   private sendMail(transporter: Transporter, options: MailOptions, res: Response) {
-    
-    console.log('SENDING MAIL', options);
 
     transporter.sendMail(options, (error, info) => {
       if (!!error) {

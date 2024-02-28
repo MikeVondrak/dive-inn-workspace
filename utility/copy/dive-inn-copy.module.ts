@@ -22,7 +22,7 @@ const copy = () => ({
         header: 'IMPORTANT:',
         noMovingTables: 'Absolutely NO moving chairs or tables',
         noReserveGames:
-          'No reserving games (pool, ping pong, cornhole) - first come, first serve!',
+          'No reserving games - first come, first served! (Pool, ping pong, cornhole)',
         noOutsideFood: 'No outside food',
       },
       detailsHeader: 'Your Reservation Request:',

@@ -33,7 +33,6 @@ export class CarouselPaneComponent implements OnInit {
   }
 
   public handleOnSwipe(event: any) {
-    console.log('SWIPE IN PANE');
     // this.onSwipe.emit(event);
   }
 }

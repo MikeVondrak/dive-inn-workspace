@@ -205,20 +205,6 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
     event.stopPropagation();
   }
 
-  public infoClicked(action: string) {
-    // if (action === 'open') {
-    //   this.formState$.next(this.reservationFormState.INFO);
-    // } else if (action === 'close') {
-    //   this.formState$.next(this.reservationFormState.ENTRY);
-    // }
-    // setTimeout(() => {
-    //   if (this.Top?.nativeElement) {
-    //     this.scrollTo(this.Top?.nativeElement);
-    //   }
-    // }, 2000); // wait for animations to finish and then scroll the error content to the top of the window
-    this.showInfo = !this.showInfo;
-  }
-
   public animationDone(event: AnimationEvent) {
   }
 

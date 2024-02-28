@@ -28,7 +28,7 @@
       <div *ngIf="centeredImage != (images.length - 1)" class="arrow arrow-right">
         <img src="assets/images/Arrow_Right.svg" (click)="onSwipe($event, 'L')">
       </div>
-      <div class="images-pills">
+      <div class="images-pills" *ngIf="images.length > 1">
         <div class="pill" *ngFor="let indicator of images; index as i" [ngClass]="{active: i === centeredImage}">
 
         </div>
