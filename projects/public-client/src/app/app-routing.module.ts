@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { PrivatePartiesComponent } from './pages/private-parties/private-parties.component';
 import { TourComponent } from './pages/tour/tour.component';
+import { SiteInfoComponent } from './pages/site-info/site-info.component';
 
 const routes: Routes = [
   { 
@@ -125,7 +126,7 @@ const routes: Routes = [
   },
   {
     path: 'site-info',
-    component: ConstructionComponent,
+    component: SiteInfoComponent,
     data: { 
       pageTitle: 'Site Info',
     }

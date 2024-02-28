@@ -2,7 +2,8 @@
 @use './colors';
 
 @mixin media-breakpoint-gte($bp) {
-  @media (min-width: map-get(breakpoints.$breakpoints, $bp) + 'px') {
+  $bpVal: map-get(breakpoints.$breakpoints, $bp) + 'px';
+  @media (min-width: $bpVal) {
     @content;
   }
 }

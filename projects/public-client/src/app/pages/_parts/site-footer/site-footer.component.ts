@@ -158,6 +158,7 @@ export class SiteFooterComponent implements OnInit {
 
     // show Private Parties as active
     this.links2[0].active = true;
+    this.links3[4].active = true;
   }
 
   public onExpandingMenuStateChange(state: ExpandingMenuStateEnum) {

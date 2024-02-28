@@ -1,0 +1,33 @@
+@use '../../scss/utility';
+
+:host {
+  display: block;
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 0 1rem;
+    text-align: center;
+
+    h1 {
+      font-size: 4rem;
+      @include utility.text-double-outline('Site Info');
+    }
+
+    .imventions-logo {
+      margin-top: 3rem;
+      img {
+        width: 40vw;
+        @include utility.media-breakpoint-gte(lg) {
+          width: 30vw;
+        }
+        @include utility.media-breakpoint-gte(hd) {
+          width: 20vw;
+        }
+      }
+    }
+  }
+}
